@@ -1,0 +1,12 @@
+checks:
+    php:
+        code_rating: true
+        duplication: true
+
+    python:
+        code_rating: false
+        duplicate_code: false
+
+    ruby:
+        code_rating: false
+        duplicate_code: false
