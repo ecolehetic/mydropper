@@ -1,0 +1,9 @@
+# APP
+
+Web/app/logs
+Web/assets/tmp
+Web/assets/cache
+
+# PHPStorm
+
+.idea
