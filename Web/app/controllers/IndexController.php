@@ -5,7 +5,11 @@ class IndexController extends BaseController
 
     function index($f3)
     {
-        $f3->set('content', 'main.html');
+
+        echo $this->twig->render('main.twig', [
+            'user' => 'Equipe 14'
+        ]);
+
     }
 
 }

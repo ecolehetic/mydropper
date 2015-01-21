@@ -1,31 +1,17 @@
 <?php
 
-class BaseController{
+class BaseController
+{
 
-	protected $framework;
-	protected $db;
+    protected $twig;
+    protected $f3;
+    protected $web;
 
-	function __construct() {
-		$f3=Base::instance();
+    public function __construct()
+    {
+        $this->twig = $GLOBALS['twig'];
+        $this->f3   = Base::instance();
+        $this->web  = Web::instance();
+    }
 
-		# Connect to Mysql:
-		/*try {
-			$db=new DB\SQL(
-			'mysql:host=localhost;port=3306;dbname='.$f3->get('dbname'), $f3->get('dbuser'),$f3->get('dbpasswd'));
-		} catch (Exception $e) {
-			die("Connection error!");
-		}
-
-		$this->db=$db;*/
-
-		$this->framework=$f3;
-	}
-
-	function afterRoute(){
-	 	$this->layout();
-	}
-
-	function layout(){
-		echo Template::instance()->render($this->framework->get('layout'));
-	}
 }

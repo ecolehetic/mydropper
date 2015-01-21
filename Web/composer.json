@@ -1,0 +1,21 @@
+{
+  "name": "mathieu/php14",
+  "require": {
+    "bcosca/fatfree": "~3.4",
+    "twig/twig": "~1.17"
+  },
+  "authors": [
+    {
+      "name": "Mathieu Le Tyrant",
+      "email": "mathieu.letyrant@gmail.com"
+    },
+    {
+      "name": "Nicolas Andre",
+      "email": "nclsndr1@gmail.com"
+    },
+    {
+      "name": "Patrick Heng",
+      "email": "hengpatrick.pro@gmail.com"
+    }
+  ]
+}
