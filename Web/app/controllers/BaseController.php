@@ -7,6 +7,7 @@ class BaseController
 {
 
     private $twig;
+    public $layout = 'layout';
     protected $f3;
     protected $web;
 
@@ -19,12 +20,13 @@ class BaseController
 
 
     /**
-     * @param $file
+     * @param string $file
      * @param array $values
      */
     protected function render($file, $values = [])
     {
-    	echo $this->twig->render($file, $values);
+        $values['layout'] = $this->layout;
+        echo $this->twig->render($file, $values);
     }
 
 }
