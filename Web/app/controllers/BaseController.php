@@ -14,4 +14,15 @@ class BaseController
         $this->web  = Web::instance();
     }
 
+    /*
+     * Render HTML
+     * @params string $file
+     * @params array $values
+     * @return echo Render Twig
+     */
+    protected function render($file, $values)
+    {
+    	echo $this->twig->render($file, $values);
+    }
+
 }

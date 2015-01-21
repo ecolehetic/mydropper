@@ -5,3 +5,6 @@ Web/assets/cache
 
 # PHPStorm
 .idea
+
+# COMPOSER
+Web/vendor/*
