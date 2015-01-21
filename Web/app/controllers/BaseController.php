@@ -1,9 +1,12 @@
 <?php
 
+/**
+ * Class BaseController
+ */
 class BaseController
 {
 
-    protected $twig;
+    private $twig;
     protected $f3;
     protected $web;
 
@@ -14,13 +17,12 @@ class BaseController
         $this->web  = Web::instance();
     }
 
-    /*
-     * Render HTML
-     * @params string $file
-     * @params array $values
-     * @return echo Render Twig
+
+    /**
+     * @param $file
+     * @param array $values
      */
-    protected function render($file, $values)
+    protected function render($file, $values = [])
     {
     	echo $this->twig->render($file, $values);
     }
