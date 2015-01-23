@@ -10,16 +10,16 @@ class BaseController
 {
 
     private $twig;
-    public $layout = 'layout';
     protected $f3;
     protected $web;
+    public $layout = 'layout';
 
     /**
      * Return in all Child Constructor $twig, $f3, $web
      */
     public function __construct()
     {
-        $this->twig = $GLOBALS['twig'];
+        $this->twig = $this->f3->get('TWIG');
         $this->f3   = \Base::instance();
         $this->web  = \Web::instance();
     }

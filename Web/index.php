@@ -6,6 +6,7 @@
 require('vendor/autoload.php');
 
 use \APP\MODELS\Database;
+use \APP\MODELS\Twig;
 
 /*
  * Fat Free Framework
@@ -18,12 +19,10 @@ $f3->config('app/config/routes.ini');
 /*
  * Twig
  */
-Twig_Autoloader::register();
-
-$twig = new Twig_Environment(new Twig_Loader_Filesystem('app/views/'), [
-    'debug'         => false,
-    'cache'         => 'assets/cache/',
-    'auto_reload'   => true
+new Twig($f3->get('UI'), [
+    'debug'         => $f3->get('TWIG_DEBUG'),
+    'cache'         => $f3->get('CACHE'),
+    'auto_reload'   => $f3->get('TWIG_AUTORELOAD')
 ]);
 
 /*
