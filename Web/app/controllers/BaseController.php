@@ -19,9 +19,9 @@ class BaseController
      */
     public function __construct()
     {
-        $this->twig = $this->f3->get('TWIG');
         $this->f3   = \Base::instance();
         $this->web  = \Web::instance();
+        $this->twig = $this->f3->get('TWIG');
     }
 
 
