@@ -1,5 +1,7 @@
 <?php
 
+namespace APP\CONTROLLERS;
+
 /**
  * Class BaseController
  */
@@ -14,8 +16,8 @@ class BaseController
     public function __construct()
     {
         $this->twig = $GLOBALS['twig'];
-        $this->f3   = Base::instance();
-        $this->web  = Web::instance();
+        $this->f3   = \Base::instance();
+        $this->web  = \Web::instance();
     }
 
 

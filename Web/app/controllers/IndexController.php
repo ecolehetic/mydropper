@@ -1,5 +1,7 @@
 <?php
 
+namespace APP\CONTROLLERS;
+
 /**
  * Class IndexController
  */

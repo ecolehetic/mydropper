@@ -1,5 +1,13 @@
 <?php
 
-class BaseModel {
+namespace APP\MODELS;
+
+class BaseModel
+{
+
+    public function __construct()
+    {
+
+    }
 
 }
