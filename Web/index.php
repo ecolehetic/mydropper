@@ -1,11 +1,23 @@
 <?php
 
 /*
- * TWIG
+ * Autoload By Composer
  */
+require('vendor/autoload.php');
 
-require('vendor/twig/twig/lib/Twig/Autoloader.php');
+use \APP\MODELS\Database;
 
+/*
+ * Fat Free Framework
+ */
+$f3 = Base::instance();
+
+$f3->config('app/config/config.ini');
+$f3->config('app/config/routes.ini');
+
+/*
+ * Twig
+ */
 Twig_Autoloader::register();
 
 $twig = new Twig_Environment(new Twig_Loader_Filesystem('app/views/'), [
@@ -15,12 +27,11 @@ $twig = new Twig_Environment(new Twig_Loader_Filesystem('app/views/'), [
 ]);
 
 /*
- * Fat Free Framework
+ * Eloquent
  */
+$capsule = new Database();
 
-$f3 = require('vendor/bcosca/fatfree/lib/base.php');
-
-$f3->config('app/config/config.ini');
-$f3->config('app/config/routes.ini');
-
+/*
+ * Run
+ */
 $f3->run();
