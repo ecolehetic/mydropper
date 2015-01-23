@@ -4,6 +4,7 @@ namespace APP\CONTROLLERS;
 
 /**
  * Class BaseController
+ * @package APP\CONTROLLERS
  */
 class BaseController
 {
@@ -13,6 +14,9 @@ class BaseController
     protected $f3;
     protected $web;
 
+    /**
+     * Return in all Child Constructor $twig, $f3, $web
+     */
     public function __construct()
     {
         $this->twig = $GLOBALS['twig'];
@@ -22,8 +26,8 @@ class BaseController
 
 
     /**
-     * @param string $file
-     * @param array $values
+     * @param string $file Name of the Twig File
+     * @param array $values Values inject in the View
      */
     protected function render($file, $values = [])
     {
