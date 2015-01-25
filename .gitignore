@@ -8,3 +8,8 @@ Web/assets/cache
 
 # COMPOSER
 Web/vendor/*
+
+
+# CHROME EXTENSION
+ChromeExtension/node_modules/*
+ChromeExtension/npm-debug.log

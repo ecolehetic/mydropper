@@ -1,0 +1,84 @@
+#myDropperSideBar {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 300px;
+    height: 100%;
+    background: #FFFFFF;
+    z-index: 999999;
+    animation: slideInRight 1s ease;
+    display: none;
+    font-family: helvetica, arial !important;
+    color: #212121;
+    border-left: 1px solid #727272;
+    h1 {
+        text-align: center;
+        font-size: 20px;
+        font-family: helvetica, arial;
+        width: 100%;
+        background: #607D8B;
+        padding: 20px 0;
+        margin: 0;
+        border-top: 5px solid #455A64;
+        color: white;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    #accordeon {
+        width: 100%;
+        list-style: none;
+        .category {
+        	transition: all 1s ease;
+            h2 {
+                width: 100%;
+                padding: 0 10px;
+                background: white;
+                height: 60px;
+                line-height: 63px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                margin: 0;
+                cursor: pointer;
+            }
+            .dragList.alwaysOpen {
+            	height : auto !important; 
+            }
+			.dragList.open{
+				display : block;
+			}
+            .dragList {
+            	display : none;
+                overflow: hidden;
+                list-style: none;
+                transition: all 1s ease;
+                cursor : pointer;
+
+                li {
+                    display: block;
+                    width: 250px;
+                    margin : auto;
+                    height: 50px;
+                    line-height: 50px;
+                    padding: 0 10px;
+                    background: #CFD8DC;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                    cursor: pointer;
+                }
+
+                li.md-draging {
+                	opacity : 0.9;
+                	transform: rotate(-4deg);
+                	transition : transform 1s ease;
+                }
+            }
+        }
+    }
+}
+#myDropperSideBar.hideBar {
+    animation: slideOutRight 1s ease;
+}
+
+.md-dropElmt {
+	box-shadow: 2px 2px 2px 2px #34cdf9;
+}
+/*-------------- animate -------------*/
+
+@import 'animation.scss';

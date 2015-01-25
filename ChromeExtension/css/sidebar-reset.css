@@ -1,0 +1,99 @@
+#myDropperSideBar html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+#myDropperSideBar body {
+  margin: 0; }
+#myDropperSideBar article, #myDropperSideBar aside, #myDropperSideBar details, #myDropperSideBar figcaption, #myDropperSideBar figure, #myDropperSideBar footer, #myDropperSideBar header, #myDropperSideBar hgroup, #myDropperSideBar main, #myDropperSideBar menu, #myDropperSideBar nav, #myDropperSideBar section, #myDropperSideBar summary {
+  display: block; }
+#myDropperSideBar audio, #myDropperSideBar canvas, #myDropperSideBar progress, #myDropperSideBar video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */ }
+#myDropperSideBar audio:not([controls]) {
+  display: none;
+  height: 0; }
+#myDropperSideBar [hidden], #myDropperSideBar template {
+  display: none; }
+#myDropperSideBar a {
+  background-color: transparent; }
+#myDropperSideBar a:active, #myDropperSideBar a:hover {
+  outline: 0; }
+#myDropperSideBar abbr[title] {
+  border-bottom: 1px dotted; }
+#myDropperSideBar b, #myDropperSideBar strong {
+  font-weight: bold; }
+#myDropperSideBar dfn {
+  font-style: italic; }
+#myDropperSideBar h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+#myDropperSideBar mark {
+  background: #ff0;
+  color: #000; }
+#myDropperSideBar small {
+  font-size: 80%; }
+#myDropperSideBar sub, #myDropperSideBar sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+#myDropperSideBar sup {
+  top: -0.5em; }
+#myDropperSideBar sub {
+  bottom: -0.25em; }
+#myDropperSideBar img {
+  border: 0; }
+#myDropperSideBar svg:not(:root) {
+  overflow: hidden; }
+#myDropperSideBar figure {
+  margin: 1em 40px; }
+#myDropperSideBar hr {
+  box-sizing: content-box;
+  height: 0; }
+#myDropperSideBar pre {
+  overflow: auto; }
+#myDropperSideBar code, #myDropperSideBar kbd, #myDropperSideBar pre, #myDropperSideBar samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+#myDropperSideBar button, #myDropperSideBar input, #myDropperSideBar optgroup, #myDropperSideBar select, #myDropperSideBar textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */ }
+#myDropperSideBar button {
+  overflow: visible; }
+#myDropperSideBar button, #myDropperSideBar select {
+  text-transform: none; }
+#myDropperSideBar button, #myDropperSideBar html input[type="button"], #myDropperSideBar input[type="reset"], #myDropperSideBar input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */ }
+#myDropperSideBar button[disabled], #myDropperSideBar html input[disabled] {
+  cursor: default; }
+#myDropperSideBar button::-moz-focus-inner, #myDropperSideBar input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+#myDropperSideBar input {
+  line-height: normal; }
+#myDropperSideBar input[type="checkbox"], #myDropperSideBar input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+#myDropperSideBar input[type="number"]::-webkit-inner-spin-button, #myDropperSideBar input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+#myDropperSideBar input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  /* 2 */
+  box-sizing: content-box; }
+#myDropperSideBar input[type="search"]::-webkit-search-cancel-button, #myDropperSideBar input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }

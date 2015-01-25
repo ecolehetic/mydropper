@@ -1,0 +1,19 @@
+{
+  "name": "MyDropper",
+  "version": "1.0.0",
+  "description": "My Dropper allows you to drag and drop your personal informations, your notes and track shortered url",
+  "main": "background.js",
+  "author": "Equipe 14",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.9",
+    "gulp-autoprefixer": "^1.0.1",
+    "gulp-compass": "^2.0.1",
+    "gulp-filter": "^1.0.2",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-plumber": "^0.6.6",
+    "gulp-sass": "^1.2.2",
+    "gulp-uglify": "^1.0.1",
+    "gulp-useref": "^1.0.2"
+  }
+}
