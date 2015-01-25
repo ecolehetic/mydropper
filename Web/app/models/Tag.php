@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Basic Exemple for Futur Models !
+ * Role Model
  * The model name must be the same name of the table but in the singular
  * Else : protected $table = 'name_table'
  */
@@ -9,9 +9,9 @@ namespace APP\MODELS;
 
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 
-class User extends Eloquent {
+class Tag extends Eloquent {
 
-	protected $table = 'users';
+	protected $table = 'tags';
 
 	public function __construct()
     {
@@ -19,8 +19,8 @@ class User extends Eloquent {
 
     }
 
-    public function roles(){
-        return $this->belongsTo('Role');
+    public function stores(){
+        return $this->belongsToMany('Store','tag_store','tag_id','store_id');
     }
 
 }
