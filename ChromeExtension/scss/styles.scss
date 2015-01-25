@@ -46,11 +46,10 @@
 			}
             .dragList {
             	display : none;
-                overflow: hidden;
+                overflow: visible;
                 list-style: none;
                 transition: all 1s ease;
                 cursor : pointer;
-
                 li {
                     display: block;
                     width: 250px;
@@ -61,6 +60,7 @@
                     background: #CFD8DC;
                     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
                     cursor: pointer;
+                    position : relative;
                 }
 
                 li.md-draging {
@@ -78,6 +78,9 @@
 
 .md-dropElmt {
 	box-shadow: 2px 2px 2px 2px #34cdf9;
+}
+.mad-dragHovered {
+    box-shadow: 5px 2px 2px 2px green;
 }
 /*-------------- animate -------------*/
 

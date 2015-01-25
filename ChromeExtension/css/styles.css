@@ -43,7 +43,7 @@
         display: block; }
       #myDropperSideBar #accordeon .category .dragList {
         display: none;
-        overflow: hidden;
+        overflow: visible;
         list-style: none;
         transition: all 1s ease;
         cursor: pointer; }
@@ -56,7 +56,8 @@
           padding: 0 10px;
           background: #CFD8DC;
           border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-          cursor: pointer; }
+          cursor: pointer;
+          position: relative; }
         #myDropperSideBar #accordeon .category .dragList li.md-draging {
           opacity: 0.9;
           -webkit-transform: rotate(-4deg);
@@ -71,6 +72,9 @@
 
 .md-dropElmt {
   box-shadow: 2px 2px 2px 2px #34cdf9; }
+
+.mad-dragHovered {
+  box-shadow: 5px 2px 2px 2px green; }
 
 /*-------------- animate -------------*/
 .animated {

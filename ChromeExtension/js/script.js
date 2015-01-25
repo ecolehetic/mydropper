@@ -85,21 +85,21 @@ function initDraggable() {
     var offset = 0;
     $('.md-dragElmt')
         .draggable({
-            start: function() {
+            start: function(event,ui) {
                 var offset = $(this).offset();
                 console.log('start dragging');
                 $(this).addClass('md-draging');
                 $(this).css({
-                    'position': 'fixed',
                     'z-index': '999999999',
-                    'right': 0,
-                    'top': 0
+                    // 'left': '1000px',
+                    'top': offset.top,
+                    'left': offset.left
                 });
             },
-            drag: function() {
+            drag: function(event,ui) {
                 console.log('dragging');
             },
-            stop: function() {
+            stop: function(event,ui) {
             	$(this).removeClass('md-draging');
                 console.log('stop dragging');
                 $(this).attr('style','');
@@ -109,6 +109,9 @@ function initDraggable() {
 
 function initDroppable() {
     $(".md-dropElmt").droppable({
+        accept: ".md-dragElmt", 
+        tolerance: "intersect",
+        hoverClass: "mad-dragHovered",
         drop: function(event, ui) {
             var txt = $(this).data('text');
             $(this).attr('value', 'Je depose mon texte');

@@ -16,7 +16,6 @@ chrome.browserAction.onClicked.addListener(function(tab) {
                 chrome.tabs.insertCSS(spectTab.id, {file:'css/styles.css'});
                 chrome.tabs.insertCSS(spectTab.id, {file:'css/jquery-ui.min.css'});
                 chrome.tabs.insertCSS(spectTab.id, {file:'css/jquery-ui.structure.min.css'});
-                cssInserted = true;
         });
     });
 });
