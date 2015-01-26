@@ -14,21 +14,32 @@ function toggleSidebar(htmlContent) {
 
     // ------ Open & Close panel 
     if (sidebarOpen) {
+
         var el = document.getElementById('myDropperSideBar');
-        el.classList.add("hideBar")
+
+        // Add animation before kill the element
+        el.classList.add("hideBar");
+        // Remove Class to all input/textarea elements
+        removeMarkDropZones();
+
         setTimeout(function() {
+            
+
+            // Kill the element
             el.parentNode.removeChild(el);
             sidebarOpen = false;
-            console.log('sidebar : close');
         }, 1000)
     } else {
+
         var sidebar = document.createElement('div');
         sidebar.id = "myDropperSideBar";
         sidebar.innerHTML = htmlContent;
         document.body.appendChild(sidebar);
         sidebar.style.display = 'block'
         sidebarOpen = true;
-        console.log('sidebar : open');
+
+        //  Add Class to all input/textarea elements
+        addMarkDropZones();
     }
 
 
@@ -64,13 +75,12 @@ function toggleSidebar(htmlContent) {
         }
     });
 
-    // ------ Add Class to all input/textarea elements
-    markDropZones();
+    //  ------ Init draggable/droppable from jquery UI
     initDraggable();
     initDroppable();
 }
 
-function markDropZones() {
+function addMarkDropZones() {
     $('input').each(function() {
         if ($(this).attr('type') == "text" ||
             $(this).attr('type') == "email" ||
@@ -80,6 +90,9 @@ function markDropZones() {
     });
     $('textarea').addClass('md-dropElmt');
 }
+function removeMarkDropZones() {
+    $('.md-dropElmt').removeClass('md-dropElmt');
+}
 
 function initDraggable() {
     var offset = 0;
@@ -87,7 +100,6 @@ function initDraggable() {
         .draggable({
             start: function(event,ui) {
                 var offset = $(this).offset();
-                console.log('start dragging');
                 $(this).addClass('md-draging');
                 $(this).css({
                     'z-index': '999999999',
@@ -97,11 +109,9 @@ function initDraggable() {
                 });
             },
             drag: function(event,ui) {
-                console.log('dragging');
             },
             stop: function(event,ui) {
             	$(this).removeClass('md-draging');
-                console.log('stop dragging');
                 $(this).attr('style','');
             }
         });
@@ -113,8 +123,9 @@ function initDroppable() {
         tolerance: "intersect",
         hoverClass: "mad-dragHovered",
         drop: function(event, ui) {
-            var txt = $(this).data('text');
-            $(this).attr('value', 'Je depose mon texte');
+            var elmtAttr = event.toElement.attributes;
+            var txtToImport = ui.draggable.data('text');
+            $(this).attr('value', txtToImport);
         }
     });
 }
