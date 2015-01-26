@@ -2,7 +2,7 @@
   "name": "mathieu/php14",
   "require": {
     "bcosca/fatfree": "~3.4",
-    "twig/twig": "~1.17",
+    "twig/twig": "1.5.1",
     "illuminate/database": "*"
   },
   "authors": [

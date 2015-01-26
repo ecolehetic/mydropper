@@ -4,6 +4,10 @@
 
 {% block body %}
 
-    Bonjour {{ user[0].username }}
-    {{ debug }}
+    Bonjour
+    <pre>
+        {{ user | dump }}
+    </pre>
+</pre>
+
 {% endblock %}

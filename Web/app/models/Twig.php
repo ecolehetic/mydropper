@@ -5,6 +5,7 @@ namespace APP\MODELS;
 use Twig_Autoloader;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
+use Twig_Filter_Function;
 
 class Twig
 {
@@ -15,7 +16,7 @@ class Twig
         Twig_Autoloader::register();
 
         $Twig_env = new Twig_Environment(new Twig_Loader_Filesystem(($viewFolder), $params));
-        $Twig_env->addExtension(new \Twig_Extension_Debug());
+        $Twig_env->addFilter('dump', new Twig_Filter_Function('var_dump'));
         $f3->set('TWIG', $Twig_env);
     }
 }
