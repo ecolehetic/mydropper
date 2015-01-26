@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Role Model
+ * Tag Model
  * The model name must be the same name of the table but in the singular
  * Else : protected $table = 'name_table'
  */
@@ -14,9 +14,13 @@ class Tag extends Eloquent
 
     protected $table = 'tags';
 
-    public function stores()
+    public function users()
     {
-        return $this->belongsToMany('Store', 'tag_store', 'tag_id', 'store_id');
+        return $this->belongsTo('\APP\MODELS\User', 'user_id');
     }
 
+    public function stores()
+    {
+        return $this->belongsToMany('\APP\MODELS\Store', 'tag_store', 'tag_id', 'store_id');
+    }
 }

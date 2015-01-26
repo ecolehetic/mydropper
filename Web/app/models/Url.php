@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Role Model
+ * Url Model
  * The model name must be the same name of the table but in the singular
  * Else : protected $table = 'name_table'
  */
@@ -9,14 +9,17 @@ namespace APP\MODELS;
 
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Role extends Eloquent
+class Url extends Eloquent
 {
+    protected $table = 'urls';
 
-    protected $table = 'roles';
+    public function trackers()
+    {
+        return $this->hasMany('APP\MODELS\TrackerUrl', 'url_id');
+    }
 
     public function users()
     {
-        return $this->hasMany('\APP\MODELS\User', 'role_id', 'id');
+        return $this->belongsTo('APP\MODELS\User', 'user_id');
     }
-
 }

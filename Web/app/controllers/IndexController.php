@@ -3,7 +3,7 @@
 namespace APP\CONTROLLERS;
 
 use App\Models\User as User;
-use App\Models\Role as Role;
+
 
 /**
  * Class IndexController
@@ -23,11 +23,13 @@ class IndexController extends BaseController
         //$user->name = 'John';
         //$user->save();
 
-        // The follow method doesnt load Role Model
-        $user = User::find(1)->roles()->get();
+        // $user = User::find(1)->roles()->get();
+        $user = User::find(1);
+        $debug = User::find(1)->stores()->get();
 
         $this->render('main.twig', [
-            'user' => $user
+            'user' => $user,
+            'debug' => $debug
         ]);
     }
 

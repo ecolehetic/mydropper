@@ -14,6 +14,8 @@ class Twig
 
         Twig_Autoloader::register();
 
-        $f3->set('TWIG', new Twig_Environment(new Twig_Loader_Filesystem(($viewFolder), $params)));
+        $Twig_env = new Twig_Environment(new Twig_Loader_Filesystem(($viewFolder), $params));
+        $Twig_env->addExtension(new \Twig_Extension_Debug());
+        $f3->set('TWIG', $Twig_env);
     }
 }
