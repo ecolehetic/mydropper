@@ -9,18 +9,14 @@ namespace APP\MODELS;
 
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 
-class User extends Eloquent {
+class User extends Eloquent
+{
 
-	protected $table = 'users';
+    protected $table = 'users';
 
-	public function __construct()
+    public function roles()
     {
-        parent::__construct();
-
-    }
-
-    public function roles(){
-        return $this->belongsTo('Role');
+        return $this->belongsTo('APP\MODELS\Role', 'role_id', 'id');
     }
 
 }

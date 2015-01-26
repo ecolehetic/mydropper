@@ -24,12 +24,10 @@ class IndexController extends BaseController
         //$user->save();
 
         // The follow method doesnt load Role Model
-        $user = User::find(1)->roles();
-        print_r($user);
-
+        $user = User::find(1)->roles()->get();
 
         $this->render('main.twig', [
-            'user' => 'Equipe 14'
+            'user' => $user
         ]);
     }
 

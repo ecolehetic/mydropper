@@ -9,22 +9,19 @@ namespace APP\MODELS;
 
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Store extends Eloquent {
+class Store extends Eloquent
+{
 
-	protected $table = 'stores';
+    protected $table = 'stores';
 
-	public function __construct()
+    public function values()
     {
-        parent::__construct();
-
+        return $this->hasMany('\APP\MODELS\Value');
     }
 
-    public function values(){
-        return $this->hasMany('Value');
-    }
-
-    public function tags(){
-        return $this->belongsToMany('Tag','tag_store','store_id','tag_id');
+    public function tags()
+    {
+        return $this->belongsToMany('\APP\MODELS\Tag', 'tag_store', 'store_id', 'tag_id');
     }
 
 }

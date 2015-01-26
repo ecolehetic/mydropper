@@ -9,18 +9,14 @@ namespace APP\MODELS;
 
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Value extends Eloquent {
+class Value extends Eloquent
+{
 
-	protected $table = 'values';
+    protected $table = 'values';
 
-	public function __construct()
+    public function stores()
     {
-        parent::__construct();
-
-    }
-
-    public function stores(){
-        return $this->belongsTo('Store');
+        return $this->belongsTo('\APP\MODELS\Store');
     }
 
 }
