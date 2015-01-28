@@ -10,11 +10,17 @@ chrome.browserAction.onClicked.addListener(function(tab) {
                 console.log(response);
             }
         );
-        chrome.tabs.query({currentWindow:true, active:true}, function(tabs){
-                console.log('tabs = ',tabs);
-                tabs.forEach(function(sTab) {
-                    chrome.tabs.insertCSS(sTab.id, {file:'css/styles.css'});
-                });
+        
+        
+        doInCurrentTab( function(tab){ 
+            chrome.tabs.insertCSS(tab.id, {file:'css/styles.css'});
         });
+
+        function doInCurrentTab(tabCallback) {
+            chrome.tabs.query(
+                { currentWindow: true, active: true },
+                function (tabArray) { tabCallback(tabArray[0]); }
+            );
+        }
     });
 });
