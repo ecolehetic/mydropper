@@ -11,11 +11,10 @@ chrome.browserAction.onClicked.addListener(function(tab) {
             }
         );
         chrome.tabs.query({currentWindow:true, active:true}, function(tabs){
-                var spectTab = tabs[0];
-                chrome.tabs.insertCSS(spectTab.id, {file:'css/sidebar-reset.css'});
-                chrome.tabs.insertCSS(spectTab.id, {file:'css/styles.css'});
-                chrome.tabs.insertCSS(spectTab.id, {file:'css/jquery-ui.min.css'});
-                chrome.tabs.insertCSS(spectTab.id, {file:'css/jquery-ui.structure.min.css'});
+                console.log('tabs = ',tabs);
+                tabs.forEach(function(sTab) {
+                    chrome.tabs.insertCSS(sTab.id, {file:'css/styles.css'});
+                });
         });
     });
 });
