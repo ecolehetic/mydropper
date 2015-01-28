@@ -20,7 +20,7 @@
     },
     "content_scripts": [{
         "matches": ["<all_urls>"],
-        "js": ["js/assets/jquery-2.1.3.min.js", "js/views/script.js"]
+        "js": ["js/assets/jquery-2.1.3.min.js", "js/controllers/mainCtrl.js", "js/views/ui.js"]
     }],
     "permissions": [
         "tabs",
