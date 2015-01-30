@@ -26,7 +26,6 @@ class BaseController
         $this->getControllerName();
     }
 
-
     /**
      * @param string $file Name of the Twig File
      * @param array $values Values inject in the View
@@ -52,6 +51,11 @@ class BaseController
             }
 
         }
+
+    }
+
+    public function afterroute($f3){
+        var_dump(__CLASS__);
 
     }
 
