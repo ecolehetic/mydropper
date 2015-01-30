@@ -12,6 +12,7 @@ class BaseController
     private $twig;
     protected $f3;
     protected $web;
+    private $view;
     public $layout = 'layout';
 
     /**
@@ -22,6 +23,7 @@ class BaseController
         $this->f3   = \Base::instance();
         $this->web  = \Web::instance();
         $this->twig = $this->f3->get('TWIG');
+        $this->getControllerName();
     }
 
 
@@ -32,7 +34,25 @@ class BaseController
     protected function render($file, $values = [])
     {
         $values['layout'] = $this->layout;
-        echo $this->twig->render($file, $values);
+        echo $this->twig->render($this->view . '/' . $file, $values);
+    }
+
+    /**
+     * Get The Folder name for the Views
+     */
+    private function getControllerName()
+    {
+        foreach ($this->f3['ROUTES'] as $key => $value) {
+
+            if ($this->f3['URI'] == $key) {
+                $explode        = explode('\\', $value[3]['GET'][0]);
+                $end            = end($explode);
+                $secondExplode  = explode('Controller', $end);
+                $this->view     = strtolower($secondExplode[0]);
+            }
+
+        }
+
     }
 
 }
