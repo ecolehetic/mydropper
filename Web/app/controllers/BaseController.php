@@ -14,6 +14,9 @@ class BaseController
     protected $web;
     private $view;
     public $layout = 'layout';
+    protected $action;
+    protected $controller;
+    protected $method;
 
     /**
      * Return in all Child Constructor $twig, $f3, $web
@@ -23,40 +26,62 @@ class BaseController
         $this->f3   = \Base::instance();
         $this->web  = \Web::instance();
         $this->twig = $this->f3->get('TWIG');
-        $this->getControllerName();
+        $this->getTpl();
     }
 
     /**
-     * @param string $file Name of the Twig File
+     * @param string | Bool $file true: routeTpl | false: Json | else: Name of the Twig File
      * @param array $values Values inject in the View
      */
     protected function render($file, $values = [])
     {
+        if($file == true){
+            $tpl = $this->controller.'/'.$this->action.'.twig';
+        }elseif($file == false){
+            echo json_encode($values);
+            return;
+        }else{
+            $tpl = $file;
+        }
         $values['layout'] = $this->layout;
-        echo $this->twig->render($this->view . '/' . $file, $values);
+        echo $this->twig->render($tpl, $values);
     }
+
 
     /**
-     * Get The Folder name for the Views
+     * Get the targeted template by url
+     * Set as protected $action, $controller & $method
      */
-    private function getControllerName()
-    {
-        foreach ($this->f3['ROUTES'] as $key => $value) {
+    private function getTpl(){
 
-            if ($this->f3['URI'] == $key) {
-                $explode        = explode('\\', $value[3]['GET'][0]);
-                $end            = end($explode);
-                $secondExplode  = explode('Controller', $end);
-                $this->view     = strtolower($secondExplode[0]);
+        $this->method = $this->f3['SERVER']['REQUEST_METHOD'];
+
+        $params = $this->f3['PARAMS'];
+        $base = $this->f3['PARAMS'][0];
+        if(count($this->f3['PARAMS'])>1){
+            unset($params[0]);
+            foreach ($params as $k => $v){
+                $base = str_replace('/'.$v, '', $base);
+                $index = $base.'/@'.$k;
             }
-
+        }else{
+            $index = $base;
         }
 
+        foreach ($this->f3['ROUTES'] as $key => $value) {
+
+            $trunc = explode('/@', $key);
+            if($trunc[0] == $base){
+                $innerRoute = $this->f3['ROUTES'][$index][3][$this->method][0];
+                $first = explode('->',$innerRoute);
+                $this->action = $first[1];
+                $second = explode('\\', $first[0]);
+                $third = explode('Controller', $second[2]);
+                $this->controller = strtolower($third[0]);
+                break;
+            }
+        }
     }
 
-    public function afterroute($f3){
-        var_dump(__CLASS__);
-
-    }
 
 }

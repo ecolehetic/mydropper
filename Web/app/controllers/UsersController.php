@@ -27,7 +27,7 @@ class UsersController extends BaseController
     function edit($f3)
     {
         
-        $this->render('main.twig', [
+        $this->render(true, [
             
         ]);
     }
@@ -35,9 +35,7 @@ class UsersController extends BaseController
     function delete($f3)
     {
         
-        $this->render('main.twig', [
-            
-        ]);
+        die('no tpl for delete');
     }
 
 }

@@ -2,6 +2,8 @@
 
 namespace APP\CONTROLLERS;
 
+use APP\MODELS\User;
+
 /**
  * Class IndexController
  */
@@ -25,7 +27,7 @@ class IndexController extends BaseController
         // $user = User::find(1);
         $debug = User::find(1)->stores()->get();
 
-        $this->render('main.twig', [
+        $this->render(false, [
             'user' => $user->firstname,
             'debug' => $debug
         ]);
