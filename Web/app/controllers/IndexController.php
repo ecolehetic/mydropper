@@ -27,7 +27,7 @@ class IndexController extends BaseController
         // $user = User::find(1);
         $debug = User::find(1)->stores()->get();
 
-        $this->render(false, [
+        $this->render(true, [
             'user' => $user->firstname,
             'debug' => $debug
         ]);

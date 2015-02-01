@@ -35,9 +35,9 @@ class BaseController
      */
     protected function render($file, $values = [])
     {
-        if($file == true){
+        if($file === true){
             $tpl = $this->controller.'/'.$this->action.'.twig';
-        }elseif($file == false){
+        }elseif($file === false){
             echo json_encode($values);
             return;
         }else{
