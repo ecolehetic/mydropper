@@ -3,10 +3,17 @@
     <head>
         <meta charset="utf-8">
         <title>{{ block('title') }}</title>
+        {% block stylesheets %}
+            {{ asset('css', 'contact.css') }}
+        {% endblock %}
     </head>
     <body>
         <div class="body">
             {% block body %} {% endblock %}
         </div>
+
+        {% block javascripts %}
+            {{ asset('js', 'style.js') }}
+        {% endblock %}
     </body>
 </html>
