@@ -52,7 +52,7 @@ gulp.task('images', function () {
  * Watch Files
  */
 gulp.task('watch', function() {
-	gulp.watch(path.scss, ['scss']);
+	gulp.watch(path.scss+'/**/*', ['scss']);
 });
 
 /*
