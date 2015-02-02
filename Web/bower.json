@@ -1,0 +1,28 @@
+{
+  "name": "MyDropper",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ecolehetic/PHP14",
+  "authors": [
+    {
+      "name": "Mathieu Le Tyrant",
+      "email": "mathieu.letyrant@gmail.com"
+    },
+    {
+      "name": "Nicolas Andre",
+      "email": "nclsndr1@gmail.com"
+    },
+    {
+      "name": "Patrick Heng",
+      "email": "hengpatrick.pro@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -2,13 +2,15 @@
 Web/app/logs
 Web/assets/tmp
 Web/assets/cache
+Web/assets/css
+Web/node_modules/*
+Web/npm-debug.log
 
 # PHPStorm
 .idea
 
 # COMPOSER
 Web/vendor/*
-
 
 # CHROME EXTENSION
 ChromeExtension/node_modules/*
