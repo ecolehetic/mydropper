@@ -34,6 +34,12 @@ class IndexController extends BaseController
     }
 
     function debug($f3){
+
+         // $f3->set('love', 'love');
+         var_dump($f3->get('SESSION.TOTO'));
+         var_dump($f3->get('love'));
+
+
         $this->render('debug.twig', [
             
         ]);
