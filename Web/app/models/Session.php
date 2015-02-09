@@ -9,30 +9,30 @@ namespace APP\MODELS;
 class Session
 {
 
-    private static $f3;
+    private $f3;
 
     public function __construct()
     {
         new \Session();
-        self::$f3 = \Base::instance();
+        $this->f3 = \Base::instance();
     }
 
     /**
      * Create in Session the user
      * @param $data
      */
-    public static function create($data)
+    public function create($data)
     {
-        self::$f3->set('SESSION.logged', true);
-        self::$f3->set('SESSION.user', $data);
+        $this->f3->set('SESSION.logged', true);
+        $this->f3->set('SESSION.user', $data);
     }
 
     /**
      * Destroy the session
      */
-    public static function destroy()
+    public function destroy()
     {
-        self::$f3->clear('SESSION');
+        $this->f3->clear('SESSION');
     }
 
 }
