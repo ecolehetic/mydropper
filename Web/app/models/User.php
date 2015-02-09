@@ -14,6 +14,7 @@ class User extends Eloquent
 {
 
     protected $table = 'users';
+    protected $fillable = array('username', 'firstname', 'name', 'mail', 'date_of_birth', 'password');
 
     public function stores(){
         return $this->hasMany('\APP\MODELS\Store');

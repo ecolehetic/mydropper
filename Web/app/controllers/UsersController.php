@@ -2,9 +2,8 @@
 
 namespace APP\CONTROLLERS;
 
-use APP\MODELS\Session;
 use App\Models\User as User;
-
+use App\Models\Session as Session;
 
 /**
  * Class IndexController
@@ -19,6 +18,7 @@ class UsersController extends BaseController
 
     public function subscribe()
     {
+
         $this->render(true);
     }
 
@@ -43,7 +43,8 @@ class UsersController extends BaseController
 
                 $f3->set('POST.id', $user->id);
 
-                Session::create($f3->get('POST'));
+                $session = new Session();
+                $session->create($f3->get('POST'));
 
                 // TODO Redirect to connect page
 
