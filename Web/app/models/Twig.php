@@ -25,9 +25,9 @@ class Twig
         $Twig_env->addFunction(new \Twig_SimpleFunction('asset', function ($type, $asset) {
             $link = $this->folder . $type . '/' . $asset;
             if ($type === 'js') {
-                echo sprintf("<script src='%s' type='text/javascript'></script>", $link);
+                echo sprintf("<script src='/%s' type='text/javascript'></script>", $link);
             } else if ($type === 'css') {
-                echo sprintf("<link href='%s' type='text/css' rel='stylesheet'/>", $link);
+                echo sprintf("<link href='/%s' type='text/css' rel='stylesheet'/>", $link);
             } else {
                 return null;
             }
