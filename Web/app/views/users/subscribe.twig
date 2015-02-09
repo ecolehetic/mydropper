@@ -1,0 +1,59 @@
+{% extends layout ~ '/layout.twig' %}
+
+{% block title %} Subscribe {% endblock %}
+
+{% block body %}
+
+    <form action="create" method="POST">
+
+        <!-- Display Messages (Good | Bad) -->
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message | raw }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="username">Username :</label>
+            <input type="text" name="username" placeholder="Username" value="{{ values.username ? values.username : '' }}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="firstname">Firstname :</label>
+            <input type="text" name="firstname" placeholder="FirstName" value="{{ values.firstname ? values.firstname : '' }}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="lastname">Lastname :</label>
+            <input type="text" name="lastname" placeholder="Lastname" value="{{ values.lastname ? values.lastname : '' }}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="mail">Mail :</label>
+            <input type="email" name="mail" placeholder="Mail" value="{{ values.mail ? values.mail : '' }}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="birthday">Date of Birthday :</label>
+            <input type="date" name="birthday" placeholder="birthday" value="{{ values.birthday ? values.birthday : '' }}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="password_1">Password :</label>
+            <input type="password" name="password_1" placeholder="Password" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="password_2">Repeat password :</label>
+            <input type="password" name="password_2" placeholder="Repeat password" required/>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Subscribe"/>
+        </div>
+
+    </form>
+
+{% endblock %}

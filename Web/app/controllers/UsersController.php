@@ -16,26 +16,50 @@ class UsersController extends BaseController
         parent::__construct();
     }
 
+    public function subscribe()
+    {
+        $this->render(true);
+    }
+
     function create($f3)
     {
+        $validForm = User::checkFormSubscribe($f3->get('POST'));
 
-        $this->render('main.twig', [
-            
+        if($validForm === true){
+            $username   = User::where('username', $f3->get('POST.username'))->first();
+            $mail       = User::where('mail', $f3->get('POST.mail'))->first();
+
+            if($username === null && $mail === null){
+                $crypt = \Bcrypt::instance();
+
+                User::create(array(
+                    'username'      => $f3->get('POST.username'),
+                    'firstname'     => $f3->get('POST.firstname'),
+                    'name'          => $f3->get('POST.lastname'),
+                    'mail'          => $f3->get('POST.mail'),
+                    'date_of_birth' => $f3->get('POST.birthday'),
+                    'password'      => $crypt->hash($f3->get('POST.password_1'), $f3->get('SALT'), 04)
+                ));
+
+                // TODO Redirect to connect page
+
+            }
+            else{
+                $validForm = [];
+                if($username !== null){
+                    array_push($validForm, 'The username is already token');
+                }
+                if($mail !== null){
+                    array_push($validForm, 'The mail is already token');
+                }
+            }
+        }
+
+        $this->render('users/subscribe.twig', [
+            'messages' => $validForm,
+            'values' => $f3->get('POST')
         ]);
-    }
 
-    function edit($f3)
-    {
-        
-        $this->render(true, [
-            
-        ]);
-    }
-
-    function delete($f3)
-    {
-        
-        die('no tpl for delete');
     }
 
 }
