@@ -3,7 +3,8 @@
   "require": {
     "bcosca/fatfree": "~3.4",
     "twig/twig": "~1.18",
-    "illuminate/database": "*"
+    "illuminate/database": "*",
+    "wixel/gump": "dev-master"
   },
   "authors": [
     {
