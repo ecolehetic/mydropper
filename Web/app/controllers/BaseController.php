@@ -84,5 +84,19 @@ class BaseController
         }
     }
 
+    /**
+     * Crypt string using Fat Free Framework
+     * @param string $string
+     * @param int $level
+     *
+     * @return FALSE|string
+     */
+    protected function crypt($string, $level = 04)
+    {
+        $crypt = \Bcrypt::instance();
+
+        return $crypt->hash($string, $this->f3->get('SALT'), $level);
+    }
+
 
 }

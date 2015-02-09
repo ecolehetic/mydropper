@@ -2,6 +2,7 @@
 
 namespace APP\CONTROLLERS;
 
+use APP\MODELS\Session;
 use App\Models\User as User;
 
 
@@ -30,16 +31,19 @@ class UsersController extends BaseController
             $mail       = User::where('mail', $f3->get('POST.mail'))->first();
 
             if($username === null && $mail === null){
-                $crypt = \Bcrypt::instance();
 
-                User::create(array(
+                $user = User::create(array(
                     'username'      => $f3->get('POST.username'),
                     'firstname'     => $f3->get('POST.firstname'),
                     'name'          => $f3->get('POST.lastname'),
                     'mail'          => $f3->get('POST.mail'),
                     'date_of_birth' => $f3->get('POST.birthday'),
-                    'password'      => $crypt->hash($f3->get('POST.password_1'), $f3->get('SALT'), 04)
+                    'password'      => $this->crypt($f3->get('POST.password_1'))
                 ));
+
+                $f3->set('POST.id', $user->id);
+
+                Session::create($f3->get('POST'));
 
                 // TODO Redirect to connect page
 
