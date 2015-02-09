@@ -16,7 +16,7 @@ class Role extends Eloquent
 
     public function users()
     {
-        return $this->hasMany('\APP\MODELS\User', 'role_id', 'id');
+        return $this->hasMany('\APP\MODELS\User');
     }
 
 }

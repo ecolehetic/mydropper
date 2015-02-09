@@ -9,14 +9,14 @@ namespace APP\MODELS;
 
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 
-class TrackerValue extends Eloquent
+class TrackerStore extends Eloquent
 {
 
-    protected $table = 'trackvalues';
+    protected $table = 'trackstores';
 
-    public function values()
+    public function stores()
     {
-        return $this->belongsTo('\APP\MODELS\Value', 'value_id');
+        return $this->belongsTo('\APP\MODELS\Store', 'store_id');
     }
 
     public function users()

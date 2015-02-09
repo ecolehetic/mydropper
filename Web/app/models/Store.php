@@ -14,24 +14,14 @@ class Store extends Eloquent
 
     protected $table = 'stores';
 
-    public function values()
-    {
-        return $this->hasMany('\APP\MODELS\Value');
-    }
-
-    public function types()
-    {
-        return $this->belongsTo('\APP\MODELS\Type', 'type_id');
-    }
-
     public function users()
     {
         return $this->belongsTo('\APP\MODELS\User', 'user_id');
     }
 
-    public function tags()
+    public function categories()
     {
-        return $this->belongsToMany('\APP\MODELS\Tag', 'tag_store', 'store_id', 'tag_id');
+        return $this->belongsTo('\APP\MODELS\Category', 'store_id');
     }
 
 }
