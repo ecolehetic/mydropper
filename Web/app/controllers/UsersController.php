@@ -3,7 +3,6 @@
 namespace APP\CONTROLLERS;
 
 use App\Models\User as User;
-use App\Models\Session as Session;
 
 /**
  * Class IndexController
@@ -41,10 +40,8 @@ class UsersController extends BaseController
                 ));
 
                 $f3->set('POST.id', $user->id);
-                $f3->set('SESSION.user', $user);
 
-                // $session = new Session();
-                // $session->create($f3->get('POST'));
+                $f3->set('SESSION.user', $user);
 
                 // TODO Redirect to connect page
 
