@@ -25,8 +25,8 @@ gulp.task('cleanCss', function () {
 /*
  * Compile Scss and concat/minify
  */
-gulp.task('scss', ['cleanCss'], function () {
-	return gulp.src(path.scss+'/**/*.scss')
+gulp.task('scss', function () {
+	return gulp.src(path.scss+'/**/main.scss')
 		.pipe(plumber())
 		.pipe(sass())
 		.pipe(autoprefixer())
@@ -51,7 +51,7 @@ gulp.task('images', function () {
 /*
  * Watch Files
  */
-gulp.task('watch', function() {
+gulp.task('watch',['scss'], function() {
 	gulp.watch(path.scss+'/**/*', ['scss']);
 });
 
