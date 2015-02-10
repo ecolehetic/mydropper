@@ -40,8 +40,7 @@ class UsersController extends BaseController
                 ));
 
                 $f3->set('POST.id', $user->id);
-
-                $f3->set('SESSION.user', $user);
+                $f3->set('SESSION.user', $f3->get('POST'));
 
                 // TODO Redirect to connect page
 

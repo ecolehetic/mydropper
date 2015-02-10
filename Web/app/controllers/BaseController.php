@@ -98,5 +98,4 @@ class BaseController
         return $crypt->hash($string, $this->f3->get('SALT'), $level);
     }
 
-
 }
