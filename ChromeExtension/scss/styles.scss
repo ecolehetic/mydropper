@@ -144,6 +144,10 @@
             }
         }
     }
+    input {
+        height : 30px;
+        width : 80%;
+    }
 }
 #myDropperSideBar.hideBar {
     animation: slideOutRight 1s ease;

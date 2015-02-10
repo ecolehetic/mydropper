@@ -1,0 +1,46 @@
+$mainFont: 'HelveticaNeue', helvetica, arial, sans-serif;
+$blue: #1f282d;
+
+* {
+    outline: none;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+body, html {
+    font-family: $mainFont;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+#burger {
+	display : none;
+	position : fixed;
+    height: 30px;
+    width: 33px;
+    left : 15px;
+    cursor: pointer;
+    transition: all 1.4s ease;
+
+    #row1, #row2, #row3 {
+        margin-top: 3px;
+        background: $blue;
+        width: 33px;
+        height: 4px;
+        position: absolute;
+        transform: rotate(-180deg);
+    }
+    #row2 {
+        margin-top: 13px;
+    }
+    #row3 {
+        margin-top: 23px;
+        transform: rotate(180deg);
+    }
+}
+#burger.open {
+	transform: translateX(240px);
+}
+

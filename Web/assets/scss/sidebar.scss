@@ -1,0 +1,151 @@
+$blue: #1f282d;
+$darkBlue: #131c22;
+$blueHover: #2f363c;
+$lightBlue: #424950;
+$midGrey: #9f9fa0;
+$hoverSideBarLink: #bbe4f9;
+$mainFont: 'HelveticaNeue', helvetica, arial, sans-serif;
+#sideBar {
+    float: left;
+    color: white;
+    letter-spacing: 0.07rem;
+    height : 100%;
+    nav {
+        background: $blue;
+        height: 100%;
+        width: 25%;
+        max-width: 350px;
+        min-width: 240px;
+        transition: all 1s ease;
+    }
+    nav.left {
+        transform: translateX(300px);
+        transition: all 1s ease;
+    }
+    #searchBar {
+        background: $midGrey;
+        width: 100%;
+        height: 60px;
+        border: 0;
+        margin: 0;
+        padding: 0 8%;
+        box-sizing: border-box;
+        &::-webkit-input-placeholder {
+            color: white;
+            opacity: 0.8
+        }
+        &:-moz-placeholder {
+            color: white;
+            opacity: 0.8;
+        }
+        &::-moz-placeholder {
+            color: white;
+            opacity: 0.8;
+        }
+        &:-ms-input-placeholder {
+            color: white;
+            opacity: 0.8
+        }
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin : 0;
+    }
+    #menu {
+        padding-top: 40px;
+        .menuLink {
+            transition: all 0.2s ease;
+            &:first-child {
+                border-top: none;
+            }
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+        .menuLink, .categoryElement {
+            position: relative;
+            border-bottom: 2px solid $darkBlue;
+            border-top: 1px solid $lightBlue;
+            display: block;
+            width: 100%;
+            a {
+                display: block;
+                width: 100%;
+                padding: 23px 20px 20px 20px;
+                width: calc(100% - 40px);
+                transition: all 0.5s ease;
+                &:hover {
+                    color: $hoverSideBarLink;
+                }
+            }
+            &:before {
+                content: '';
+                width: 4px;
+                background: $hoverSideBarLink;
+                position: absolute;
+                left: -7px;
+                top: 0;
+                height: 62px;
+                opacity: 0;
+                transition: transform 0.1s ease, opacity 0.4s ease;
+            }
+            &:hover {
+                background: $blueHover;
+                &:before {
+                    opacity: 1;
+                    transform: translateX(7px);
+                }
+                span {
+                    color: $hoverSideBarLink;
+                }
+            }
+        }
+        .menuLink.active, .categoryElement.active {
+            background: $blueHover;
+            &:before {
+                opacity: 1;
+                transform: translateX(7px);
+            }
+            a {
+                color: $hoverSideBarLink;
+                font-weight: bold;
+            }
+            span {
+                color: $hoverSideBarLink;
+            }
+        }
+        #categoryList {
+            padding: 0;
+            .categoryElement {
+                span {
+                    // + / - 
+                    position: absolute;
+                    right: 5%;
+                    top: 19px;
+                    font-size: 1.3rem;
+                    cursor: pointer;
+                }
+                .snippetsList {
+                    display: none;
+                    width: 100%;
+                    a {
+                        padding: 23px 20px 20px 20px;
+                        background: $midGrey;
+                        border-top: 1px solid #424950;
+                    }
+                    li:hover {
+                        color: $hoverSideBarLink;
+                    }
+                    li.active {
+                        color: $hoverSideBarLink;
+                        font-weight: bold;
+                    }
+                }
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
+}

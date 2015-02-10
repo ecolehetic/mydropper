@@ -9,36 +9,49 @@
 
 <body>
     <div id="contentToLoad">
-        <h1>My Dropper Bureau</h1>
-        <input type="text" class="md-dropElmt" data-accept-type="Text">
-        <ul id="accordeon">
-            <li class="category">
-                <h2>> Favorites <span>+</span></h2>
-                <ul class="dragList open">
-                    <li class="md-dragElmt" data-text="HENG Patrick <3" title="HENG Patrick <3" draggable="true" data-type="Text">Mon dev préféré</li>
-                    <li class="md-dragElmt" data-text="patrick.heng@hetic.net" title="patrick.heng@hetic.net" draggable="true" data-type="Text">Adresse Mail</li>
-                    <li class="md-dragElmt" data-text="29 rue Paul Bert Nogent-Sur-Marne" title="29 rue Paul Bert Nogent-Sur-Marne" draggable="true" data-type="Text">Adresse Postale</li>
-                </ul>
-            </li>
-            <li class="category">
-                <h2>> Categorie 1 <span>+</span></h2>
-                <ul class="dragList">
-                    <li class="md-dragElmt" data-text="Mon info 1" draggable="true" data-type="Text">info1</li>
-                    <li class="md-dragElmt" data-text="Mon info 2" draggable="true" data-type="Text">info2</li>
-                    <li class="md-dragElmt" data-text="Mon info 3" draggable="true" data-type="Text">info3</li>
-                    <li class="md-dragElmt" data-text="Mon info 4" draggable="true" data-type="Text">info4</li>
-                </ul>
-            </li>
-            <li class="category">
-                <h2>> Categorie 2 <span>+</span></h2>
-                <ul class="dragList">
-                    <li class="md-dragElmt" data-text="Mon info 1" draggable="true" data-type="Text">info1</li>
-                    <li class="md-dragElmt" data-text="Mon info 2" draggable="true" data-type="Text">info2</li>
-                    <li class="md-dragElmt" data-text="Mon info 3" draggable="true" data-type="Text">info3</li>
-                    <li class="md-dragElmt" data-text="Mon info 4" draggable="true" data-type="Text">info4</li>
-                </ul>
-            </li>
-        </ul>
+        <h1>My Dropper GIT folder</h1>
+
+        <!-- Not Logged in -->
+        <div id="notLoggedInContainer" style='display:block'>
+            <form action="">
+                <input type="email" required>
+                <input type="password" required>
+                <input type="submit" required>
+            </form>
+        </div>
+    
+        <!-- Logged in -->
+        <div id="loggedInContainer" style='display:none'>
+            <input type="text" class="md-dropElmt" data-accept-type="Text">
+            <ul id="accordeon">
+                <li class="category">
+                    <h2>> Favorites <span>+</span></h2>
+                    <ul class="dragList open">
+                        <li class="md-dragElmt" data-text="HENG Patrick <3" title="HENG Patrick <3" draggable="true" data-type="Text">Mon dev préféré</li>
+                        <li class="md-dragElmt" data-text="patrick.heng@hetic.net" title="patrick.heng@hetic.net" draggable="true" data-type="Text">Adresse Mail</li>
+                        <li class="md-dragElmt" data-text="29 rue Paul Bert Nogent-Sur-Marne" title="29 rue Paul Bert Nogent-Sur-Marne" draggable="true" data-type="Text">Adresse Postale</li>
+                    </ul>
+                </li>
+                <li class="category">
+                    <h2>> Categorie 1 <span>+</span></h2>
+                    <ul class="dragList">
+                        <li class="md-dragElmt" data-text="Mon info 1" draggable="true" data-type="Text">info1</li>
+                        <li class="md-dragElmt" data-text="Mon info 2" draggable="true" data-type="Text">info2</li>
+                        <li class="md-dragElmt" data-text="Mon info 3" draggable="true" data-type="Text">info3</li>
+                        <li class="md-dragElmt" data-text="Mon info 4" draggable="true" data-type="Text">info4</li>
+                    </ul>
+                </li>
+                <li class="category">
+                    <h2>> Categorie 2 <span>+</span></h2>
+                    <ul class="dragList">
+                        <li class="md-dragElmt" data-text="Mon info 1" draggable="true" data-type="Text">info1</li>
+                        <li class="md-dragElmt" data-text="Mon info 2" draggable="true" data-type="Text">info2</li>
+                        <li class="md-dragElmt" data-text="Mon info 3" draggable="true" data-type="Text">info3</li>
+                        <li class="md-dragElmt" data-text="Mon info 4" draggable="true" data-type="Text">info4</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
     <script type="text/javascript" src="background.js"></script>
 </body>
