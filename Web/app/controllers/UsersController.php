@@ -10,11 +10,17 @@ use App\Models\User as User;
 class UsersController extends BaseController
 {
 
+    /*
+     * GET users/subscribe
+     */
     public function subscribe()
     {
         $this->render(true);
     }
 
+    /*
+     * POST users/create
+     */
     function create()
     {
         $validForm = User::checkFormSubscribe($this->f3->get('POST'));
@@ -37,7 +43,7 @@ class UsersController extends BaseController
                 $this->f3->set('POST.id', $user->id);
                 $this->f3->set('SESSION.user', $this->f3->get('POST'));
 
-                $this->f3->reroute('/', true); // TODO Change URL
+                $this->f3->reroute('/users/login', true);
             }
             else{
                 $validForm = [];
@@ -48,6 +54,35 @@ class UsersController extends BaseController
                     array_push($validForm, 'The mail is already token');
                 }
             }
+        }
+
+        $this->render('users/subscribe.twig', [
+            'messages' => $validForm,
+            'values' => $this->f3->get('POST')
+        ]);
+
+    }
+
+    /*
+     * GET users/login
+     */
+    public function login()
+    {
+        $this->render(true, [
+            'values' => ($this->f3->get('SESSION.user.username')) ? $this->f3->get('SESSION.user.username') : '',
+            'messages' => ($this->fMessage->get()) ? ($this->fMessage->get()) : ''
+        ]);
+    }
+
+    /*
+     * POST users/connect
+     */
+    public function connect()
+    {
+        $validForm = User::checkFormConnect($this->f3->get('POST'));
+
+        if($validForm === true){
+            // TODO Get user information in database
         }
 
         $this->render('users/subscribe.twig', [
