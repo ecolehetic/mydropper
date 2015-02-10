@@ -8,7 +8,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
  * Class Database
  * @package APP\MODELS
  */
-class Database
+class Database extends BaseHelper
 {
 
     /**
@@ -38,18 +38,17 @@ class Database
      */
     private function initSettings()
     {
-        $f3 = \Base::instance();
         $this->settings = [
-            'driver'      => $f3->get('DB_DRIVER'),
-            'host'        => $f3->get('DB_HOST'),
-            'port'        => $f3->get('DB_PORT'),
-            'database'    => $f3->get('DB_NAME'),
-            'username'    => $f3->get('DB_USER'),
-            'password'    => $f3->get('DB_PASS'),
-            'charset'     => $f3->get('DB_CHARSET'),
-            'collation'   => $f3->get('DB_COLLATION'),
-            'prefix'      => $f3->get('DB_PREFIX'),
-            'unix_socket' => $f3->get('DB_UNIX_SOCKET')
+            'driver'      => $this->f3->get('DB_DRIVER'),
+            'host'        => $this->f3->get('DB_HOST'),
+            'port'        => $this->f3->get('DB_PORT'),
+            'database'    => $this->f3->get('DB_NAME'),
+            'username'    => $this->f3->get('DB_USER'),
+            'password'    => $this->f3->get('DB_PASS'),
+            'charset'     => $this->f3->get('DB_CHARSET'),
+            'collation'   => $this->f3->get('DB_COLLATION'),
+            'prefix'      => $this->f3->get('DB_PREFIX'),
+            'unix_socket' => $this->f3->get('DB_UNIX_SOCKET')
         ];
     }
 

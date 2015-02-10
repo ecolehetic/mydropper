@@ -7,14 +7,13 @@ use Twig_Environment;
 use Twig_Loader_Filesystem;
 use Twig_Filter_Function;
 
-class Twig
+class Twig extends BaseHelper
 {
     private $folder;
 
     public function __construct($viewFolder, $params)
     {
-        $f3 = \Base::instance();
-        $this->folder = $f3->get('ASSETS');
+        $this->folder = $this->f3->get('ASSETS');
 
         Twig_Autoloader::register();
 
@@ -33,6 +32,6 @@ class Twig
             }
         }));
 
-        $f3->set('TWIG', $Twig_env);
+        $this->f3->set('TWIG', $Twig_env);
     }
 }

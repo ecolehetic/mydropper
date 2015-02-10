@@ -17,6 +17,7 @@ class BaseController
     private $method;
     protected $f3;
     protected $web;
+    protected $fMessage;
     public $layout = 'layout';
 
     /**
@@ -24,9 +25,10 @@ class BaseController
      */
     public function __construct()
     {
-        $this->f3   = \Base::instance();
-        $this->web  = \Web::instance();
-        $this->twig = $this->f3->get('TWIG');
+        $this->f3       = \Base::instance();
+        $this->web      = \Web::instance();
+        $this->fMessage = new FlashMessage();
+        $this->twig     = $this->f3->get('TWIG');
         $this->getTpl();
     }
 
@@ -36,18 +38,19 @@ class BaseController
      */
     protected function render($file, $values = [])
     {
-        if($file === true){
-            $tpl = $this->controller.'/'.$this->action.'.twig';
-        }elseif($file === false){
+        if ($file === true) {
+            $tpl = $this->controller . '/' . $this->action . '.twig';
+        } elseif ($file === false) {
             header('Content-Type: application/json');
             echo json_encode($values);
+
             return;
         } else {
             $tpl = $file;
         }
         $values['layout'] = $this->layout;
         echo $this->twig->render($tpl, $values);
-        FlashMessage::destroy();
+        $this->fMessage->destroy();
     }
 
 
@@ -76,12 +79,12 @@ class BaseController
 
             $trunc = explode('/@', $key);
             if ($trunc[0] == $base) {
-                $innerRoute         = $this->f3['ROUTES'][$index][3][$this->method][0];
-                $first              = explode('->', $innerRoute);
-                $this->action       = $first[1];
-                $second             = explode('\\', $first[0]);
-                $third              = explode('Controller', $second[2]);
-                $this->controller   = strtolower($third[0]);
+                $innerRoute = $this->f3['ROUTES'][$index][3][$this->method][0];
+                $first = explode('->', $innerRoute);
+                $this->action = $first[1];
+                $second = explode('\\', $first[0]);
+                $third = explode('Controller', $second[2]);
+                $this->controller = strtolower($third[0]);
                 break;
             }
         }
@@ -89,6 +92,7 @@ class BaseController
 
     /**
      * Crypt string using Fat Free Framework
+     *
      * @param string $string
      * @param int $level
      *
@@ -106,8 +110,9 @@ class BaseController
      * Little function and check if logged
      * else : return in home
      */
-    protected function loggedRequire(){
-        if($this->f3->get('SESSION.user') === null){
+    protected function loggedRequire()
+    {
+        if ($this->f3->get('SESSION.user') === null) {
             $this->f3->reroute('/', true);
         }
     }
