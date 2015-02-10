@@ -13,6 +13,8 @@ class Twig extends BaseHelper
 
     public function __construct($viewFolder, $params)
     {
+        parent::__construct();
+
         $this->folder = $this->f3->get('ASSETS');
 
         Twig_Autoloader::register();

@@ -25,6 +25,8 @@ class Database extends BaseHelper
      */
     public function __construct()
     {
+        parent::__construct();
+        
         $this->initSettings();
         $this->capsule = new Capsule;
         $this->capsule->addConnection($this->settings);
