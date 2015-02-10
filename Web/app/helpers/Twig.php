@@ -1,6 +1,6 @@
 <?php
 
-namespace APP\MODELS;
+namespace APP\HELPERS;
 
 use Twig_Autoloader;
 use Twig_Environment;

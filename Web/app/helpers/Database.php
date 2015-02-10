@@ -1,6 +1,6 @@
 <?php
 
-namespace APP\MODELS;
+namespace APP\HELPERS;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 

@@ -5,8 +5,8 @@
  */
 require('vendor/autoload.php');
 
-use \APP\MODELS\Database;
-use \APP\MODELS\Twig;
+use \APP\HELPERS\Database;
+use \APP\HELPERS\Twig;
 
 /*
  * Fat Free Framework
