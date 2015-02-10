@@ -10,11 +10,11 @@ class BaseController
 {
 
     private $twig;
+    private $action;
+    private $controller;
+    private $method;
     protected $f3;
     protected $web;
-    protected $action;
-    protected $controller;
-    protected $method;
     public $layout = 'layout';
 
     /**
@@ -96,6 +96,17 @@ class BaseController
         $crypt = \Bcrypt::instance();
 
         return $crypt->hash($string, $this->f3->get('SALT'), $level);
+    }
+
+
+    /**
+     * Little function and check if logged
+     * else : return in home
+     */
+    protected function loggedRequire(){
+        if($this->f3->get('SESSION.user') === null){
+            $this->f3->reroute('/', true);
+        }
     }
 
 }

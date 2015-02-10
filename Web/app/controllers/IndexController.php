@@ -10,11 +10,6 @@ use APP\MODELS\User;
 class IndexController extends BaseController
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     function index()
     {
         // Mocking a new User
@@ -33,7 +28,7 @@ class IndexController extends BaseController
         ]);
     }
 
-    function debug($f3){
+    function debug(){
         $this->render('debug.twig', [
 
         ]);

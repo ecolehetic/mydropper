@@ -10,40 +10,34 @@ use App\Models\User as User;
 class UsersController extends BaseController
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function subscribe()
     {
         $this->render(true);
     }
 
-    function create($f3)
+    function create()
     {
-        $validForm = User::checkFormSubscribe($f3->get('POST'));
+        $validForm = User::checkFormSubscribe($this->f3->get('POST'));
 
         if($validForm === true){
-            $username   = User::where('username', $f3->get('POST.username'))->first();
-            $mail       = User::where('mail', $f3->get('POST.mail'))->first();
+            $username   = User::where('username', $this->f3->get('POST.username'))->first();
+            $mail       = User::where('mail', $this->f3->get('POST.mail'))->first();
 
             if($username === null && $mail === null){
 
                 $user = User::create(array(
-                    'username'      => $f3->get('POST.username'),
-                    'firstname'     => $f3->get('POST.firstname'),
-                    'name'          => $f3->get('POST.lastname'),
-                    'mail'          => $f3->get('POST.mail'),
-                    'date_of_birth' => $f3->get('POST.birthday'),
-                    'password'      => $this->crypt($f3->get('POST.password_1'))
+                    'username'      => $this->f3->get('POST.username'),
+                    'firstname'     => $this->f3->get('POST.firstname'),
+                    'name'          => $this->f3->get('POST.lastname'),
+                    'mail'          => $this->f3->get('POST.mail'),
+                    'date_of_birth' => $this->f3->get('POST.birthday'),
+                    'password'      => $this->crypt($this->f3->get('POST.password_1'))
                 ));
 
-                $f3->set('POST.id', $user->id);
-                $f3->set('SESSION.user', $f3->get('POST'));
+                $this->f3->set('POST.id', $user->id);
+                $this->f3->set('SESSION.user', $this->f3->get('POST'));
 
-                // TODO Redirect to connect page
-
+                $this->f3->reroute('/', true); // TODO Change URL
             }
             else{
                 $validForm = [];
@@ -58,7 +52,7 @@ class UsersController extends BaseController
 
         $this->render('users/subscribe.twig', [
             'messages' => $validForm,
-            'values' => $f3->get('POST')
+            'values' => $this->f3->get('POST')
         ]);
 
     }
