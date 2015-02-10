@@ -32,4 +32,15 @@ class FlashMessage extends BaseController{
         $this->f3->set('SESSION.fMessage', htmlentities($message));
     }
 
+
+    /**
+     * Destroy the Flash Message
+     */
+    protected function destroy()
+    {
+        if($this->f3->get('SESSION.fMessage') !== null){
+            $this->f3->clear('SESSION.fMessage');
+        }
+    }
+
 }

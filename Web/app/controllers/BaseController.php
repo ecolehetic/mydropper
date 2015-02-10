@@ -2,6 +2,8 @@
 
 namespace APP\CONTROLLERS;
 
+use APP\HELPERS\FlashMessage;
+
 /**
  * Class BaseController
  * @package APP\CONTROLLERS
@@ -45,6 +47,7 @@ class BaseController
         }
         $values['layout'] = $this->layout;
         echo $this->twig->render($tpl, $values);
+        FlashMessage::destroy();
     }
 
 
@@ -106,16 +109,6 @@ class BaseController
     protected function loggedRequire(){
         if($this->f3->get('SESSION.user') === null){
             $this->f3->reroute('/', true);
-        }
-    }
-
-    /*
-     * Call after all route and clean Flash Message if exist
-     */
-    public function afterroute()
-    {
-        if($this->f3->get('SESSION.fMessage') !== null){
-            $this->f3->clear('SESSION.fMessage');
         }
     }
 
