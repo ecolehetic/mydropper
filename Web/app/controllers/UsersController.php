@@ -82,7 +82,19 @@ class UsersController extends BaseController
         $validForm = User::checkFormConnect($this->f3->get('POST'));
 
         if($validForm === true){
-            // TODO Get user information in database
+            $user = User::where([
+                'username' => $this->f3->get('POST.username'),
+                'password' => $this->f3->get('POST.password')
+            ])->first();
+
+            if($user !== null){
+                $this->f3->set('SESSION.user', $user); // TODO Test it
+                $this->f3->reroute('/', true); // TODO Change the route
+            }
+            else{
+                $validForm = [];
+                array_push($validForm, "User don't exist");
+            }
         }
 
         $this->render('users/subscribe.twig', [
