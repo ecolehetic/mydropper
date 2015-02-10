@@ -79,6 +79,7 @@ class UsersController extends BaseController
      */
     public function connect()
     {
+
         $validForm = User::checkFormConnect($this->f3->get('POST'));
 
         if($validForm === true){
@@ -101,7 +102,6 @@ class UsersController extends BaseController
             'messages' => $validForm,
             'values' => $this->f3->get('POST')
         ]);
-
     }
 
 }
