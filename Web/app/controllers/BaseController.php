@@ -109,4 +109,14 @@ class BaseController
         }
     }
 
+    /*
+     * Call after all route and clean Flash Message if exist
+     */
+    public function afterroute()
+    {
+        if($this->f3->get('SESSION.fMessage') !== null){
+            $this->f3->clear('SESSION.fMessage');
+        }
+    }
+
 }
