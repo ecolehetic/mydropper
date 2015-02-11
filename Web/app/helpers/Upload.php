@@ -73,7 +73,8 @@ class Upload extends BaseHelper
         $img->save();
         if(file_put_contents($file, $img->dump($type))){
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -89,7 +90,8 @@ class Upload extends BaseHelper
         $type = stristr($fileType, '/', true);
         if ($type === 'image' && $size <= (2 * 1024 * 1024)) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -99,10 +101,15 @@ class Upload extends BaseHelper
      */
     private function url()
     {
-        $years  = date("Y");
-        $month  = date("m");
-        $day    = date("d");
+        if($this->f3->get('ORGANIZE_UPLOAD') === true){
+            $years  = date("Y");
+            $month  = date("m");
+            $day    = date("d");
 
-        $this->f3->set('UPLOADS', 'uploads/' . $years . '/' . $month . '/' . $day . '/');
+            $this->f3->set('UPLOADS', 'uploads/' . $years . '/' . $month . '/' . $day . '/');
+        }
+        else{
+            $this->f3->set('UPLOADS', 'uploads/');
+        }
     }
 }

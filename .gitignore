@@ -6,6 +6,7 @@ Web/assets/css
 Web/node_modules/*
 Web/npm-debug.log
 Web/tmp
+Web/uploads/
 
 # PHPStorm
 .idea

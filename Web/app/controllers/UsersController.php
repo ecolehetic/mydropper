@@ -2,6 +2,7 @@
 
 namespace APP\CONTROLLERS;
 
+use APP\HELPERS\Upload;
 use App\Models\User as User;
 
 /**
@@ -31,19 +32,28 @@ class UsersController extends BaseController
 
             if($username === null && $mail === null){
 
+                if($this->f3->get('FILES.avatar')){
+                    $upload = new Upload();
+                    $path = $upload->save($this->f3->get('FILES.avatar'));
+                }
+                else{
+                    $path = null;
+                }
+
                 $user = User::create(array(
                     'username'      => $this->f3->get('POST.username'),
                     'firstname'     => $this->f3->get('POST.firstname'),
                     'name'          => $this->f3->get('POST.lastname'),
                     'mail'          => $this->f3->get('POST.mail'),
                     'date_of_birth' => $this->f3->get('POST.birthday'),
-                    'password'      => $this->crypt($this->f3->get('POST.password_1'))
+                    'password'      => $this->crypt($this->f3->get('POST.password_1')),
+                    'avatar_url'    => $path
                 ));
 
                 $this->f3->set('POST.id', $user->id);
                 $this->f3->set('SESSION.user', $this->f3->get('POST'));
 
-                $this->f3->reroute('/users/login', true);
+                $this->f3->reroute('/users/login', true); // TODO change it to the Dashboard
             }
             else{
                 $validForm = [];
@@ -90,7 +100,7 @@ class UsersController extends BaseController
 
             if($user !== null){
                 $this->f3->set('SESSION.user', $user); // TODO Test it
-                $this->f3->reroute('/', true); // TODO Change the route
+                $this->f3->reroute('/', true); // TODO change it to the Dashboard
             }
             else{
                 $validForm = [];
