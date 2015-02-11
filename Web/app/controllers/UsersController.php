@@ -93,13 +93,12 @@ class UsersController extends BaseController
         $validForm = User::checkFormConnect($this->f3->get('POST'));
 
         if($validForm === true){
-            $user = User::where([
-                'username' => $this->f3->get('POST.username'),
-                'password' => $this->f3->get('POST.password')
-            ])->first();
+            $user = User::where('username', $this->f3->get('POST.username'))
+                ->where('password', $this->crypt($this->f3->get('POST.password')))
+                ->first();
 
             if($user !== null){
-                $this->f3->set('SESSION.user', $user); // TODO Test it
+                $this->f3->set('SESSION.user', $user);
                 $this->f3->reroute('/', true); // TODO change it to the Dashboard
             }
             else{
@@ -108,7 +107,7 @@ class UsersController extends BaseController
             }
         }
 
-        $this->render('users/subscribe.twig', [
+        $this->render('users/login.twig', [
             'messages' => $validForm,
             'values' => $this->f3->get('POST')
         ]);
