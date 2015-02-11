@@ -1,6 +1,7 @@
 $mainFont: 'HelveticaNeue', helvetica, arial, sans-serif;
 $blue: #1f282d;
-
+$greyLight: #e3e2e3;
+$greyTitle: #787878;
 * {
     outline: none;
     -webkit-font-smoothing: subpixel-antialiased;
@@ -11,19 +12,88 @@ body, html {
     height: 100%;
     font-size: 1rem;
 }
+.clearfix {
+    display: block;
+    &:after {
+        clear: both;
+        content: ".";
+        display: block;
+        height: 0;
+        visibility: hidden;
+    }
+}
+.clear {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+header {
+    height: 60px;
+    line-height: 68px;
+    background: $greyLight;
+    width: 100%;
+    font-weight: bold;
+    .headerContent {
+        text-align: center;
+        color: $greyTitle;
+        float: left;
+    }
+    .profile {
+        width: 100%;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        border-radius: 50%;
+        border: 2px solid white;
+        width: 40px;
+        height: 40px;
+        cursor : pointer;
+    }
+    #searchBar {
+        background: url('../images/search.svg') $midGrey no-repeat 18px 19px;
+        background-size: 20px 20px;
+        width: 23%;
+        max-width: 350px;
+        min-width: 250px;
+        height: 100%;
+        border: 0;
+        margin: 0;
+        padding: 32px 52px;
+        box-sizing: border-box;
+        color  : white;
+        float: left;
+        &::-webkit-input-placeholder {
+            color: white;
+            opacity: 0.8
+        }
+        &:-moz-placeholder {
+            color: white;
+            opacity: 0.8;
+        }
+        &::-moz-placeholder {
+            color: white;
+            opacity: 0.8;
+        }
+        &:-ms-input-placeholder {
+            color: white;
+            opacity: 0.8
+        }
+    }
+}
 a {
     text-decoration: none;
     color: white;
 }
 #burger {
-	display : none;
-	position : fixed;
+    display: none;
+    position: fixed;
     height: 30px;
     width: 33px;
-    left : 15px;
+    left: 15px;
     cursor: pointer;
     transition: all 1.4s ease;
-
     #row1, #row2, #row3 {
         margin-top: 3px;
         background: $blue;
@@ -41,6 +111,5 @@ a {
     }
 }
 #burger.open {
-	transform: translateX(240px);
+    transform: translateX(240px);
 }
-

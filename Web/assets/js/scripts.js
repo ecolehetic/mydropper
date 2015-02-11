@@ -1,6 +1,17 @@
 $(document).ready(function(){
+	var $w = $(window);
+	// ------- UI Size Init & Responsive -------
+	function initSize() {
+		var widthPage = $(window).innerWidth();
+		$('.headerContent').width(widthPage - $('#searchBar').innerWidth());
+	};
 
-	// Burger 
+	initSize();
+
+	$w.resize(function (){
+		initSize();
+	});
+	// ------- Burger - Responsive Menu -------
 	var burgerTrigger = false;
 
 	$('#burger').click(function(){
@@ -31,7 +42,8 @@ $(document).ready(function(){
 		  }, 500);
 	  }
 	});
-	// Catégory Accordeon
+
+	// ------- Accordeon -------
 	var $catLink = $('.categoryElement a');
 	var $allPlusMinus = $('.categoryElement span');
 	var $allSnippetsList = $('.snippetsList');
@@ -58,4 +70,4 @@ $(document).ready(function(){
 		}
 	});
 
-});
+}); // End Doc ready

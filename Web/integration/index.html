@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="icon" type="image/png" href="assets/images/ico.png" />
+    <link rel="icon" type="image/png" href="assets/images/ico.png" />
 
     <!-- SEO -->
     <title>My Dropper - Drag and Drop all your data</title>
@@ -15,7 +15,7 @@
     <meta name="robots" content="index,follow" />
     <meta name="location" content="Paris, FRANCE" />
 
-     <!-- FB Share -->
+    <!-- FB Share -->
     <meta property="og:title" content="My Dropper - Drag and Drop all your data" />
     <meta property="og:description" content="My Dropper is a chrome extension wich allow you to drag and drop your data on any text field." />
     <meta property="og:image" content="" />
@@ -26,50 +26,62 @@
 </head>
 
 <body>
-	<div id="sideBar">
-		<input id="searchBar" type="text" placeholder="Search" />
-		<div id="burger">
-			<div id="row1"></div>
-			<div id="row2"></div>
-			<div id="row3"></div>
-		</div>
-		<nav>
-			<ul id="menu">
-				<li  class="menuLink active" id="historyLink">
-					<a href="#">Your history</a>
-				</li>
+    <header>
+        <input id="searchBar" type="text" placeholder="Search" />
+        <div class="headerContent clearfix">HENG Patrick</div>
+        <img src="../assets/images/incognito.jpg" class="profile" alt="Profile picture">
+        <ul id="profileMenu">
+        	<li>Edit profile</li>
+        	<li>Log out</li>
+        </ul>
+    </header>
+    <div id="sideBar">
+        <div id="burger">
+            <div id="row1"></div>
+            <div id="row2"></div>
+            <div id="row3"></div>
+        </div>
+        <nav>
+            <ul id="menu">
+                <li class="menuLink active" id="dashboardLink">
+                    <a href="#"><i class="icon-dashboard"></i> Dashboard</a>
+                </li>
 
-				<li  class="menuLink" id="trackingLink">
-					<a href="#">Tracking</a>
-				</li>
+                <li class="menuLink" id="trackingLink">
+                    <a href="#"><i class="icon-tracking"></i> Tracking</a>
+                </li>
 
-				<li  class="menuLink" id="profileLink">
-					<a href="#">Your Profile</a>
-				</li>
+                <li class="menuLink" id="settingsLink">
+                    <a href="#"><i class="icon-settings"></i> Settings</a>
+                </li>
 
-				<li>
-					<ul id="categoryList">
-						<li class="categoryElement">
-							<a href="#" class="categoryName">Category</a>
-							<span>+</span>
-							<ul class="snippetsList">
-								<li><a href="#">Snipet 1</a></li>
-								<li><a href="#">Snipet 2</a></li>
-							</ul>
-						</li>
-						<li class="categoryElement">
-							<a href="#" class="categoryName">Category Name 2</a>
-							<span>+</span>
-							<ul class="snippetsList">
-								<li><a href="#">Snipet TEST 1</a></li>
-								<li><a href="#">Snipet TEST 2</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
-	</div>
+                <li>
+                    <ul id="categoryList">
+                        <li class="categoryElement">
+                            <a href="#" class="categoryName"><i class="icon-folder"></i> Category</a>
+                            <span>+</span>
+                            <ul class="snippetsList">
+                                <li><a href="#"><i class="icon-tag"></i> Snipet 1</a>
+                                </li>
+                                <li><a href="#"><i class="icon-tag"></i> Snipet 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="categoryElement">
+                            <a href="#" class="categoryName"><i class="icon-folder"></i> Category Name 2</a>
+                            <span>+</span>
+                            <ul class="snippetsList">
+                                <li><a href="#"><i class="icon-tag"></i> Snipet TEST 1</a>
+                                </li>
+                                <li><a href="#"><i class="icon-tag"></i> Snipet TEST 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js"></script>
     <script type="text/javascript" src="../assets/js/scripts.js"></script>
