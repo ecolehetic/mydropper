@@ -25,6 +25,7 @@ class Upload extends BaseHelper
      * @param $file
      *
      * @return mixed
+     * @throws Exception
      */
     public function save($file)
     {
@@ -44,7 +45,7 @@ class Upload extends BaseHelper
                 return uniqid().'.'.$ext;
             })
             ) {
-                return false; // Error
+                throw new Exception('Error during upload');
             }
 
             $tab = explode('/',$file['type']);
