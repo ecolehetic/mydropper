@@ -1,3 +1,27 @@
-# PHP14
-[![Build Status](https://scrutinizer-ci.com/g/ecolehetic/PHP14/badges/build.png?b=master&s=147c9782cc39252c3a505b8ae53ab706332218a6)](https://scrutinizer-ci.com/g/ecolehetic/PHP14/build-status/master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ecolehetic/PHP14/badges/quality-score.png?b=master&s=221289186148a90a104151da1ee01dc3c90e12b2)](https://scrutinizer-ci.com/g/ecolehetic/PHP14?branch=master)
+My Dropper
+==========
+
+Permettre le stockage de données personnelles susceptibles d’être utilisées de manière régulière, afin de garantir un gain de temps à l’utilisateur. Celui-ci disposerait de ces informations à portée de main à tout moment, grâce à une extension Chrome. 
+
+
+### Liens
+--------------------
+* [Site WEB](http://google.com)
+* [Wiki](https://github.com/ecolehetic/PHP14/wiki/Configuration)
+
+#### L'EQUIPE
+| Nom  |  Rôle|
+| ------------- | ------------- |
+| Nicolas ANDRE  | Développeur Back |
+| Patrick HENG  | Développeur Front |
+| Mathieu LE TYRANT  | Développeur Back |
+| Héloise HAUTEVILLE  | Designer  |
+| Clara DARCO  | Designer  |
+| Wasim FOUAD  | Designer  |
+
+#### TECHNOLOGIES
+* Fat Free Framework
+* Compass (Scss)
+* jQuery
+* Composer
+* GUMP Validator
