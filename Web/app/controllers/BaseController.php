@@ -3,6 +3,7 @@
 namespace APP\CONTROLLERS;
 
 use APP\HELPERS\FlashMessage;
+use APP\HELPERS\Seo;
 
 /**
  * Class BaseController
@@ -40,15 +41,20 @@ class BaseController
     {
         if ($file === true) {
             $tpl = $this->controller . '/' . $this->action . '.twig';
-        } elseif ($file === false) {
+        }
+        elseif ($file === false) {
             header('Content-Type: application/json');
             echo json_encode($values);
-
             return;
-        } else {
+        }
+        else {
             $tpl = $file;
         }
+
         $values['layout'] = $this->layout;
+        $values['seo']['title'] = Seo::getInstance()->get($this->controller, $this->method, 'title');
+        $values['seo']['description'] = Seo::getInstance()->get($this->controller, $this->method, 'description');
+
         echo $this->twig->render($tpl, $values);
         $this->fMessage->destroy();
     }

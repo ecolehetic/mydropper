@@ -9,7 +9,6 @@ namespace APP\HELPERS;
 class Seo
 {
 
-    private $seo = [];
     private static $_instance;
 
     /**
@@ -23,11 +22,9 @@ class Seo
     /**
      * Singleton
      *
-     * @param $file
-     *
      * @return Seo
      */
-    public static function getInstance($file)
+    public static function getInstance()
     {
         if (is_null(self::$_instance)) {
             self::$_instance = new Seo();
@@ -43,12 +40,12 @@ class Seo
      *
      * @return array
      */
-    public function get($controller, $method)
+    public function get($controller, $method, $value)
     {
         if (!isset($this->settings[$controller][$method])) {
-            return null;
+            return $this->settings['index']['index'][$value];
         }
-        return $this->settings[$controller][$method];
+        return $this->settings[$controller][$method][$value];
     }
 
 }

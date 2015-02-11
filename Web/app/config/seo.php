@@ -3,7 +3,7 @@
 return [
     'index' => [
         'index' => [
-            'title'       => 'My Dropper',
+            'title'       => 'Home',
             'description' => 'Description de notre service.'
         ]
     ]
