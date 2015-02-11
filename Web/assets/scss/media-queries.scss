@@ -1,14 +1,26 @@
 @media screen and (max-width: 700px) {
     #burger {
-        display : block;
+        display: block;
     }
     #sideBar {
-        nav {
-            display : none;
+        display: none;
+    }
+}
+@media screen and (max-width: 480px) {
+    header {
+        .headerContent {
+            display: none;
         }
-        #searchBar {
-            height : 40px;
-            width : 240px;
+        #profile {
+            img {
+                right: 20px;
+            }
+            #profileMenu {
+                &:before {
+                    right : 13px;
+                    left: auto;
+                }
+            }
         }
     }
 }

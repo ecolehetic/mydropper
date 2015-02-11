@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	var $w = $(window);
+
 	// ------- UI Size Init & Responsive -------
 	function initSize() {
 		var widthPage = $(window).innerWidth();
@@ -11,6 +12,7 @@ $(document).ready(function(){
 	$w.resize(function (){
 		initSize();
 	});
+
 	// ------- Burger - Responsive Menu -------
 	var burgerTrigger = false;
 
@@ -20,12 +22,13 @@ $(document).ready(function(){
 		  $('#row2').stop().transition({opacity: "0"}, "fast");
 		  $('#row1').stop().transition({rotate: "-45", "margin-top": "13px"});
 		    burgerTrigger = true;
+		    
 		    $('#burger').addClass('open');
-		    $('nav')
+		    $('#sideBar')
 		    	.css('marginLeft', '-300px')
 		    	.show();
 		    setTimeout(function(){
-		    	$('nav').addClass('left');
+		    	$('#sideBar').addClass('left');
 		    }, 300)
 	  }
 	  else{
@@ -33,10 +36,11 @@ $(document).ready(function(){
 		  $('#row2').transition({opacity: "1"}, "fast");
 		  $('#row1').stop().transition({rotate: "-=135", "margin-top": "23px"});
 		  burgerTrigger = false;
+
 		  $('#burger').removeClass('open');
-		  $('nav').removeClass('left');
+		  $('#sideBar').removeClass('left');
 		  setTimeout(function(){
-		  	$('nav').hide()
+		  	$('#sideBar').hide()
 			  	.removeAttr('style')
 			  	.removeClass('left');
 		  }, 500);
@@ -69,5 +73,15 @@ $(document).ready(function(){
 			
 		}
 	});
+
+	// ------- Profile Hover -------
+	var $profileMenu = $('#profileMenu');
+	$('#profile').hover(
+		function() {
+			$profileMenu.fadeIn();
+		}, function() {
+			$profileMenu.fadeOut();
+		}
+	);
 
 }); // End Doc ready

@@ -31,25 +31,77 @@ body, html {
 }
 header {
     height: 60px;
-    line-height: 68px;
     background: $greyLight;
     width: 100%;
     font-weight: bold;
+    position: relative;
+    top: 0;
+    z-index: 1000;
     .headerContent {
         text-align: center;
         color: $greyTitle;
         float: left;
+        line-height: 68px;
     }
-    .profile {
-        width: 100%;
-        position: absolute;
-        top: 10px;
-        right: 25px;
-        border-radius: 50%;
-        border: 2px solid white;
-        width: 40px;
-        height: 40px;
-        cursor : pointer;
+    #profile {
+        img {
+            width: 100%;
+            position: absolute;
+            top: 10px;
+            right: 48px;
+            border-radius: 50%;
+            border: 2px solid white;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            // &:hover + #profileMenu {
+            //     display: block;
+            //     animation: fadeInDown 1s;
+            // }
+        }
+        #profileMenu {
+        	display : none;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background: white;
+            width: 100px;
+            text-align: center;
+            position: absolute;
+            top: 62px;
+            right: 20px;
+            border: 1px solid $greyLight;
+            animation-duration: 1s; 
+            animation-name: fadeInDown; 
+            &:before {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 8.5px 10px 8.5px;
+                border-color: transparent transparent #ffffff transparent;
+                top: -9px;
+                left: 44px;
+            }
+            li {
+                line-height: auto;
+                cursor: pointer;
+                padding: 11px 5px 7px 5px;
+                width: 100%;
+                box-sizing: border-box;
+                transition: all 0.5s ease;
+                color: $greyTitle;
+                &:hover {
+                    color: rgba(80, 80, 80, 1);
+                    ;
+                    background: #f1f1f1;
+                    &:before {
+                        border-color: transparent transparent #f1f1f1 transparent;
+                    }
+                }
+            }
+        }
     }
     #searchBar {
         background: url('../images/search.svg') $midGrey no-repeat 18px 19px;
@@ -60,9 +112,9 @@ header {
         height: 100%;
         border: 0;
         margin: 0;
-        padding: 32px 52px;
+        padding: 32px 52px 25px 52px;
         box-sizing: border-box;
-        color  : white;
+        color: white;
         float: left;
         &::-webkit-input-placeholder {
             color: white;
@@ -92,8 +144,9 @@ a {
     height: 30px;
     width: 33px;
     left: 15px;
+    top : 80px;
     cursor: pointer;
-    transition: all 1.4s ease;
+    transition: all 0.8s ease;
     #row1, #row2, #row3 {
         margin-top: 3px;
         background: $blue;
