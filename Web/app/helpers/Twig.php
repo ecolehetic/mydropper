@@ -4,13 +4,22 @@ namespace APP\HELPERS;
 
 use Twig_Autoloader;
 use Twig_Environment;
-use Twig_Loader_Filesystem;
 use Twig_Filter_Function;
+use Twig_Loader_Filesystem;
 
+/**
+ * Class Twig
+ * @package APP\HELPERS
+ */
 class Twig extends BaseHelper
 {
+
     private $folder;
 
+    /**
+     * @param $viewFolder
+     * @param $params
+     */
     public function __construct($viewFolder, $params)
     {
         parent::__construct();
@@ -27,10 +36,12 @@ class Twig extends BaseHelper
             $link = $this->folder . $type . '/' . $asset;
             if ($type === 'js') {
                 echo sprintf("<script src='/%s' type='text/javascript'></script>", $link);
-            } else if ($type === 'css') {
-                echo sprintf("<link href='/%s' type='text/css' rel='stylesheet'/>", $link);
             } else {
-                return null;
+                if ($type === 'css') {
+                    echo sprintf("<link href='/%s' type='text/css' rel='stylesheet'/>", $link);
+                } else {
+                    return null;
+                }
             }
         }));
 

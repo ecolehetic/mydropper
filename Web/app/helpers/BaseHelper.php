@@ -6,7 +6,8 @@ namespace APP\HELPERS;
  * Class BaseHelper
  * @package APP\HELPERS
  */
-class BaseHelper {
+class BaseHelper
+{
 
     protected $f3;
     protected $web;

@@ -23,12 +23,13 @@ class IndexController extends BaseController
         $debug = User::find(1)->stores()->get();
 
         $this->render(true, [
-            'user' => $user->firstname,
+            'user'  => $user->firstname,
             'debug' => $debug
         ]);
     }
 
-    function debug(){
+    function debug()
+    {
         $this->render('debug.twig', [
 
         ]);

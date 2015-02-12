@@ -7,8 +7,8 @@
  */
 namespace APP\MODELS;
 
-use \Illuminate\Database\Eloquent\Model as Eloquent;
-use \GUMP as GUMP;
+use GUMP as GUMP;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class User extends Eloquent
 {
@@ -16,15 +16,18 @@ class User extends Eloquent
     protected $table = 'users';
     protected $guarded = array('id');
 
-    public function stores(){
+    public function stores()
+    {
         return $this->hasMany('\APP\MODELS\Store');
     }
 
-    public function urls(){
+    public function urls()
+    {
         return $this->hasMany('\APP\MODELS\Url');
     }
 
-    public function categories(){
+    public function categories()
+    {
         return $this->hasMany('\APP\MODELS\Category');
     }
 
@@ -52,12 +55,11 @@ class User extends Eloquent
             'password_2' => 'required|min_len,10',
         ));
 
-        if($formData['password_1'] !== $formData['password_2']){
-            if($is_valid === true){
+        if ($formData['password_1'] !== $formData['password_2']) {
+            if ($is_valid === true) {
                 $is_valid = [];
                 array_push($is_valid, "The password must be the same");
-            }
-            else{
+            } else {
                 array_push($is_valid, 'The password must be the same');
             }
         }
@@ -75,8 +77,8 @@ class User extends Eloquent
     public static function checkFormConnect($formData)
     {
         $is_valid = GUMP::is_valid($formData, array(
-           'username' => 'required',
-           'password' => 'required'
+            'username' => 'required',
+            'password' => 'required'
         ));
 
         return $is_valid;

@@ -26,17 +26,16 @@ class UsersController extends BaseController
     {
         $validForm = User::checkFormSubscribe($this->f3->get('POST'));
 
-        if($validForm === true){
-            $username   = User::where('username', $this->f3->get('POST.username'))->first();
-            $mail       = User::where('mail', $this->f3->get('POST.mail'))->first();
+        if ($validForm === true) {
+            $username = User::where('username', $this->f3->get('POST.username'))->first();
+            $mail = User::where('mail', $this->f3->get('POST.mail'))->first();
 
-            if($username === null && $mail === null){
+            if ($username === null && $mail === null) {
 
-                if($this->f3->get('FILES.avatar')){
+                if ($this->f3->get('FILES.avatar')) {
                     $upload = new Upload();
                     $path = $upload->save($this->f3->get('FILES.avatar'));
-                }
-                else{
+                } else {
                     $path = null;
                 }
 
@@ -54,13 +53,12 @@ class UsersController extends BaseController
                 $this->f3->set('SESSION.user', $this->f3->get('POST'));
 
                 $this->f3->reroute('/users/login', true); // TODO change it to the Dashboard
-            }
-            else{
+            } else {
                 $validForm = [];
-                if($username !== null){
+                if ($username !== null) {
                     array_push($validForm, 'The username is already token');
                 }
-                if($mail !== null){
+                if ($mail !== null) {
                     array_push($validForm, 'The mail is already token');
                 }
             }
@@ -68,7 +66,7 @@ class UsersController extends BaseController
 
         $this->render('users/subscribe.twig', [
             'messages' => $validForm,
-            'values' => $this->f3->get('POST')
+            'values'   => $this->f3->get('POST')
         ]);
 
     }
@@ -79,7 +77,7 @@ class UsersController extends BaseController
     public function login()
     {
         $this->render(true, [
-            'values' => ($this->f3->get('SESSION.user.username')) ? $this->f3->get('SESSION.user.username') : '',
+            'values'   => ($this->f3->get('SESSION.user.username')) ? $this->f3->get('SESSION.user.username') : '',
             'messages' => ($this->fMessage->get()) ? ($this->fMessage->get()) : ''
         ]);
     }
@@ -92,16 +90,15 @@ class UsersController extends BaseController
 
         $validForm = User::checkFormConnect($this->f3->get('POST'));
 
-        if($validForm === true){
+        if ($validForm === true) {
             $user = User::where('username', $this->f3->get('POST.username'))
                 ->where('password', $this->crypt($this->f3->get('POST.password')))
                 ->first();
 
-            if($user !== null){
+            if ($user !== null) {
                 $this->f3->set('SESSION.user', $user);
                 $this->f3->reroute('/', true); // TODO change it to the Dashboard
-            }
-            else{
+            } else {
                 $validForm = [];
                 array_push($validForm, "User don't exist");
             }
@@ -109,7 +106,7 @@ class UsersController extends BaseController
 
         $this->render('users/login.twig', [
             'messages' => $validForm,
-            'values' => $this->f3->get('POST')
+            'values'   => $this->f3->get('POST')
         ]);
     }
 

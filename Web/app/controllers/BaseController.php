@@ -26,10 +26,10 @@ class BaseController
      */
     public function __construct()
     {
-        $this->f3       = \Base::instance();
-        $this->web      = \Web::instance();
+        $this->f3 = \Base::instance();
+        $this->web = \Web::instance();
         $this->fMessage = new FlashMessage();
-        $this->twig     = $this->f3->get('TWIG');
+        $this->twig = $this->f3->get('TWIG');
         $this->getTpl();
     }
 
@@ -41,13 +41,11 @@ class BaseController
     {
         if ($file === true) {
             $tpl = $this->controller . '/' . $this->action . '.twig';
-        }
-        elseif ($file === false) {
+        } elseif ($file === false) {
             header('Content-Type: application/json');
             echo json_encode($values);
             return;
-        }
-        else {
+        } else {
             $tpl = $file;
         }
 

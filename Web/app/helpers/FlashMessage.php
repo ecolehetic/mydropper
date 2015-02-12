@@ -6,10 +6,12 @@ namespace APP\HELPERS;
  * Class FlashMessage
  * @package APP\HELPERS
  */
-class FlashMessage extends BaseHelper{
+class FlashMessage extends BaseHelper
+{
 
     /**
      * Set a Flash Message
+     *
      * @param string $message
      */
     public function set($message)
@@ -22,7 +24,7 @@ class FlashMessage extends BaseHelper{
      */
     public function get()
     {
-        if($this->f3->get('SESSION.fMessage') !== null){
+        if ($this->f3->get('SESSION.fMessage') !== null) {
             return $this->f3->get('SESSION.fMessage');
         }
     }
@@ -32,7 +34,7 @@ class FlashMessage extends BaseHelper{
      */
     public function destroy()
     {
-        if($this->f3->get('SESSION.fMessage') !== null){
+        if ($this->f3->get('SESSION.fMessage') !== null) {
             $this->f3->clear('SESSION.fMessage');
         }
     }

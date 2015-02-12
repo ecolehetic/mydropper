@@ -16,7 +16,7 @@ class Seo
      */
     private function __construct()
     {
-        $this->settings = require(dirname(__DIR__).'/config/seo.php');
+        $this->settings = require(dirname(__DIR__) . '/config/seo.php');
     }
 
     /**

@@ -42,14 +42,14 @@ class Upload extends BaseHelper
                 $tab = explode('.', $file);
                 $ext = $tab[count($tab) - 1];
 
-                return uniqid().'.'.$ext;
+                return uniqid() . '.' . $ext;
             })
             ) {
                 throw new Exception('Error during upload');
             }
 
-            $tab = explode('/',$file['type']);
-            $type = $tab[count($tab)-1];
+            $tab = explode('/', $file['type']);
+            $type = $tab[count($tab) - 1];
 
             $this->resize(key($files), $type);
 
@@ -69,13 +69,12 @@ class Upload extends BaseHelper
      */
     private function resize($file, $type)
     {
-        $img = new \Image($file, TRUE);
+        $img = new \Image($file, true);
         $img->resize($this->f3->get('AVATAR_SIZE'), $this->f3->get('AVATAR_SIZE'));
         $img->save();
-        if(file_put_contents($file, $img->dump($type))){
+        if (file_put_contents($file, $img->dump($type))) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -91,8 +90,7 @@ class Upload extends BaseHelper
         $type = stristr($fileType, '/', true);
         if ($type === 'image' && $size <= (2 * 1024 * 1024)) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -102,14 +100,13 @@ class Upload extends BaseHelper
      */
     private function url()
     {
-        if($this->f3->get('ORGANIZE_UPLOAD') === true){
-            $years  = date("Y");
-            $month  = date("m");
-            $day    = date("d");
+        if ($this->f3->get('ORGANIZE_UPLOAD') === true) {
+            $years = date("Y");
+            $month = date("m");
+            $day = date("d");
 
             $this->f3->set('UPLOADS', 'uploads/' . $years . '/' . $month . '/' . $day . '/');
-        }
-        else{
+        } else {
             $this->f3->set('UPLOADS', 'uploads/');
         }
     }
