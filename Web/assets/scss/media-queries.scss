@@ -2,7 +2,7 @@
     #dashboard {
         .cardList {
             li {
-                width: calc(29.65% - 6px);
+                width: calc(29.45% - 6px);
                 margin: 30px 2%;
             }
         }
@@ -12,7 +12,7 @@
     #dashboard {
         .cardList {
             li {
-                width: calc(46.3% - 4px);
+                width: calc(46% - 4px);
                 margin: 30px 2%;
             }
         }
@@ -35,6 +35,13 @@
                 display : block;
                 margin: 15px 5%;
             }
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    header {
+        .headerContent {
+            display: none;
         }
     }
 }

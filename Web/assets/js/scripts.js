@@ -3,7 +3,7 @@
 $(document).ready(function() {
     var $w = $(window),
         $sideBar = $('#sideBar'),
-        $headerLeft = $('.headerContent'),
+        $headerRight = $('.headerContent'),
         $container = $('#container'),
         $searchBar = $('#searchBar'),
         $burger = $('#burger'),
@@ -15,7 +15,7 @@ $(document).ready(function() {
     function initSize() {
         var widthPage = $(window).innerWidth();
         // Header Left Part
-        $headerLeft.width(widthPage - $searchBar.innerWidth());
+        $headerRight.innerWidth(widthPage - $searchBar.innerWidth());
 
         // Container
 
