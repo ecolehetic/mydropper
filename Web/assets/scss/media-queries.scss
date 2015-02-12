@@ -1,13 +1,46 @@
+@media screen and (max-width: 1400px) {
+    #dashboard {
+        .cardList {
+            li {
+                width: calc(29.65% - 6px);
+                margin: 30px 2%;
+            }
+        }
+    }
+}
+@media screen and (max-width: 980px) {
+    #dashboard {
+        .cardList {
+            li {
+                width: calc(46.3% - 4px);
+                margin: 30px 2%;
+            }
+        }
+    }
+}
 @media screen and (max-width: 700px) {
     #burger {
-        display: block;
+        left: 15px;
     }
     #sideBar {
         display: none;
     }
+    #dashboard {
+        .cardList {
+            width: 100%;
+            margin : auto;
+            display : block;
+            li {
+                width: 90%;
+                display : block;
+                margin: 15px 5%;
+            }
+        }
+    }
 }
 @media screen and (max-width: 480px) {
     header {
+        display: relative;
         .headerContent {
             display: none;
         }
@@ -17,7 +50,7 @@
             }
             #profileMenu {
                 &:before {
-                    right : 13px;
+                    right: 13px;
                     left: auto;
                 }
             }

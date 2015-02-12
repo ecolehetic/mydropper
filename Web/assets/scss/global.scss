@@ -34,7 +34,7 @@ header {
     background: $greyLight;
     width: 100%;
     font-weight: bold;
-    position: relative;
+    position: fixed;
     top: 0;
     z-index: 1000;
     .headerContent {
@@ -60,7 +60,7 @@ header {
             // }
         }
         #profileMenu {
-        	display : none;
+            display: none;
             margin: 0;
             padding: 0;
             list-style: none;
@@ -71,8 +71,8 @@ header {
             top: 62px;
             right: 20px;
             border: 1px solid $greyLight;
-            animation-duration: 1s; 
-            animation-name: fadeInDown; 
+            animation-duration: 1s;
+            animation-name: fadeInDown;
             &:before {
                 content: '';
                 position: absolute;
@@ -139,12 +139,12 @@ a {
     color: white;
 }
 #burger {
-    display: none;
+    left: -100px;
     position: fixed;
     height: 30px;
     width: 33px;
-    left: 15px;
-    top : 80px;
+    top: 80px;
+    z-index: 10000;
     cursor: pointer;
     transition: all 0.8s ease;
     #row1, #row2, #row3 {
@@ -164,5 +164,22 @@ a {
     }
 }
 #burger.open {
-    transform: translateX(240px);
+    transform: translateX(260px);
+}
+#container {
+    height: calc(100%);
+    width: 100%;
+    padding: 80px 30px 50px 30px;
+    box-sizing: border-box;
+    background: white;
+    position: relative;
+    h1 {
+        font-size: 2.4em;
+        margin: 30px 0 0 0;
+        margin-left: 2.5%;
+    }
+}
+#container.menuOpen {
+    transition: all 1s ease;
+    transform: translateX(250px);
 }
