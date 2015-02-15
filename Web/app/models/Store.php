@@ -24,4 +24,8 @@ class Store extends Eloquent
         return $this->belongsTo('\APP\MODELS\Category', 'store_id');
     }
 
+    public function trackerstores(){
+        return $this->hasMany('\APP\MODELS\TrackerStore');
+    }
+
 }

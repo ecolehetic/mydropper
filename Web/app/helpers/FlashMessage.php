@@ -6,6 +6,8 @@ namespace APP\HELPERS;
  * Class FlashMessage
  * @package APP\HELPERS
  */
+
+
 class FlashMessage extends BaseHelper
 {
 
