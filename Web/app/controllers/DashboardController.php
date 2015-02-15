@@ -1,25 +1,25 @@
 <?php
-namespace APP\CONTROLLERS {
+namespace APP\CONTROLLERS;
 
-    use APP\MODELS\User as User;
-    use APP\MODELS\Store as Store;
+use APP\MODELS\User as User;
+use APP\MODELS\Store as Store;
 
-    class DashboardController extends BaseController{
+class DashboardController extends BaseController{
 
-        /*
-        *   GET dashboard
-        */
-        public function index(){
 
-            $user = $this->loggedRequire();
+    /*
+    *   GET dashboard
+    * */
+    public function index(){
 
-            $stores = Store::where('user_id','=',$user->id )->with('trackerstores')->get();
+        $user = $this->loggedRequire();
 
-            $this->render(true, [
-                'user'=>$user,
-                'stores'=>$stores
-            ]);
-        }
+        $stores = Store::where('user_id','=',$user->id )->with('trackerstores')->get();
 
+        $this->render(true, [
+            'user'=>$user,
+            'stores'=>$stores
+        ]);
     }
+
 }
