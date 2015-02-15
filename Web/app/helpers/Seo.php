@@ -35,8 +35,9 @@ class Seo
     /**
      * Get the (title|description)
      *
-     * @param $controller
-     * @param $method
+     * @param string $controller
+     * @param string $method
+     * @param string $value
      *
      * @return array
      */
