@@ -85,7 +85,7 @@ class Need extends BaseHelper
     private function error($value)
     {
         $fMessage = new FlashMessage();
-        $fMessage->set(($value === true) ? self::LOGGED_MESSAGE : self::UNLOGGED_MESSAGE);
+        $fMessage->set(($value === self::LOGGED) ? self::LOGGED_MESSAGE : self::UNLOGGED_MESSAGE);
         $this->f3->reroute($this->redirect, true);
     }
 
