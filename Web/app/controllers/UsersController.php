@@ -110,4 +110,28 @@ class UsersController extends BaseController
         ]);
     }
 
+    /*
+     * GET users/lostpassword
+     */
+    public function lostPassword()
+    {
+        // TODO Do stuff
+    }
+
+    /*
+     * POST users/lostpassword
+     */
+    public function seedMailLostPassword()
+    {
+        // TODO Do stuff
+    }
+
+    /*
+     * GET users/lostpassword/@username/@token
+     */
+    public function confirmLostPassword()
+    {
+        // TODO Do stuff
+    }
+
 }
