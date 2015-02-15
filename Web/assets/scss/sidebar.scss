@@ -42,6 +42,9 @@ $mainFont: 'HelveticaNeue', helvetica, arial, sans-serif;
         height: calc(100% - 110px);
         transition: all 1s ease;
         padding-top: 110px;
+        .button{
+            margin-top : 10px;
+        }
     }
     &.left {
         transform: translateX(300px);

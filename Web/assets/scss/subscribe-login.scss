@@ -1,0 +1,103 @@
+$mainFont: 'HelveticaNeue', helvetica, arial, sans-serif;
+$greyLight: #e3e2e3;
+$greyTitle: #787878;
+
+#homePage {
+	background: url(../images/homeBg.jpg) center no-repeat;
+	background-size: cover;
+	min-height : 100%;
+	padding-bottom : 40px;
+    #logo {
+        display: block;
+        margin: auto;
+        min-width: 150px;
+        max-width: 200px;
+        width: 15%;
+        padding-top: 50px;
+    }
+    h2 {
+        text-align: center;
+        color: white;
+        font-family: $mainFont;
+        font-weight: normal;
+        font-size: 1.1rem;
+        padding: 30px 0 0 0;
+        &:after {
+            content: '';
+            width: 160px;
+            height: 1px;
+            background: #fff;
+            display: block;
+            margin: 20px auto 35px auto;
+        }
+    }
+    .container {
+        width: 400px;
+        display: block;
+        margin: auto;
+    }
+    form {
+        .form-group {
+        	margin-left : -50px;
+            width: 100%;
+            margin-bottom: 20px;
+            label {
+                width: 30%;
+                display: inline-block;
+                margin-right: 3%;
+                text-align: right;
+                color: white;
+                letter-spacing : 0.1rem;
+            }
+            input {
+            	width: 59%;
+                padding: 4px 3%;
+                display: inline-block;
+                margin: 0;
+                border: 0;
+                height: 23px;
+                line-height: 33px;
+                border-bottom: 1px solid white;
+                background: rgba(255, 255, 255, 0.5);
+            }
+            input[type='submit'] {
+            	display : block;
+            	margin : auto;
+            }
+            input[type='file'] {
+            	border : 0;
+            	background : none;
+            	color : white;
+            	line-height: 0;
+            	padding : 0;
+            	margin : 0;
+            }
+            &:last-child {
+            	margin-left : auto;
+            }
+        }
+        .button {
+        	margin-top : 40px;
+        }
+    }
+    p {
+    	text-align : center;
+    	font-size : 0.9rem;
+    	color : white;
+    	padding-top : 10px;
+    	color : rgba(255,255,255,0.95);
+    	a {
+    		border-bottom : 1px solid white;
+    		transition: all 1s ease;
+    		&:hover {
+    			color : $greyTitle;
+    			border-bottom : 1px solid $greyTitle;
+    		}
+    	}
+    }
+}
+.loginPage {
+	#logo {
+		padding-top : 80px!important;
+	}
+}

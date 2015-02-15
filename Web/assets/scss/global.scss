@@ -29,6 +29,9 @@ body, html {
     height: 0;
     visibility: hidden;
 }
+.hidden {
+    display : none !important;
+}
 header {
     height: 60px;
     background: $greyLight;
@@ -182,4 +185,64 @@ a {
 #container.menuOpen {
     transition: all 1s ease;
     transform: translateX(250px);
+}
+
+.button {
+    width: 155px;
+    height: 50px;
+    position: relative;
+    color: white;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: background 0.4s 0.5s;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    line-height: 54px;
+    &:hover {
+        color: white !important;
+        transition-delay: 0s;
+        background: rgba(0, 0, 0, 0.4);
+
+        svg {
+            line {
+                transition-delay: 0.1s;
+            }
+        }
+    }
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        line {
+            stroke-width: 3;
+            stroke: rgba(200, 200, 200, 0.2);
+            fill: none;
+            transition: all 1s ease;
+        }
+    }
+}
+.button.float {
+    float: left;
+    &:first-child {
+        margin-right: 20px !important;
+    }
+}
+.button svg line.top, .button svg line.bottom {
+    stroke-dasharray: 155;
+}
+.button svg line.left, .button svg line.right {
+    stroke-dasharray: 50;
+}
+.button:hover svg line.top {
+    transform: translateX(-310px);
+}
+.button:hover svg line.bottom {
+    transform: translateX(310px);
+}
+.button:hover svg line.left {
+    transform: translateY(100px);
+}
+.button:hover svg line.right {
+    transform: translateY(-100px);
 }

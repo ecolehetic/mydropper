@@ -28,11 +28,11 @@
     #dashboard {
         .cardList {
             width: 100%;
-            margin : auto;
-            display : block;
+            margin: auto;
+            display: block;
             li {
                 width: 90%;
-                display : block;
+                display: block;
                 margin: 15px 5%;
             }
         }
@@ -60,6 +60,41 @@
                     right: 13px;
                     left: auto;
                 }
+            }
+        }
+    }
+    $mainFont: 'HelveticaNeue', helvetica, arial, sans-serif;
+    $greyLight: #e3e2e3;
+    $greyTitle: #787878;
+    #homePage {
+        #logo {
+            padding-top : 40px !important;
+        }
+        .container {
+            width: 80%;
+            display: block;
+            margin: auto;
+        }
+        form {
+            .form-group {
+                margin-left : auto;
+                width: 100%;
+                margin-bottom: 20px;
+                label {
+                    width: 100%;
+                    margin-right: 3%;
+                    margin-bottom: 5px;
+                    text-align: left;
+                    &:after {
+                        content : ' :';
+                    }
+                }
+                input {
+                    width: 96%;
+                }
+            }
+            .button {
+                margin-top: 40px;
             }
         }
     }
