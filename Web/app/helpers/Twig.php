@@ -32,13 +32,13 @@ class Twig extends BaseHelper
         // Dump Filter
         $Twig_env->addFilter('dump', new Twig_Filter_Function('var_dump'));
         // Asset Function
-        $Twig_env->addFunction(new \Twig_SimpleFunction('asset', function ($type, $asset) {
-            $link = $this->folder . $type . '/' . $asset;
+        $Twig_env->addFunction(new \Twig_SimpleFunction('asset', function ($type, $asset, $extern) {
+            $link = ($extern === true) ? $asset : '/'.$this->folder . $type . '/' . $asset;
             if ($type === 'js') {
-                echo sprintf("<script src='/%s' type='text/javascript'></script>", $link);
+                echo sprintf("<script src='%s' type='text/javascript'></script>", $link);
             } else {
                 if ($type === 'css') {
-                    echo sprintf("<link href='/%s' type='text/css' rel='stylesheet'/>", $link);
+                    echo sprintf("<link href='%s' type='text/css' rel='stylesheet'/>", $link);
                 } else {
                     return null;
                 }
