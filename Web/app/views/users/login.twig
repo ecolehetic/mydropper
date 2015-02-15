@@ -25,12 +25,12 @@
             <form action="connect" method="POST">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" value="" required/>
+                    <input type="text" name="username" value="{{ values.username ? values.username : '' }}" required/>
                 </div>
 
                 <div class="form-group">
                     <label for="Password">Password</label>
-                    <input type="password" name="Password" value="" required/>
+                    <input type="password" name="password" required/>
                 </div>
 
                 <div class="form-group">
