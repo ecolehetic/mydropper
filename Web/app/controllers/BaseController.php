@@ -112,12 +112,16 @@ class BaseController
 
     /**
      * Little function and check if logged
-     * else : return in home
+     * if true : return user
+     * else : return at login
      */
     protected function loggedRequire()
     {
+        // ADD FLASH MSG IF NOT CONNECT
         if ($this->f3->get('SESSION.user') === null) {
-            $this->f3->reroute('/', true);
+            $this->f3->reroute('/users/login', true);
+        }else{
+            return $this->f3->get('SESSION.user');
         }
     }
 

@@ -19,8 +19,10 @@ class UsersController extends BaseController
         $this->render(true);
     }
 
-    /*
+
+    /**
      * POST users/create
+     * @throws \APP\HELPERS\Exception
      */
     function create()
     {
@@ -39,6 +41,10 @@ class UsersController extends BaseController
                     $path = null;
                 }
 
+
+                // ADD A SPECIFIC CASE FOR USER CREATE FROM ADMIN
+
+
                 $user = User::create(array(
                     'username'      => $this->f3->get('POST.username'),
                     'firstname'     => $this->f3->get('POST.firstname'),
@@ -48,6 +54,8 @@ class UsersController extends BaseController
                     'password'      => $this->crypt($this->f3->get('POST.password_1')),
                     'avatar_url'    => $path
                 ));
+
+
 
                 $this->f3->set('POST.id', $user->id);
                 $this->f3->set('SESSION.user', $this->f3->get('POST'));
@@ -95,11 +103,13 @@ class UsersController extends BaseController
                 ->where('password', $this->crypt($this->f3->get('POST.password')))
                 ->first();
 
+            $validForm = [];
+
             if ($user !== null) {
                 $this->f3->set('SESSION.user', $user);
-                $this->f3->reroute('/', true); // TODO change it to the Dashboard
+                $this->fMessage->set('You are successfully logged');
+                $this->f3->reroute('/dashboard', true);
             } else {
-                $validForm = [];
                 array_push($validForm, "User don't exist");
             }
         }

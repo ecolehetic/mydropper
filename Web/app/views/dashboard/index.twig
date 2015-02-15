@@ -1,0 +1,41 @@
+{% extends layout ~ '/dashboard.twig' %}
+
+
+{% block right_content %}
+    <h1>Dashboard</h1>
+    <div class="user">
+        <h3>User</h3>
+        <ul>
+            <li>Username : {{ user.username }}</li>
+            <li>Mail : {{ user.mail }}</li>
+            <li>FirstName : {{ user.firstname }}</li>
+            <li>Name : {{ user.name }}</li>
+            <li>Token : {{ user.token }}</li>
+            <li>has_extension : {{ user.has_extension }}</li>
+            <li>is_public : {{ user.is_public }}</li>
+        </ul>
+    </div>
+    <div class="stores">
+        <h3>Stores</h3>
+        <a href="/stores/create">Add a snippet</a>
+        <ul>
+           {% for store in stores %}
+            <li>
+                Label : {{ store.label }} <br/>
+                content : {{ store.descript }}<br/>
+                {{ store.trackerstores.0.on_url | dump }} <br/>
+                <a class="del" href="stores/delete/{{ store.id }}">Delete</a>
+                <h4>Trackers</h4>
+                    <ul>
+                    {% for tracker in store.trackerstores %}
+                        <li>used on url : {{ tracker.on_url }}</li>
+                    {% endfor %}
+                    </ul>
+                <br/><br/>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+{% endblock %}
