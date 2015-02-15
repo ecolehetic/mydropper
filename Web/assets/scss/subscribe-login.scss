@@ -6,7 +6,6 @@ $greyTitle: #787878;
 	background: url(../images/homeBg.jpg) center no-repeat;
 	background-size: cover;
 	min-height : 100%;
-	padding-bottom : 40px;
     #logo {
         display: block;
         margin: auto;
@@ -48,6 +47,7 @@ $greyTitle: #787878;
                 text-align: right;
                 color: white;
                 letter-spacing : 0.1rem;
+                vertical-align: middle;
             }
             input {
             	width: 59%;
@@ -58,7 +58,24 @@ $greyTitle: #787878;
                 height: 23px;
                 line-height: 33px;
                 border-bottom: 1px solid white;
+                vertical-align: middle;
                 background: rgba(255, 255, 255, 0.5);
+                &::-webkit-input-placeholder {
+		            color: black;
+		            opacity: 0.6
+		        }
+		        &:-moz-placeholder {
+		            color: black;
+		            opacity: 0.6;
+		        }
+		        &::-moz-placeholder {
+		            color: black;
+		            opacity: 0.6;
+		        }
+		        &:-ms-input-placeholder {
+		            color: black;
+		            opacity: 0.6
+		        }
             }
             input[type='submit'] {
             	display : block;
@@ -85,6 +102,7 @@ $greyTitle: #787878;
     	font-size : 0.9rem;
     	color : white;
     	padding-top : 10px;
+    	padding-bottom : 20px;
     	color : rgba(255,255,255,0.95);
     	a {
     		border-bottom : 1px solid white;

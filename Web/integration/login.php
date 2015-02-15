@@ -10,12 +10,12 @@
 				<form action="" id="connexionForm">
 					<div class="form-group">
 			            <label for="username">Username</label>
-			            <input type="text" name="username" value="" required/>
+			            <input type="text" name="username" placeholder="Username" value="" required/>
 			        </div>
 			        
 					<div class="form-group">
 			            <label for="Password">Password</label>
-			            <input type="password" name="Password" value="" required/>
+			            <input type="password" name="Password" placeholder="Password" value="" required/>
 			        </div>
 			        
 					<div class="form-group">
