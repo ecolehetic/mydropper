@@ -7,6 +7,11 @@
             }
         }
     }
+    #homePage {
+        #formFeedback {
+            left: calc(50% + 175px);
+        }
+    }
 }
 @media screen and (max-width: 980px) {
     #dashboard {
@@ -15,6 +20,13 @@
                 width: calc(46% - 4px);
                 margin: 30px 2%;
             }
+        }
+    }
+    #homePage {
+        #formFeedback {
+            position : relative;
+            left : auto;
+            margin-bottom : 30px;
         }
     }
 }

@@ -15,11 +15,14 @@
 
             <!-- Display Messages (Good | Bad) -->
             {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message | raw }}</li>
-                    {% endfor %}
-                </ul>
+                <div id="formFeedback">
+                    <h3>There are some issues : </h3>
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message | raw }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
             {% endif %}
 
             <form action="create" method="POST" enctype="multipart/form-data">

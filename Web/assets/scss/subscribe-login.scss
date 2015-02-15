@@ -31,7 +31,7 @@ $greyTitle: #787878;
         }
     }
     .container {
-        width: 400px;
+        width: 430px;
         display: block;
         margin: auto;
     }
@@ -113,8 +113,27 @@ $greyTitle: #787878;
     		}
     	}
     }
+    #formFeedback {
+		color : white;
+		position: absolute;
+		left: calc(50% + 200px);
+		border-left: 1px solid white;
+		padding-left: 20px;
+		max-width : 270px;
+		h3 {
+			margin-top : 5px;
+			font-size : 1.1rem;
+		}
+		ul {
+			padding-left : 30px;
+			list-style : square;
+			li {
+
+			}
+		}
+	}
 }
-.loginPage {
+#homePage.loginPage {
 	#logo {
 		padding-top : 80px!important;
 	}
