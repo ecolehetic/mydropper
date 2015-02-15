@@ -3,6 +3,7 @@
 namespace APP\CONTROLLERS;
 
 use APP\HELPERS\FlashMessage;
+use APP\HELPERS\Need;
 use APP\HELPERS\Seo;
 
 /**
@@ -29,6 +30,7 @@ class BaseController
         $this->f3 = \Base::instance();
         $this->web = \Web::instance();
         $this->fMessage = new FlashMessage();
+        $this->need = new Need();
         $this->twig = $this->f3->get('TWIG');
         $this->getTpl();
     }
@@ -107,22 +109,6 @@ class BaseController
         $crypt = \Bcrypt::instance();
 
         return $crypt->hash($string, $this->f3->get('SALT'), $level);
-    }
-
-
-    /**
-     * Little function and check if logged
-     * if true : return user
-     * else : return at login
-     */
-    protected function loggedRequire()
-    {
-        // ADD FLASH MSG IF NOT CONNECT
-        if ($this->f3->get('SESSION.user') === null) {
-            $this->f3->reroute('/users/login', true);
-        }else{
-            return $this->f3->get('SESSION.user');
-        }
     }
 
 }

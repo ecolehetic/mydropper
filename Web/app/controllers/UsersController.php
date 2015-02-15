@@ -16,6 +16,8 @@ class UsersController extends BaseController
      */
     public function subscribe()
     {
+        $this->need->unLogged('/dashboard')->execute();
+
         $this->render(true);
     }
 
@@ -84,6 +86,8 @@ class UsersController extends BaseController
      */
     public function login()
     {
+        $this->need->unLogged('/dashboard')->execute();
+
         $this->render(true, [
             'values'   => ($this->f3->get('SESSION.user.username')) ? $this->f3->get('SESSION.user.username') : '',
             'messages' => ($this->fMessage->get()) ? ($this->fMessage->get()) : ''
