@@ -32,7 +32,7 @@ class Need extends BaseHelper
      */
     public function logged($path)
     {
-        $this->choose = 'logged';
+        $this->choose = self::LOGGED;
         $this->redirect = $path;
 
         return $this;
@@ -47,7 +47,7 @@ class Need extends BaseHelper
      */
     public function unLogged($path)
     {
-        $this->choose = 'unlogged';
+        $this->choose = self::UNLOGGED;
         $this->redirect = $path;
 
         return $this;
