@@ -100,7 +100,10 @@ class UsersController extends BaseController
     public function connect()
     {
 
-        $validForm = User::checkFormConnect($this->f3->get('POST'));
+        $validForm = User::checkForm($this->f3->get('POST'), array(
+            'username' => 'required',
+            'password' => 'required'
+        ));
 
         if ($validForm === true) {
             $user = User::where('username', $this->f3->get('POST.username'))
@@ -129,7 +132,9 @@ class UsersController extends BaseController
      */
     public function lostPassword()
     {
-        // TODO Do stuff
+        $this->need->unLogged('/dashboard')->execute();
+
+        $this->render(true);
     }
 
     /*
@@ -137,7 +142,17 @@ class UsersController extends BaseController
      */
     public function seedMailLostPassword()
     {
-        // TODO Do stuff
+        $validForm = User::checkForm($this->f3->get('POST'), array(
+            'mail' => 'required|valid_email'
+        ));
+
+        if($validForm === true){
+            // TODO Seed mail
+        }
+
+        $this->render('users/lostpassword.twig', [
+           'messages' => $validForm
+        ]);
     }
 
     /*

@@ -68,18 +68,16 @@ class User extends Eloquent
     }
 
     /**
-     * Check if data seed in form are good
+     * Check form
      *
-     * @param array $formData
+     * @param $formData
+     * @param array $rules
      *
-     * @return mixed
+     * @return string
      */
-    public static function checkFormConnect($formData)
+    public static function checkForm($formData, $rules)
     {
-        $is_valid = GUMP::is_valid($formData, array(
-            'username' => 'required',
-            'password' => 'required'
-        ));
+        $is_valid = GUMP::is_valid($formData, $rules);
 
         return $is_valid;
     }
