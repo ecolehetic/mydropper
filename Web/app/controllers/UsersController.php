@@ -32,14 +32,14 @@ class UsersController extends BaseController
         $validForm = User::checkFormSubscribe($this->f3->get('POST'));
 
         if ($validForm === true) {
-            $username = User::where('username', $this->f3->get('POST.username'))->first();
-            $mail = User::where('mail', $this->f3->get('POST.mail'))->first();
+            $username   = User::where('username', $this->f3->get('POST.username'))->first();
+            $mail       = User::where('mail', $this->f3->get('POST.mail'))->first();
 
             if ($username === null && $mail === null) {
 
                 if ($this->f3->get('FILES.avatar')) {
                     $upload = new Upload();
-                    $path = $upload->save($this->f3->get('FILES.avatar'));
+                    $path   = $upload->save($this->f3->get('FILES.avatar'));
                 } else {
                     $path = null;
                 }
@@ -59,7 +59,6 @@ class UsersController extends BaseController
                 ));
 
 
-
                 $this->f3->set('POST.id', $user->id);
                 $this->f3->set('SESSION.user', $this->f3->get('POST'));
 
@@ -67,10 +66,10 @@ class UsersController extends BaseController
             } else {
                 $validForm = [];
                 if ($username !== null) {
-                    array_push($validForm, 'The username is already token');
+                    $validForm[] = "The username is already token.";
                 }
                 if ($mail !== null) {
-                    array_push($validForm, 'The mail is already token');
+                    $validForm[] = "The mail is already token.";
                 }
             }
         }
@@ -107,18 +106,15 @@ class UsersController extends BaseController
         ));
 
         if ($validForm === true) {
-            $user = User::where('username', $this->f3->get('POST.username'))
-                ->where('password', $this->crypt($this->f3->get('POST.password')))
-                ->first();
-
-            $validForm = [];
+            $user       = User::where('username', $this->f3->get('POST.username'))->where('password', $this->crypt($this->f3->get('POST.password')))->first();
+            $validForm  = [];
 
             if ($user !== null) {
                 $this->f3->set('SESSION.user', $user);
                 $this->fMessage->set('You are successfully logged');
                 $this->f3->reroute('/dashboard', true);
             } else {
-                array_push($validForm, "User don't exist");
+                $validForm[] = "User don't exist";
             }
         }
 
@@ -147,42 +143,41 @@ class UsersController extends BaseController
             'mail' => 'required|valid_email'
         ));
 
-        if($validForm === true){
+        if ($validForm === true) {
 
-            $userInformations = User::where('mail', $this->f3->get('POST.mail'))->first();
-            $token = uniqid();
+            $userInformations   = User::where('mail', $this->f3->get('POST.mail'))->first();
+            $token              = uniqid();
+            $validForm          = [];
 
-            // Generate Token and save it
-            $user = User::find($userInformations->id);
-            $user->token = $token;
-            $user->is_lost_password = 1;
-            $user->save();
+            if ($userInformations !== null) {
+                // Generate Token and save it
+                $user                   = User::find($userInformations->id);
+                $user->token            = $token;
+                $user->is_lost_password = 1;
+                $user->save();
 
-            // Seed Mail
-            $mail = new Mail();
-            $mail->seed(
-                'lostpassword_first_step',
-                $this->f3->get('POST.mail'),
-                'Mot de passe oublié',
-                $this->urlGenerator('/users/lostpassword/', array(
-                    $userInformations->username,
-                    $token
-                ))
-            );
+                // Seed Mail
+                $mail = new Mail();
+                $mail->seed('lostpassword_first_step', $this->f3->get('POST.mail'), 'Mot de passe oublié',
+                    $this->urlGenerator('/users/lostpassword/', array(
+                        $userInformations->username,
+                        $token
+                    )));
 
-            // Display Messages
-            $validForm = [];
-            if($mail){
-                array_push($validForm, 'Message seeded');
-            }
-            else{
-                array_push($validForm, 'Error during seeding mail. Try again.');
+                // Display Messages
+                if ($mail) {
+                    $validForm[] = "Message seeded.";
+                } else {
+                    $validForm[] = "Error during seeding mail. Try again.";
+                }
+            } else {
+                $validForm[] = "The email does not exist in our database.";
             }
 
         }
 
         $this->render('users/lostpassword.twig', [
-           'messages' => $validForm
+            'messages' => $validForm
         ]);
     }
 
@@ -191,7 +186,37 @@ class UsersController extends BaseController
      */
     public function confirmLostPassword()
     {
-        // TODO Do stuff
+        $userInformations   = User::where('username', $this->f3->get('GET.username'))->where('token', $this->f3->get('GET.username'))->first();
+        $messages           = [];
+
+        if ($userInformations !== null) {
+            $newPassword = uniqid();
+
+            // Save new Password
+            $user                   = User::find($userInformations->id);
+            $user->token            = null;
+            $user->is_lost_password = 0;
+            $user->password         = $this->crypt($newPassword);
+            $user->save();
+
+            // Seed a mail with new Password
+            // Seed Mail
+            $mail = new Mail();
+            $mail->seed('lostpassword_final_step', $userInformations->mail, 'Mot de passe oublié', $newPassword);
+
+            $messages[] = "Your new password has been sent to your mail.";
+
+            // After 3s, redirect to the login page
+            sleep(3);
+            $this->f3->reroute('/users/login', true);
+
+        } else {
+            $messages[] = "The token does not match with the username";
+        }
+
+        $this->render('users/lostpassword.twig', [
+            'messages' => $messages
+        ]);
     }
 
 }
