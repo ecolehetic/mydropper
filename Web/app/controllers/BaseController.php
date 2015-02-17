@@ -66,24 +66,25 @@ class BaseController
      */
     private function getTpl()
     {
-
         $this->method = $this->f3['SERVER']['REQUEST_METHOD'];
 
         $params = $this->f3['PARAMS'];
         $base = $this->f3['PARAMS'][0];
         if (count($this->f3['PARAMS']) > 1) {
             unset($params[0]);
+            $index = null;
             foreach ($params as $k => $v) {
                 $base = str_replace('/' . $v, '', $base);
-                $index = $base . '/@' . $k;
+                $index = '/@' . $k.$index;
             }
+            $index = $base.$index;
         } else {
             $index = $base;
         }
 
         foreach ($this->f3['ROUTES'] as $key => $value) {
-
             $trunc = explode('/@', $key);
+
             if ($trunc[0] == $base) {
                 $innerRoute = $this->f3['ROUTES'][$index][3][$this->method][0];
                 $first = explode('->', $innerRoute);
