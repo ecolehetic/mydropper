@@ -31,6 +31,11 @@ class Twig extends BaseHelper
         $Twig_env = new Twig_Environment(new Twig_Loader_Filesystem(($viewFolder), $params));
         // Dump Filter
         $Twig_env->addFilter('dump', new Twig_Filter_Function('var_dump'));
+        // URL Generator
+        $Twig_env->addFunction(new \Twig_SimpleFunction('url', function ($path, $params = []) {
+            $urlHelper = new Url();
+            return $urlHelper->generate($path, $params);
+        }));
         // Asset Function
         $Twig_env->addFunction(new \Twig_SimpleFunction('asset', function ($type, $asset, $extern) {
             $link = ($extern === true) ? $asset : '/'.$this->folder . $type . '/' . $asset;

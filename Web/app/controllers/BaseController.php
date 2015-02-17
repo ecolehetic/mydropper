@@ -112,26 +112,4 @@ class BaseController
         return $crypt->hash($string, $this->f3->get('SALT'), $level);
     }
 
-    /**
-     * Generate URL with $path and $params
-     *
-     * @param string $path
-     * @param array $params
-     *
-     * @return string
-     */
-    protected function urlGenerator($path, $params = [])
-    {
-        $hive = $this->f3->hive();
-        $host = $hive['HEADERS']['Host'];
-        $url = 'http://'.$host.$path;
-
-        foreach ($params as $param) {
-            $url .= $param.'/';
-        }
-
-        return $url;
-
-    }
-
 }

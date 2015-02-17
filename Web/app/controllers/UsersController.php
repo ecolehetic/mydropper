@@ -4,6 +4,7 @@ namespace APP\CONTROLLERS;
 
 use APP\HELPERS\Mail;
 use APP\HELPERS\Upload;
+use APP\HELPERS\Url;
 use App\Models\User as User;
 
 /**
@@ -157,7 +158,8 @@ class UsersController extends BaseController
                 $user->save();
 
                 // Define URL
-                $url = $this->urlGenerator('/users/lostpassword/', array(
+                $urlHelper = new Url();
+                $url = $urlHelper->generate('/users/lostpassword/', array(
                     $userInformations->username,
                     $token
                 ));
