@@ -122,7 +122,9 @@ class BaseController
      */
     protected function urlGenerator($path, $params = [])
     {
-        $url = $this->f3->get('URL').'/'.$path.'/';
+        $hive = $this->f3->hive();
+        $host = $hive['HEADERS']['Host'];
+        $url = 'http://'.$host.'/'.$path.'/';
 
         foreach ($params as $param) {
             $url .= $param.'/';
