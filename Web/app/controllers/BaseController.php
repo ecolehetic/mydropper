@@ -111,4 +111,25 @@ class BaseController
         return $crypt->hash($string, $this->f3->get('SALT'), $level);
     }
 
+    /**
+     * Generate URL with $path and $params
+     * TODO Change it
+     *
+     * @param string $path
+     * @param array $params
+     *
+     * @return string
+     */
+    protected function urlGenerator($path, $params = [])
+    {
+        $url = $this->f3->get('URL').'/'.$path.'/';
+
+        foreach ($params as $param) {
+            $url .= $param.'/';
+        }
+
+        return $url;
+
+    }
+
 }

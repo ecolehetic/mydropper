@@ -148,7 +148,37 @@ class UsersController extends BaseController
         ));
 
         if($validForm === true){
-            // TODO Seed mail
+
+            $userInformations = User::where('mail', $this->f3->get('POST.mail'))->first();
+            $token = uniqid();
+
+            // Generate Token and save it
+            $user = User::find($userInformations->id);
+            $user->token = $token;
+            $user->is_lost_password = 1;
+            $user->save();
+
+            // Seed Mail
+            $mail = new Mail();
+            $mail->seed(
+                'lostpassword_first_step',
+                $this->f3->get('POST.mail'),
+                'Mot de passe oublié',
+                $this->urlGenerator('/users/lostpassword/', array(
+                    $userInformations->username,
+                    $token
+                ))
+            );
+
+            // Display Messages
+            $validForm = [];
+            if($mail){
+                array_push($validForm, 'Message seeded');
+            }
+            else{
+                array_push($validForm, 'Error during seeding mail. Try again.');
+            }
+
         }
 
         $this->render('users/lostpassword.twig', [
