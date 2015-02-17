@@ -219,4 +219,13 @@ class UsersController extends BaseController
         ]);
     }
 
+    /**
+     * Logout the user
+     */
+    public function logout()
+    {
+        $this->f3->clear('SESSION');
+        $this->f3->reroute('/');
+    }
+
 }
