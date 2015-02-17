@@ -32,22 +32,28 @@ class Mail extends BaseHelper
 
     /**
      *  Seed a mail
+     *  You must add add data (subject)
      *
      * @param string $template
      * @param string $to
-     * @param $subjet
-     * @param string $message
+     * @param array $data
      *
      * @return bool
      */
-    public function seed($template = 'default', $to, $subjet, $message)
+    public function seed($template = 'default', $to, $data = array())
     {
         $this->smtp->set('Content-type', 'text/html; charset=UTF-8');
         $this->smtp->set('From', '"MyDropper" <' . $this->f3->get('MAIL_USER') . '>');
         $this->smtp->set('To', '<' . $to . '>');
-        $this->smtp->set('Subject', $subjet);
+        $this->smtp->set('Subject', $data['subject']);
 
-        return $this->smtp->send($this->layoutMail($template, $subjet, $this->getFirstname($to), $message));
+        if($this->getFirstname($to) !== false){
+            $firstname = $this->getFirstname($to);
+            return $this->smtp->send($this->layoutMail($template, $firstname, $data));
+        }
+        else{
+            return false;
+        }
     }
 
     /**
@@ -61,30 +67,30 @@ class Mail extends BaseHelper
     {
         $user = User::where('mail', $mail)->first();
 
-        return $user->firstname;
+        if($user !== null || !empty($user)){
+            return $user->firstname;
+        }
+
+        return false;
+
     }
 
     /**
      * Return the HTML of the mail base of the layout
      *
-     * @param string $title
      * @param string $template
      * @param string $firstname
-     * @param string $content
+     * @param array $content
      *
      * @return string
      */
-    private function layoutMail($template, $title, $firstname, $content)
+    private function layoutMail($template, $firstname, $content = array())
     {
         $template = $this->twig->loadTemplate('mail/' . $template . '.twig');
 
-        $parameters = array(
-            'title'       => $title,
-            'firstname'   => $firstname,
-            'contentHtml' => $content
-        );
+        $content['firstname'] = $firstname;
 
-        return $template->render($parameters);
+        return $template->render($content);
     }
 
 }

@@ -156,13 +156,18 @@ class UsersController extends BaseController
                 $user->is_lost_password = 1;
                 $user->save();
 
+                // Define URL
+                $url = $this->urlGenerator('/users/lostpassword/', array(
+                    $userInformations->username,
+                    $token
+                ));
+
                 // Seed Mail
                 $mail = new Mail();
-                $mail->seed('lostpassword_first_step', $this->f3->get('POST.mail'), 'Mot de passe oublié',
-                    $this->urlGenerator('/users/lostpassword/', array(
-                        $userInformations->username,
-                        $token
-                    )));
+                $mail->seed('lostpassword_first_step', $this->f3->get('POST.mail'), array(
+                    'subject' => 'Mot de passe oublié',
+                    'link' => $url
+                ));
 
                 // Display Messages
                 if ($mail) {
@@ -202,7 +207,10 @@ class UsersController extends BaseController
             // Seed a mail with new Password
             // Seed Mail
             $mail = new Mail();
-            $mail->seed('lostpassword_final_step', $userInformations->mail, 'Mot de passe oublié', $newPassword);
+            $mail->seed('lostpassword_final_step', $userInformations->mail, array(
+                'subject' => 'Mot de passe oublié',
+                'password' => $newPassword
+            ));
 
             $messages[] = "Your new password has been sent to your mail.";
 
