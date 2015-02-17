@@ -113,7 +113,6 @@ class BaseController
 
     /**
      * Generate URL with $path and $params
-     * TODO Change it
      *
      * @param string $path
      * @param array $params
@@ -124,7 +123,7 @@ class BaseController
     {
         $hive = $this->f3->hive();
         $host = $hive['HEADERS']['Host'];
-        $url = 'http://'.$host.'/'.$path.'/';
+        $url = 'http://'.$host.$path;
 
         foreach ($params as $param) {
             $url .= $param.'/';
