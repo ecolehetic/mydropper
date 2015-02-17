@@ -2,6 +2,7 @@
 
 namespace APP\CONTROLLERS;
 
+use APP\HELPERS\Mail;
 use APP\HELPERS\Upload;
 use App\Models\User as User;
 
