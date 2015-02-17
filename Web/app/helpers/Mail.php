@@ -12,8 +12,6 @@ use APP\MODELS\User;
 class Mail extends BaseHelper
 {
 
-    const LAYOUT_MAIL = "layout/mail.twig";
-
     private $smtp;
     private $twig;
 
@@ -35,20 +33,21 @@ class Mail extends BaseHelper
     /**
      *  Seed a mail
      *
+     * @param string $template
      * @param string $to
      * @param $subjet
      * @param string $message
      *
      * @return bool
      */
-    public function seed($to, $subjet, $message)
+    public function seed($template = 'default', $to, $subjet, $message)
     {
         $this->smtp->set('Content-type', 'text/html; charset=UTF-8');
         $this->smtp->set('From', '"MyDropper" <' . $this->f3->get('MAIL_USER') . '>');
         $this->smtp->set('To', '<' . $to . '>');
         $this->smtp->set('Subject', $subjet);
 
-        return $this->smtp->send($this->layoutMail($subjet, $this->getFirstname($to), $message));
+        return $this->smtp->send($this->layoutMail($template, $subjet, $this->getFirstname($to), $message));
     }
 
     /**
@@ -69,22 +68,23 @@ class Mail extends BaseHelper
      * Return the HTML of the mail base of the layout
      *
      * @param string $title
+     * @param string $template
      * @param string $firstname
      * @param string $content
      *
      * @return string
      */
-    private function layoutMail($title, $firstname, $content)
+    private function layoutMail($template, $title, $firstname, $content)
     {
-        $template = $this->twig->loadTemplate(self::LAYOUT_MAIL);
+        $template = $this->twig->loadTemplate('mail/' . $template . '.twig');
 
         $parameters = array(
-            'title'     => $title,
-            'firstname' => $firstname,
-            'content'   => $content
+            'title'       => $title,
+            'firstname'   => $firstname,
+            'contentHtml' => $content
         );
 
-        return $template->renderBlock('body', $parameters);
+        return $template->render($parameters);
     }
 
 }

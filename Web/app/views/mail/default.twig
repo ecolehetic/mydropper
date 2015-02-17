@@ -1,0 +1,11 @@
+{% extends 'layout/mail.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    Hi, {{ firstname }}
+    <br/>
+    {{ contentHtml | raw }}
+{% endblock %}
