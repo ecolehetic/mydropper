@@ -1,4 +1,4 @@
-$mainFont: 'HelveticaNeue', helvetica, arial, sans-serif;
+$mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
 $greyLight: #e3e2e3;
 $greyTitle: #787878;
 
@@ -59,7 +59,7 @@ $greyTitle: #787878;
                 line-height: 33px;
                 border-bottom: 1px solid white;
                 vertical-align: middle;
-                background: rgba(255, 255, 255, 0.5);
+                background: rgba(255, 255, 255, 0.4);
                 &::-webkit-input-placeholder {
 		            color: black;
 		            opacity: 0.6
@@ -135,6 +135,6 @@ $greyTitle: #787878;
 }
 #homePage.loginPage {
 	#logo {
-		padding-top : 80px!important;
+		padding-top : 55px!important;
 	}
 }
