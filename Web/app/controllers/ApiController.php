@@ -3,6 +3,7 @@
 namespace APP\CONTROLLERS;
 
 use APP\MODELS\Store;
+use APP\MODELS\TrackerStore;
 use APP\MODELS\User;
 
 class ApiController extends BaseController
@@ -32,7 +33,7 @@ class ApiController extends BaseController
 
                 $data = [
                     'success' => true,
-                    'message' => "Connected",
+                    'message' => "User connected.",
                     'user'    => [
                         'id'        => $user->id,
                         'username'  => $user->username,
@@ -48,7 +49,7 @@ class ApiController extends BaseController
             } else {
                 $data = [
                     'success' => false,
-                    'message' => "Error, the account is not in the database"
+                    'message' => "Error, the account is not in the database."
                 ];
             }
         } else {
@@ -68,7 +69,7 @@ class ApiController extends BaseController
     public function getStores()
     {
         $validForm = User::checkForm($this->f3->get('POST'), array(
-            'user_id'       => 'required',
+            'user_id'  => 'required',
             'token_id' => 'required'
         ));
 
@@ -119,6 +120,10 @@ class ApiController extends BaseController
         $this->renderError($data);
     }
 
+    /**
+     * Add a tracker when user drag an store on a website
+     * POST /api/trackstore
+     */
     public function trackStore()
     {
         $validForm = User::checkForm($this->f3->get('POST'), array(
@@ -134,7 +139,7 @@ class ApiController extends BaseController
 
             if ($user !== null || !empty($user)) {
 
-                $trackerStore = TrackerStore::create(array(
+                TrackerStore::create(array(
                     'user_id'  => $this->f3->get('POST.user_id'),
                     'store_id' => $this->f3->get('POST.store_id'),
                     'on_url'   => $this->f3->get('POST.on_url'),

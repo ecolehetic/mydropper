@@ -44,6 +44,7 @@ class BaseController
         if ($file === true) {
             $tpl = $this->controller . '/' . $this->action . '.twig';
         } elseif ($file === false) {
+            header('Access-Control-Allow-Origin: *');
             header('Content-Type: application/json');
             echo json_encode($values);
             return;
