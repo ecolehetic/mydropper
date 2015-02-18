@@ -174,7 +174,7 @@ a {
     box-sizing: border-box;
     background: white;
     position: relative;
-    transition: all 0.6s ease;
+    transition: transform 0.6s ease;
     h1 {
         font-size: 2.4em;
         margin: 30px 0 0 0;
@@ -182,7 +182,7 @@ a {
     }
 }
 .container.containerLeft {
-    transition: all 1s ease;
+    transition: transform 1s ease;
     transform: translateX(250px);
 }
 

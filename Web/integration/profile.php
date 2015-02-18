@@ -10,7 +10,7 @@
             </div>
 
             <div id="avatarContainer">
-                <img src="../assets/images/avatar-demo.jpg" alt="avatar"/>
+                <img src="../assets/images/avatar-demo.jpg" class="animated zoomIn" alt="avatar"/>
 
                 <a class="ghostBtn" href="#" id="editButton">
                     <span>Edit profile</span>
@@ -23,7 +23,7 @@
             <form action="" class="disabled" id="editForm">
                 <div class="col">
                     <div class="form-group">
-                        <label for="firstname">Firstname :</label>
+                        <label for="firstname" >Firstname :</label>
                         <input type="text" name="firstname" placeholder="FirstName"
                                value="{{ values.firstname ? values.firstname : '' }}" disabled="disabled" required/>
                     </div>
@@ -62,7 +62,7 @@
 
                     <div class="form-group">
                         <input type="submit" class="hidden" value="Edit"/>
-                        <a href="#" id="submitEdit" class="ghostBtn submitBtn clearfix">
+                        <a href="#" id="submitEdit" class="ghostBtn submitBtn clearfix animated fadeInRight">
                             <span>Validate</span>
                         </a>
                     </div>
@@ -79,5 +79,4 @@
 <!--<script src="../assets/js/scripts.js"></script>-->
 <script src="../assets/js/views/ui.js"></script>
 <script src="../assets/js/controllers/mainCtrl.js"></script>
-<script src="../assets/js/authentification.js"></script>
 </body>

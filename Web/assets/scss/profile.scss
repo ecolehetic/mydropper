@@ -25,7 +25,7 @@ $greyTitle: #787878;
              position: absolute;
              bottom: 0;
              color: white;
-             left : 340px;
+             left : 400px;
              display: inline;
              h1 {
                  font-weight : normal;
@@ -40,6 +40,7 @@ $greyTitle: #787878;
          }
          #avatarContainer {
              width: 20%;
+             max-width: 228px;
              position: absolute;
              bottom: -120px;
              left: 100px;
@@ -58,7 +59,7 @@ $greyTitle: #787878;
      #bottomContainer {
          form {
              width : 50%;
-             margin-left : 340px;
+             margin-left : 400px;
              margin-top : 50px;
              .col {
                  width : 45%;
