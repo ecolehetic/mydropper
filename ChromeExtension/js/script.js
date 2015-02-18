@@ -83,8 +83,6 @@ function removeMarkDropZones() {
     $('.md-dropElmt').removeClass('md-dropElmt');
 }
 
-
-
 function initAccordeon() {
     $catLink = $('#accordeon .category h2');
     $dragList = $('#accordeon .category .dragList');
@@ -144,7 +142,6 @@ function initDraggable() {
         });
 
 } 
-
 
 function initDroppable() {
     console.log('dropZoneInit');

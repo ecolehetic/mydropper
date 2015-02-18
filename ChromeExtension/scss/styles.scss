@@ -1,59 +1,102 @@
+@import 'fonts';
+@import 'animation';
+$blue: #1f282d;
+$darkBlue: #131c22;
+$blueHover: #2f363c;
+$lightBlue: #424950;
+$midGrey: #9f9fa0;
+$greyLight: #e3e2e3;
+$greyTitle: #787878;
+$hoverSideBarLink: #bbe4f9;
+$mainFont: helvetica, arial, sans-serif;
 #myDropperSideBar {
     position: fixed;
     top: 0px;
     right: 0px;
     width: 300px;
     height: 100%;
-    background: #FFFFFF;
+    background: $blue;
     z-index: 999999;
     animation: slideInRight 1s ease;
     display: none;
-    font-family: helvetica, arial !important;
-    color: #212121;
+    font-family: $mainFont !important;
     border-left: 1px solid #727272;
+    color : white;
+
     * {
-         all: unset;
-         -webkit-all: unset;
+        all: unset;
+        -webkit-all: unset;
+        
+    }
+    .hidden {
+        display: none;
+    }
+    a {
+        color: white;
+        transition: all 0.5s ease;
+        &:hover {
+            color: $greyLight!important;
+        }
+    }
+    #sideBarContainer {
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
     }
     h1 {
         text-align: center;
+        display: block;
         font-size: 20px;
         font-family: helvetica, arial;
         width: 100%;
-        background: #607D8B;
+        background: $blue;
         padding: 20px 0;
         margin: 0;
         border-top: 5px solid #455A64;
         color: white;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        color: rgba(255, 255, 255, 0.9);    
     }
     #accordeon {
         width: 100%;
         list-style: none;
         .category {
+            position: relative;
+            border-bottom: 2px solid $darkBlue;
+            border-top: 1px solid $lightBlue;
+            display: block;
             transition: all 1s ease;
+            &:hover {
+                background: $blueHover;
+            }
+            span {
+                position: absolute;
+                top: 23px;
+                right: 20px;
+            }
             h2 {
-                width: 100%;
-                padding: 0 10px;
-                background: white;
                 height: 60px;
                 line-height: 63px;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.2);
                 margin: 0;
                 cursor: pointer;
-            }
-            .dragList.alwaysOpen {
-                height: auto !important;
-            }
-            .dragList.open {
+                background: $blue;
+                width: 100% !important;
+                padding: 0px 20px !important;
                 display: block;
+                box-sizing: border-box;
             }
             .dragList {
-                display: none;
+                max-height: 0;
+                display : block;
                 overflow: hidden;
                 list-style: none;
                 transition: all 1s ease;
                 cursor: pointer;
+                padding : 0;
+                margin : auto;
+                transition : all 0.5s ease;
                 li {
                     display: block;
                     width: 250px;
@@ -64,12 +107,21 @@
                     background: #CFD8DC;
                     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
                     cursor: pointer;
+                    &:last-child {
+                        margin-bottom: 20px;
+                    }
                 }
                 li.md-draging {
                     opacity: 0.9;
                     transform: rotate(-4deg);
                     transition: transform 1s ease;
                 }
+            }
+            .dragList.open {
+                display : block!important;
+                height: auto!important;
+                max-height : 1500px!important;
+                transition : all 0.5s ease!important;
             }
         }
     }
@@ -97,56 +149,175 @@
     }
     ul {
         padding: 0;
+        display : block;
+        margin : auto;
     }
-    #accordeon {
-        width: 300px;
-        list-style: none;
-        .category {
-            transition: all 1s ease;
-            h2 {
-                width: 280px;
-                padding: 0 10px;
-                background: white;
-                height: 60px;
-                line-height: 63px;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    form {
+        margin-top: 55px;
+        display: block;
+        font-weight: normal;
+        #submit {
+            display :none !important;
+        }
+        .form-group {
+            width: 80%;
+            display: block;
+            margin: 0 auto 25px auto;
+            color: white !important;
+            label {
+                width: 100%;
+                display: inline-block;
+                margin-right: 3%;
+                margin-bottom: 5px;
+                text-align: left;
+                color: white !important;
+                letter-spacing: 0.1rem;
+                vertical-align: middle;
+                outline-color: rgb(255, 255, 255);
+            }
+            input {
+                width: 92%;
+                padding: 4px 3%;
+                display: inline-block;
                 margin: 0;
-                cursor: pointer;
+                border: 0;
+                height: 26px;
+                line-height: 36px;
+                border-bottom: 1px solid white;
+                vertical-align: middle;
+                background: rgba(255, 255, 255, 0.5);
+                color: white;
+                &::-webkit-input-placeholder {
+                    color: black;
+                    opacity: 0.6
+                }
+                &:-moz-placeholder {
+                    color: black;
+                    opacity: 0.6;
+                }
+                &::-moz-placeholder {
+                    color: black;
+                    opacity: 0.6;
+                }
+                &:-ms-input-placeholder {
+                    color: black;
+                    opacity: 0.6
+                }
             }
-            .dragList.alwaysOpen {
-                height: auto !important;
-            }
-            .dragList.open {
+            input[type='submit'] {
                 display: block;
+                margin: auto;
             }
-            .dragList {
-                display: none;
-                overflow: visible;
-                list-style: none;
-                transition: all 1s ease;
-                cursor: pointer;
-                li {
-                    display: block;
-                    width: 250px;
-                    margin: auto;
-                    height: 50px;
-                    line-height: 50px;
-                    padding: 0 10px;
-                    background: #CFD8DC;
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-                    cursor: pointer;
-                    position: relative;
-                }
-                li.md-draging {
-                    opacity: 0.4;
-                    transition: transform 1s ease;
-                }
+            &:last-child {
+                margin-left: auto;
+            }
+        }
+        .button {
+            margin-top: 50px;
+            margin-top: 20px;
+        }
+    }
+    p {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        font-size: 0.9rem;
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        color: rgba(255, 255, 255, 0.95);
+        a {
+            border-bottom: 1px solid white;
+            transition: all 1s ease;
+            &:hover {
+                color: $greyTitle;
+                border-bottom: 1px solid $greyTitle;
             }
         }
     }
-    input {
-        height : 30px;
-        width : 80%;
+    #sessionInfo {
+        display: block;
+        text-align: right;
+        font-size: 0.9rem;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 90%;
+        padding: 5px 5%;
+        background: $blue;
+        z-index: 1000;
+        li {
+            &:after {
+                content: '  -  '
+            }
+            &:last-child:after {
+                display: none;
+            }
+        }
+    }
+    .button {
+        display: block;
+        overflow: hidden;
+        width: 155px;
+        height: 50px;
+        position: relative;
+        color: white;
+        display: block;
+        margin: 0 auto;
+        cursor: pointer;
+        transition: background 0.4s 0.5s;
+        background: rgba(0, 0, 0, 0.5);
+        text-align: center;
+        line-height: 54px;
+        &:hover {
+            color: white !important;
+            transition-delay: 0s;
+            background: rgba(0, 0, 0, 0.4);
+            svg {
+                line {
+                    transition-delay: 0.1s;
+                }
+            }
+        }
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            outline-style: none;
+            outline-width: 0px;
+            overflow: hidden;
+            display: block;
+            line {
+                stroke-width: 3;
+                stroke: rgba(200, 200, 200, 0.2);
+                fill: none;
+                transition: all 1s ease;
+            }
+        }
+    }
+    .button.float {
+        float: left;
+        &:first-child {
+            margin-right: 20px !important;
+        }
+    }
+    .button svg line.top, .button svg line.bottom {
+        stroke-dasharray: 155;
+    }
+    .button svg line.left, .button svg line.right {
+        stroke-dasharray: 50;
+    }
+    .button:hover svg line.top {
+        transform: translateX(-310px);
+    }
+    .button:hover svg line.bottom {
+        transform: translateX(310px);
+    }
+    .button:hover svg line.left {
+        transform: translateY(100px);
+    }
+    .button:hover svg line.right {
+        transform: translateY(-100px);
     }
 }
 #myDropperSideBar.hideBar {
@@ -156,9 +327,6 @@
     // box-shadow: 2px 2px 2px 2px #34cdf9;
 }
 .md-dragOver {
-    opacity : 0.4!important;
-    background : rgba(46, 204, 113,0.5)!important;
+    opacity: 0.4!important;
+    background: rgba(46, 204, 113, 0.5)!important;
 }
-/*-------------- animate -------------*/
-
-@import 'animation.scss';
