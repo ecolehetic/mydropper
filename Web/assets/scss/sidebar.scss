@@ -18,7 +18,8 @@ $mainFont: 'HelveticaNeue', helvetica, arial, sans-serif;
     width: 23%;
     max-width: 350px;
     min-width: 250px;
-    transition: transform 1s ease;
+    transition: transform 0.75s ease;
+    z-index:  10;
     &::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         background-color: #000;
@@ -46,8 +47,8 @@ $mainFont: 'HelveticaNeue', helvetica, arial, sans-serif;
             margin-top : 30px;
         }
     }
-    &.left {
-        transform: translateX(300px);
+    &.sideBarLeft {
+        transform: translateX(250px);
     }
     ul {
         list-style: none;

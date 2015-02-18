@@ -2,7 +2,7 @@
 <?php include('aside.php'); ?>
 
 <!-- MAIN CONTENT -->
-<div id="container">
+<div class="container">
 	<div id="dashboard">
 		<h1>Dashboard</h1>
 		<ul class="cardList clearfix">

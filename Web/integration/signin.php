@@ -6,7 +6,7 @@
 			<img src='../assets/images/myDropper-logo.png' id="logo" alt="logo MyDropper">
 			<h2>Store your data, save time, and reuse <br>
 			it quickly in an effective way !</h2>
-			<div class="container">
+			<div class="containerHome">
 					<form action="" id="inscriptionForm">
 						<div class="form-group">
 				            <label for="username">Username</label>
@@ -52,8 +52,8 @@
 				            <input type="password" name="password_2" placeholder="Repeat password" required/>
 				        </div>
 
-						<div class="form-group">
-							<input type="submit" class="hidden" value="Subscribe"/>
+                        <div class="form-group">
+                            <input type="submit" class="hidden" value="Subscribe"/>
 							<a href="#" class="button submitBtn" id="submitInscriptionForm">
 					            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
 			                        <line class="top" x1="0" y1="0" x2="465" y2="0" />

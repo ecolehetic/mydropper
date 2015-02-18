@@ -9,7 +9,7 @@
     }
     #homePage {
         #formFeedback {
-            left: calc(50% + 175px);
+            left: calc(50% + 180px);
         }
     }
 }
@@ -29,8 +29,29 @@
             margin-bottom : 30px;
         }
     }
+    #profilePage {
+        #topContainer {
+            height : 40%;
+            .text {
+                left : 230px;
+            }
+            #avatarContainer {
+                left: 45px;
+            }
+        }
+        #bottomContainer {
+            form {
+                width : calc(100% - 260px);
+                margin-left : 230px;
+                margin-top : 50px;
+            }
+        }
+    }
 }
-@media screen and (max-width: 700px) {
+
+
+
+@media screen and (max-width: 850px) {
     #burger {
         left: 15px;
     }
@@ -56,6 +77,11 @@
             display: none;
         }
     }
+    .ghostBtn {
+        width : 120px!important;
+        margin-left :auto;
+        margin-right :auto;
+    }
 }
 @media screen and (max-width: 480px) {
     header {
@@ -65,11 +91,11 @@
         }
         #profile {
             img {
-                right: 20px;
+                right: 15px;
             }
             #profileMenu {
                 &:before {
-                    right: 13px;
+                    right: 8px;
                     left: auto;
                 }
             }
