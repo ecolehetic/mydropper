@@ -9,7 +9,7 @@ namespace APP\MODELS;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Tag extends Eloquent
+class Category extends Eloquent
 {
 
     protected $table = 'categories';
