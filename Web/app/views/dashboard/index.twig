@@ -1,4 +1,4 @@
-{% extends layout ~ '/dashboard.twig' %}
+{% extends layout ~ '/layout.twig' %}
 
 
 {% block right %}
@@ -17,14 +17,13 @@
     </div>
     <div class="stores">
         <h3>Stores</h3>
-        <a href="/stores/create">Add a snippet</a>
+        <a href="{{ url('/stores/create') }}">Add a snippet</a>
         <ul>
            {% for store in stores %}
             <li>
                 Label : {{ store.label }} <br/>
                 content : {{ store.descript }}<br/>
-                {{ store.trackerstores.0.on_url | dump }} <br/>
-                <a class="del" href="stores/delete/{{ store.id }}">Delete</a>
+                <a class="del" href="{{ url('/stores/delete',[store.id]) }}">Delete</a>
                 <h4>Trackers</h4>
                     <ul>
                     {% for tracker in store.trackerstores %}

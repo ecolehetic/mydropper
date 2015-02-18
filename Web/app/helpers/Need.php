@@ -145,6 +145,7 @@ class Need extends BaseHelper
      */
     public function execute()
     {
+
         if($this->choose === self::LOGGED && $this->testLogged() === true){
             $this->error(self::LOGGED);
             return;
@@ -155,10 +156,13 @@ class Need extends BaseHelper
             return;
         }
 
-        if($this->checkLevel($this->level) === false){
-            $this->error(self::LEVEL);
-            return;
+        if($this->level !== null){
+            if($this->checkLevel($this->level) === false){
+                $this->error(self::LEVEL);
+                return;
+            }
         }
+
 
         if($this->user === true && $this->testLogged() === false){
             return $this->f3->get('SESSION.user');

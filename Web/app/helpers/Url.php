@@ -26,11 +26,11 @@ class Url extends BaseHelper
         $url = 'http://'.$host.$prefix.$path;
 
         foreach ($params as $param) {
-            $url .= $param.'/';
+            $url .= '/'.$param;
         }
 
         return $url;
 
     }
-   
+
 }

@@ -32,9 +32,9 @@ class Twig extends BaseHelper
         // Dump Filter
         $Twig_env->addFilter('dump', new Twig_Filter_Function('var_dump'));
         // URL Generator
-        $Twig_env->addFunction(new \Twig_SimpleFunction('url', function ($path, $params = []) {
+        $Twig_env->addFunction(new \Twig_SimpleFunction('url', function ($path, $params = [], $is_admin = false) {
             $urlHelper = new Url();
-            return $urlHelper->generate($path, $params);
+            return $urlHelper->generate($path, $params, $is_admin);
         }));
         // Asset Function
         $Twig_env->addFunction(new \Twig_SimpleFunction('asset', function ($type, $asset, $extern) {
