@@ -37,9 +37,6 @@ var UI = {
 
 		'openBurgerMenu' : function() {
 			UI.nav.burgerTrigger = true;
-			/*$('#row3').stop().transition({"rotate": "45", "margin-top": "13px"});
-			$('#row2').stop().transition({"opacity": "0"}, "fast");
-			$('#row1').stop().transition({"rotate": "-45", "margin-top": "13px"});*/
 
 			UI.nav.$burger.addClass('burgerOpen');
 
@@ -67,6 +64,7 @@ var UI = {
 					.removeClass('sideBarLeft');
 			}, 700);
 		},
+
 		'accordeonToggle' : function(self){
 			var $snippetsList = self.siblings('ul');
 			var $plusMinus = self.siblings('span');
@@ -96,27 +94,32 @@ var UI = {
 
 	'profile' : {
 		'$menu' : $('#profileMenu'),
-		'toggleEdition' : function(){
-			var $form = $('#editForm'),
-				$editmsg = $('#editButton span'),
-				$inputs = $form.find('input'),
-				$htmlForm = $form.html();
+		'$form' : $('#editForm'),
+		'$editmsg' : $('#editButton span'),
+		'$inputs' : $('#editForm input'),
+		'$htmlForm' : $('#editForm').html(),
 
-			if($form.hasClass('disabled')){
-				$editmsg.html('Cancel');
-				$form
-					.addClass('enabled')
-					.removeClass('disabled');
-				$inputs.removeAttr('disabled');
-			}else{
-				$editmsg.html('Edit profile');
-				$form
-					.addClass('disabled')
-					.removeClass('enabled');
-				$form.html($htmlForm).promise().done(function(){
-					$('#editForm input').prop( "disabled", true );
+		'toggleEdition' : function() {
+			if (UI.profile.$form.hasClass('disabled')) {
+				UI.profile.$editmsg.html('Cancel');
+				UI.profile.$form.addClass('enabled').removeClass('disabled');
+				$('#editForm input').prop('disabled',false);
+			}
+			else {
+				UI.profile.$editmsg.html('Edit profile');
+				UI.profile.$form.addClass('disabled').removeClass ('enabled');
+				UI.profile.$form.html(UI.profile.$htmlForm).promise ().done (function () {
+					UI.profile.$inputs.prop('disabled',true);
 				});
 			}
+		}
+	},
+
+	'tracking' : {
+		'$allTabs' : $( '#tabs li' ),
+		'toggleTabs' : function(self) {
+			UI.tracking.$allTabs.removeClass('selected');
+			self.addClass('selected');
 		}
 	}
 

@@ -3,7 +3,9 @@
 <script
     src="http://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js"></script>
 <!--<script src="../assets/js/scripts.js"></script>-->
+
+<script src="../assets/js/libs/chartist.min.js"></script>
 <script src="../assets/js/views/ui.js"></script>
+<script src="../assets/js/views/graphs.js"></script>
 <script src="../assets/js/controllers/mainCtrl.js"></script>
-<script src="../assets/js/authentification.js"></script>
 </body>
