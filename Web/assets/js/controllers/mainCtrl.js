@@ -83,40 +83,30 @@ $(document).ready(function() {
 	// ----- Add Category
 	$('#addCategory').click(function(e){
 	    e.preventDefault();
-		$( "#popin" ).fadeIn();
-		$( "#addCategoryFormContainer").show();
-		$( "#addSnippetFormContainer").hide();
+		UI.popin.showAddCategory();
 	});
 	// ----- Add Snippet
 	$('.addSnippetLink').click(function(e){
 	    e.preventDefault();
-		$( "#popin" ).fadeIn();
-		$( "#addCategoryFormContainer").hide();
-		$( "#addSnippetFormContainer").show();
+		UI.popin.showAddSnippet();
 	});
 	// ----- Close PopIn
 	$('#closePopin, #popinBg').click(function(e){
 		e.preventDefault();
-		$( "#popin" ).fadeOut();
+		UI.popin.closePopin();
 	});
+
+
 	// ----- Check URL for traking
 	$('#addSnippetForm textarea').keyup(function(e){
 	    e.preventDefault();
 		var $str = $( this ).val();
 
 		if(validateUrl($str)){
-			console.log('true');
-			$('#urlCheckbox').removeClass('disabled');
-
-			$( "#urlCheckbox input" ).prop( "disabled", false );
-
+			UI.popin.enableCheckbox();
 		}
 		else {
-			console.log('false');
-			$('#urlCheckbox').addClass('disabled');
-			$( "#urlCheckbox input" )
-				.prop( "disabled", true )
-				.prop( "checked", false);
+			UI.popin.disableCheckbox();
 		}
 	});
 

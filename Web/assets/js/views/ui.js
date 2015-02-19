@@ -87,6 +87,32 @@ var UI = {
 		}
 	},
 
+	'popin' : {
+		'showAddCategory' : function(){
+			$( "#popin" ).fadeIn();
+			$( "#addCategoryFormContainer").show();
+			$( "#addSnippetFormContainer").hide();
+		},
+		'showAddSnippet' : function(){
+			$( "#popin" ).fadeIn();
+			$( "#addCategoryFormContainer").hide();
+			$( "#addSnippetFormContainer").show();
+		},
+		'closePopin' : function(){
+			$( "#popin" ).fadeOut();
+		},
+		'enableCheckbox' : function(){
+			$('#urlCheckbox').removeClass('disabled');
+			$( "#urlCheckbox input" ).prop( "disabled", false );
+		},
+		'disableCheckbox' : function(){
+			$('#urlCheckbox').addClass('disabled');
+			$( "#urlCheckbox input" )
+				.prop( "disabled", true)
+				.prop( "checked", false);
+		}
+	},
+
 	'dashboard' : {
 		'$sideBar' : $('#sideBar'),
 		'$headerRight' : $('.headerContent'),
