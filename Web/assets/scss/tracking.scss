@@ -1,7 +1,8 @@
 $borderGrey : #bcbdbc;
 $greenLight : #eef3ee;
 $greenLightHover : #d8dedb;
-
+$blueDonut : #bbe4f9;
+$blueOpacityTopGraph : #1AAAF2;
 #tracking {
     #tabs {
         display : block;
@@ -28,6 +29,35 @@ $greenLightHover : #d8dedb;
             background : $greenLightHover;
         }
     }
+    .categoryGraphContainer {
+
+        .deltaGraphContainer {
+            width : 25%;
+            float : left;
+            .inputGroup {
+                display : block;
+                margin : auto;
+                width : 50%;
+                margin-top : 25px;
+                label {
+                    display: block;
+                }
+                input {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+        .categoryGraph {
+            width: 70%;
+            height : 200px;
+            float : left;
+            .ct-series-a path:first-child {
+                fill : $blueOpacityTopGraph !important;
+            }
+        }
+    }
+
     #snippetGraphList {
         display : block;
         width: 100%;
@@ -62,9 +92,24 @@ $greenLightHover : #d8dedb;
                 p {
                     font-size : 0.9rem;
                 }
+                .ct-series-a .ct-bar {
+                    stroke : #e5e5e5 !important;
+                }
             }
             .clickRateGraphContainer {
                 width : 25%;
+                text-align: center;
+                .ct-chart .ct-series.ct-series-a {
+                    .ct-slice.ct-donut {
+                        stroke : $blueDonut;
+                    }
+                    text {
+                        font-size: 2rem;
+                    }
+                }
+                .ct-series-b {
+                    stroke : #fdfdfd;
+                }
             }
             .snippetGraphContainer {
                 width : 50%;

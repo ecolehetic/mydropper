@@ -20,9 +20,10 @@ var Graph = {
 
 			$categoryGraph.on('mouseenter', '.ct-point', function() {
 				var $point = $(this),
-					value = $point.attr('ct:value'),
+					value = $point.attr('ct:value') + ' click(s)',
 					seriesName = $point.parent().attr('ct:series-name');
-				$toolTip.html(seriesName + '<br>' + value).show();
+				//$toolTip.html(seriesName + '<br>' + value).show();
+				$toolTip.html(value).show();
 			});
 
 			$categoryGraph.on('mouseleave', '.ct-point', function() {
@@ -71,7 +72,7 @@ var Graph = {
 
 			var options = {
 				donut: true,
-				donutWidth: 40,
+				donutWidth: 20,
 				total: 100,
 				labelInterpolationFnc: function(value) {
 					return value + '%';

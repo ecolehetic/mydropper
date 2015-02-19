@@ -18,9 +18,21 @@
         </ul>
         <!--<div id="line-graph" class="line-graph"></div>-->
 
-        <div class="categoryGraph ct-chart">
-
+        <div class="categoryGraphContainer clearfix">
+            <div class="deltaGraphContainer">
+                <div class="inputGroup">
+                    <label>From : </label>
+                    <input type="date" id="from"/>
+                </div>
+                <div class="inputGroup">
+                    <label>To : </label>
+                    <input type="date" id="from"/>
+                </div>
+            </div>
+            <div class="categoryGraph ct-chart">
+            </div>
         </div>
+
 
         <ul id="snippetGraphList">
             <li>
@@ -30,7 +42,7 @@
                 </div>
 
                 <div class="clickRateGraphContainer">
-                    <div class="clickRateGraph ct-chart">
+                    <div class="clickRateGraph ct-chart .ct-square">
                     </div>
                     Click rate
                 </div>
@@ -38,31 +50,37 @@
                 <div class="snippetGraphContainer clearfix">
                     <div class="snippetGraph ct-chart"></div>
                 </div>
-            </li><li>
+            </li>
+            <li>
                 <div class="snippetDetails">
-                    <h2>Snippets 2</h2>
+                    <h2>Snippets 1</h2>
                     <p>Create at 12/02/2015</p>
                 </div>
 
-                <div class="circularGraph">
-                    Click Rate
+                <div class="clickRateGraphContainer">
+                    <div class="clickRateGraph ct-chart .ct-square">
+                    </div>
+                    Click rate
                 </div>
 
-                <div class="stickGraph">
-                    test
+                <div class="snippetGraphContainer clearfix">
+                    <div class="snippetGraph ct-chart"></div>
                 </div>
-            </li><li>
+            </li>
+            <li>
                 <div class="snippetDetails">
-                    <h2>Snippets 3</h2>
+                    <h2>Snippets 1</h2>
                     <p>Create at 12/02/2015</p>
                 </div>
 
-                <div class="circularGraph">
-                    Click Rate
+                <div class="clickRateGraphContainer">
+                    <div class="clickRateGraph ct-chart .ct-square">
+                    </div>
+                    Click rate
                 </div>
 
-                <div class="stickGraph clearfix">
-                    test
+                <div class="snippetGraphContainer clearfix">
+                    <div class="snippetGraph ct-chart"></div>
                 </div>
             </li>
         </ul>
