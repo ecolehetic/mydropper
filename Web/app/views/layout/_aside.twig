@@ -17,6 +17,9 @@
     <div id="row3"></div>
 </div>
 
+<!-- POPIN -->
+{% include 'layout/_popin.twig' %}
+
 <div id="sideBar">
     <nav>
         <ul id="menu">
@@ -36,7 +39,10 @@
                             <span>+</span>
                             <ul class="snippetsList">
                                 <li>
-                                    <a href="{{ url('/store/add') }}" class="addSnippetLink"><i class="icon-plus"></i>Add a snippet</a>
+                                    <a href="{{ url('/store/add') }}" class="addSnippetLink" data-id="{{ category.category_id }}">
+                                        <i class="icon-plus"></i>
+                                        Add a snippet
+                                    </a>
                                 </li>
                                 {% for store in category.stores %}
                                     <li>
@@ -49,7 +55,7 @@
                 </ul>
             </li>
         </ul>
-        <a href="{{ url('/') }}" class="button">
+        <a href="#" class="button" id="addCategory">
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                 <line class="top" x1="0" y1="0" x2="465" y2="0" />
                 <line class="left" x1="0" y1="50" x2="0" y2="-100" />

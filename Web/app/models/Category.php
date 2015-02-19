@@ -7,12 +7,14 @@
  */
 namespace APP\MODELS;
 
+use GUMP;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Category extends Eloquent
 {
 
     protected $table = 'categories';
+    protected $guarded = array('id');
 
     public function users()
     {
@@ -43,6 +45,21 @@ class Category extends Eloquent
         }else{
             return false;
         }
+    }
+
+    /**
+     * Check form
+     *
+     * @param $formData
+     * @param array $rules
+     *
+     * @return string
+     */
+    public static function checkForm($formData, $rules)
+    {
+        $is_valid = GUMP::is_valid($formData, $rules);
+
+        return $is_valid;
     }
 
 }

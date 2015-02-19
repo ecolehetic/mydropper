@@ -11,15 +11,16 @@ use APP\MODELS\Category as Category;
  */
 class StoresController extends BaseController
 {
+
     /**
-     * GET|POST /stores/create/@cat_id
+     * POST /stores/create
      */
     public function create()
     {
 
         $user = $this->need->logged('/users/login')->user()->execute();
 
-        $cat_id = $this->f3->get('PARAMS.cat_id');
+        $cat_id = $this->f3->get('POST.category_id');
 
         if (!Category::isOwnedBy($cat_id, $user->id)) {
             $this->f3->reroute('/history', true);
@@ -31,19 +32,16 @@ class StoresController extends BaseController
             if ($is_valid) {
                 $post = $this->f3->get('POST');
                 Store::create([
-                    'user_id' => $user->id,
-                    'label' => $post['label'],
-                    'descript' => $post['descript'],
+                    'user_id'     => $user->id,
+                    'label'       => $post['label'],
+                    'descript'    => $post['descript'],
                     'category_id' => $post['category_id']
                 ]);
                 $this->fMessage->set('Record Complete');
                 $this->f3->reroute('/history', true);
             }
         }
-        $this->render(true, [
-            'values' => $this->f3->get('POST'),
-            'cat_id' => $cat_id
-        ]);
+
     }
 
     /**
@@ -76,7 +74,7 @@ class StoresController extends BaseController
 
         $this->render(true, [
             'values' => $store,
-            'id' => $id
+            'id'     => $id
         ]);
 
 
@@ -103,11 +101,8 @@ class StoresController extends BaseController
         }
     }
 
-    /*
-     * GET /admin/stores/index
-     */
     /**
-     *
+     * GET /admin/stores/index
      */
     public function admin_index()
     {

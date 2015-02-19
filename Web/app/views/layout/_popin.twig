@@ -1,0 +1,47 @@
+<!-- Popin for add category and snippets -->
+<div id="popin">
+    <div id="popinBg" class="animated fadeIn">
+    </div>
+    <div id="addCategoryFormContainer" class="popinContent animated zoomIn">
+        <div id="closePopin"><i class="icon-close"></i></div>
+        <h2>Add a category</h2>
+        <form method="POST" action="{{ url('/category/create') }}" class="formData" id="addCategoryForm">
+            <div class="form-group">
+                <label for="dataName">Name :</label>
+                <input type="text" name="category" placeholder="Name" required/>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="hidden" value="addData"/>
+                <a href="#" id="submitEdit" class="ghostBtn submitBtn clearfix animated fadeInRight">
+                    <span>Validate</span>
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <div id="addSnippetFormContainer" class="popinContent animated zoomIn">
+        <div id="closePopin"><i class="icon-close"></i></div>
+        <h2>Add a snippet</h2>
+        <form method="POST" action="{{ url('/stores/create') }}" class="formData" id="addSnippetForm">
+            <div class="form-group">
+                <label for="dataName">Name :</label>
+                <input type="text" name="label" placeholder="Name" required/>
+            </div>
+            <div class="form-group">
+                <label for="content">Content :</label>
+                <textarea name="descript" form="addSnippetForm" placeholder="Enter your snippet content here ..."></textarea>
+            </div>
+            <div class="form-group disabled" id="urlCheckbox">
+                <input type="checkbox" value="trackedLink" disabled> I want my link shortered and tracked.<br>
+            </div>
+            <input type="hidden" id="categoryID" value="" name="category_id">
+            <div class="form-group">
+                <input type="submit" class="hidden" value="addData"/>
+                <a href="#" id="submitEdit" class="ghostBtn submitBtn clearfix animated fadeInRight">
+                    <span>Validate</span>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
