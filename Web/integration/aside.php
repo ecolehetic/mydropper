@@ -5,8 +5,8 @@
         <div id="profile">
             <img src="../assets/images/incognito.jpg" alt="Profile picture">
             <ul id="profileMenu">
-                <li>Settings</li>
-                <li>Log out</li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Log out</a></li>
             </ul>
         </div>
     </header>
