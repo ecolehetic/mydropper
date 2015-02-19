@@ -9,7 +9,7 @@ namespace APP\MODELS;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Tag extends Eloquent
+class Category extends Eloquent
 {
 
     protected $table = 'categories';
@@ -23,4 +23,26 @@ class Tag extends Eloquent
     {
         return $this->hasMany('\APP\MODELS\Store');
     }
+
+    /**
+     * Check if user owns a particular category
+     *
+     * @param null $cat_id
+     * @param null $user_id
+     * @return bool
+     */
+    public static function isOwnedBy($cat_id=null, $user_id=null)
+    {
+        if($cat_id !== null && $user_id !== null){
+            $cat = Category::find($cat_id);
+            if($cat->user_id == $user_id){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
 }

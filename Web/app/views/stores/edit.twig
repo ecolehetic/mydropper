@@ -1,0 +1,19 @@
+{% extends layout ~ '/layout.twig' %}
+{% block right %}
+    <h1>Edit Store</h1>
+    <form method="post" action="{{ url('/stores/edit', [id]) }}">
+        <div class="form-group">
+            <label for="label">Label</label>
+            <input type="text" placeholder="Label" name="label"
+                   value="{{ values.label ? values.label : '' }}" required/>
+        </div>
+        <div class="form-group">
+            <label for="descript">Description</label>
+            <textarea name="descript">
+                {{ values.descript ? values.descript : '' }}
+            </textarea>
+        </div>
+        <input type="submit" value="Ajouter">
+    </form>
+
+{% endblock %}
