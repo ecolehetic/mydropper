@@ -26,7 +26,7 @@ class Store extends Eloquent
 
     public function categories()
     {
-        return $this->belongsTo('\APP\MODELS\Category', 'store_id');
+        return $this->belongsTo('\APP\MODELS\Category', 'category_id');
     }
 
     public function trackerstores()

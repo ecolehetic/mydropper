@@ -1,5 +1,10 @@
-{% extends layout ~ '/layout.twig' %}
-{% block right %}
+{% extends 'layout/layout.twig' %}
+
+{% block aside %}
+    {% include 'layout/aside.twig' %}
+{% endblock %}
+
+{% block content %}
     <h1>Edit Store</h1>
     <form method="post" action="{{ url('/stores/edit', [id]) }}">
         <div class="form-group">
