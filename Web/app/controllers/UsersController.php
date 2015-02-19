@@ -18,7 +18,7 @@ class UsersController extends BaseController
      */
     public function subscribe()
     {
-        $this->need->unLogged('/dashboard')->execute();
+        $this->need->unLogged('/history')->execute();
 
         $this->render(true);
     }
@@ -87,7 +87,7 @@ class UsersController extends BaseController
      */
     public function login()
     {
-        $this->need->unLogged('/dashboard')->execute();
+        $this->need->unLogged('/history')->execute();
 
         $this->render(true, [
             'values'   => ($this->f3->get('SESSION.user.username')) ? $this->f3->get('SESSION.user.username') : '',
@@ -113,7 +113,7 @@ class UsersController extends BaseController
             if ($user !== null) {
                 $this->f3->set('SESSION.user', $user);
                 $this->fMessage->set('You are successfully logged');
-                $this->f3->reroute('/dashboard', true);
+                $this->f3->reroute('/history', true);
             } else {
                 $validForm[] = "User don't exist";
             }
@@ -130,7 +130,7 @@ class UsersController extends BaseController
      */
     public function lostPassword()
     {
-        $this->need->unLogged('/dashboard')->execute();
+        $this->need->unLogged('/history')->execute();
 
         $this->render(true);
     }

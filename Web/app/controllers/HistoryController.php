@@ -5,11 +5,11 @@ namespace APP\CONTROLLERS;
 use APP\MODELS\Store as Store;
 use APP\MODELS\TrackerStore as TrackerStore;
 
-class DashboardController extends BaseController
+class HistoryController extends BaseController
 {
 
     /*
-     * GET /dashboard
+     * GET /history
      */
     public function index()
     {

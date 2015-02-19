@@ -22,7 +22,7 @@ class StoresController extends BaseController
         $cat_id = $this->f3->get('PARAMS.cat_id');
 
         if (!Category::isOwnedBy($cat_id, $user->id)) {
-            $this->f3->reroute('/dashboard', true);
+            $this->f3->reroute('/history', true);
         }
 
         if ($this->f3->get('POST')) {
@@ -37,7 +37,7 @@ class StoresController extends BaseController
                     'category_id' => $post['category_id']
                 ]);
                 $this->fMessage->set('Record Complete');
-                $this->f3->reroute('/dashboard', true);
+                $this->f3->reroute('/history', true);
             }
         }
         $this->render(true, [
@@ -56,7 +56,7 @@ class StoresController extends BaseController
         $id = (int)($this->f3->get('PARAMS.id'));
 
         if (!Store::isOwnedBy($id, $user->id)) {
-            $this->f3->reroute('/dashboard', true);
+            $this->f3->reroute('/history', true);
         }
 
         if ($this->f3->get('POST')) {
@@ -68,7 +68,7 @@ class StoresController extends BaseController
             $store->save();
 
             $this->fMessage->set('Record Updated');
-            $this->f3->reroute('/dashboard', true);
+            $this->f3->reroute('/history', true);
 
         } else {
             $store = Store::find($id);
@@ -92,14 +92,14 @@ class StoresController extends BaseController
         $id = (int)($this->f3->get('PARAMS.id'));
 
         if (!Store::isOwnedBy($id, $user->id)) {
-            $this->f3->reroute('/dashboard', true);
+            $this->f3->reroute('/history', true);
         }
         if (Store::destroy($id) > 0) {
             $this->fMessage->set('delete complete');
-            $this->f3->reroute('/dashboard', true);
+            $this->f3->reroute('/history', true);
         } else {
             $this->fMessage->set('error on delete');
-            $this->f3->reroute('/dashboard', true);
+            $this->f3->reroute('/history', true);
         }
     }
 
