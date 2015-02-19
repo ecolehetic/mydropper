@@ -6,6 +6,6 @@
 
 <script src="../assets/js/libs/chartist.min.js"></script>
 <script src="../assets/js/views/ui.js"></script>
-<script src="../assets/js/views/graphs.js"></script>
+<script src="../assets/js/views/graphUI.js"></script>
 <script src="../assets/js/controllers/mainCtrl.js"></script>
 </body>

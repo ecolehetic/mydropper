@@ -1,6 +1,6 @@
 "use strict";
 
-var Graph = {
+var GraphUI = {
 	'category' : {
 		'init' : function(selector, importLabels, importSeries){
 			new Chartist.Line(selector, {

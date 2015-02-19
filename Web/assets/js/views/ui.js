@@ -31,17 +31,15 @@ var UI = {
 		'burgerTrigger' : false,
 		'$searchBar' : $('#searchBar'),
 		'$burger' : $('#burger'),
-		'$catLink' : $('.categoryElement a'),
-		'$allPlusMinus' : $('.categoryElement span'),
+		'$catLink' : $('.categoryElement').find('a'),
+		'$allPlusMinus' : $('.categoryElement').find('span'),
 		'$allSnippetsList' : $('.snippetsList'),
 
 		'openBurgerMenu' : function() {
 			UI.nav.burgerTrigger = true;
 
 			UI.nav.$burger.addClass('burgerOpen');
-
 			UI.dashboard.$container.addClass('containerLeft');
-
 			UI.dashboard.$sideBar
 				.css('marginLeft', '-250px')
 				.show();
@@ -87,36 +85,42 @@ var UI = {
 		}
 	},
 
-	'popin' : {
-		'showAddCategory' : function(){
-			$( "#popin" ).fadeIn();
-			$( "#addCategoryFormContainer").show();
-			$( "#addSnippetFormContainer").hide();
-		},
-		'showAddSnippet' : function(){
-			$( "#popin" ).fadeIn();
-			$( "#addCategoryFormContainer").hide();
-			$( "#addSnippetFormContainer").show();
-		},
-		'closePopin' : function(){
-			$( "#popin" ).fadeOut();
-		},
-		'enableCheckbox' : function(){
-			$('#urlCheckbox').removeClass('disabled');
-			$( "#urlCheckbox input" ).prop( "disabled", false );
-		},
-		'disableCheckbox' : function(){
-			$('#urlCheckbox').addClass('disabled');
-			$( "#urlCheckbox input" )
-				.prop( "disabled", true)
-				.prop( "checked", false);
-		}
-	},
-
 	'dashboard' : {
 		'$sideBar' : $('#sideBar'),
 		'$headerRight' : $('.headerContent'),
 		'$container' : $('.container')
+	},
+
+	'popin' : {
+		'el' : $( "#popin" ),
+		'categoryContainer' : $( "#addCategoryFormContainer"),
+		'snippetContainer' : $( "#addSnippetFormContainer"),
+		'urlCheckboxContainer' : $( '#urlCheckbox' ),
+		'urlCheckbox' : $( '#urlCheckbox').find('input'),
+
+		'showAddCategory' : function(){
+			UI.popin.el.fadeIn();
+			UI.popin.categoryContainer.show();
+			UI.popin.snippetContainer.hide();
+		},
+		'showAddSnippet' : function(){
+			UI.popin.el.fadeIn();
+			UI.popin.categoryContainer.hide();
+			UI.popin.snippetContainer.show();
+		},
+		'closePopin' : function(){
+			UI.popin.el.fadeOut();
+		},
+		'enableCheckbox' : function(){
+			UI.popin.urlCheckboxContainer.removeClass('disabled');
+			UI.popin.urlCheckbox.prop( "disabled", false );
+		},
+		'disableCheckbox' : function(){
+			UI.popin.urlCheckboxContainer.addClass('disabled');
+			UI.popin.urlCheckbox
+				.prop( "disabled", true)
+				.prop( "checked", false);
+		}
 	},
 
 	'profile' : {
@@ -143,11 +147,12 @@ var UI = {
 	},
 
 	'tracking' : {
-		'$allTabs' : $( '#tabs li' ),
 		'toggleTabs' : function(self) {
-			UI.tracking.$allTabs.removeClass('selected');
+			$('#tabs').find('li').removeClass('selected');
 			self.addClass('selected');
 		}
 	}
 
 };
+
+console.log(UI);
