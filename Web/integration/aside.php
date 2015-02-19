@@ -22,13 +22,38 @@
     <div id="popin">
         <div id="popinBg" class="animated fadeIn">
         </div>
-        <div id="popinContent" class="animated zoomIn">
+        <div id="addCategoryFormContainer" class="popinContent animated zoomIn">
             <div id="closePopin"><i class="icon-close"></i></div>
             <h2>Add a category</h2>
-            <form action="" class="formData">
+            <form action="" class="formData" id="addCategoryForm">
                 <div class="form-group">
                     <label for="dataName">Name :</label>
                     <input type="text" name="dataName" placeholder="dataName" required/>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="hidden" value="addData"/>
+                    <a href="#" id="submitEdit" class="ghostBtn submitBtn clearfix animated fadeInRight">
+                        <span>Validate</span>
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <div id="addSnippetFormContainer" class="popinContent animated zoomIn">
+            <div id="closePopin"><i class="icon-close"></i></div>
+            <h2>Add a snippet</h2>
+            <form action="" class="formData" id="addSnippetForm">
+                <div class="form-group">
+                    <label for="dataName">Name :</label>
+                    <input type="text" name="dataName" placeholder="dataName" required/>
+                </div>
+                <div class="form-group">
+                    <label for="content">Content :</label>
+                    <textarea name="content" form="addSnippetForm" placeholder="Enter your snippet content here ..."></textarea>
+                </div>
+                <div class="form-group disabled" id="urlCheckbox">
+                    <input type="checkbox" value="trackedLink" disabled> I want my link shortered and tracked.<br>
                 </div>
 
                 <div class="form-group">
@@ -58,6 +83,9 @@
                             <a href="#" class="categoryName"><i class="icon-folder"></i> Category</a>
                             <span>+</span>
                             <ul class="snippetsList">
+                                <li>
+                                    <a href="{{ url('/store/add') }}" class="addSnippetLink"><i class="icon-plus"></i>Add a snippet</a>
+                                </li>
                                 <li><a href="#"><i class="icon-tag"></i> Snipet 1</a>
                                 </li>
                                 <li><a href="#"><i class="icon-tag"></i> Snipet 2</a>
@@ -68,6 +96,9 @@
                             <a href="#" class="categoryName"><i class="icon-folder"></i> Category Name 2</a>
                             <span>+</span>
                             <ul class="snippetsList">
+                                <li>
+                                    <a href="{{ url('/store/add') }}" class="addSnippetLink"><i class="icon-plus"></i>Add a snippet</a>
+                                </li>
                                 <li><a href="#"><i class="icon-tag"></i> Snipet TEST 1</a>
                                 </li>
                                 <li><a href="#"><i class="icon-tag"></i> Snipet TEST 2</a>

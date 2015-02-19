@@ -29,7 +29,7 @@ $(document).ready(function() {
 	);
 
 	/* ACCORDEON MENU */
-	$( '.categoryElement a' ).click( function(e){
+	$( '.categoryElement > a').click( function(e){
 		UI.nav.accordeonToggle($(this));
 	});
 
@@ -42,7 +42,7 @@ $(document).ready(function() {
 	/* SUBMIT FORM */
 	$('.submitBtn').click( function(e){
 		e.preventDefault();
-		$("input[type='submit']").trigger('click');
+		$( this ).siblings("input[type='submit']").trigger('click');
 	});
 
 	/* TRACKING TABS */
@@ -79,12 +79,55 @@ $(document).ready(function() {
 	}
 
 	/* POPIN ADD DATA */
-	$('#closePopin, #popinBg').click(function(e){
-	    e.preventDefault();
-	    $( "#popin" ).fadeOut();
-	});
+
+	// ----- Add Category
 	$('#addCategory').click(function(e){
 	    e.preventDefault();
 		$( "#popin" ).fadeIn();
+		$( "addSnippetFormContainer").hide();
 	});
+	// ----- Add Snippet
+	$('.addSnippetLink').click(function(e){
+	    e.preventDefault();
+		$( "#popin" ).fadeIn();
+		$( "addSnippetFormContainer").hide();
+	});
+	// ----- Close PopIn
+	$('#closePopin, #popinBg').click(function(e){
+		e.preventDefault();
+		$( "#popin" ).fadeOut();
+	});
+	// ----- Check URL for traking
+	$('#addSnippetForm textarea').keyup(function(e){
+	    e.preventDefault();
+		var $str = $( this ).val();
+
+		if(validateUrl($str)){
+			console.log('true');
+			$('#urlCheckbox').removeClass('disabled');
+
+			$( "#urlCheckbox input" ).prop( "disabled", false );
+
+		}
+		else {
+			console.log('false');
+			$('#urlCheckbox').addClass('disabled');
+			$( "#urlCheckbox input" ).prop( "disabled", true );
+		}
+	});
+
+	function validateUrl(str) {
+		var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+		'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+		'((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+		'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+		'(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+		'(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+		if(!pattern.test(str)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 });

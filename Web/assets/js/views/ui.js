@@ -70,7 +70,7 @@ var UI = {
 			var $plusMinus = self.siblings('span');
 
 			if (!$snippetsList.is(":visible")) {
-				// If Closed
+				// If Panel Closed
 				UI.nav.$allSnippetsList.slideUp("slow");
 				$snippetsList.slideDown("slow");
 
@@ -78,7 +78,8 @@ var UI = {
 				$plusMinus.html('-');
 
 			} else {
-				// If Opened
+				// If Panel Opened
+
 				UI.nav.$allSnippetsList.slideUp("slow");
 				UI.nav.$allPlusMinus.html('+');
 

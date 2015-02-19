@@ -202,7 +202,7 @@ a {
     transition: background 0.4s 0.5s;
     background: rgba(0, 0, 0, 0.5);
     text-align: center;
-    line-height: 54px;
+    line-height: 52px;
     &:hover {
         color: white !important;
         transition-delay: 0s;
@@ -296,7 +296,7 @@ a {
     left: 0;
     z-index : 10000;
 
-    #popinContent {
+    .popinContent {
         position : absolute;
         width : 50%;
         left : 25%;
@@ -345,10 +345,30 @@ a {
             width: 100%;
             border : 0;
             padding-bottom : 5px;
-            margin : 3px 0 10px;
+            margin : 3px 0 20px 0px;
             border-bottom : 1px dashed rgba(0,0,0,0.5);
             background : transparent;
+            box-sizing: border-box;
         }
+        input[type='checkbox'] {
+            display: inline-block;
+            width : 25px;
+        }
+        textarea {
+            display : block;
+            width : 100%;
+            max-width: 100%;
+            background : transparent;
+            border : 1px dashed rgba(0,0,0,0.5);
+            margin-top : 15px;
+            margin-bottom : 15px;
+            padding : 5px;
+            box-sizing: border-box;
+        }
+    }
+    #urlCheckbox.disabled {
+        opacity : 0.5;
+        font-style : italic;
     }
     #submitEdit {
         transition: all 0.5s ease;
