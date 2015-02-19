@@ -30,26 +30,22 @@
 
             <li>
                 <ul id="categoryList">
-                    <li class="categoryElement">
-                        <a href="#" class="categoryName"><i class="icon-folder"></i> Category</a>
-                        <span>+</span>
-                        <ul class="snippetsList">
-                            <li><a href="#"><i class="icon-tag"></i> Snipet 1</a>
-                            </li>
-                            <li><a href="#"><i class="icon-tag"></i> Snipet 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="categoryElement">
-                        <a href="#" class="categoryName"><i class="icon-folder"></i> Category Name 2</a>
-                        <span>+</span>
-                        <ul class="snippetsList">
-                            <li><a href="#"><i class="icon-tag"></i> Snipet TEST 1</a>
-                            </li>
-                            <li><a href="#"><i class="icon-tag"></i> Snipet TEST 2</a>
-                            </li>
-                        </ul>
-                    </li>
+                    {% for category in aside.stores %}
+                        <li class="categoryElement">
+                            <a href="#" class="categoryName"><i class="icon-folder"></i> {{ category.category_label }}</a>
+                            <span>+</span>
+                            <ul class="snippetsList">
+                                <li>
+                                    <a href="{{ url('/store/add') }}"><i class="icon-plus"></i>Add a snippet</a>
+                                </li>
+                                {% for store in category.stores %}
+                                    <li>
+                                        <a href="#"><i class="icon-tag"></i>{{ store.store_label }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
                 </ul>
             </li>
         </ul>

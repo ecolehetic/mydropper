@@ -5,6 +5,8 @@ namespace APP\CONTROLLERS;
 use APP\HELPERS\FlashMessage;
 use APP\HELPERS\Need;
 use APP\HELPERS\Seo;
+use APP\MODELS\Store;
+use APP\MODELS\User;
 
 /**
  * Class BaseController
@@ -26,11 +28,11 @@ class BaseController
      */
     public function __construct()
     {
-        $this->f3 = \Base::instance();
-        $this->web = \Web::instance();
+        $this->f3       = \Base::instance();
+        $this->web      = \Web::instance();
         $this->fMessage = new FlashMessage();
-        $this->need = new Need();
-        $this->twig = $this->f3->get('TWIG');
+        $this->need     = new Need();
+        $this->twig     = $this->f3->get('TWIG');
         $this->getTpl();
     }
 
@@ -51,23 +53,62 @@ class BaseController
             $tpl = $file;
         }
 
-        // SEO
-        $values['seo']['title'] = Seo::getInstance()->get($this->controller, $this->method, 'title');
-        $values['seo']['description'] = Seo::getInstance()->get($this->controller, $this->method, 'description');
-
-        // USER Global (Aside.twig)
-        $user = $this->f3->get('SESSION.user');
-
-        if ($user !== null || !empty($user)) {
-            $values['aside']['name'] = $user->name;
-            $values['aside']['firstname'] = $user->firstname;
-            $values['aside']['avatar_url'] = $user->avatar_url;
-        }
+        $values = $this->defaultValueRender($values);
 
         echo $this->twig->render($tpl, $values);
+
         $this->fMessage->destroy();
     }
 
+    /**
+     *  Add default values in all twig render
+     *
+     * @param array $values
+     *
+     * @return array
+     */
+    private function defaultValueRender($values)
+    {
+        // SEO
+        $values['seo']['title']         = Seo::getInstance()->get($this->controller, $this->method, 'title');
+        $values['seo']['description']   = Seo::getInstance()->get($this->controller, $this->method, 'description');
+
+        // Variables in (aside.twig) when user is logged
+        if ($this->need->testLogged() === false) {
+            $user = $this->f3->get('SESSION.user');
+
+            // Users informations
+            $values['aside']['name']        = $user->name;
+            $values['aside']['firstname']   = $user->firstname;
+            $values['aside']['avatar_url']  = $user->avatar_url;
+
+            // Categories with Stores
+            $categories         = User::find($user->id)->categories()->get();
+            $values['aside']['stores']   = [];
+
+            for($i = 0; $i < count($categories); $i++){
+                array_push($values['aside']['stores'], [
+                    'category_id'    => $categories[$i]->id,
+                    'category_label' => $categories[$i]->label,
+                    'stores'         => []
+                ]);
+
+                $stores = Store::where('category_id', $categories[$i]->id)->get();
+
+                for ($j = 0; $j < count($stores); $j++) {
+                    $values['aside']['stores'][$i]['stores'][] = [
+                        'store_id'          => $stores[$j]->id,
+                        'store_label'       => $stores[$j]->label,
+                        'store_description' => $stores[$j]->descript,
+                        'store_active'      => $stores[$j]->is_active
+                    ];
+                }
+            }
+
+        }
+
+        return $values;
+    }
 
     /**
      * Get the targeted template by url
@@ -120,6 +161,5 @@ class BaseController
 
         return $crypt->hash($string, $this->f3->get('SALT'), $level);
     }
-
 
 }

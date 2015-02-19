@@ -85,7 +85,7 @@ class Need extends BaseHelper
      *
      * @return bool
      */
-    private function testLogged()
+    public function testLogged()
     {
         $user = $this->f3->get('SESSION.user');
 

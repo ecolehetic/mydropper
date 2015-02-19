@@ -1,10 +1,5 @@
 {% extends 'layout/layout.twig' %}
 
-{% block javascripts %}
-    {{ parent() }}
-    {{ asset('js', 'authentification.js', false) }}
-{% endblock %}
-
 {% block content %}
 
     <div id="homePage" class="loginPage">
@@ -25,7 +20,7 @@
                 </div>
             {% endif %}
 
-            <form action="connect" method="POST">
+            <form action="{{ url('/users/connect') }}" method="POST">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" name="username"
@@ -50,7 +45,7 @@
                     </a>
                 </div>
             </form>
-            <p>Don't have an account?  Please <a href="/users/subscribe">sign in</a>.</p>
+            <p>Don't have an account?  Please <a href="{{ url('/users/subscribe') }}">sign in</a>.</p>
         </div>
     </div>
 

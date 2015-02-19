@@ -58,7 +58,7 @@ class ProfileController extends BaseController
 
 
         }
-        
+
         $this->f3->set('SESSION.user', User::find($userInformations->id));
         $user   = User::find($userInformations->id);
         $age    = $this->getAge($user['date_of_birth']);
@@ -83,6 +83,5 @@ class ProfileController extends BaseController
         $explode = explode('/', $dateOfBirthday);
 
         return date("Y") - end($explode);
-
     }
 }
