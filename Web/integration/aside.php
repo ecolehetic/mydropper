@@ -55,7 +55,7 @@
                 <div class="form-group disabled" id="urlCheckbox">
                     <input type="checkbox" value="trackedLink" disabled> I want my link shortered and tracked.<br>
                 </div>
-
+                <input type="hidden" id="categoryID" value="">
                 <div class="form-group">
                     <input type="submit" class="hidden" value="addData"/>
                     <a href="#" id="submitEdit" class="ghostBtn submitBtn clearfix animated fadeInRight">
@@ -84,7 +84,7 @@
                             <span>+</span>
                             <ul class="snippetsList">
                                 <li>
-                                    <a href="{{ url('/store/add') }}" class="addSnippetLink"><i class="icon-plus"></i>Add a snippet</a>
+                                    <a href="{{ url('/store/add') }}" class="addSnippetLink" data-id="123"><i class="icon-plus"></i>Add a snippet</a>
                                 </li>
                                 <li><a href="#"><i class="icon-tag"></i> Snipet 1</a>
                                 </li>
@@ -97,7 +97,7 @@
                             <span>+</span>
                             <ul class="snippetsList">
                                 <li>
-                                    <a href="{{ url('/store/add') }}" class="addSnippetLink"><i class="icon-plus"></i>Add a snippet</a>
+                                    <a href="{{ url('/store/add') }}" class="addSnippetLink" data-id="456"><i class="icon-plus"></i>Add a snippet</a>
                                 </li>
                                 <li><a href="#"><i class="icon-tag"></i> Snipet TEST 1</a>
                                 </li>
