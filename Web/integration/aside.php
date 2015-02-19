@@ -1,7 +1,7 @@
 <body>
     <header>
         <input id="searchBar" type="text" placeholder="Search" />
-        <div class="headerContent clearfix">HENG Patrick</div>
+        <div class="headerContent">HENG Patrick</div>
         <div id="profile">
             <img src="../assets/images/incognito.jpg" alt="Profile picture">
             <ul id="profileMenu">

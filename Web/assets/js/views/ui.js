@@ -154,5 +154,3 @@ var UI = {
 	}
 
 };
-
-console.log(UI);

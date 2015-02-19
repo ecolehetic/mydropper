@@ -5,26 +5,9 @@
     <div class="container">
         <div id="tracking">
             <h1>Tracking</h1>
-            <ul id="tabs">
-                <li class="selected">Category 1</li><li>
-                    Patrick 2
-                </li><li>
-                    Mongolyto 2
-                </li><li>
-                    SahshaetPikachu 2
-                </li><li>
-                    Mes impots
-                </li><li>
-                    Lettres de motivation
-                </li><li>
-                    Yoyoyoyouoyo 2
-                </li><li>
-                    Category 2
-                </li><li>
-                    Category 3
-                </li>
-            </ul>
-            <!--<div id="line-graph" class="line-graph"></div>-->
+            <h2>
+                I am looking for data from " <span id="categoryChoice"></span> " category
+            </h2>
 
             <div class="categoryGraphContainer clearfix">
                 <div class="deltaGraphContainer">
@@ -42,21 +25,24 @@
             </div>
 
 
-            <ul id="snippetGraphList">
+            <ul id="snippetGraphList" class="clearfix">
                 <li>
                     <div class="snippetDetails">
-                        <h2>Snippets 1</h2>
-                        <p>Create at 12/02/2015</p>
+                        <div class="text">
+                            <h2>Snippets 1</h2>
+                            <p>Create at 12/02/2015</p>
+                        </div>
                     </div>
 
-                    <div class="clickRateGraphContainer">
-                        <div class="clickRateGraph ct-chart .ct-square"></div>
-                        <span>Click rate</span>
-                    </div>
+                    <div class="graphContainer">
+                        <div class="clickRateGraphContainer">
+                            <div class="clickRateGraph ct-chart .ct-square"></div>
+                            <span>Click rate</span>
+                        </div>
 
-
-                    <div class="snippetGraphContainer">
-                        <div class="snippetGraph ct-chart"></div>
+                        <div class="snippetGraphContainer">
+                            <div class="snippetGraph ct-chart"></div>
+                        </div>
                     </div>
                 </li>
             </ul>
