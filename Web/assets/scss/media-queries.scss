@@ -12,6 +12,8 @@
             left: calc(50% + 180px);
         }
     }
+
+
 }
 @media screen and (max-width: 1280px) {
     #profilePage {
@@ -31,6 +33,53 @@
             }
         }
     }
+    #tracking {
+        h2 {
+            margin : 25px 0 20px 6%;
+        }
+        .categoryGraphContainer {
+            .deltaGraphContainer {
+                width : 100%;
+                .inputGroup {
+                    width : 45%;
+                    margin-left : 3.3%;
+                    margin-bottom : 25px;
+                    float : left;
+                }
+            }
+            .categoryGraph {
+                width : 95%;
+                margin : auto;
+            }
+        }
+        #snippetGraphList {
+            li {
+                .graphContainer {
+                    width : 98%;
+                }
+                .snippetDetails {
+                    float: none;
+                    display: block;
+                    width: 100%;
+                    max-width: none;
+                    height: 15px;
+                    min-height: 0;
+                    border-bottom: 1px solid rgba(0,0,0,0.1);
+                    .text {
+                        *{
+                            display : inline;
+                            width : auto;
+                            margin : 0;
+                        }
+                        h2:after {
+                            content : ' - ';
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }
 @media screen and (max-width: 980px) {
     #dashboard {
