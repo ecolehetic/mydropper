@@ -30,7 +30,6 @@ $(document).ready(function() {
 
 	/* ACCORDEON MENU */
 	$( '.categoryElement a' ).click( function(e){
-	    e.preventDefault();
 		UI.nav.accordeonToggle($(this));
 	});
 
@@ -63,7 +62,14 @@ $(document).ready(function() {
 		Graph.category.init(catSelector, catLabels, catSeries);
 
 		var clickRateSelector = '.clickRateGraph';
-		var clickRateSeries = [60,40];
+		var clickRateSeries =  [{
+			data: 60,
+			className: 'clickRate'
+		}, {
+			data: 40,
+			className: 'unclickRate'
+		}]
+
 		Graph.clickRate.init(clickRateSelector, clickRateSeries);
 
 		var snippetSelector = '.snippetGraph';
