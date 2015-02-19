@@ -84,13 +84,15 @@ $(document).ready(function() {
 	$('#addCategory').click(function(e){
 	    e.preventDefault();
 		$( "#popin" ).fadeIn();
-		$( "addSnippetFormContainer").hide();
+		$( "#addCategoryFormContainer").show();
+		$( "#addSnippetFormContainer").hide();
 	});
 	// ----- Add Snippet
 	$('.addSnippetLink').click(function(e){
 	    e.preventDefault();
 		$( "#popin" ).fadeIn();
-		$( "addSnippetFormContainer").hide();
+		$( "#addCategoryFormContainer").hide();
+		$( "#addSnippetFormContainer").show();
 	});
 	// ----- Close PopIn
 	$('#closePopin, #popinBg').click(function(e){
@@ -112,7 +114,9 @@ $(document).ready(function() {
 		else {
 			console.log('false');
 			$('#urlCheckbox').addClass('disabled');
-			$( "#urlCheckbox input" ).prop( "disabled", true );
+			$( "#urlCheckbox input" )
+				.prop( "disabled", true )
+				.prop( "checked", false);
 		}
 	});
 
