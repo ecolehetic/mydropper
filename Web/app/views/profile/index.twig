@@ -1,0 +1,78 @@
+{% extends 'layout/layout.twig' %}
+
+{% block aside %}
+    {% include 'layout/aside.twig' %}
+{% endblock %}
+
+{% block content %}
+    <div id="profilePageWrapper" class="container">
+        <div id="profilePage">
+            <div id="topContainer">
+                <div class="text">
+                    <h1>{{ values.name | upper }} {{ values.firstname | capitalize }}</h1>
+                    <h2>{{ values.username }} - {{ age }} ans</h2>
+                </div>
+
+                <div id="avatarContainer">
+                    <img src="{{ values.avatar_url }}" class="animated zoomIn" alt="avatar"/>
+
+                    <a class="ghostBtn" href="#" id="editButton">
+                        <span>Edit profile</span>
+                    </a>
+                </div>
+            </div>
+
+
+            <div id="bottomContainer">
+                <form method="POST" action="{{ url('/profile') }}" class="disabled" id="editForm">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="firstname" >Firstname :</label>
+                            <input type="text" name="firstname" placeholder="FirstName"
+                                   value="{{ values.firstname }}" disabled="disabled" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Lastname  :</label>
+                            <input type="text" name="lastname" placeholder="Lastname"
+                                   value="{{ values.name }}" disabled="disabled" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="mail">Mail :</label>
+                            <input type="email" name="mail" placeholder="Mail" value="{{ values.mail }}"
+                                   disabled="disabled" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday">Date of Birth :</label>
+                            <input class="date" type="date" name="birthday" placeholder="birthday"
+                                   value="{{ values.date_of_birth }}" disabled="disabled" required/>
+                        </div>
+                    </div>
+
+                    <div class="col clearfix">
+                        <div class="form-group">
+                            <label for="username">Username :</label>
+                            <input type="text" name="username" placeholder="Username"
+                                   value="{{ values.username }}" disabled="disabled" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password_1">Password :</label>
+                            <input type="password" name="password_1" placeholder="Password" disabled="disabled"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password_2">Password check :</label>
+                            <input type="password" name="password_2" placeholder="Repeat password" disabled="disabled"/>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="hidden" value="Edit"/>
+                            <a href="#" id="submitEdit" class="ghostBtn submitBtn clearfix animated fadeInRight">
+                                <span>Validate</span>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,9 +1,4 @@
-{% extends layout ~ '/layout.twig' %}
-
-{% block javascripts %}
-    {{ parent() }}
-    {{ asset('js', 'authentification.js', false) }}
-{% endblock %}
+{% extends 'layout/layout.twig' %}
 
 {% block content %}
 
@@ -11,7 +6,7 @@
         <img src='../assets/images/myDropper-logo.png' id="logo" alt="logo MyDropper">
         <h2>Store your data, save time, and reuse <br>
             it quickly in an effective way !</h2>
-        <div class="container">
+        <div class="containerHome">
 
             <!-- Display Messages (Good | Bad) -->
             {% if messages %}

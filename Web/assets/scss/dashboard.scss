@@ -1,5 +1,5 @@
-$dashboardGreyLight : #f2f2f2;
-$dashboardGreyMedium : #dfdfdf;
+$dashboardGreyLight : #fbfdff;
+$dashboardGreyMedium : #f6f6f6;
 $dashboardBorder : #d9d9d9;
 
 #dashboard {
@@ -7,8 +7,9 @@ $dashboardBorder : #d9d9d9;
     height: 100%;
     .cardList {
         display: block;
-        padding: 0;
+        padding: 0 30px;
         list-style: none;
+
         li {
             display: block;
             width: calc(20% - 4px);
@@ -19,7 +20,7 @@ $dashboardBorder : #d9d9d9;
             text-align : center;
             background : $dashboardGreyLight;
             border : 2px solid $dashboardBorder;
-            box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.08);
+            box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.03);
             overflow :hidden;
             a {
                 color : black;

@@ -6,7 +6,7 @@
 			<img src='../assets/images/myDropper-logo.png' id="logo" alt="logo MyDropper">
 			<h2>Store your data, save time, and reuse <br>
 			it quickly in an effective way !</h2>
-			<div class="container">
+			<div class="containerHome">
 				<form action="" id="connexionForm">
 					<div class="form-group">
 			            <label for="username">Username</label>

@@ -7,12 +7,24 @@ var sideBar={
 /*Handle requests from background.html*/
 chrome.extension.onRequest.addListener(handleRequest);
 
-
-
 function handleRequest(request, sender, sendResponse) {
     if (request.callFunction == "toggleSidebar") {
         toggleSideBar(request.sideBarContent);
     }
+
+    // LogIn
+    $('#submitConnexionForm').click(function(e){
+    	e.preventDefault();
+		UI.logIn();	
+		LS.logIn();	
+	});
+
+    // LogOut
+    $('#logOut').click(function(e){
+    	e.preventDefault();
+		UI.logOut();	
+		LS.logOut();	
+	});
 }
 
 function toggleSideBar(htmlContent) {
@@ -27,4 +39,4 @@ function toggleSideBar(htmlContent) {
         UI.initDraggable();
         UI.initAccordeon();
 	}
-}
+}	

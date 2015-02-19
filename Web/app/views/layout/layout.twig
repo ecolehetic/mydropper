@@ -26,15 +26,16 @@
 
 <body>
 
-    {% block left %} {% endblock %}
-    {% block right %} {% endblock %}
+    {% block aside %} {% endblock %}
     {% block content %} {% endblock %}
 
     <!-- JAVASCIRPT -->
     {% block javascripts %}
         {{ asset('js', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', true) }}
         {{ asset('js', 'http://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js', true) }}
-        {{ asset('js', 'scripts.js', false) }}
+        {{ asset('js', 'models/model.js', false) }}
+        {{ asset('js', 'views/ui.js', false) }}
+        {{ asset('js', 'controllers/mainCtrl.js', false) }}
     {% endblock %}
 </body>
 </html>

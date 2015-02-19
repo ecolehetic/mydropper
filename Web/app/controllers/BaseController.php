@@ -20,7 +20,6 @@ class BaseController
     protected $f3;
     protected $web;
     protected $fMessage;
-    public $layout = 'layout';
 
     /**
      * Return in all Child Constructor $twig, $f3, $web
@@ -44,6 +43,7 @@ class BaseController
         if ($file === true) {
             $tpl = $this->controller . '/' . $this->action . '.twig';
         } elseif ($file === false) {
+            header('Access-Control-Allow-Origin: *');
             header('Content-Type: application/json');
             echo json_encode($values);
             return;
@@ -51,9 +51,18 @@ class BaseController
             $tpl = $file;
         }
 
-        $values['layout'] = $this->layout;
+        // SEO
         $values['seo']['title'] = Seo::getInstance()->get($this->controller, $this->method, 'title');
         $values['seo']['description'] = Seo::getInstance()->get($this->controller, $this->method, 'description');
+
+        // USER Global (Aside.twig)
+        $user = $this->f3->get('SESSION.user');
+
+        if ($user !== null || !empty($user)) {
+            $values['aside']['name'] = $user->name;
+            $values['aside']['firstname'] = $user->firstname;
+            $values['aside']['avatar_url'] = $user->avatar_url;
+        }
 
         echo $this->twig->render($tpl, $values);
         $this->fMessage->destroy();

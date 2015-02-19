@@ -20,7 +20,8 @@
     },
     "content_scripts": [{
         "matches": ["<all_urls>"],
-        "js": ["js/assets/jquery-2.1.3.min.js", "js/controllers/mainCtrl.js", "js/views/ui.js"]
+        "js": ["js/dependancies/jquery-2.1.3.min.js", "js/controllers/mainCtrl.js", "js/models/localstorageModel.js", "js/views/ui.js"]
+        // "css": ["css/styles.css"]
     }],
     "permissions": [
         "tabs",

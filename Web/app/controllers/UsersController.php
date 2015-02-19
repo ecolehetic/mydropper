@@ -153,7 +153,7 @@ class UsersController extends BaseController
             if ($userInformations !== null) {
                 // Generate Token and save it
                 $user                   = User::find($userInformations->id);
-                $user->token            = $token;
+                $user->token_password   = $token;
                 $user->is_lost_password = 1;
                 $user->save();
 
@@ -193,7 +193,7 @@ class UsersController extends BaseController
      */
     public function confirmLostPassword()
     {
-        $userInformations   = User::where('username', $this->f3->get('GET.username'))->where('token', $this->f3->get('GET.username'))->first();
+        $userInformations   = User::where('username', $this->f3->get('GET.username'))->where('token_password', $this->f3->get('GET.token'))->first();
         $messages           = [];
 
         if ($userInformations !== null) {
@@ -201,7 +201,7 @@ class UsersController extends BaseController
 
             // Save new Password
             $user                   = User::find($userInformations->id);
-            $user->token            = null;
+            $user->token_password   = null;
             $user->is_lost_password = 0;
             $user->password         = $this->crypt($newPassword);
             $user->save();

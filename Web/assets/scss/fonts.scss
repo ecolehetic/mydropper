@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'HelveticaNeue';
-  src: url('../fonts/HelveticaNeueLTCom-UltLt.eot'); /* IE9 Compat Modes */
-  src: url('../fonts/HelveticaNeueLTCom-UltLt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/HelveticaNeueLTCom-UltLt.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/HelveticaNeueLTCom-UltLt.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/HelveticaNeueLTCom-UltLt.svg#23c2d5e1dd2a079a7fa7ba1cd30ca2f6') format('svg'); /* Legacy iOS */
+  src: url('../fonts/Helvetica/HelveticaNeueLTCom-UltLt.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Helvetica/HelveticaNeueLTCom-UltLt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Helvetica/HelveticaNeueLTCom-UltLt.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/Helvetica/HelveticaNeueLTCom-UltLt.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Helvetica/HelveticaNeueLTCom-UltLt.svg#23c2d5e1dd2a079a7fa7ba1cd30ca2f6') format('svg'); /* Legacy iOS */
        
   font-style:   normal;
   font-weight:  400;
@@ -12,11 +12,11 @@
 
 @font-face {
   font-family: 'HelveticaNeue';
-  src: url('../fonts/HelveticaNeueLTCom-Lt.eot'); /* IE9 Compat Modes */
-  src: url('../fonts/HelveticaNeueLTCom-Lt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/HelveticaNeueLTCom-Lt.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/HelveticaNeueLTCom-Lt.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/HelveticaNeueLTCom-Lt.svg#a87d574f2ccb02c8976c392488c7e6e3') format('svg'); /* Legacy iOS */
+  src: url('../fonts/Helvetica/HelveticaNeueLTCom-Lt.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Helvetica/HelveticaNeueLTCom-Lt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Helvetica/HelveticaNeueLTCom-Lt.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/Helvetica/HelveticaNeueLTCom-Lt.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Helvetica/HelveticaNeueLTCom-Lt.svg#a87d574f2ccb02c8976c392488c7e6e3') format('svg'); /* Legacy iOS */
        
   font-style:   normal;
   font-weight:  500;
@@ -24,24 +24,86 @@
 
 @font-face {
   font-family: 'HelveticaNeue';
-  src: url('../fonts/HelveticaNeueLTCom-Roman.eot'); /* IE9 Compat Modes */
-  src: url('../fonts/HelveticaNeueLTCom-Roman.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/HelveticaNeueLTCom-Roman.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/HelveticaNeueLTCom-Roman.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/HelveticaNeueLTCom-Roman.svg#ad73ce6e831ad12bb7b1fe29dcd2c235') format('svg'); /* Legacy iOS */
+  src: url('../fonts/Helvetica/HelveticaNeueLTCom-Roman.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Helvetica/HelveticaNeueLTCom-Roman.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Helvetica/HelveticaNeueLTCom-Roman.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/Helvetica/HelveticaNeueLTCom-Roman.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Helvetica/HelveticaNeueLTCom-Roman.svg#ad73ce6e831ad12bb7b1fe29dcd2c235') format('svg'); /* Legacy iOS */
        
   font-style:   normal;
   font-weight:  700;
 }
 
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/Helvetica/HelveticaNeueLTCom-UltLt.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Helvetica/HelveticaNeueLTCom-UltLt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/Helvetica/HelveticaNeueLTCom-UltLt.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/Helvetica/HelveticaNeueLTCom-UltLt.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Helvetica/HelveticaNeueLTCom-UltLt.svg#23c2d5e1dd2a079a7fa7ba1cd30ca2f6') format('svg'); /* Legacy iOS */
+
+    font-style:   normal;
+    font-weight:  400;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/Helvetica/HelveticaNeueLTCom-Lt.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Helvetica/HelveticaNeueLTCom-Lt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/Helvetica/HelveticaNeueLTCom-Lt.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/Helvetica/HelveticaNeueLTCom-Lt.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Helvetica/HelveticaNeueLTCom-Lt.svg#a87d574f2ccb02c8976c392488c7e6e3') format('svg'); /* Legacy iOS */
+
+    font-style:   normal;
+    font-weight:  500;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/Helvetica/HelveticaNeueLTCom-Roman.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Helvetica/HelveticaNeueLTCom-Roman.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/Helvetica/HelveticaNeueLTCom-Roman.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/Helvetica/HelveticaNeueLTCom-Roman.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Helvetica/HelveticaNeueLTCom-Roman.svg#ad73ce6e831ad12bb7b1fe29dcd2c235') format('svg'); /* Legacy iOS */
+
+    font-style:   normal;
+    font-weight:  700;
+}
+
+@font-face {
+    font-family: 'AvenirNext';
+    src: url('../fonts/Avenir/Avenir-Next_10.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Avenir/Avenir-Next_10.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/Avenir/Avenir-Next_10.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/Avenir/Avenir-Next_10.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Avenir/Avenir-Next_10.svg#bdda6bf0cbb2275362361ca24e93166f') format('svg'); /* Legacy iOS */
+
+    font-style:   normal;
+    font-weight:  400;
+}
+
+@font-face {
+    font-family: '../fonts/Avenir/AvenirNext';
+    src: url('../fonts/Avenir/Avenir-Next_7.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Avenir/Avenir-Next_7.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/Avenir/Avenir-Next_7.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/Avenir/Avenir-Next_7.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Avenir/Avenir-Next_7.svg#fe299bf9c71888f1da7b2c2d74973b56') format('svg'); /* Legacy iOS */
+
+    font-style:   normal;
+    font-weight:  700;
+}
+
+
+
 // FONT ICON
 @font-face {
   font-family: 'icomoon';
-  src:url('../fonts/icomoon.eot?8k1mez');
-  src:url('../fonts/icomoon.eot?#iefix8k1mez') format('embedded-opentype'),
-    url('../fonts/icomoon.woff?8k1mez') format('woff'),
-    url('../fonts/icomoon.ttf?8k1mez') format('truetype'),
-    url('../fonts/icomoon.svg?8k1mez#icomoon') format('svg');
+  src:url('../fonts/Icomoon/icomoon.eot?8k1mez');
+  src:url('../fonts/Icomoon/icomoon.eot?#iefix8k1mez') format('embedded-opentype'),
+    url('../fonts/Icomoon/icomoon.woff?8k1mez') format('woff'),
+    url('../fonts/Icomoon/icomoon.ttf?8k1mez') format('truetype'),
+    url('../fonts/Icomoon/icomoon.svg?8k1mez#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }

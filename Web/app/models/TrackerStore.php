@@ -13,6 +13,7 @@ class TrackerStore extends Eloquent
 {
 
     protected $table = 'trackstores';
+    protected $guarded = array('id');
 
     public function stores()
     {

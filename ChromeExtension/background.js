@@ -13,7 +13,9 @@ chrome.browserAction.onClicked.addListener(function(tab) {
         
         
         doInCurrentTab( function(tab){ 
-            chrome.tabs.insertCSS(tab.id, {file:'css/styles.css'});
+            setTimeout(function(){
+                chrome.tabs.insertCSS(tab.id, {file:'css/styles.css'});
+            },1000);
         });
 
         function doInCurrentTab(tabCallback) {

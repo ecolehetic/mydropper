@@ -1,4 +1,4 @@
-$mainFont: 'HelveticaNeue', helvetica, arial, sans-serif;
+$mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
 $blue: #1f282d;
 $greyLight: #e3e2e3;
 $greyTitle: #787878;
@@ -30,7 +30,7 @@ body, html {
     visibility: hidden;
 }
 .hidden {
-    display : none !important;
+    display: none !important;
 }
 header {
     height: 60px;
@@ -95,9 +95,12 @@ header {
                 box-sizing: border-box;
                 transition: all 0.5s ease;
                 color: $greyTitle;
+                a {
+                    color: $greyTitle;
+                }
                 &:hover {
                     color: rgba(80, 80, 80, 1);
-                    ;
+                ;
                     background: #f1f1f1;
                     &:before {
                         border-color: transparent transparent #f1f1f1 transparent;
@@ -149,41 +152,40 @@ a {
     top: 80px;
     z-index: 10000;
     cursor: pointer;
-    transition: all 0.8s ease;
+    transition: all 0.6s ease;
     #row1, #row2, #row3 {
         margin-top: 3px;
         background: $blue;
         width: 33px;
         height: 4px;
         position: absolute;
-        transform: rotate(-180deg);
     }
     #row2 {
         margin-top: 13px;
     }
     #row3 {
         margin-top: 23px;
-        transform: rotate(180deg);
     }
 }
-#burger.open {
+#burger.burgerOpen {
     transform: translateX(260px);
 }
-#container {
-    height: calc(100%);
+.container {
+    height: 100%;
     width: 100%;
-    padding: 80px 30px 50px 30px;
+    padding: 60px 0px 50px 0px;
     box-sizing: border-box;
     background: white;
     position: relative;
+    transition: transform 0.6s ease;
     h1 {
         font-size: 2.4em;
         margin: 30px 0 0 0;
         margin-left: 2.5%;
     }
 }
-#container.menuOpen {
-    transition: all 1s ease;
+.container.containerLeft {
+    transition: transform 1s ease;
     transform: translateX(250px);
 }
 
@@ -245,4 +247,40 @@ a {
 }
 .button:hover svg line.right {
     transform: translateY(-100px);
+}
+.ghostBtn {
+    width: 150px;
+    height: 30px;
+    line-height: 36px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.6);
+    font-size: 0.9rem;
+    color: black;
+    display: block;;
+    margin: 20px auto 0 auto;
+    cursor : pointer;
+    transition: all 0.9s ease;
+    background : transparent;
+    position : relative;
+    span {
+        position : relative;
+        z-index : 10;
+    }
+    &:after {
+        /*content :'';
+        width : 0;
+        height : 100%;
+        position : absolute;
+        left : 0;
+        bottom : 0;
+        transition: all 0.5s ease;*/
+    }
+    &:hover{
+        /*&:after{
+                width : 100%;
+                background : #f2f2f2;
+        }*/
+
+        background : #f2f2f2;
+    }
 }

@@ -8,22 +8,22 @@ var UI={
         sideBarElmt.innerHTML = htmlContent;
         document.body.appendChild(sideBarElmt);
 
-        $('#myDropperSideBar').css({
-            'position': 'fixed',
-            'top': '0px',
-            'right': '0px',
-            'max-width': '300px',
-            'width': '300px',
-            'overflow-x': 'visible',
-            'overflow-y': 'auto',
-            'height': '100%',
-            'background': '#FFFFFF',
-            'z-index': '99999999999999',
-            'display': 'none',
-            'font-family': 'helvetica, arial',
-            'color': '#212121',
-            'border-left': '1px solid #727272'
-        });
+        // $('#myDropperSideBar').css({
+        //     'position': 'fixed',
+        //     'top': '0px',
+        //     'right': '0px',
+        //     'max-width': '300px',
+        //     'width': '300px',
+        //     'overflow-x': 'visible',
+        //     'overflow-y': 'auto',
+        //     'height': '100%',
+        //     'background': '#FFFFFF',
+        //     'z-index': '99999999999999',
+        //     'display': 'none',
+        //     'font-family': 'helvetica, arial',
+        //     'color': '#212121',
+        //     'border-left': '1px solid #727272'
+        // });
 
         sideBarElmt.style.display = 'block';
 
@@ -62,23 +62,34 @@ var UI={
             var $navMenuParent = $(this).parent();
             var $navSous = $(this).siblings('.dragList');
             var $allNavSous = $('.category .dragList');
-            var $plusMoins = $('span', this);
-            var $allPlusMoins = $('.category h2 span');
+            var $plusMoins = $(this).siblings('span');
+            var $allPlusMoins = $('.category  span');
 
 
-            if (!$navSous.is(":visible")) {
+            if (!$navSous.hasClass("open")) {
                 // Si navSous fermé
-                $allNavSous.slideUp('slow');
-                $navSous.slideDown('slow');
-
+                // $allNavSous.removeAttr('style');
+                $allNavSous.removeClass('open');
+                $navSous.addClass('open');
+                // $navSous.animate({
+                //     'display' : 'block',
+                //     'height': 'auto',
+                //     'max-height' : '1500px',
+                //     'transition' : 'all 1s ease'
+                // },2000);
+                
+                console.log('in on ouvre');
                 e.preventDefault();
                 $allPlusMoins.html('+');
                 $plusMoins.html('-');
 
             } else {
                 // Si navSous ouvert
-                $allNavSous.slideUp('slow');
                 e.preventDefault();
+
+                $allNavSous.removeClass('open');
+                console.log('in on ferme');
+                
                 $allPlusMoins.html('+');
             }
         });
@@ -135,12 +146,10 @@ var UI={
 
 
     initDroppable: function() {
-         console.log('dropZoneInit');
-
         $(".md-dropElmt").on('drop', function(event) {
             //restore the md-dropElmt after dropevent
             $('.md-dropElmt').css('opacity', 1);
-            event.stopPropagation();
+            event.stopPropagation();$('#notLoggedInContainer').hide();
             event.preventDefault();
             
             $(this).attr('value',textData);
@@ -161,6 +170,15 @@ var UI={
                 $(this).html(htmlData);
             }
         });
+    },
+
+    logIn: function() {
+        $('#loggedInContainer').show().removeClass('hidden');
+        $('#notLoggedInContainer').hide();
+    },
+
+    logOut: function() {
+        UI.closeSideBar();
     }
 
 }

@@ -9,7 +9,26 @@
     }
     #homePage {
         #formFeedback {
-            left: calc(50% + 175px);
+            left: calc(50% + 180px);
+        }
+    }
+}
+@media screen and (max-width: 1280px) {
+    #profilePage {
+        #topContainer {
+            .text {
+                left : 290px;
+            }
+            #avatarContainer {
+                left: 45px;
+            }
+        }
+        #bottomContainer {
+            form {
+                width : calc(100% - 295px);
+                margin-left : 290px;
+                margin-top : 50px;
+            }
         }
     }
 }
@@ -29,8 +48,29 @@
             margin-bottom : 30px;
         }
     }
+    #profilePage {
+        #topContainer {
+            height : 40%;
+            .text {
+                left : 230px;
+            }
+            #avatarContainer {
+                left: 45px;
+            }
+        }
+        #bottomContainer {
+            form {
+                width : calc(100% - 260px);
+                margin-left : 230px;
+                margin-top : 50px;
+            }
+        }
+    }
 }
-@media screen and (max-width: 700px) {
+
+
+
+@media screen and (max-width: 850px) {
     #burger {
         left: 15px;
     }
@@ -42,6 +82,7 @@
             width: 100%;
             margin: auto;
             display: block;
+            padding : 0;
             li {
                 width: 90%;
                 display: block;
@@ -56,6 +97,35 @@
             display: none;
         }
     }
+    .ghostBtn {
+        width : 120px!important;
+        margin-left :auto;
+        margin-right :auto;
+    }
+    #profilePage {
+
+        #topContainer {
+            .text,#avatarContainer {
+                left : 10%;
+            }
+            #avatarContainer {
+                bottom : -50px;
+                img {
+                    display : none;
+                }
+                .ghostBtn {
+                    background : white;
+                }
+            }
+        }
+        #bottomContainer {
+            form {
+                width : 80%;
+                margin : auto;
+                margin-top : 80px;
+            }
+        }
+    }
 }
 @media screen and (max-width: 480px) {
     header {
@@ -65,24 +135,22 @@
         }
         #profile {
             img {
-                right: 20px;
+                right: 15px;
             }
             #profileMenu {
                 &:before {
-                    right: 13px;
+                    right: 8px;
                     left: auto;
                 }
             }
         }
     }
-    $mainFont: 'HelveticaNeue', helvetica, arial, sans-serif;
-    $greyLight: #e3e2e3;
-    $greyTitle: #787878;
+
     #homePage {
         #logo {
             padding-top : 40px !important;
         }
-        .container {
+        .containerHome {
             width: 80%;
             display: block;
             margin: auto;
@@ -107,6 +175,24 @@
             }
             .button {
                 margin-top: 40px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #profilePage {
+        #bottomContainer {
+            form {
+                .col {
+                    width : 100%;
+                    &:last-child {
+                        margin-top : 0;
+                    } 
+                }
+                .form-group {
+                    margin-top: 10px;
+                }
             }
         }
     }
