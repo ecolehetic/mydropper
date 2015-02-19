@@ -2,6 +2,8 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
 $blue: #1f282d;
 $greyLight: #e3e2e3;
 $greyTitle: #787878;
+$popInBg: #f6f6f6;
+
 * {
     outline: none;
     -webkit-font-smoothing: subpixel-antialiased;
@@ -282,5 +284,75 @@ a {
         }*/
 
         background : #f2f2f2;
+    }
+}
+
+#popin {
+    display:none;
+    position : fixed;
+    top : 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index : 10000;
+
+    #popinContent {
+        position : absolute;
+        width : 50%;
+        left : 25%;
+        top : 20%;
+        background : $popInBg;
+        z-index : 10000;
+        padding : 10px 3% 40px 3%;
+        border : 1px solid rgba(0,0,0,0.2);
+    }
+    #popinBg {
+        position : absolute;
+        top : 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(0,0,0,0.4);
+        cursor : pointer;
+    }
+    #closePopin {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.1rem;
+        color: #9f9fa0;
+        cursor : pointer;
+        transition: all 0.5s ease;
+        &:hover {
+            transform : scale(1.2);
+        }
+    }
+}
+
+.formData {
+    width : 95%;
+    margin : 20px auto;
+
+    .form-group {
+        width : 100%;
+        position : relative;
+        label {
+            font-weight: bold;
+            margin-bottom : 10px;
+        }
+        input {
+            display : block;
+            width: 100%;
+            border : 0;
+            padding-bottom : 5px;
+            margin : 3px 0 10px;
+            border-bottom : 1px dashed rgba(0,0,0,0.5);
+            background : transparent;
+        }
+    }
+    #submitEdit {
+        transition: all 0.5s ease;
+        margin : 20px 0 0 0;
+        float : right;
     }
 }

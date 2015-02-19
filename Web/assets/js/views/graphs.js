@@ -18,13 +18,13 @@ var Graph = {
 				.find('.tooltip')
 				.hide();
 
-			$categoryGraph.on('mouseenter', '.ct-point', function() {
+			/*$categoryGraph.on('mouseenter', '.ct-point', function() {
 				var $point = $(this),
 					value = $point.attr('ct:value') + ' click(s)',
 					seriesName = $point.parent().attr('ct:series-name');
 				//$toolTip.html(seriesName + '<br>' + value).show();
 				$toolTip.html(value).show();
-			});
+			});*/
 
 			$categoryGraph.on('mouseleave', '.ct-point', function() {
 				$toolTip.hide();
@@ -63,6 +63,7 @@ var Graph = {
 				donut: true,
 				donutWidth: 20,
 				total: 100,
+				labelOffset: -30,
 				labelInterpolationFnc: function(value) {
 					return value + '%';
 				}

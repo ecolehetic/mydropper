@@ -46,47 +46,16 @@
                 <li>
                     <div class="snippetDetails">
                         <h2>Snippets 1</h2>
-
-                        <p>Create at 12/02/2015</p>
-                    </div>
-
-                    <div class="clickRateGraph ct-chart .ct-square">
-                    </div>
-                    Click rate
-
-                    <div class="snippetGraph ct-chart"></div>
-                </li>
-                <li>
-                    <div class="snippetDetails">
-                        <h2>Snippets 1</h2>
-
                         <p>Create at 12/02/2015</p>
                     </div>
 
                     <div class="clickRateGraphContainer">
-                        <div class="clickRateGraph ct-chart .ct-square">
-                        </div>
-                        Click rate
+                        <div class="clickRateGraph ct-chart .ct-square"></div>
+                        <span>Click rate</span>
                     </div>
 
-                    <div class="snippetGraphContainer clearfix">
-                        <div class="snippetGraph ct-chart"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="snippetDetails">
-                        <h2>Snippets 1</h2>
 
-                        <p>Create at 12/02/2015</p>
-                    </div>
-
-                    <div class="clickRateGraphContainer">
-                        <div class="clickRateGraph ct-chart .ct-square">
-                        </div>
-                        Click rate
-                    </div>
-
-                    <div class="snippetGraphContainer clearfix">
+                    <div class="snippetGraphContainer">
                         <div class="snippetGraph ct-chart"></div>
                     </div>
                 </li>

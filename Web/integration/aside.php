@@ -18,6 +18,29 @@
         <div id="row3"></div>
     </div>
 
+    <!-- Popin for add category and snippets -->
+    <div id="popin">
+        <div id="popinBg" class="animated fadeIn">
+        </div>
+        <div id="popinContent" class="animated zoomIn">
+            <div id="closePopin"><i class="icon-close"></i></div>
+            <h2>Add a category</h2>
+            <form action="" class="formData">
+                <div class="form-group">
+                    <label for="dataName">Name :</label>
+                    <input type="text" name="dataName" placeholder="dataName" required/>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="hidden" value="addData"/>
+                    <a href="#" id="submitEdit" class="ghostBtn submitBtn clearfix animated fadeInRight">
+                        <span>Validate</span>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div id="sideBar">
         <nav>
             <ul id="menu">
@@ -27,10 +50,6 @@
 
                 <li class="menuLink" id="trackingLink">
                     <a href="#"><i class="icon-tracking"></i> Tracking</a>
-                </li>
-
-                <li class="menuLink" id="settingsLink">
-                    <a href="#"><i class="icon-settings"></i> Settings</a>
                 </li>
 
                 <li>
@@ -58,7 +77,7 @@
                     </ul>
                 </li>
             </ul>
-            <a href="#" class="button">
+            <a href="#" class="button" id="addCategory">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                     <line class="top" x1="0" y1="0" x2="465" y2="0" />
                     <line class="left" x1="0" y1="50" x2="0" y2="-100" />

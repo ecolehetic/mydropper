@@ -80,6 +80,7 @@ $greyTitle: #787878;
                      border : 0;
                      padding-bottom : 5px;
                      margin : 3px 0 10px;
+                     border-bottom : 1px dashed transparent;
                  }
              }
              #submitEdit {
@@ -95,16 +96,6 @@ $greyTitle: #787878;
                  input {
                      border-bottom : 1px dashed rgba(0,0,0,0.5);
                  }
-                 /*&:after {
-                     font-family: icomoon;
-                     content: "\e618";
-                     cursor: pointer;
-                     position: absolute;
-                     right: 23px;
-                     top: 37px;
-                     font-size: 0.7rem;
-                     opacity: 0.6;
-                 }*/
              }
              #submitEdit {
                  display : block;

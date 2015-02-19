@@ -76,6 +76,15 @@ $(document).ready(function() {
 		var snippetLabels = ['12/02', '13/02', '14/02', '15/02', '16/02', '17/02', '18/02', '19/02'];
 		var snippetSeries = [[5, 9, 7, 8, 5, 3, 5, 4]];
 		Graph.snippet.init(snippetSelector, snippetLabels, snippetSeries);
-
 	}
+
+	/* POPIN ADD DATA */
+	$('#closePopin, #popinBg').click(function(e){
+	    e.preventDefault();
+	    $( "#popin" ).fadeOut();
+	});
+	$('#addCategory').click(function(e){
+	    e.preventDefault();
+		$( "#popin" ).fadeIn();
+	});
 });
