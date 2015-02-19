@@ -24,7 +24,7 @@
 
 
             <div id="bottomContainer">
-                <form action="" class="disabled" id="editForm">
+                <form method="POST" action="{{ url('/profile') }}" class="disabled" id="editForm">
                     <div class="col">
                         <div class="form-group">
                             <label for="firstname" >Firstname :</label>
@@ -56,12 +56,12 @@
                         </div>
                         <div class="form-group">
                             <label for="password_1">Password :</label>
-                            <input type="password" name="password_1" placeholder="Password" disabled="disabled" required/>
+                            <input type="password" name="password_1" placeholder="Password" disabled="disabled"/>
                         </div>
 
                         <div class="form-group">
                             <label for="password_2">Password check :</label>
-                            <input type="password" name="password_2" placeholder="Repeat password" disabled="disabled" required/>
+                            <input type="password" name="password_2" placeholder="Repeat password" disabled="disabled"/>
                         </div>
 
                         <div class="form-group">

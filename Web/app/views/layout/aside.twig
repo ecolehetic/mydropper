@@ -4,8 +4,8 @@
     <div id="profile">
         <img src="{{ aside.avatar_url }}" alt="Profile picture">
         <ul id="profileMenu">
-            <li>Settings</li>
-            <li>Log out</li>
+            <li><a href="{{ url('/profile') }}">Settings</a></li>
+            <li><a href="{{ url('/users/logout') }}">Log out</a></li>
         </ul>
     </div>
 </header>
