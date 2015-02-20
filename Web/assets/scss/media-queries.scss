@@ -33,6 +33,41 @@
             }
         }
     }
+}
+@media screen and (max-width: 980px) {
+    #dashboard {
+        .cardList {
+            li {
+                width: calc(46% - 4px);
+                margin: 30px 2%;
+            }
+        }
+    }
+    #homePage {
+        #formFeedback {
+            position : relative;
+            left : auto;
+            margin-bottom : 30px;
+        }
+    }
+    #profilePage {
+        #topContainer {
+            height : 40%;
+            .text {
+                left : 230px;
+            }
+            #avatarContainer {
+                left: 45px;
+            }
+        }
+        #bottomContainer {
+            form {
+                width : calc(100% - 260px);
+                margin-left : 230px;
+                margin-top : 50px;
+            }
+        }
+    }
     #tracking {
         h2 {
             margin : 25px 0 20px 6%;
@@ -76,42 +111,6 @@
                         }
                     }
                 }
-            }
-        }
-    }
-
-}
-@media screen and (max-width: 980px) {
-    #dashboard {
-        .cardList {
-            li {
-                width: calc(46% - 4px);
-                margin: 30px 2%;
-            }
-        }
-    }
-    #homePage {
-        #formFeedback {
-            position : relative;
-            left : auto;
-            margin-bottom : 30px;
-        }
-    }
-    #profilePage {
-        #topContainer {
-            height : 40%;
-            .text {
-                left : 230px;
-            }
-            #avatarContainer {
-                left: 45px;
-            }
-        }
-        #bottomContainer {
-            form {
-                width : calc(100% - 260px);
-                margin-left : 230px;
-                margin-top : 50px;
             }
         }
     }

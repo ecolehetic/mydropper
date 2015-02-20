@@ -91,6 +91,20 @@ var UI = {
 		'$container' : $('.container')
 	},
 
+	'flashMsg' : {
+		'removeMsg' : function(el){
+			el.removeClass('fadeInRight').addClass('fadeOutRight');
+			setTimeout(function() {
+				el.remove();
+			}, 800);
+		},
+		'removeMsgTimeout' : function(time){
+			setTimeout(function(){
+			    UI.flashMsg.removeMsg($('#flashMsg').find('li'));
+			},time);
+		}
+	},
+
 	'popin' : {
 		'el' : $( "#popin" ),
 		'categoryContainer' : $( "#addCategoryFormContainer"),

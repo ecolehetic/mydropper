@@ -1,6 +1,9 @@
 "use strict";
 
 var model = {
+	'getCategoryList' : function() {
+
+	},
 	'getCategoryGraphData' : function() {
 
 	},

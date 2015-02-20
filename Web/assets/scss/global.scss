@@ -2,6 +2,7 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
 $blue: #1f282d;
 $greyLight: #e3e2e3;
 $greyTitle: #787878;
+$flashMsgBg: #bbe4f9;
 $popInBg: #f6f6f6;
 
 * {
@@ -41,7 +42,7 @@ header {
     font-weight: bold;
     position: fixed;
     top: 0;
-    z-index: 1000;
+    z-index: 10000;
     .headerContent {
         text-align: center;
         color: $greyTitle;
@@ -373,5 +374,28 @@ a {
         transition: all 0.5s ease;
         margin : 20px 0 0 0;
         float : right;
+    }
+}
+
+#flashMsg {
+    position : fixed;
+    width : 250px;
+    right : 20px;
+    top : 20px;
+    z-index:  100001;
+    list-style: none;
+    transition : all 0.5s ease;
+    li {
+        position : relative;
+        display : block;
+        padding : 10px;
+        background : $flashMsgBg;
+        color : white;
+        margin-bottom : 10px;
+        cursor : pointer;
+        transition : all 0.5s ease;
+        &:hover {
+            background : #aaccde;
+        }
     }
 }

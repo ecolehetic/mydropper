@@ -11,13 +11,18 @@
         </div>
     </header>
 
-    <!-- LEFT PART -->
+
     <div id="burger">
         <div id="row1"></div>
         <div id="row2"></div>
         <div id="row3"></div>
     </div>
 
+    <!-- Flash messages -->
+    <ul id="flashMsg">
+        <li class="animated fadeInRight">Snippet Added</li>
+        <li class="animated fadeInRight">Doesnt Work, Nononono nononono it doeesnt</li>
+    </ul>
     <!-- Popin for add category and snippets -->
     <div id="popin">
         <div id="popinBg" class="animated fadeIn">

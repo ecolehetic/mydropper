@@ -20,6 +20,15 @@ $(document).ready(function() {
 		}
 	});
 
+	/* FLASH MESSAGES */
+	UI.flashMsg.removeMsgTimeout(3000);
+
+	$('#flashMsg').find('li').click(function(e){
+	    e.preventDefault();
+		UI.flashMsg.removeMsg($(this));
+	});
+
+
 	/* PROFILE AVATAR HOVER */
 	$('#profile').hover(function() {
 			UI.profile.$menu.fadeIn();
@@ -72,6 +81,14 @@ $(document).ready(function() {
 		UI.popin.closePopin();
 	});
 
+
+	$(document).keyup(function(e) {
+		if (e.keyCode == 27) {
+			if($('#popin').is(':visible')) {
+				UI.popin.closePopin();
+			}
+		}
+	});
 	// ----- Check URL for traking
 	$('#addSnippetForm textarea').keyup(function(e) {
 		e.preventDefault();
