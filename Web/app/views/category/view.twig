@@ -1,0 +1,27 @@
+{% extends '_layout/layout.twig' %}
+
+{% block aside %}
+    {% include '_includes/aside.twig' %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div id="dashboard">
+            <h1>Category</h1>
+            <ul class="cardList clearfix">
+                {% for store in stores %}
+                    <li>
+                        <h3>{{ store.label }}</h3>
+                        <span>{{ store.descript | slice(0, 50) }}</span>
+                        <span>
+                            <a class="icon-attachment" href=""></a>
+                            <a class="icon-close" href="{{ url('/stores/delete', [store.id, store.category_id]) }}"></a>
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

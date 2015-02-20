@@ -2,7 +2,7 @@
     <input id="searchBar" type="text" placeholder="Search" />
     <div class="headerContent">{{ aside.name | upper }} {{ aside.firstname | capitalize }}</div>
     <div id="profile">
-        <img src="{{ aside.avatar_url }}" alt="Profile picture">
+        <img src="/{{ aside.avatar_url }}" alt="Profile picture">
         <ul id="profileMenu">
             <li><a href="{{ url('/profile') }}">Settings</a></li>
             <li><a href="{{ url('/users/logout') }}">Log out</a></li>
@@ -42,6 +42,12 @@
                                     <a href="{{ url('/store/add') }}" class="addSnippetLink" data-id="{{ category.category_id }}">
                                         <i class="icon-plus"></i>
                                         Add a snippet
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/category', [category.category_id]) }}">
+                                        <i class="icon-list"></i>
+                                        View all snippets
                                     </a>
                                 </li>
                                 {% for store in category.stores %}

@@ -81,22 +81,23 @@ class StoresController extends BaseController
     }
 
     /**
-     * GET /stores/delete/@id
+     * GET /stores/delete/@id/@cat_id
      */
     public function delete()
     {
         $user = $this->need->logged('/users/login')->user()->execute();
 
-        $id = (int)($this->f3->get('PARAMS.id'));
+        $id     = (int)($this->f3->get('PARAMS.id'));
+        $cat_id = (int)($this->f3->get('PARAMS.cat_id'));
 
         if (!Store::isOwnedBy($id, $user->id)) {
             $this->f3->reroute('/history', true);
         }
         if (Store::destroy($id) > 0) {
-            $this->fMessage->set('delete complete', 'error');
-            $this->f3->reroute('/history', true);
+            $this->fMessage->set('Delete complete', 'error');
+            $this->f3->reroute('/category/'.$cat_id, true);
         } else {
-            $this->fMessage->set('error on delete', 'alert');
+            $this->fMessage->set('Error on delete', 'alert');
             $this->f3->reroute('/history', true);
         }
     }

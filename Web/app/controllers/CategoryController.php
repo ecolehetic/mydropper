@@ -3,6 +3,7 @@
 namespace APP\CONTROLLERS;
 
 use APP\MODELS\Category;
+use APP\MODELS\Store;
 
 /**
  * Class CategoryController
@@ -36,4 +37,27 @@ class CategoryController extends BaseController
 
         $this->render(true);
     }
+
+    /**
+     * GET /category/view
+     */
+    public function view()
+    {
+        $this->need->logged('/users/login')->execute();
+
+        $categoryId = $this->f3->get('PARAMS.id');
+
+        if(!empty($categoryId)){
+            $stores = Store::where('category_id','=', $categoryId)->get();
+        }
+        else{
+            $this->fMessage->set('Error, it missing id of the category.', 'error');
+            $this->f3->reroute('/history', true);
+        }
+
+        $this->render(true, [
+            'stores' => $stores
+        ]);
+    }
+
 }
