@@ -14,9 +14,9 @@ class Need extends BaseHelper
     const LOGGED                = 'logged';
     const UNLOGGED              = 'unlogged';
     const LEVEL                 = 'level';
-    const UNLOGGED_MESSAGE      = "Vous ne pouvez pas accéder à cette page étant connecté.";
-    const LOGGED_MESSAGE        = "Vous devez être connecté pour accéder à cette page.";
-    const LEVEL_MESSAGE         = "Vous n'avez pas le level minimum pour accéder à cette page.";
+    const UNLOGGED_MESSAGE      = "You cannot reach this page being connected.";
+    const LOGGED_MESSAGE        = "You must be connected to reach this page.";
+    const LEVEL_MESSAGE         = "You have no minimum level to reach this page.";
 
     private $choose     = null;
     private $redirect   = null;

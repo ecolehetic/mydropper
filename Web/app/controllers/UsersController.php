@@ -90,8 +90,7 @@ class UsersController extends BaseController
         $this->need->unLogged('/history')->execute();
 
         $this->render(true, [
-            'values'   => ($this->f3->get('SESSION.user.username')) ? $this->f3->get('SESSION.user.username') : '',
-            'messages' => ($this->fMessage->get()) ? ($this->fMessage->get()) : ''
+            'values'   => ($this->f3->get('SESSION.user.username')) ? $this->f3->get('SESSION.user.username') : ''
         ]);
     }
 
@@ -235,6 +234,7 @@ class UsersController extends BaseController
     public function logout()
     {
         $this->f3->clear('SESSION');
+        $this->fMessage->set('You are successfully logout', 'alert');
         $this->f3->reroute('/');
     }
 

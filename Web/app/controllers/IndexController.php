@@ -10,7 +10,6 @@ class IndexController extends BaseController
 
     function index()
     {
-        var_dump($this->fMessage->get());
         $this->render(true);
     }
 

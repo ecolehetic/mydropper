@@ -33,6 +33,8 @@
                 <li class="animated fadeInRight">{{ fMessage['message'] | raw }}</li>
             {% elseif fMessage['status'] == 'error' %}
                 <li class="animated fadeInRight error">{{ fMessage['message'] | raw }}</li>
+            {% elseif fMessage['status'] == 'alert' %}
+                <li class="animated fadeInRight alert">{{ fMessage['message'] | raw }}</li>
             {% endif %}
         </ul>
     {% endif %}

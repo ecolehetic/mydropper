@@ -93,10 +93,10 @@ class StoresController extends BaseController
             $this->f3->reroute('/history', true);
         }
         if (Store::destroy($id) > 0) {
-            $this->fMessage->set('delete complete');
+            $this->fMessage->set('delete complete', 'error');
             $this->f3->reroute('/history', true);
         } else {
-            $this->fMessage->set('error on delete');
+            $this->fMessage->set('error on delete', 'alert');
             $this->f3->reroute('/history', true);
         }
     }
