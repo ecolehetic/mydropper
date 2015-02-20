@@ -37,7 +37,7 @@ class StoresController extends BaseController
                     'descript'    => $post['descript'],
                     'category_id' => $post['category_id']
                 ]);
-                $this->fMessage->set('Record Complete');
+                $this->fMessage->set('Store added.');
                 $this->f3->reroute('/history', true);
             }
         }

@@ -29,8 +29,8 @@ class CategoryController extends BaseController
                     'user_id' => $user->id,
                     'label' => $this->f3->get('POST.category')
                 ));
-
-                $this->f3->reroute('/profile', true); //TODO Change it
+                $this->fMessage->set('Category added.');
+                $this->f3->reroute('/history', true);
             }
         }
 

@@ -56,7 +56,7 @@ class ProfileController extends BaseController
 
             $user->save();
 
-
+            $this->fMessage->set('Your profile has been update.');
         }
 
         $this->f3->set('SESSION.user', User::find($userInformations->id));
