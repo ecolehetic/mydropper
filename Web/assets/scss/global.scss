@@ -398,4 +398,10 @@ a {
             background : #aaccde;
         }
     }
+    li.error {
+         background : #c0392b;
+         &:hover {
+             background : #ae3326;
+        }
+    }
 }

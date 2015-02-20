@@ -20,7 +20,7 @@
 
     <!-- Flash messages -->
     <ul id="flashMsg">
-        <li class="animated fadeInRight">Snippet Added</li>
+        <li class="animated fadeInRight error">Snippet Added</li>
         <li class="animated fadeInRight">Doesnt Work, Nononono nononono it doeesnt</li>
     </ul>
     <!-- Popin for add category and snippets -->
