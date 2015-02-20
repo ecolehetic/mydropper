@@ -73,6 +73,11 @@ class BaseController
         $values['seo']['title']         = Seo::getInstance()->get($this->controller, $this->method, 'title');
         $values['seo']['description']   = Seo::getInstance()->get($this->controller, $this->method, 'description');
 
+        // FlashMessage
+        if ($this->fMessage->get() !== false) {
+            $values['fMessage'] = $this->fMessage->get();
+        }
+
         // Variables in (aside.twig) when user is logged
         if ($this->need->testLogged() === false) {
             $user = $this->f3->get('SESSION.user');

@@ -16,9 +16,10 @@ class FlashMessage extends BaseHelper
      *
      * @param string $message
      */
-    public function set($message)
+    public function set($message, $status = 'info')
     {
-        $this->f3->set('SESSION.fMessage', htmlentities($message));
+        $this->f3->set('SESSION.fMessage.message', htmlentities($message));
+        $this->f3->set('SESSION.fMessage.status', $status);
     }
 
     /*
@@ -28,6 +29,8 @@ class FlashMessage extends BaseHelper
     {
         if ($this->f3->get('SESSION.fMessage') !== null) {
             return $this->f3->get('SESSION.fMessage');
+        } else {
+            return false;
         }
     }
 

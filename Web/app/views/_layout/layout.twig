@@ -26,6 +26,18 @@
 
 <body>
 
+    <!-- Flash messages -->
+    {% if fMessage %}
+        <ul id="flashMsg">
+            {% if fMessage['status'] == 'info' %}
+                <li class="animated fadeInRight">{{ fMessage['message'] | raw }}</li>
+            {% elseif fMessage['status'] == 'error' %}
+                <li class="animated fadeInRight error">{{ fMessage['message'] | raw }}</li>
+            {% endif %}
+        </ul>
+    {% endif %}
+
+
     {% block aside %} {% endblock %}
     {% block content %} {% endblock %}
 

@@ -106,13 +106,13 @@ class Need extends BaseHelper
         $fMessage = new FlashMessage();
         switch($value){
             case self::LOGGED:
-                $fMessage->set(self::LOGGED_MESSAGE);
+                $fMessage->set(self::LOGGED_MESSAGE, 'error');
                 break;
             case self::UNLOGGED:
-                $fMessage->set(self::UNLOGGED_MESSAGE);
+                $fMessage->set(self::UNLOGGED_MESSAGE, 'error');
                 break;
             case self::LEVEL:
-                $fMessage->set(self::LEVEL_MESSAGE);
+                $fMessage->set(self::LEVEL_MESSAGE, 'error');
                 break;
             default: break;
         }
