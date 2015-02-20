@@ -404,4 +404,10 @@ a {
              background : #ae3326;
         }
     }
+    li.alert {
+         background : #e69a22;
+         &:hover {
+             background : #d48e20;
+        }
+    }
 }
