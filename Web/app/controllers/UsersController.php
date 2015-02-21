@@ -5,6 +5,9 @@ namespace APP\CONTROLLERS;
 use APP\HELPERS\Mail;
 use APP\HELPERS\Upload;
 use APP\HELPERS\Url;
+use APP\HELPERS\Removal;
+use APP\MODELS\Category;
+use APP\MODELS\Store;
 use App\Models\User as User;
 
 /**
@@ -28,7 +31,7 @@ class UsersController extends BaseController
      * POST users/create
      * @throws \APP\HELPERS\Exception
      */
-    function create()
+    public function create()
     {
         $validForm = User::checkFormSubscribe($this->f3->get('POST'));
 
@@ -45,10 +48,6 @@ class UsersController extends BaseController
                     $path = null;
                 }
 
-
-                // ADD A SPECIFIC CASE FOR USER CREATE FROM ADMIN
-
-
                 $user = User::create(array(
                     'username'      => $this->f3->get('POST.username'),
                     'firstname'     => $this->f3->get('POST.firstname'),
@@ -59,11 +58,10 @@ class UsersController extends BaseController
                     'avatar_url'    => $path
                 ));
 
-
                 $this->f3->set('POST.id', $user->id);
-                $this->f3->set('SESSION.user', $this->f3->get('POST'));
+                $this->f3->set('SESSION.user', $user);
 
-                $this->f3->reroute('/users/login', true); // TODO change it to the Dashboard
+                $this->f3->reroute('/history', true);
             } else {
                 $validForm = [];
                 if ($username !== null) {
@@ -80,6 +78,21 @@ class UsersController extends BaseController
             'values'   => $this->f3->get('POST')
         ]);
 
+    }
+
+    /**
+     *
+     */
+    public function delete(){
+        $user = $this->need->logged('/users/login')->user()->execute();
+
+        $remove = new Removal($user->id, 'User');
+        $remove->cascade(['Category','Store', 'TrackerStore'], false);
+        User::destroy($user->id);
+
+        $this->f3->clear('SESSION');
+        $this->fMessage->set('Your account is deleted', 'alert');
+        $this->f3->reroute('/users/login');
     }
 
     /*
@@ -236,6 +249,75 @@ class UsersController extends BaseController
         $this->f3->clear('SESSION');
         $this->fMessage->set('You are successfully logout', 'alert');
         $this->f3->reroute('/');
+    }
+
+    /**
+     * List all users
+     * GET /admin/users
+     */
+    public function admin_index(){
+        $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
+
+        $users = User::all();
+
+        $this->render(true,[
+            'users'=>$users,
+        ]);
+    }
+
+    /**
+     *GET|POST /admin/users/edit/@id
+     */
+    public function admin_edit(){
+        $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
+
+        $id = (int)($this->f3->get('PARAMS.id'));
+        $validForm = null;
+
+        if($this->f3->get('POST') && $id > 0)
+        {
+            $validForm = User::checkAdminEdit($this->f3->get('POST'), $id);
+            if($validForm === true)
+            {
+                User::where('id','=',$id)->update([
+                    'username'=> $this->f3->get('POST.username'),
+                    'firstname'=> $this->f3->get('POST.firstname'),
+                    'name'=> $this->f3->get('POST.name'),
+                    'mail'=> $this->f3->get('POST.mail'),
+                    'date_of_birth'=> $this->f3->get('POST.birthday'),
+                ]);
+            }
+        }
+        $user = User::find($id);
+        $storesCount = Store::where('user_id', '=', $id)->count();
+        $categoriesCount = Category::where('user_id', '=', $id)->count();
+
+        $this->render(true,[
+            'messages' => $validForm,
+            'values'=>$user,
+            'stores'=> $storesCount,
+            'categories'=>$categoriesCount
+        ]);
+    }
+
+    /**
+     * Delete a user
+     *GET /admin/users/delete/@id
+     */
+    public function admin_delete(){
+        $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
+        $userId = (int)($this->f3->get('PARAMS.id'));
+
+        if($userId){
+            $remove = new Removal($userId, 'User');
+            $remove->cascade(['Category','Store', 'TrackerStore'], false);
+            User::destroy($userId);
+
+            $this->fMessage->set('The account is deleted', 'alert');
+            $this->f3->reroute('/admin/users');
+        }else{
+            $this->f3->reroute('/admin/users');
+        }
     }
 
 }

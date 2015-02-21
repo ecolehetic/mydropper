@@ -9,10 +9,13 @@ namespace APP\MODELS;
 
 use GUMP;
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
 
 class Category extends Eloquent
 {
+    use SoftDeletes;
 
+    protected $dates = ['deleted_at'];
     protected $table = 'categories';
     protected $guarded = array('id');
 

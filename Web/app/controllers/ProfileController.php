@@ -25,6 +25,7 @@ class ProfileController extends BaseController
      */
     public function update()
     {
+        $this->need->logged('/users/login')->user()->execute();
 
         $validForm = User::checkForm($this->f3->get('POST'), array(
             'username'   => 'required|max_len,50',
@@ -69,6 +70,7 @@ class ProfileController extends BaseController
         ]);
 
     }
+
 
     /**
      * Return the age of the user

@@ -1,7 +1,6 @@
 <?php
 
 namespace APP\CONTROLLERS;
-
 /**
  * Class IndexController
  */
@@ -15,6 +14,7 @@ class IndexController extends BaseController
 
     function debug()
     {
+
         $this->render('debug.twig', [
 
         ]);

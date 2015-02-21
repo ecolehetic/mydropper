@@ -130,7 +130,7 @@ class Need extends BaseHelper
             $user = $this->f3->get('SESSION.user');
             $role = User::find($user->id)->roles()->get();
 
-            if($role->level > $level){
+            if($role[0]->level >= $level){
                 return true;
             }
             else{
