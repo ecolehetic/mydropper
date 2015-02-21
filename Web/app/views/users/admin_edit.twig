@@ -37,6 +37,18 @@
                        value="{{ values.date_of_birth }}" required/>
             </div>
             <div class="form-group">
+                <label for="role_id">Role :</label>
+                <select name="role_id" id="">
+                    {% for role in roles %}
+                        {% if(role.id == values.role_id) %}
+                            <option selected value="{{ role.id }}">{{ role.label }}</option>
+                        {% else %}
+                            <option value="{{ role.id }}">{{ role.label }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="save"/>
             </div>
 

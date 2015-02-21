@@ -7,8 +7,9 @@ use APP\HELPERS\Upload;
 use APP\HELPERS\Url;
 use APP\HELPERS\Removal;
 use APP\MODELS\Category;
+use APP\MODELS\Role;
 use APP\MODELS\Store;
-use App\Models\User as User;
+use App\Models\User;
 
 /**
  * Class IndexController
@@ -261,9 +262,11 @@ class UsersController extends BaseController
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
 
         $users = User::all();
+        $usersCount = count($users);
 
         $this->render(true, [
             'users' => $users,
+            'usersCount'=>$usersCount
         ]);
     }
 
@@ -286,16 +289,19 @@ class UsersController extends BaseController
                     'name' => $this->f3->get('POST.name'),
                     'mail' => $this->f3->get('POST.mail'),
                     'date_of_birth' => $this->f3->get('POST.birthday'),
+                    'role_id'=>$this->f3->get('POST.role_id')
                 ]);
             }
         }
         $user = User::find($id);
         $storesCount = Store::where('user_id', '=', $id)->count();
         $categoriesCount = Category::where('user_id', '=', $id)->count();
+        $roles = Role::all();
 
         $this->render(true, [
             'messages' => $validForm,
             'values' => $user,
+            'roles'=>$roles,
             'stores' => $storesCount,
             'categories' => $categoriesCount
         ]);
