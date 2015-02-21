@@ -146,6 +146,10 @@ header {
 a {
     text-decoration: none;
     color: white;
+    transition: all 1s ease;
+    &:hover {
+        color : $greyLight;
+    }
 }
 #burger {
     left: -100px;
@@ -253,7 +257,7 @@ a {
 .ghostBtn {
     width: 150px;
     height: 30px;
-    line-height: 36px;
+    line-height: 32px;
     text-align: center;
     border: 1px solid rgba(0,0,0,0.6);
     font-size: 0.9rem;

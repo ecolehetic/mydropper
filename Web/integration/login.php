@@ -2,7 +2,7 @@
 <html>
 	<body>
 
-		<div id="homePage" class="loginPage">
+		<div id="formHome" class="loginPage">
 			<img src='../assets/images/myDropper-logo.png' id="logo" alt="logo MyDropper">
 			<h2>Store your data, save time, and reuse <br>
 			it quickly in an effective way !</h2>

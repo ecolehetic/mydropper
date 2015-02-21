@@ -2,7 +2,61 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
 $greyLight: #e3e2e3;
 $greyTitle: #787878;
 
+
 #homePage {
+    background: url(../images/homeBg.jpg) center no-repeat;
+    background-size: cover;
+    min-height : 100%;
+    position : relative;
+    .homeContainer{
+        width : 70%;
+        padding : 50px 15% 95px 15%;
+        color : white;
+        height : 100%;
+
+        h1 {
+            margin-top : 45px;
+        }
+        p {
+            width : 80%;
+            max-width : 500px;
+            margin-bottom: 60px;
+        }
+        a {
+            display : block;
+            margin : 20px 0;
+            color : white;
+            border :  1px solid white;
+            width: 160px;
+            height: 40px;
+            line-height: 40px;
+            &:hover {
+                color : $greyTitle;
+            }
+            &:last-child {
+                margin-bottom : 40px;
+            }
+        }
+    }
+    footer {
+        position : absolute;
+        bottom : 0;
+        width : 100%;
+        background : rgba(255,255,255,0.5);
+        ul {
+            width : 90%;
+            list-style: none;
+            padding : 20px 5% 20px 5%;
+            li{
+                display : inline-block;
+                color:  white;
+                margin-right : 5%;
+            }
+        }
+    }
+}
+
+#formHome {
 	background: url(../images/homeBg.jpg) center no-repeat;
 	background-size: cover;
 	min-height : 100%;
@@ -56,7 +110,7 @@ $greyTitle: #787878;
                 margin: 0;
                 border: 0;
                 height: 23px;
-                line-height: 33px;
+                line-height: 23px;
                 border-bottom: 1px solid white;
                 vertical-align: middle;
                 background: rgba(255, 255, 255, 0.4);
@@ -133,7 +187,7 @@ $greyTitle: #787878;
 		}
 	}
 }
-#homePage.loginPage {
+#formHome.loginPage {
 	#logo {
 		padding-top : 55px!important;
 	}

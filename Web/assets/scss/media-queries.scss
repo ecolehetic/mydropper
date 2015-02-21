@@ -7,7 +7,7 @@
             }
         }
     }
-    #homePage {
+    #formHome {
         #formFeedback {
             left: calc(50% + 180px);
         }
@@ -43,7 +43,7 @@
             }
         }
     }
-    #homePage {
+    #formHome {
         #formFeedback {
             position : relative;
             left : auto;
@@ -202,6 +202,24 @@
     }
 
     #homePage {
+        #logo {
+            margin-left : auto;
+            margin-right : auto;
+        }
+        text-align : center;
+        .homeContainer {
+            width: 80%;
+            padding: 50px 10% 95px 10%;
+            p {
+                width: 100%;
+            }
+            a {
+                margin-left : auto;
+                margin-right : auto;
+            }
+        }
+    }
+    #formHome {
         #logo {
             padding-top : 40px !important;
         }
