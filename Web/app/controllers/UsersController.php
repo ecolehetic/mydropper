@@ -36,26 +36,26 @@ class UsersController extends BaseController
         $validForm = User::checkFormSubscribe($this->f3->get('POST'));
 
         if ($validForm === true) {
-            $username   = User::where('username', $this->f3->get('POST.username'))->first();
-            $mail       = User::where('mail', $this->f3->get('POST.mail'))->first();
+            $username = User::where('username', $this->f3->get('POST.username'))->first();
+            $mail = User::where('mail', $this->f3->get('POST.mail'))->first();
 
             if ($username === null && $mail === null) {
 
                 if ($this->f3->get('FILES.avatar')) {
                     $upload = new Upload();
-                    $path   = $upload->save($this->f3->get('FILES.avatar'));
+                    $path = $upload->save($this->f3->get('FILES.avatar'));
                 } else {
                     $path = null;
                 }
 
                 $user = User::create(array(
-                    'username'      => $this->f3->get('POST.username'),
-                    'firstname'     => $this->f3->get('POST.firstname'),
-                    'name'          => $this->f3->get('POST.lastname'),
-                    'mail'          => $this->f3->get('POST.mail'),
+                    'username' => $this->f3->get('POST.username'),
+                    'firstname' => $this->f3->get('POST.firstname'),
+                    'name' => $this->f3->get('POST.lastname'),
+                    'mail' => $this->f3->get('POST.mail'),
                     'date_of_birth' => $this->f3->get('POST.birthday'),
-                    'password'      => $this->crypt($this->f3->get('POST.password_1')),
-                    'avatar_url'    => $path
+                    'password' => $this->crypt($this->f3->get('POST.password_1')),
+                    'avatar_url' => $path
                 ));
 
                 $this->f3->set('POST.id', $user->id);
@@ -75,7 +75,7 @@ class UsersController extends BaseController
 
         $this->render('users/subscribe.twig', [
             'messages' => $validForm,
-            'values'   => $this->f3->get('POST')
+            'values' => $this->f3->get('POST')
         ]);
 
     }
@@ -83,11 +83,12 @@ class UsersController extends BaseController
     /**
      *
      */
-    public function delete(){
+    public function delete()
+    {
         $user = $this->need->logged('/users/login')->user()->execute();
 
         $remove = new Removal($user->id, 'User');
-        $remove->cascade(['Category','Store', 'TrackerStore'], false);
+        $remove->cascade(['Category', 'Store', 'TrackerStore'], false);
         User::destroy($user->id);
 
         $this->f3->clear('SESSION');
@@ -103,7 +104,7 @@ class UsersController extends BaseController
         $this->need->unLogged('/history')->execute();
 
         $this->render(true, [
-            'values'   => ($this->f3->get('SESSION.user.username')) ? $this->f3->get('SESSION.user.username') : ''
+            'values' => ($this->f3->get('SESSION.user.username')) ? $this->f3->get('SESSION.user.username') : ''
         ]);
     }
 
@@ -119,8 +120,8 @@ class UsersController extends BaseController
         ));
 
         if ($validForm === true) {
-            $user       = User::where('username', $this->f3->get('POST.username'))->where('password', $this->crypt($this->f3->get('POST.password')))->first();
-            $validForm  = [];
+            $user = User::where('username', $this->f3->get('POST.username'))->where('password', $this->crypt($this->f3->get('POST.password')))->first();
+            $validForm = [];
 
             if ($user !== null) {
                 $this->f3->set('SESSION.user', $user);
@@ -133,7 +134,7 @@ class UsersController extends BaseController
 
         $this->render('users/login.twig', [
             'messages' => $validForm,
-            'values'   => $this->f3->get('POST')
+            'values' => $this->f3->get('POST')
         ]);
     }
 
@@ -158,14 +159,14 @@ class UsersController extends BaseController
 
         if ($validForm === true) {
 
-            $userInformations   = User::where('mail', $this->f3->get('POST.mail'))->first();
-            $token              = uniqid();
-            $validForm          = [];
+            $userInformations = User::where('mail', $this->f3->get('POST.mail'))->first();
+            $token = uniqid();
+            $validForm = [];
 
             if ($userInformations !== null) {
                 // Generate Token and save it
-                $user                   = User::find($userInformations->id);
-                $user->token_password   = $token;
+                $user = User::find($userInformations->id);
+                $user->token_password = $token;
                 $user->is_lost_password = 1;
                 $user->save();
 
@@ -205,17 +206,17 @@ class UsersController extends BaseController
      */
     public function confirmLostPassword()
     {
-        $userInformations   = User::where('username', $this->f3->get('GET.username'))->where('token_password', $this->f3->get('GET.token'))->first();
-        $messages           = [];
+        $userInformations = User::where('username', $this->f3->get('GET.username'))->where('token_password', $this->f3->get('GET.token'))->first();
+        $messages = [];
 
         if ($userInformations !== null) {
             $newPassword = uniqid();
 
             // Save new Password
-            $user                   = User::find($userInformations->id);
-            $user->token_password   = null;
+            $user = User::find($userInformations->id);
+            $user->token_password = null;
             $user->is_lost_password = 0;
-            $user->password         = $this->crypt($newPassword);
+            $user->password = $this->crypt($newPassword);
             $user->save();
 
             // Seed a mail with new Password
@@ -255,36 +256,36 @@ class UsersController extends BaseController
      * List all users
      * GET /admin/users
      */
-    public function admin_index(){
+    public function admin_index()
+    {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
 
         $users = User::all();
 
-        $this->render(true,[
-            'users'=>$users,
+        $this->render(true, [
+            'users' => $users,
         ]);
     }
 
     /**
      *GET|POST /admin/users/edit/@id
      */
-    public function admin_edit(){
+    public function admin_edit()
+    {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
 
         $id = (int)($this->f3->get('PARAMS.id'));
         $validForm = null;
 
-        if($this->f3->get('POST') && $id > 0)
-        {
+        if ($this->f3->get('POST') && $id > 0) {
             $validForm = User::checkAdminEdit($this->f3->get('POST'), $id);
-            if($validForm === true)
-            {
-                User::where('id','=',$id)->update([
-                    'username'=> $this->f3->get('POST.username'),
-                    'firstname'=> $this->f3->get('POST.firstname'),
-                    'name'=> $this->f3->get('POST.name'),
-                    'mail'=> $this->f3->get('POST.mail'),
-                    'date_of_birth'=> $this->f3->get('POST.birthday'),
+            if ($validForm === true) {
+                User::where('id', '=', $id)->update([
+                    'username' => $this->f3->get('POST.username'),
+                    'firstname' => $this->f3->get('POST.firstname'),
+                    'name' => $this->f3->get('POST.name'),
+                    'mail' => $this->f3->get('POST.mail'),
+                    'date_of_birth' => $this->f3->get('POST.birthday'),
                 ]);
             }
         }
@@ -292,11 +293,11 @@ class UsersController extends BaseController
         $storesCount = Store::where('user_id', '=', $id)->count();
         $categoriesCount = Category::where('user_id', '=', $id)->count();
 
-        $this->render(true,[
+        $this->render(true, [
             'messages' => $validForm,
-            'values'=>$user,
-            'stores'=> $storesCount,
-            'categories'=>$categoriesCount
+            'values' => $user,
+            'stores' => $storesCount,
+            'categories' => $categoriesCount
         ]);
     }
 
@@ -304,18 +305,21 @@ class UsersController extends BaseController
      * Delete a user
      *GET /admin/users/delete/@id
      */
-    public function admin_delete(){
+    public function admin_delete()
+    {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
         $userId = (int)($this->f3->get('PARAMS.id'));
 
-        if($userId){
+        if ($userId) {
             $remove = new Removal($userId, 'User');
-            $remove->cascade(['Category','Store', 'TrackerStore'], false);
+            $remove->cascade(['Category', 'Store', 'TrackerStore'], false);
             User::destroy($userId);
+
+            // Todo SEND EMAIL TO USER
 
             $this->fMessage->set('The account is deleted', 'alert');
             $this->f3->reroute('/admin/users');
-        }else{
+        } else {
             $this->f3->reroute('/admin/users');
         }
     }

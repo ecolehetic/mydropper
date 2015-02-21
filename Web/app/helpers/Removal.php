@@ -11,7 +11,7 @@ use APP\MODELS\User;
 
 class Removal extends BaseHelper
 {
-    private $is_soft = true ;
+    private $is_soft = true;
     private $keys =
         [
             'Category' => 'category_id',
@@ -26,7 +26,7 @@ class Removal extends BaseHelper
     private $fromModel;
     private $killKey;
 
-    function __construct($id=0, $fromModel='')
+    function __construct($id = 0, $fromModel = '')
     {
         parent::__construct();
         $this->id = $id;
@@ -34,13 +34,11 @@ class Removal extends BaseHelper
         $this->killKey = $this->keys[$fromModel];
     }
 
-    public function cascade($toModels=array(), $soft=true)
+    public function cascade($toModels = array(), $soft = true)
     {
         $this->is_soft = $soft;
-        if(count($toModels) > 0)
-        {
-            foreach($toModels as $modelName)
-            {
+        if (count($toModels) > 0) {
+            foreach ($toModels as $modelName) {
                 $this->kill($modelName);
             }
         }
@@ -49,54 +47,53 @@ class Removal extends BaseHelper
 
     private function kill($modelName)
     {
-        switch ($modelName)
-        {
+        switch ($modelName) {
             case 'Category' :
-                if($this->is_soft) {
-                    Category::where($this->killKey, '=',$this->id)->update(['deleted_at'=>time()]);
-                }else {
-                    Category::where($this->killKey, '=',$this->id)->update([$this->killKey=>null, 'deleted_at'=>time()]);
+                if ($this->is_soft) {
+                    Category::where($this->killKey, '=', $this->id)->update(['deleted_at' => time()]);
+                } else {
+                    Category::where($this->killKey, '=', $this->id)->update([$this->killKey => null, 'deleted_at' => time()]);
                 }
                 break;
             case 'Role':
-                if($this->is_soft) {
-                    Role::where($this->killKey, '=',$this->id)->update(['deleted_at'=>time()]);
-                }else {
-                    Role::where($this->killKey, '=',$this->id)->update([$this->killKey=>null]);
+                if ($this->is_soft) {
+                    Role::where($this->killKey, '=', $this->id)->update(['deleted_at' => time()]);
+                } else {
+                    Role::where($this->killKey, '=', $this->id)->update([$this->killKey => null]);
                 }
                 break;
             case 'Store':
-                if($this->is_soft) {
-                    Store::where($this->killKey, '=',$this->id)->update(['deleted_at'=>time()]);
-                }else {
-                    Store::where($this->killKey, '=',$this->id)->update([$this->killKey=>null, 'deleted_at'=>time()]);
+                if ($this->is_soft) {
+                    Store::where($this->killKey, '=', $this->id)->update(['deleted_at' => time()]);
+                } else {
+                    Store::where($this->killKey, '=', $this->id)->update([$this->killKey => null, 'deleted_at' => time()]);
                 }
                 break;
             case 'TrackerStore':
-                if($this->is_soft) {
-                    TrackerStore::where($this->killKey, '=',$this->id)->update(['deleted_at'=>time()]);
-                }else {
-                    TrackerStore::where($this->killKey, '=',$this->id)->update([$this->killKey=>null, 'deleted_at'=>time()]);
+                if ($this->is_soft) {
+                    TrackerStore::where($this->killKey, '=', $this->id)->update(['deleted_at' => time()]);
+                } else {
+                    TrackerStore::where($this->killKey, '=', $this->id)->update([$this->killKey => null, 'deleted_at' => time()]);
                 }
                 break;
             case 'TrackerUrl':
-                if($this->is_soft) {
-                    TrackerUrl::where($this->killKey, '=',$this->id)->update(['deleted_at'=>time()]);
-                }else {
-                    TrackerUrl::where($this->killKey, '=',$this->id)->update([$this->killKey=>null]);
+                if ($this->is_soft) {
+                    TrackerUrl::where($this->killKey, '=', $this->id)->update(['deleted_at' => time()]);
+                } else {
+                    TrackerUrl::where($this->killKey, '=', $this->id)->update([$this->killKey => null]);
                 }
                 break;
             case 'Url':
-                if($this->is_soft) {
-                    Url::where($this->killKey, '=',$this->id)->update(['deleted_at'=>time()]);
-                }else {
-                    Url::where($this->killKey, '=',$this->id)->update([$this->killKey=>null, 'deleted_at'=>time()]);
+                if ($this->is_soft) {
+                    Url::where($this->killKey, '=', $this->id)->update(['deleted_at' => time()]);
+                } else {
+                    Url::where($this->killKey, '=', $this->id)->update([$this->killKey => null, 'deleted_at' => time()]);
                 }
                 break;
             case 'User':
-                if($this->is_soft) {
+                if ($this->is_soft) {
 //                    NO CASE
-                }else {
+                } else {
 //                    NO CASE
                 }
                 break;
