@@ -218,6 +218,8 @@ $greyTitle: #787878;
         text-align : center;
         line-height : 1.5rem;
         font-size : 1.1rem;
+        width : 80%;
+        margin : auto;
     }
     #whoAreWeTop{
         width: 100%;
@@ -273,7 +275,6 @@ $greyTitle: #787878;
                     transition: all 0.5s ease;
                     h2 {
                         opacity : 1;
-                        animation: 2s flash;
                     }
                     h3 {
                         opacity : 1;

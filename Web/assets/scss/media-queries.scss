@@ -229,7 +229,19 @@
             }
         }
     }
-
+    #whoAreWe {
+        #teamContainer {
+            li {
+                width : 50%;
+                a {
+                    h2 {
+                        margin-top : 25%;
+                        margin-bottom : 10px;
+                    }
+                }
+            }
+        }
+    }
     #homePage {
         #logo {
             margin-left : auto;
