@@ -7,11 +7,11 @@
                 <h1>MyDropper.io</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi esse et iusto sequi. Accusantiustrum nenda dolore, eos.</p>
 
-                <a href="signin.php" class="ghostBtn">
+                <a href="signin.php" class="ghostBtn btnHome">
                     <span>Sign In</span>
                 </a>
 
-                <a href="subscribe.php" class="ghostBtn">
+                <a href="subscribe.php" class="ghostBtn btnHome">
                     <span>Sign Up</span>
                 </a>
             </div>

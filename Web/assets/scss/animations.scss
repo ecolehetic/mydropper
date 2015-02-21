@@ -83,9 +83,42 @@
         transform: translateX(50px);
     }
 }
+@keyframes flipInX {
+    0% {
+        -webkit-transform: perspective(400px) rotateX(90deg);
+        opacity: 0;
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) rotateX(-10deg);
+    }
+
+    70% {
+        -webkit-transform: perspective(400px) rotateX(10deg);
+    }
+
+    100% {
+        -webkit-transform: perspective(400px) rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes flash {
+    0%,  100% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0;
+    }
+}
 
 .zoomIn {
     animation-name: zoomIn;
+}
+
+.flipInX {
+    animation-name: flipInX;
 }
 
 .fadeInDown {
@@ -99,7 +132,6 @@
     -webkit-animation-name: fadeOutRight;
     animation-name: fadeOutRight;
 }
-
 
 .slideInRight {
     animation-name: slideInRight;

@@ -22,21 +22,6 @@ $greyTitle: #787878;
             max-width : 500px;
             margin-bottom: 60px;
         }
-        a {
-            display : block;
-            margin : 20px 0;
-            color : white;
-            border :  1px solid white;
-            width: 160px;
-            height: 40px;
-            line-height: 40px;
-            &:hover {
-                color : $greyTitle;
-            }
-            &:last-child {
-                margin-bottom : 40px;
-            }
-        }
     }
     footer {
         position : absolute;
@@ -55,6 +40,23 @@ $greyTitle: #787878;
         }
     }
 }
+
+.ghostBtn.btnHome {
+    display : block;
+    margin : 20px 0;
+    color : white;
+    border :  1px solid white;
+    width: 160px;
+    height: 40px;
+    line-height: 40px;
+    &:hover {
+        color : $greyTitle;
+    }
+    &:last-child {
+        margin-bottom : 40px;
+    }
+}
+
 
 #formHome {
 	background: url(../images/homeBg.jpg) center no-repeat;
@@ -191,4 +193,118 @@ $greyTitle: #787878;
 	#logo {
 		padding-top : 55px!important;
 	}
+}
+
+#whoAreWe {
+    background: url(../images/homeBg.jpg) center no-repeat;
+    background-size: cover;
+    min-height : 100%;
+    padding-top : 50px;
+    position : relative;
+    color : white;
+    overflow: hidden;
+    box-sizing: border-box;
+    .btnHome {
+        margin-left : 3%;
+        margin-top:0;
+    }
+    h1{
+        text-transform: uppercase;
+        text-align : center;
+        margin-top : 50px;
+        margin-bottom : 30px;
+    }
+    p {
+        text-align : center;
+        line-height : 1.5rem;
+        font-size : 1.1rem;
+    }
+    #whoAreWeTop{
+        width: 100%;
+        height: 215px;
+        padding-bottom: 50px;
+    }
+    #teamContainer {
+        width : 100%;
+        padding: 0;
+        position : absolute;
+        bottom : 0;
+        margin: 0;
+        height : calc(100% - 400px);
+        h2 {
+            display : none;
+            margin-top : 43%;
+            margin-bottom : 60px;
+        }
+        h3 {
+            display : none;
+            padding : 15px 20px;
+            box-sizing: border-box;
+            border : 1px solid black;
+            width : 80%;
+            margin : auto;
+            font-weight: bold;
+        }
+        li {
+            position : relative;
+            width : 16.66666%;
+            float : left;
+            display : block;
+            text-align : center;
+            height : 100%;
+            color : black;
+            span {
+                font-weight : bold;
+            }
+            a {
+                position : absolute;
+                top : 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                color : black;
+                h2, h3 {
+                    display : block;
+                    opacity : 0;
+                    transition: all 0.4s ease;
+                }
+                &:hover {
+                    background : rgba(255,255,255,0.6);
+                    transition: all 0.5s ease;
+                    h2 {
+                        opacity : 1;
+                        animation: 2s flash;
+                    }
+                    h3 {
+                        opacity : 1;
+
+                    }
+                }
+            }
+        }
+        #nicolas {
+            background : url('../images/team-nicolas.jpg') no-repeat bottom right;
+            background-size : cover;
+        }
+        #heloise {
+            background : url('../images/team-heloise.jpg') no-repeat bottom right;
+            background-size : cover;
+        }
+        #patrick {
+            background : url('../images/team-patrick.jpg') no-repeat bottom right;
+            background-size : cover;
+        }
+        #mathieu {
+            background : url('../images/team-mathieu.jpg') no-repeat bottom right;
+            background-size : cover;
+        }
+        #wassim {
+            background : url('../images/team-wassim.jpg') no-repeat bottom right;
+            background-size : cover;
+        }
+        #clara {
+            background : url('../images/team-clara.jpg') no-repeat bottom right;
+            background-size : cover;
+        }
+    }
 }
