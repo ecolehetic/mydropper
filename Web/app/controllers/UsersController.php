@@ -221,7 +221,6 @@ class UsersController extends BaseController
             $user->save();
 
             // Seed a mail with new Password
-            // Seed Mail
             $mail = new Mail();
             $mail->seed('lostpassword_final_step', $userInformations->mail, array(
                 'subject' => 'Mot de passe oublié',
@@ -317,11 +316,17 @@ class UsersController extends BaseController
         $userId = (int)($this->f3->get('PARAMS.id'));
 
         if ($userId) {
+            $userInformations = User::find($userId);
             $remove = new Removal($userId, 'User');
             $remove->cascade(['Category', 'Store', 'TrackerStore'], false);
             User::destroy($userId);
 
-            // TODO SEND EMAIL TO USER
+            // Seed Mail
+            $mail = new Mail();
+            $mail->seed('defaut', $userInformations->mail, array(
+                'subject'     => 'Deleted account',
+                'contentHtml' => "Your account has been delete by an administrator of the Mydropper.io"
+            ));
 
             $this->fMessage->set('The account is deleted', 'alert');
             $this->f3->reroute('/admin/users');
