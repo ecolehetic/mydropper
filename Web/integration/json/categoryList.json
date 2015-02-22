@@ -2,11 +2,11 @@
   "categoryList": [
     {
       "id": "25",
-      "label": "CategoryName1"
+      "text": "CategoryName1"
     },
     {
       "id": "47",
-      "label": "CategoryName2"
+      "text": "CategoryName2"
     }
   ]
 }

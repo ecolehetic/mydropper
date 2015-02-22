@@ -78,6 +78,11 @@ var GraphUI = {
 		$('.graphTooltip').remove();
 	},
 
+	'removeGraphs' : function() {
+		$('#snippetGraphList').html("");
+		$('.categoryGraph').html("");
+	},
+
 	'renderHoverInfos' : function(selector, id) {
 		var $graph = $(selector);
 

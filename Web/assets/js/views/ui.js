@@ -161,11 +161,10 @@ var UI = {
 	},
 
 	'tracking' : {
-		'initCategoryList' : function(categoryList, categoryId){
+		'initCategoryList' : function(categoryList){
 			$('#categoryChoice').select3({
-				allowClear: true,
 				items: categoryList,
-				placeholder: categoryList[0]
+				placeholder: categoryList[0].text
 			});
 		}
 	}

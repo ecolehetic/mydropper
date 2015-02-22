@@ -3,17 +3,21 @@ $(document).ready(function() {
 
 	// Date variables
 	var from = "01-01-2015",
-		to = new Date();
+		to = new Date(),
+		currentCat = '';
 
 	/* ---- DROPDOWN LIST ---- */
-	Model.tracking.getCategoryList(function(catList){
-		UI.tracking.initCategoryList(catList);
+	Model.tracking.getCategoryList(function(catList, catId){
+		UI.tracking.initCategoryList(catList,catId);
 		updateCharts(catList[0], from, to);
 	});
 
 	/* ---- ON CATEGORY CHANGE ---- */
-	$('#categoryChoice').on('select3-selected', function(){
-		updateCharts($(this).select3('value'));
+	$('#categoryChoice').on('change', function(){
+		currentCat = $(this).select3('value');
+		console.log('value  ' + $(this).select3('value'));
+
+		updateCharts(currentCat, from, to);
 	});
 
 	/* ---- SET DATEPICKERS ---- */
@@ -30,23 +34,24 @@ $(document).ready(function() {
 	function onDateChange() {
 		from = $('#from').val();
 		to = $('#to').val();
-		updateCharts(catList[0], from, to);
+		updateCharts(currentCat, from, to);
 	}
 
 	/* ---- RENDER CHARTS ---- */
-	function updateCharts(currentCategory, from, to) {
+	function updateCharts(cat, from, to) {
 
-		/* ---- PREVENT PREVIOUS TOOLTIPS ---- */
+		/* ---- REMOVE PREVIOUS GRAPHS ---- */
+		GraphUI.removeGraphs();
 		GraphUI.removeTooltips();
 
 		/* ---- CATEGORY CHART ---- */
-		Model.tracking.getCategoryGraphData(from, to, function(catLabels, catSeries){
+		Model.tracking.getCategoryGraphData(cat, from, to, function(catLabels, catSeries){
 			var catSelector = '.categoryGraph';
 			GraphUI.category.render(catSelector, catLabels, catSeries);
 		});
 
 		/* ---- TRACKED LINK CHARTS ---- */
-		Model.tracking.getTrackedLinkGraphData(from, to, function(categoryName, dataResponse){
+		Model.tracking.getTrackedLinkGraphData(cat, from, to, function(categoryName, dataResponse){
 			for(var i = 0; i < dataResponse.length; i++) {
 
 					var currentData = dataResponse[i];

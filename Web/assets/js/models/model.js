@@ -7,17 +7,11 @@ var Model = {
 		'getCategoryList' : function(callback) {
 			console.log('UserId : ' + Model.userId);
 			$.getJSON( "../integration/json/categoryList.json", function( response ) {
-				var categoryList = [];
-				var categoryId = [];
-				for(var i = 0; i < response.categoryList.length; i++) {
-					categoryList.push(response.categoryList[i].label);
-					categoryId.push(response.categoryList[i].id);
-				}
-				callback.call(this, categoryList, categoryId);
+				callback.call(this, response.categoryList);
 			});
 		},
 
-		'getCategoryGraphData' : function(from, to, callback) {
+		'getCategoryGraphData' : function(cat, from, to, callback) {
 			$.getJSON( "../integration/json/categoryGlobal.json", function( response ) {
 				var dataResponse = response.data[0],
 					graphData = dataResponse.graphData,
@@ -37,7 +31,7 @@ var Model = {
 			});
 		},
 
-		'getTrackedLinkGraphData' : function(from, to, callback) {
+		'getTrackedLinkGraphData' : function(cat, from, to, callback) {
 			$.getJSON( "../integration/json/trackedLink.json", function( response ) {
 
 				var dataResponse = response.data,
