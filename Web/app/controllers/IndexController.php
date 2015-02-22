@@ -24,6 +24,8 @@ class IndexController extends BaseController
 
     public function admin_index()
     {
+        $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
+        
         $usersCount = User::count();
         $storesCount = Store::count();
         $categoriesCount = Category::count();
