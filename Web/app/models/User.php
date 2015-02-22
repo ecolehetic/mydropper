@@ -21,11 +21,6 @@ class User extends Eloquent
         return $this->hasMany('\APP\MODELS\Store');
     }
 
-    public function urls()
-    {
-        return $this->hasMany('\APP\MODELS\Url');
-    }
-
     public function categories()
     {
         return $this->hasMany('\APP\MODELS\Category');

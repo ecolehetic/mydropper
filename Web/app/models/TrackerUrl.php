@@ -13,11 +13,7 @@ class TrackerUrl extends Eloquent
 {
 
     protected $table = 'trackurls';
-
-    public function urls()
-    {
-        return $this->belongsTo('\APP\MODELS\Url', 'url_id');
-    }
+    protected $guarded = array('id');
 
     public function users()
     {
