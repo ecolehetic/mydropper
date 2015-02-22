@@ -30,16 +30,27 @@ var Model = {
 		},
 
 		'getTrackedLinkGraphData' : function(callback) {
-			var clickRateSeries = [{
-				data: 60, className: 'clickRate'
-			}, {
-				data: 40, className: 'unclickRate'
-			}];
 
-			var snippetLabels = ['12/02', '13/02', '14/02', '15/02', '16/02', '17/02', '18/02', '19/02'];
-			var snippetSeries = [[5, 9, 7, 8, 5, 3, 5, 4]];
+			$.getJSON( "../integration/json/trackedLink.json", function( response ) {
+				var dataResponse = response.data[0],
+					categoryName = dataResponse.categoryName,
+					clickRateSeries = [{
+					data: 60, className: 'clickRate'
+				}, {
+					data: 40, className: 'unclickRate'
+				}];
 
-			callback.call(this, clickRateSeries, snippetLabels, snippetSeries);
+				console.log(dataResponse);
+
+				var snippetLabels = ['12/02', '13/02', '14/02', '15/02', '16/02', '17/02', '18/02', '19/02'];
+				var snippetSeries = [[5, 9, 7, 8, 5, 3, 5, 4]];
+
+				callback.call(this, clickRateSeries, snippetLabels, snippetSeries);
+			});
+			
+			
+
+			
 		}
 	}
 
