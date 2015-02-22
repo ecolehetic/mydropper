@@ -1,6 +1,7 @@
 "use strict";
 $(document).ready(function() {
 
+
 	/* ---- DROPDOWN LIST ---- */
 	Model.tracking.getCategoryList(function(catList){
 		UI.tracking.initCategoryList(catList);
@@ -9,13 +10,18 @@ $(document).ready(function() {
 
 
 	/* ---- ON CATEGORY CHANGE ---- */
-
 	$('#categoryChoice').on('select3-selected', function(){
 		updateCharts($(this).select3('value'));
 	});
 
+	/* ---- SET DATEPICKERS ---- */
+	$('#from').datepicker("setDate", "01-01-2015");
+	$("#to").datepicker("setDate", new Date());
 
-	/* RENDER CHARTS */
+	/* ---- ON DATE CHANGE ---- */
+
+
+	/* ---- RENDER CHARTS ---- */
 	function updateCharts(currentCategory) {
 
 		/* ---- PREVENT PREVIOUS TOOLTIPS ---- */

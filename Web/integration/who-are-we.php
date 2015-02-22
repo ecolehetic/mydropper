@@ -2,7 +2,6 @@
 <html>
 	<body>
 		<div id="whoAreWe">
-
             <a href="home.php" class="ghostBtn btnHome">
                 Back
             </a>

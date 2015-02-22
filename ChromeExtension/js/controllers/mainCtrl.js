@@ -39,4 +39,4 @@ function toggleSideBar(htmlContent) {
         UI.initDraggable();
         UI.initAccordeon();
 	}
-}	
+}

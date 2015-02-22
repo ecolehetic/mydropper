@@ -7,6 +7,7 @@
 {% block javascripts %}
     {{ parent() }}
     {{ asset('js', 'libs/chartist.min.js', false) }}
+    {{ asset('js', 'libs/jquery-ui.min.js', false) }}
     {{ asset('js', 'libs/select3.min.js', false) }}
     {{ asset('js', 'views/graphUI.js', false) }}
     {{ asset('js', 'models/model.js', false) }}
@@ -26,11 +27,11 @@
                 <div class="deltaGraphContainer">
                     <div class="inputGroup">
                         <label>From : </label>
-                        <input type="date" id="from"/>
+                        <input type="text" class="datepicker" id="from">
                     </div>
                     <div class="inputGroup">
                         <label>To : </label>
-                        <input type="date" id="from"/>
+                        <input type="text" class="datepicker" id="to">
                     </div>
                 </div>
                 <div class="categoryGraph ct-chart">

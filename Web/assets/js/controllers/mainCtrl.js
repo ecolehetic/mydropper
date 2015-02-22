@@ -116,5 +116,6 @@ $(document).ready(function() {
 			return true;
 		}
 	}
-
+	// Init Datepickers
+	$('.datepicker').datepicker({ dateFormat: 'dd-mm-yy' });
 });
