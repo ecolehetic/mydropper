@@ -1,13 +1,22 @@
 "use strict";
-
 var Model = {
-	tracking : {
+	"userId" : $('#user_id').val(),
+
+	"tracking" : {
+
 		'getCategoryList' : function(callback) {
+			console.log('UserId : ' + Model.userId);
 			$.getJSON( "../integration/json/categoryList.json", function( response ) {
-				var categoryList = response.categoryList;
-				callback.call(this, categoryList);
+				var categoryList = [];
+				var categoryId = [];
+				for(var i = 0; i < response.categoryList.length; i++) {
+					categoryList.push(response.categoryList[i].label);
+					categoryId.push(response.categoryList[i].id);
+				}
+				callback.call(this, categoryList, categoryId);
 			});
 		},
+
 		'getCategoryGraphData' : function(callback) {
 			$.getJSON( "../integration/json/categoryGlobal.json", function( response ) {
 				var dataResponse = response.data[0],
@@ -21,36 +30,21 @@ var Model = {
 					];
 
 				// Insert values in catSeries for ChartistJs
-				for(var i = 0; i < catLabels.length-1; i++) {
+				for(var i = 0; i < catLabels.length; i++) {
 					catSeries[0].data.push(graphData[catLabels[i]]);
 				}
-
 				callback.call(this, catLabels,catSeries);
 			});
 		},
 
 		'getTrackedLinkGraphData' : function(callback) {
-
 			$.getJSON( "../integration/json/trackedLink.json", function( response ) {
-				var dataResponse = response.data[0],
-					categoryName = dataResponse.categoryName,
-					clickRateSeries = [{
-					data: 60, className: 'clickRate'
-				}, {
-					data: 40, className: 'unclickRate'
-				}];
 
-				console.log(dataResponse);
+				var dataResponse = response.data,
+					categoryName = dataResponse.categoryName
 
-				var snippetLabels = ['12/02', '13/02', '14/02', '15/02', '16/02', '17/02', '18/02', '19/02'];
-				var snippetSeries = [[5, 9, 7, 8, 5, 3, 5, 4]];
-
-				callback.call(this, clickRateSeries, snippetLabels, snippetSeries);
+				callback.call(this, categoryName, dataResponse);
 			});
-			
-			
-
-			
 		}
 	}
 

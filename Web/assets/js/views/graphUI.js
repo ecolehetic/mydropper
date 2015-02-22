@@ -3,7 +3,7 @@
 var GraphUI = {
 
 	'category' : {
-		'init' : function(selector, importLabels, importSeries){
+		'render' : function(selector, importLabels, importSeries){
 			new Chartist.Line(selector, {
 				labels: importLabels,
 				series: importSeries
@@ -12,12 +12,33 @@ var GraphUI = {
 				showArea: true
 			});
 
-			GraphUI.initHoverInfos(selector, 'categoryGraphTooltip');
+			GraphUI.renderHoverInfos(selector, 'categoryGraphTooltip');
 		}
 	},
 
 	'snippet' : {
-		init : function(selector, importLabels, importSeries, graphTooltipId){
+		'render' : function(stg) {
+			var htmlTemplate = "\
+			<li>\
+				<div class='snippetDetails'>\
+					<div class='text'>\
+						<h2>"+stg.snippetName+"</h2>\
+						<p>Create at " + stg.createdAt + "</p>\
+					</div>\
+				</div>\
+				<div class='graphContainer'>\
+					<div class='clickRateGraphContainer'><span>"+
+						stg.nbClick +"</span> clicks\
+					</div>\
+					<div class='snippetGraphContainer'>\
+						<div class='snippetGraph "+ stg.snippetSelector +" ct-chart'></div>\
+					</div>\
+				</div>\
+			</li>"
+			$('#snippetGraphList').append(htmlTemplate);
+			GraphUI.snippet.graphInit('.' + stg.snippetSelector, stg.snippetLabels, stg.snippetSeries, stg.graphTooltipId);
+		},
+		'graphInit' : function(selector, importLabels, importSeries, graphTooltipId){
 			var data = {
 				labels: importLabels,
 				series: importSeries
@@ -29,11 +50,12 @@ var GraphUI = {
 
 			new Chartist.Bar(selector, data, options);
 
-			GraphUI.initHoverInfos(selector, graphTooltipId);
+			GraphUI.renderHoverInfos(selector, graphTooltipId);
 		}
 	},
+
 	'clickRate' : {
-		init : function(selector, importSeries){
+		'render' : function(selector, importSeries){
 			var data = {
 				series: importSeries
 			};
@@ -56,7 +78,7 @@ var GraphUI = {
 		$('.graphTooltip').remove();
 	},
 
-	'initHoverInfos' : function(selector, id) {
+	'renderHoverInfos' : function(selector, id) {
 		var $graph = $(selector);
 
 		var $toolTip = $graph

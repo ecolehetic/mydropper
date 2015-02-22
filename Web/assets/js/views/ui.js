@@ -161,7 +161,7 @@ var UI = {
 	},
 
 	'tracking' : {
-		'initCategoryList' : function(categoryList){
+		'initCategoryList' : function(categoryList, categoryId){
 			$('#categoryChoice').select3({
 				allowClear: true,
 				items: categoryList,

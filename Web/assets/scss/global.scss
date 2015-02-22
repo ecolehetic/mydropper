@@ -178,7 +178,7 @@ a {
     transform: translateX(260px);
 }
 .container {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     padding: 60px 0px 50px 0px;
     box-sizing: border-box;

@@ -1,3 +1,12 @@
 {
-  "categoryList" : ["nomCat1","nomCat2","nomCat3"]
+  "categoryList": [
+    {
+      "id": "25",
+      "label": "CategoryName1"
+    },
+    {
+      "id": "47",
+      "label": "CategoryName2"
+    }
+  ]
 }

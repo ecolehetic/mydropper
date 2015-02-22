@@ -3,7 +3,13 @@ $greenLight: #eef3ee;
 $greenLightHover: #d8dedb;
 $blueDonut: #bbe4f9;
 $blueOpacityTopGraph: #1AAAF2;
+
+.trackingContainer{
+    padding-bottom: 0 !important;
+}
+
 #tracking {
+
     h2 {
         margin: 30px 0 45px 6%;
     }
@@ -71,6 +77,7 @@ $blueOpacityTopGraph: #1AAAF2;
         height: auto;
         list-style: none;
         padding: 0;
+        margin-bottom : 0;
         border-top: 1px solid $borderGrey;
         li {
             width: 100%;
@@ -104,6 +111,7 @@ $blueOpacityTopGraph: #1AAAF2;
                 h2 {
                     font-weight: bold;
                     font-size: 1.2rem;
+                    text-transform: capitalize;
                 }
                 p {
                     font-size: 0.9rem;
@@ -137,10 +145,11 @@ $blueOpacityTopGraph: #1AAAF2;
                     width: 28%;
                     float: left;
                     height: 195px;
+                    line-height: 195px;
+                    font-size : 1.7rem;
                     span {
-                        position: relative;
-                        margin-top: 7px;
-                        display: block;
+                        color : $blueDonut;
+                        font-weight: bold;
                     }
                     .clickRateGraph {
                         width: 100%;
