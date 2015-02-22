@@ -210,6 +210,28 @@
             }
         }
     }
+    #tracking {
+        #snippetGraphList {
+            li {
+                .graphContainer {
+                    .clickRateGraphContainer {
+                        float: none;
+                        height: auto;
+                        line-height: normal;
+                        text-align: center;
+                        width: 100%;
+                        margin-top: 16px;
+                        padding: 0;
+                    }
+                    .snippetGraphContainer {
+                        float: none;
+                        width: 100%;
+                        margin-top: -20px;
+                    }
+                }
+            }
+        }
+    }
 }
 @media screen and (max-width: 480px) {
     header {
