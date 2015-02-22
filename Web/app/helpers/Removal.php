@@ -34,6 +34,12 @@ class Removal extends BaseHelper
         $this->killKey = $this->keys[$fromModel];
     }
 
+    /**
+     * Manage cascading delete by softness
+     *
+     * @param array $toModels
+     * @param bool $soft
+     */
     public function cascade($toModels = array(), $soft = true)
     {
         $this->is_soft = $soft;
@@ -45,6 +51,11 @@ class Removal extends BaseHelper
     }
 
 
+    /**
+     * Unlink datas when remove related Model
+     *
+     * @param $modelName
+     */
     private function kill($modelName)
     {
         switch ($modelName) {

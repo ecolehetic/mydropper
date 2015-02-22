@@ -321,7 +321,7 @@ class UsersController extends BaseController
             $remove->cascade(['Category', 'Store', 'TrackerStore'], false);
             User::destroy($userId);
 
-            // Todo SEND EMAIL TO USER
+            // TODO SEND EMAIL TO USER
 
             $this->fMessage->set('The account is deleted', 'alert');
             $this->f3->reroute('/admin/users');
