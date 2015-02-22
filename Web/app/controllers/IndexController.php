@@ -2,6 +2,7 @@
 
 namespace APP\CONTROLLERS;
 
+use APP\MODELS\Url;
 use APP\MODELS\User;
 use APP\MODELS\Store;
 use APP\MODELS\Category;
@@ -39,6 +40,10 @@ class IndexController extends BaseController
 
     public function debug()
     {
+        $url = Url::where('token', "=", "234d")->with('users')->get();
+
+        var_dump($url->mail);
+
         $this->render('debug.twig', [
 
         ]);

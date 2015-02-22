@@ -4,7 +4,8 @@
     "bcosca/fatfree": "~3.4",
     "twig/twig": "~1.18",
     "illuminate/database": "*",
-    "wixel/gump": "dev-master"
+    "wixel/gump": "dev-master",
+    "ivkos/pushbullet": "2.*"
   },
   "authors": [
     {

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "84646ed186cd1f12e511a1e4b9131a7a",
+    "hash": "bfe29c72bbfa13ea754ed8e288aacf41",
     "packages": [
         {
             "name": "bcosca/fatfree",
@@ -39,16 +39,16 @@
         },
         {
             "name": "danielstjules/stringy",
-            "version": "1.8.1",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielstjules/Stringy.git",
-                "reference": "6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad"
+                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad",
-                "reference": "6a7b0391b2baf0bfdca3ec0c8d33ff379c2835ad",
+                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
+                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
                 "shasum": ""
             },
             "require": {
@@ -91,7 +91,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2015-01-08 15:21:43"
+            "time": "2015-02-10 06:19:18"
         },
         {
             "name": "doctrine/inflector",
@@ -162,16 +162,16 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.0.0",
+            "version": "v5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "22fae557d2a631585536654fadb069f34c315040"
+                "reference": "7ffdad0a2b2c600445deb57f5f7e93092e44ca2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/22fae557d2a631585536654fadb069f34c315040",
-                "reference": "22fae557d2a631585536654fadb069f34c315040",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/7ffdad0a2b2c600445deb57f5f7e93092e44ca2a",
+                "reference": "7ffdad0a2b2c600445deb57f5f7e93092e44ca2a",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +200,7 @@
                 }
             ],
             "description": "The Illuminate Container package.",
-            "time": "2015-01-07 02:06:23"
+            "time": "2015-02-11 16:00:31"
         },
         {
             "name": "illuminate/contracts",
@@ -245,16 +245,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v5.0.0",
+            "version": "v5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "c571ace791a601bf1bb3f9cf125eb86df00bf3ae"
+                "reference": "1f83a771a2e3e1c5fa34b9e543229f506caa9aa2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/c571ace791a601bf1bb3f9cf125eb86df00bf3ae",
-                "reference": "c571ace791a601bf1bb3f9cf125eb86df00bf3ae",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/1f83a771a2e3e1c5fa34b9e543229f506caa9aa2",
+                "reference": "1f83a771a2e3e1c5fa34b9e543229f506caa9aa2",
                 "shasum": ""
             },
             "require": {
@@ -267,6 +267,7 @@
             "suggest": {
                 "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.4).",
                 "illuminate/console": "Required to use the database commands (5.0.*).",
+                "illuminate/events": "Required to use the observers with Eloquent (5.0.*).",
                 "illuminate/filesystem": "Required to use the migrations (5.0.*)."
             },
             "type": "library",
@@ -297,20 +298,20 @@
                 "orm",
                 "sql"
             ],
-            "time": "2015-02-02 19:27:30"
+            "time": "2015-02-11 20:11:33"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.0.0",
+            "version": "v5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "306ceb305f5b480608d94355ac3a0a730b21a905"
+                "reference": "405a2241fefa49cfc39b7fba8cc54f69fce2f101"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/306ceb305f5b480608d94355ac3a0a730b21a905",
-                "reference": "306ceb305f5b480608d94355ac3a0a730b21a905",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/405a2241fefa49cfc39b7fba8cc54f69fce2f101",
+                "reference": "405a2241fefa49cfc39b7fba8cc54f69fce2f101",
                 "shasum": ""
             },
             "require": {
@@ -348,7 +349,56 @@
                 }
             ],
             "description": "The Illuminate Support package.",
-            "time": "2015-02-03 22:40:35"
+            "time": "2015-02-11 11:08:03"
+        },
+        {
+            "name": "ivkos/pushbullet",
+            "version": "2.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ivkos/PushBullet-for-PHP.git",
+                "reference": "41ea12951b6057d1de79340f7ae2346fb8802348"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ivkos/PushBullet-for-PHP/zipball/41ea12951b6057d1de79340f7ae2346fb8802348",
+                "reference": "41ea12951b6057d1de79340f7ae2346fb8802348",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">= 5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivaylo Stoyanov",
+                    "email": "me@ivkos.com",
+                    "homepage": "https://github.com/ivkos"
+                }
+            ],
+            "description": "Push notifications to devices and browsers via Pushbullet",
+            "homepage": "https://github.com/ivkos/Pushbullet-for-PHP",
+            "keywords": [
+                "android",
+                "chrome",
+                "firefox",
+                "iphone",
+                "notifications",
+                "push",
+                "pushbullet",
+                "windows"
+            ],
+            "time": "2015-02-04 20:14:12"
         },
         {
             "name": "nesbot/carbon",
@@ -519,7 +569,6 @@
         "wixel/gump": 20
     },
     "prefer-stable": false,
-    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
