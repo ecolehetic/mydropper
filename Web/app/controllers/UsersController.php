@@ -323,7 +323,7 @@ class UsersController extends BaseController
 
             // Seed Mail
             $mail = new Mail();
-            $mail->seed('defaut', $userInformations->mail, array(
+            $mail->seed('default', $userInformations->mail, array(
                 'subject'     => 'Deleted account',
                 'contentHtml' => "Your account has been delete by an administrator of the Mydropper.io"
             ));
