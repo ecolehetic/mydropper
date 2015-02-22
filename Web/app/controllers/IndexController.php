@@ -42,7 +42,7 @@ class IndexController extends BaseController
     {
         $url = Url::where('token', "=", "234d")->with('users')->get();
 
-        var_dump($url->mail);
+        var_dump($url[0]->users->mail);
 
         $this->render('debug.twig', [
 

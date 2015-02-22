@@ -8,9 +8,13 @@
 namespace APP\MODELS;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
 
 class Url extends Eloquent
 {
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
+    protected $guarded = array('id');
     protected $table = 'urls';
 
     public function users()
