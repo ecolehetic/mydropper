@@ -83,6 +83,7 @@ class BaseController
             $user = $this->f3->get('SESSION.user');
 
             // Users informations
+            $values['aside']['user_id']     = $user->id;
             $values['aside']['name']        = $user->name;
             $values['aside']['firstname']   = $user->firstname;
             $values['aside']['avatar_url']  = $user->avatar_url;
