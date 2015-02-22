@@ -7,13 +7,22 @@
             <h1>MyDropper.io</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi esse et iusto sequi. Accusantiustrum nenda dolore, eos.</p>
 
-            <a href="{{ url('/users/login') }}" class="ghostBtn btnHome">
-                <span>Sign In</span>
-            </a>
+            {% if aside.name %}
+                <a href="{{ url('/history') }}" class="ghostBtn btnHome">
+                    <span>History</span>
+                </a>
+                <a href="{{ url('/tracking') }}" class="ghostBtn btnHome">
+                    <span>Tracking</span>
+                </a>
+            {% else %}
+                <a href="{{ url('/users/login') }}" class="ghostBtn btnHome">
+                    <span>Sign In</span>
+                </a>
+                <a href="{{ url('/users/subscribe') }}" class="ghostBtn btnHome">
+                    <span>Sign Up</span>
+                </a>
+            {% endif %}
 
-            <a href="{{ url('/users/subscribe') }}" class="ghostBtn btnHome">
-                <span>Sign Up</span>
-            </a>
         </div>
         <footer>
             <ul>
