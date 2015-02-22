@@ -207,7 +207,7 @@ class UsersController extends BaseController
      */
     public function confirmLostPassword()
     {
-        $userInformations = User::where('username', $this->f3->get('GET.username'))->where('token_password', $this->f3->get('GET.token'))->first();
+        $userInformations = User::where('username', $this->f3->get('PARAMS.username'))->where('token_password', $this->f3->get('PARAMS.token'))->first();
         $messages = [];
 
         if ($userInformations !== null) {
