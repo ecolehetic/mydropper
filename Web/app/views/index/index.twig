@@ -1,5 +1,25 @@
 {% extends '_layout/layout.twig' %}
 
 {% block content %}
-    Bonjour MyDropper
+    <div id="homePage" class="landing">
+        <div class="homeContainer">
+            <img src='../assets/images/myDropper-logo.png' id="logo" alt="logo MyDropper">
+            <h1>MyDropper.io</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi esse et iusto sequi. Accusantiustrum nenda dolore, eos.</p>
+
+            <a href="{{ url('/users/login') }}" class="ghostBtn btnHome">
+                <span>Sign In</span>
+            </a>
+
+            <a href="{{ url('/users/subscribe') }}" class="ghostBtn btnHome">
+                <span>Sign Up</span>
+            </a>
+        </div>
+        <footer>
+            <ul>
+                <li><a href="{{ url('/who-we-are') }}">Who are we ?</a></li>
+                <li><a href="how-it-works.php">How it works ?</a></li>
+            </ul>
+        </footer>
+    </div>
 {% endblock %}
