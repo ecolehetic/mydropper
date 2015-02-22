@@ -2,6 +2,7 @@
 
 namespace APP\CONTROLLERS;
 
+use APP\MODELS\Category;
 use APP\MODELS\Store;
 use APP\MODELS\TrackerStore;
 use APP\MODELS\User;
@@ -162,6 +163,27 @@ class ApiController extends BaseController
         }
 
         $this->renderError($data);
+    }
+
+    /**
+     * Tracking PAGE
+     * GET /api/categories/@user_id
+     */
+    public function getCategoryList()
+    {
+        $userId = $this->f3->get('PARAMS.user_id');
+
+        if(!empty($userId)){
+            $categories                         = Category::where('user_id','=', $userId)->get();
+            $categoriesJson["categoryList"]     = [];
+
+            for($i = 0; $i < count($categories); $i++){
+                $categoriesJson["categoryList"][] = $categories[$i]->label;
+            }
+
+            $this->render(false, $categoriesJson);
+        }
+
     }
 
     /**
