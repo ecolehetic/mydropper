@@ -17,7 +17,7 @@ var Model = {
 			});
 		},
 
-		'getCategoryGraphData' : function(callback) {
+		'getCategoryGraphData' : function(from, to, callback) {
 			$.getJSON( "../integration/json/categoryGlobal.json", function( response ) {
 				var dataResponse = response.data[0],
 					graphData = dataResponse.graphData,
@@ -37,7 +37,7 @@ var Model = {
 			});
 		},
 
-		'getTrackedLinkGraphData' : function(callback) {
+		'getTrackedLinkGraphData' : function(from, to, callback) {
 			$.getJSON( "../integration/json/trackedLink.json", function( response ) {
 
 				var dataResponse = response.data,
