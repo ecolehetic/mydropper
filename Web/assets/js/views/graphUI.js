@@ -1,6 +1,7 @@
 "use strict";
 
 var GraphUI = {
+
 	'category' : {
 		'init' : function(selector, importLabels, importSeries){
 			new Chartist.Line(selector, {
@@ -49,6 +50,10 @@ var GraphUI = {
 
 			new Chartist.Pie(selector, data, options);
 		}
+	},
+
+	'removeTooltips' : function() {
+		$('.graphTooltip').remove();
 	},
 
 	'initHoverInfos' : function(selector, id) {

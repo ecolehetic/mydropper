@@ -161,9 +161,12 @@ var UI = {
 	},
 
 	'tracking' : {
-		'toggleTabs' : function(self) {
-			$('#tabs').find('li').removeClass('selected');
-			self.addClass('selected');
+		'initCategoryList' : function(categoryList){
+			$('#categoryChoice').select3({
+				allowClear: true,
+				items: categoryList,
+				placeholder: categoryList[0]
+			});
 		}
 	}
 
