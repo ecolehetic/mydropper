@@ -215,7 +215,7 @@ class ApiController extends BaseController
                 $url_id = $url->id;
 
                 $trackerUrlCount    = TrackerUrl::where('url_id', '=', $url_id)->count();
-                $trackerUrl         = TrackerUrl::where('url_id', '=', $url_id)->get();
+                $trackerUrl         = TrackerUrl::where('url_id', '=', $url_id)->orderBy('created_at', 'ASC')->get();
 
                 $graphData = [];
 
@@ -224,11 +224,11 @@ class ApiController extends BaseController
 
                         $day    = Carbon::parse($trackerUrl[$j]->created_at)->day;
                         $month  = Carbon::parse($trackerUrl[$j]->created_at)->month;
-                        if (!isset($graphData[$day . '-0' . $month])) {
-                            $graphData[$day . '-0' . $month] = 0;
+                        if (!isset($graphData['0'.$month.'-'.$day])) {
+                            $graphData['0'.$month.'-'.$day] = 0;
                         }
-                        if (isset($graphData[$day . '-0' . $month])) {
-                            $graphData[$day . '-0' . $month] += 1;
+                        if (isset($graphData['0'.$month.'-'.$day])) {
+                            $graphData['0'.$month.'-'.$day] += 1;
                         }
 
                     }
