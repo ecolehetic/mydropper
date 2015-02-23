@@ -51,10 +51,10 @@
                                     </a>
                                 </li>
                                 {% for store in category.stores %}
-                                    <li class="snippet" data-sid="NeedToAddId">
+                                    <li class="snippet" data-sid="{{ store.id }}">
                                         <a href="#">
                                             <i class="icon-tag"></i>
-                                            <span class="name">{{ store.store_label }}</qp span>
+                                            <span class="name">{{ store.store_label }}</span>
                                         </a>
                                     </li>
                                 {% endfor %}
