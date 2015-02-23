@@ -178,7 +178,10 @@ class ApiController extends BaseController
             $categoriesJson["categoryList"]     = [];
 
             for($i = 0; $i < count($categories); $i++){
-                $categoriesJson["categoryList"][] = $categories[$i]->label;
+                $categoriesJson["categoryList"][] = [
+                    "id" => $categories[$i]->id,
+                    "text" => $categories[$i]->label
+                ];
             }
 
             $this->render(false, $categoriesJson);
