@@ -9,7 +9,7 @@ $(document).ready(function() {
 	/* ---- DROPDOWN LIST ---- */
 	Model.tracking.getCategoryList(function(catList, catId){
 		UI.tracking.initCategoryList(catList,catId);
-		updateCharts(catList[0], from, to);
+		updateCharts(catList[0].id, from, to);
 	});
 
 	/* ---- ON CATEGORY CHANGE ---- */
@@ -35,6 +35,8 @@ $(document).ready(function() {
 		from = $('#from').val();
 		to = $('#to').val();
 		updateCharts(currentCat, from, to);
+		console.log('from ' + from);
+		console.log('to ' + to);
 	}
 
 	/* ---- RENDER CHARTS ---- */
@@ -51,26 +53,26 @@ $(document).ready(function() {
 		});
 
 		/* ---- TRACKED LINK CHARTS ---- */
-		Model.tracking.getTrackedLinkGraphData(cat, from, to, function(categoryName, dataResponse){
+		Model.tracking.getTrackedLinkGraphData(cat, from, to, function(dataResponse){
 			for(var i = 0; i < dataResponse.length; i++) {
 
-					var currentData = dataResponse[i];
+				var currentData = dataResponse[i];
 
-					var	graphSettings = {
-						"nbClick" : currentData.nbClick,
-						"createdAt" : currentData.createdAt,
-						"snippetName" : currentData.snippetName,
-						"snippetSelector" : "snippetGraph-" + (i+1),
-						"graphTooltipId" : "snippetTooltip-" + (i+1),
-						"snippetLabels" : Object.keys(currentData.graphData ),
-						"snippetSeries" : [[]]
-					};
-				
-					// Insert snippetSeries in chartist format
-					for(var j = 0; j < graphSettings.snippetLabels.length; j++) {
-						graphSettings.snippetSeries[0].push(currentData.graphData[graphSettings.snippetLabels[j]]);
-					}
-					GraphUI.snippet.render(graphSettings);
+				var	graphSettings = {
+					"nbClick" : currentData.nbClick,
+					"createdAt" : currentData.createdAt,
+					"snippetName" : currentData.snippetName,
+					"snippetSelector" : "snippetGraph-" + (i+1),
+					"graphTooltipId" : "snippetTooltip-" + (i+1),
+					"snippetLabels" : Object.keys(currentData.graphData ),
+					"snippetSeries" : [[]]
+				};
+
+				// Insert snippetSeries in chartist format
+				for(var j = 0; j < graphSettings.snippetLabels.length; j++) {
+					graphSettings.snippetSeries[0].push(currentData.graphData[graphSettings.snippetLabels[j]]);
+				}
+				GraphUI.snippet.render(graphSettings);
 			}
 		});
 

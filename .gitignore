@@ -17,3 +17,6 @@ Web/vendor/*
 # CHROME EXTENSION
 ChromeExtension/node_modules/*
 ChromeExtension/npm-debug.log
+ChromeExtension/css/sidebar-reset.css
+ChromeExtension/css/fonts.css
+ChromeExtension/css/animation.css

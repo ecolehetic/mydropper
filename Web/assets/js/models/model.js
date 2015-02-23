@@ -6,7 +6,7 @@ var Model = {
 
 		'getCategoryList' : function(callback) {
 			console.log('UserId : ' + Model.userId);
-			$.getJSON( "../integration/json/categoryList.json", function( response ) {
+			$.getJSON( "/api/categories/"+ Model.userId, function( response ) {
 				callback.call(this, response.categoryList);
 			});
 		},
@@ -32,12 +32,9 @@ var Model = {
 		},
 
 		'getTrackedLinkGraphData' : function(cat, from, to, callback) {
-			$.getJSON( "../integration/json/trackedLink.json", function( response ) {
+			$.getJSON( "/api/trackedlink/" + Model.userId + "/" + cat, function( response ) {
 
-				var dataResponse = response.data,
-					categoryName = dataResponse.categoryName
-
-				callback.call(this, categoryName, dataResponse);
+				callback.call(this, response.data);
 			});
 		}
 	}
