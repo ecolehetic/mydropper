@@ -26,11 +26,11 @@ class ProfileController extends BaseController
         $this->need->logged('/users/login')->user()->execute();
 
         $validForm = User::checkForm($this->f3->get('POST'), array(
-            'username'   => 'required|max_len,50',
-            'firstname'  => 'required|max_len,45',
-            'lastname'   => 'required|max_len,45',
-            'mail'       => 'required|valid_email',
-            'birthday'   => 'required'
+            'username'        => 'required|max_len,50',
+            'firstname'       => 'required|max_len,45',
+            'lastname'        => 'required|max_len,45',
+            'mail'            => 'required|valid_email',
+            'mail_pushbullet' => 'required|valid_email',
         ));
 
         if ($validForm === true) {
