@@ -1,13 +1,13 @@
 <?php
 
-namespace APP\HELPERS;
+namespace MyDropper\Helpers;
 
-use APP\MODELS\Category;
-use APP\MODELS\Role;
-use APP\MODELS\Store;
-use APP\MODELS\TrackerStore;
-use APP\MODELS\TrackerUrl;
-use APP\MODELS\User;
+use MyDropper\Models\Category;
+use MyDropper\Models\Role;
+use MyDropper\Models\Store;
+use MyDropper\Models\TrackerStore;
+use MyDropper\Models\TrackerUrl;
+use MyDropper\Models\User;
 
 class Removal extends BaseHelper
 {

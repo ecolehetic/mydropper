@@ -1,8 +1,8 @@
 <?php
 
-namespace APP\CONTROLLERS;
+namespace MyDropper\Controllers;
 
-use APP\MODELS\User;
+use MyDropper\Models\User;
 
 class ProfileController extends BaseController
 {

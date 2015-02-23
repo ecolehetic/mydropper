@@ -5,7 +5,7 @@
  * The model name must be the same name of the table but in the singular
  * Else : protected $table = 'name_table'
  */
-namespace APP\MODELS;
+namespace MyDropper\Models;
 
 use GUMP;
 use Illuminate\Database\Eloquent\Model as Eloquent;
@@ -21,12 +21,12 @@ class Category extends Eloquent
 
     public function users()
     {
-        return $this->belongsTo('\APP\MODELS\User', 'user_id');
+        return $this->belongsTo('MyDropper\Models\User', 'user_id');
     }
 
     public function stores()
     {
-        return $this->hasMany('\APP\MODELS\Store');
+        return $this->hasMany('MyDropper\Models\Store');
     }
 
     /**

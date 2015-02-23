@@ -1,6 +1,6 @@
 <?php
 
-namespace APP\HELPERS;
+namespace MyDropper\Helpers;
 
 class Url extends BaseHelper
 {

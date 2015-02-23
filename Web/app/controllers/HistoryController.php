@@ -1,9 +1,9 @@
 <?php
 
-namespace APP\CONTROLLERS;
+namespace MyDropper\Controllers;
 
-use APP\MODELS\Store as Store;
-use APP\MODELS\TrackerStore as TrackerStore;
+use MyDropper\Models\Store;
+use MyDropper\Models\TrackerStore;
 
 class HistoryController extends BaseController
 {

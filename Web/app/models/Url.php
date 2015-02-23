@@ -5,7 +5,7 @@
  * The model name must be the same name of the table but in the singular
  * Else : protected $table = 'name_table'
  */
-namespace APP\MODELS;
+namespace MyDropper\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
@@ -19,7 +19,7 @@ class Url extends Eloquent
 
     public function users()
     {
-        return $this->belongsTo('APP\MODELS\User', 'user_id');
+        return $this->belongsTo('MyDropper\Models\User', 'user_id');
     }
 
     /**

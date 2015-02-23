@@ -1,27 +1,27 @@
 <?php
 
-namespace APP\HELPERS;
+namespace MyDropper\Helpers;
 
-use APP\MODELS\User;
+use MyDropper\Models\User;
 
 /**
  * Class Need
- * @package APP\HELPERS
+ * @package Mydropper\HELPERS
  */
 class Need extends BaseHelper
 {
 
-    const LOGGED                = 'logged';
-    const UNLOGGED              = 'unlogged';
-    const LEVEL                 = 'level';
-    const UNLOGGED_MESSAGE      = "You cannot reach this page being connected.";
-    const LOGGED_MESSAGE        = "You must be connected to reach this page.";
-    const LEVEL_MESSAGE         = "You have no minimum level to reach this page.";
+    const LOGGED           = 'logged';
+    const UNLOGGED         = 'unlogged';
+    const LEVEL            = 'level';
+    const UNLOGGED_MESSAGE = "You cannot reach this page being connected.";
+    const LOGGED_MESSAGE   = "You must be connected to reach this page.";
+    const LEVEL_MESSAGE    = "You have no minimum level to reach this page.";
 
-    private $choose     = null;
-    private $redirect   = null;
-    private $user       = null;
-    private $level      = null;
+    private $choose   = null;
+    private $redirect = null;
+    private $user     = null;
+    private $level    = null;
 
     /**
      * Register the choose and add Path in the instance

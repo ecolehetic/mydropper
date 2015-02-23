@@ -1,10 +1,10 @@
 <?php
 
-namespace APP\HELPERS;
+namespace MyDropper\Helpers;
 
 /**
  * Class FlashMessage
- * @package APP\HELPERS
+ * @package Mydropper\HELPERS
  */
 
 

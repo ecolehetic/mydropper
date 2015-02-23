@@ -1,10 +1,10 @@
 <?php
 
-namespace APP\HELPERS;
+namespace MyDropper\Helpers;
 
 /**
  * Class Upload
- * @package APP\HELPERS
+ * @package Mydropper\HELPERS
  */
 class Upload extends BaseHelper
 {

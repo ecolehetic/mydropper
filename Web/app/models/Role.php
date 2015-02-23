@@ -5,7 +5,7 @@
  * The model name must be the same name of the table but in the singular
  * Else : protected $table = 'name_table'
  */
-namespace APP\MODELS;
+namespace MyDropper\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -16,7 +16,7 @@ class Role extends Eloquent
 
     public function users()
     {
-        return $this->hasMany('\APP\MODELS\User');
+        return $this->hasMany('MyDropper\Models\User');
     }
 
 }

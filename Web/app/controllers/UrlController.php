@@ -1,15 +1,15 @@
 <?php
 
-namespace APP\CONTROLLERS;
+namespace MyDropper\Controllers;
 
-use APP\MODELS\Store;
-use APP\MODELS\TrackerUrl;
-use APP\MODELS\Url;
-use \Pushbullet as Pushbullet;
+use MyDropper\Models\Store;
+use MyDropper\Models\TrackerUrl;
+use MyDropper\Models\Url;
+use Pushbullet;
 
 /**
  * Class UrlController
- * @package APP\CONTROLLERS
+ * @package Mydropper\CONTROLLERS
  */
 class UrlController extends BaseController
 {

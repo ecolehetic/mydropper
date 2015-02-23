@@ -1,13 +1,13 @@
 <?php
 
-namespace APP\CONTROLLERS;
+namespace MyDropper\Controllers;
 
-use APP\MODELS\Category;
-use APP\MODELS\Store;
+use MyDropper\Models\Category;
+use MyDropper\Models\Store;
 
 /**
  * Class CategoryController
- * @package APP\CONTROLLERS
+ * @package Mydropper\CONTROLLERS
  */
 class CategoryController extends BaseController
 {

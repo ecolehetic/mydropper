@@ -1,12 +1,12 @@
 <?php
 
-namespace APP\HELPERS;
+namespace MyDropper\Helpers;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 /**
  * Class Database
- * @package APP\MODELS
+ * @package Mydropper\MODELS
  */
 class Database extends BaseHelper
 {

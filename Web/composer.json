@@ -20,5 +20,10 @@
       "name": "Patrick Heng",
       "email": "hengpatrick.pro@gmail.com"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "MyDropper\\": "app"
+    }
+  }
 }

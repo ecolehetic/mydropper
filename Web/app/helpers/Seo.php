@@ -1,10 +1,10 @@
 <?php
 
-namespace APP\HELPERS;
+namespace MyDropper\Helpers;
 
 /**
  * Class Seo
- * @package APP\HELPERS
+ * @package Mydropper\HELPERS
  */
 class Seo
 {
@@ -16,7 +16,7 @@ class Seo
      */
     private function __construct()
     {
-        $this->settings = require(dirname(__DIR__) . '/config/seo.php');
+        $this->settings = require(dirname(__DIR__) . '/Config/seo.php');
     }
 
     /**

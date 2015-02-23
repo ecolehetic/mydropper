@@ -1,13 +1,13 @@
 <?php
 
-namespace APP\CONTROLLERS;
+namespace MyDropper\Controllers;
 
-use APP\MODELS\Category;
-use APP\MODELS\Store;
-use APP\MODELS\TrackerStore;
-use APP\MODELS\TrackerUrl;
-use APP\MODELS\Url;
-use APP\MODELS\User;
+use MyDropper\Models\Category;
+use MyDropper\Models\Store;
+use MyDropper\Models\TrackerStore;
+use MyDropper\Models\TrackerUrl;
+use MyDropper\Models\Url;
+use MyDropper\Models\User;
 use Carbon\Carbon;
 
 class ApiController extends BaseController

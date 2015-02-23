@@ -1,6 +1,6 @@
 <?php
 
-namespace APP\CONTROLLERS;
+namespace MyDropper\Controllers;
 
 class TrackingController extends BaseController
 {

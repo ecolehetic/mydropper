@@ -5,9 +5,9 @@
  * The model name must be the same name of the table but in the singular
  * Else : protected $table = 'name_table'
  */
-namespace APP\MODELS;
+namespace MyDropper\Models;
 
-use GUMP as GUMP;
+use GUMP;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
 
@@ -21,17 +21,17 @@ class Store extends Eloquent
 
     public function users()
     {
-        return $this->belongsTo('\APP\MODELS\User', 'user_id');
+        return $this->belongsTo('MyDropper\Models\User', 'user_id');
     }
 
     public function categories()
     {
-        return $this->belongsTo('\APP\MODELS\Category', 'category_id');
+        return $this->belongsTo('MyDropper\Models\Category', 'category_id');
     }
 
     public function trackerstores()
     {
-        return $this->hasMany('\APP\MODELS\TrackerStore');
+        return $this->hasMany('MyDropper\Models\TrackerStore');
     }
 
     /**

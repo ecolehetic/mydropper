@@ -1,6 +1,6 @@
 <?php
 
-namespace APP\HELPERS;
+namespace MyDropper\Helpers;
 
 use Twig_Autoloader;
 use Twig_Environment;
@@ -9,7 +9,7 @@ use Twig_Loader_Filesystem;
 
 /**
  * Class Twig
- * @package APP\HELPERS
+ * @package Mydropper\HELPERS
  */
 class Twig extends BaseHelper
 {

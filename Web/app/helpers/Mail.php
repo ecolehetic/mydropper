@@ -1,13 +1,13 @@
 <?php
 
-namespace APP\HELPERS;
+namespace MyDropper\Helpers;
 
-use APP\MODELS\User;
+use MyDropper\Models\User;
 
 /**
  * Class Mail
  * Simple class for easily seed mail
- * @package APP\HELPERS
+ * @package Mydropper\HELPERS
  */
 class Mail extends BaseHelper
 {
@@ -21,13 +21,8 @@ class Mail extends BaseHelper
 
         $this->twig = $this->f3->get('TWIG');
 
-        $this->smtp = new \SMTP (
-            $this->f3->get('MAIL_HOST'),
-            $this->f3->get('MAIL_PORT'),
-            $this->f3->get('MAIL_SCHEME'),
-            $this->f3->get('MAIL_USER'),
-            $this->f3->get('MAIL_PASS')
-        );
+        $this->smtp = new \SMTP ($this->f3->get('MAIL_HOST'), $this->f3->get('MAIL_PORT'),
+            $this->f3->get('MAIL_SCHEME'), $this->f3->get('MAIL_USER'), $this->f3->get('MAIL_PASS'));
     }
 
     /**
@@ -36,7 +31,7 @@ class Mail extends BaseHelper
      *
      * @param string $template
      * @param string $to
-     * @param array $data
+     * @param array  $data
      *
      * @return bool
      */
@@ -47,11 +42,10 @@ class Mail extends BaseHelper
         $this->smtp->set('To', '<' . $to . '>');
         $this->smtp->set('Subject', $data['subject']);
 
-        if($this->getFirstname($to) !== false){
+        if ($this->getFirstname($to) !== false) {
             $firstname = $this->getFirstname($to);
             return $this->smtp->send($this->layoutMail($template, $firstname, $data));
-        }
-        else{
+        } else {
             return false;
         }
     }
@@ -67,7 +61,7 @@ class Mail extends BaseHelper
     {
         $user = User::where('mail', $mail)->first();
 
-        if($user !== null || !empty($user)){
+        if ($user !== null || !empty($user)) {
             return $user->firstname;
         }
 
@@ -80,7 +74,7 @@ class Mail extends BaseHelper
      *
      * @param string $template
      * @param string $firstname
-     * @param array $content
+     * @param array  $content
      *
      * @return string
      */

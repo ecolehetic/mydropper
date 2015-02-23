@@ -1,16 +1,16 @@
 <?php
 
-namespace APP\CONTROLLERS;
+namespace MyDropper\Controllers;
 
-use APP\HELPERS\FlashMessage;
-use APP\HELPERS\Need;
-use APP\HELPERS\Seo;
-use APP\MODELS\Store;
-use APP\MODELS\User;
+use MyDropper\Helpers\FlashMessage;
+use MyDropper\Helpers\Need;
+use MyDropper\Helpers\Seo;
+use MyDropper\Models\Store;
+use MyDropper\Models\User;
 
 /**
  * Class BaseController
- * @package APP\CONTROLLERS
+ * @package Mydropper\CONTROLLERS
  */
 class BaseController
 {

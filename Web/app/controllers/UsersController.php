@@ -1,15 +1,15 @@
 <?php
 
-namespace APP\CONTROLLERS;
+namespace MyDropper\Controllers;
 
-use APP\HELPERS\Mail;
-use APP\HELPERS\Upload;
-use APP\HELPERS\Url;
-use APP\HELPERS\Removal;
-use APP\MODELS\Category;
-use APP\MODELS\Role;
-use APP\MODELS\Store;
-use App\Models\User;
+use MyDropper\Helpers\Mail;
+use MyDropper\Helpers\Upload;
+use MyDropper\Helpers\Url;
+use MyDropper\Helpers\Removal;
+use MyDropper\Models\Category;
+use MyDropper\Models\Role;
+use MyDropper\Models\Store;
+use MyDropper\Models\User;
 
 /**
  * Class IndexController
@@ -30,7 +30,7 @@ class UsersController extends BaseController
 
     /**
      * POST users/create
-     * @throws \APP\HELPERS\Exception
+     * @throws \Mydropper\HELPERS\Exception
      */
     public function create()
     {

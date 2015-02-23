@@ -1,11 +1,10 @@
 <?php
 
-namespace APP\CONTROLLERS;
+namespace MyDropper\Controllers;
 
-use APP\MODELS\Url;
-use APP\MODELS\User;
-use APP\MODELS\Store;
-use APP\MODELS\Category;
+use MyDropper\Models\User;
+use MyDropper\Models\Store;
+use MyDropper\Models\Category;
 
 /**
  * Class IndexController
@@ -40,10 +39,6 @@ class IndexController extends BaseController
 
     public function debug()
     {
-        $url = Url::where('token', "=", "234d")->with('users')->get();
-
-        var_dump($url[0]->users->mail);
-
         $this->render('debug.twig', [
 
         ]);
