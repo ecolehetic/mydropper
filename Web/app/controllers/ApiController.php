@@ -209,26 +209,25 @@ class ApiController extends BaseController
             for ($i = 0; $i < count($stores); $i++) {
                 $store_id           = $stores[$i]->id;
                 $store_name         = $stores[$i]->label;
-                $store_created_at   = $stores[$i]->created_at;
+                $store_created_at   = Carbon::parse($stores[$i]->created_at);
 
                 $url    = Url::where('store_id', '=', $store_id)->first();
-                $url_id = $url->id;
 
-                $trackerUrlCount    = TrackerUrl::where('url_id', '=', $url_id)->count();
-                $trackerUrl         = TrackerUrl::where('url_id', '=', $url_id)->orderBy('created_at', 'ASC')->get();
+                $trackerUrlCount    = TrackerUrl::where('url_id', '=', $url->id)->count();
+                $trackerUrl         = TrackerUrl::where('url_id', '=', $url->id)->orderBy('created_at', 'ASC')->get();
 
                 $graphData = [];
 
                 for ($j = 0; $j < count($trackerUrl); $j++) {
                     if(Carbon::parse($trackerUrl[$j]->created_at)->between($from, $to)){
 
-                        $day    = Carbon::parse($trackerUrl[$j]->created_at)->day;
-                        $month  = Carbon::parse($trackerUrl[$j]->created_at)->month;
-                        if (!isset($graphData['0'.$month.'-'.$day])) {
-                            $graphData['0'.$month.'-'.$day] = 0;
+                        $date = Carbon::parse($trackerUrl[$j]->created_at)->format('m-d');
+
+                        if (!isset($graphData[$date])) {
+                            $graphData[$date] = 0;
                         }
-                        if (isset($graphData['0'.$month.'-'.$day])) {
-                            $graphData['0'.$month.'-'.$day] += 1;
+                        if (isset($graphData[$date])) {
+                            $graphData[$date] += 1;
                         }
 
                     }
@@ -237,7 +236,8 @@ class ApiController extends BaseController
                 $json['data'][] = [
                     'snippetName' => $store_name,
                     'nbClick'     => $trackerUrlCount,
-                    'createdAt'   => Carbon::parse($store_created_at)->toDateString(),
+                    'createdAt'   => $store_created_at->toDateString(),
+                    'since'       => $store_created_at->diffForHumans(),
                     'graphData'   => $graphData
                 ];
 
