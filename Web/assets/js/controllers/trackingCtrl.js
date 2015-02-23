@@ -8,14 +8,14 @@ $(document).ready(function() {
 		var dd  = this.getDate().toString();
 		return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
 	};
-
+	
+	console.log($('#user_id').val());
 	// Date variables
 	var d = new Date(),
 		from = "2015-01-01",
 		to = d.yyyymmdd(),
 		currentCat = '';
 
-	console.log('TOOOOO' + to);
 
 	/* ---- DROPDOWN LIST ---- */
 	Model.tracking.getCategoryList(function(catList, catId){
