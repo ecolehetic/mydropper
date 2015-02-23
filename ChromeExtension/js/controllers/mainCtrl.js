@@ -12,19 +12,8 @@ function handleRequest(request, sender, sendResponse) {
         toggleSideBar(request.sideBarContent);
     }
 
-    // LogIn
-    $('#submitConnexionForm').click(function(e){
-    	e.preventDefault();
-		UI.logIn();	
-		LS.logIn();	
-	});
+    initSideBarHandler();
 
-    // LogOut
-    $('#logOut').click(function(e){
-    	e.preventDefault();
-		UI.logOut();	
-		LS.logOut();	
-	});
 }
 
 function toggleSideBar(htmlContent) {
@@ -39,4 +28,27 @@ function toggleSideBar(htmlContent) {
         UI.initDraggable();
         UI.initAccordeon();
 	}
+}
+
+function initSideBarHandler() {
+	UI.injectFonts();
+	/* ---- LogIn ---- */
+	$('#submitConnexionForm').click(function(e){
+		e.preventDefault();
+		UI.logIn();
+		LS.logIn();
+	});
+
+	/* ---- LogOut ---- */
+	$('#logOut').click(function(e){
+		e.preventDefault();
+		UI.logOut();
+		LS.logOut();
+	});
+
+	/* ---- Click on cross ---- */
+	$('#close').click(function(e){
+	    e.preventDefault();
+	    toggleSideBar();
+	});
 }

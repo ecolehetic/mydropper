@@ -1,5 +1,6 @@
 'use strict';
 
+
 var UI={
 
     openSideBar: function(htmlContent) {
@@ -7,27 +8,24 @@ var UI={
         sideBarElmt.id = "myDropperSideBar";
         sideBarElmt.innerHTML = htmlContent;
         document.body.appendChild(sideBarElmt);
-
         sideBarElmt.style.display = 'block';
-
         sideBarElmt.classList.add('showBar');
 
         sideBar.isOpen = true;
-
+		$('#logo').find('img').attr('src', chrome.extension.getURL('img/logo.png'));
     },
 
 
     closeSideBar: function() {
+        var el = $('#myDropperSideBar');
 
-        var el = document.getElementById('myDropperSideBar');
-
-        // Add animation before kill the element
-        el.classList.remove("showBar");
-        el.classList.add("hideBar");
+        // Add animation before remove the sideBar
+        el.removeClass("showBar");
+        el.addClass("hideBar");
 
         setTimeout(function() {
-            // Kill the element
-            el.parentNode.removeChild(el);
+            // Remove the sideBar
+            el.remove();
             sideBar.isOpen = false;
         }, 1000);
 
@@ -51,28 +49,16 @@ var UI={
 
             if (!$navSous.hasClass("open")) {
                 // Si navSous fermé
-                // $allNavSous.removeAttr('style');
                 $allNavSous.removeClass('open');
                 $navSous.addClass('open');
-                // $navSous.animate({
-                //     'display' : 'block',
-                //     'height': 'auto',
-                //     'max-height' : '1500px',
-                //     'transition' : 'all 1s ease'
-                // },2000);
-                
-                console.log('in on ouvre');
-                e.preventDefault();
+
                 $allPlusMoins.html('+');
                 $plusMoins.html('-');
 
             } else {
                 // Si navSous ouvert
-                e.preventDefault();
-
                 $allNavSous.removeClass('open');
-                console.log('in on ferme');
-                
+
                 $allPlusMoins.html('+');
             }
         });
@@ -162,6 +148,22 @@ var UI={
 
     logOut: function() {
         UI.closeSideBar();
-    }
+    },
+
+	injectFonts : function() {
+		var styleNode           = document.createElement ("style");
+		styleNode.type          = "text/css";
+		styleNode.textContent   =
+			"@font-face { font-family: 'AvenirNext'; src: url('"
+			+ chrome.extension.getURL("fonts/Avenir/Avenir-Next_10.woff")
+			+ "'); font-style: normal; font-weight:  400;} " +
+			"@font-face { font-family: 'AvenirNext'; src: url('"
+			+ chrome.extension.getURL("fonts/Avenir/Avenir-Next_7.woff")
+			+ "'); font-style: normal; font-weight:  700;} " +
+			"@font-face { font-family: 'icomoon'; src: url('"
+			+ chrome.extension.getURL("fonts/Icomoon/icomoon.woff")
+			+ "'); font-style: normal; font-weight:  400;} "
+		document.head.appendChild (styleNode);
+	}
 
 }
