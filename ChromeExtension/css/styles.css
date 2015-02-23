@@ -271,6 +271,7 @@
 /* ---- OLD COLOR ---- */
 /* ---- NEW COLOR ---- */
 #myDropperSideBar {
+  all: initial;
   position: fixed;
   top: 0px;
   right: 0px;
@@ -282,7 +283,7 @@
           animation: slideInRight 1s ease;
   display: none;
   font-family: 'AvenirNext', helvetica, arial, sans-serif !important;
-  border-left: 1px solid #727272;
+  border-left: 1px solid rgba(115, 155, 155, 0.5);
   color: black;
   font-size: 14px;
   overflow: visible; }
@@ -323,13 +324,15 @@
     display: block;
     padding: 20px 0; }
   #myDropperSideBar #topSideBar #close {
-    font-size: 35px;
+    font-size: 50px;
+    line-height: 20px;
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 15px;
+    right: 7px;
     transition: all 0.5s ease;
-    cursor: pointer;
-    color: #e0e1e3; }
+    cursor: pointer !important;
+    color: #e0e1e3;
+    z-index: 999999; }
     #myDropperSideBar #topSideBar #close:hover {
       color: #C3E3FB; }
   #myDropperSideBar #accordeon {
@@ -339,11 +342,11 @@
     font-family: 'AvenirNext', helvetica, arial, sans-serif !important; }
     #myDropperSideBar #accordeon .category {
       position: relative;
-      border-bottom: 1px solid #8b8d8e;
+      border-bottom: 1px solid rgba(139, 141, 142, 0.3);
       display: block;
       transition: all 1s ease; }
       #myDropperSideBar #accordeon .category:first-child {
-        border-top: 1px solid #8b8d8e; }
+        border-top: 1px solid rgba(139, 141, 142, 0.1); }
       #myDropperSideBar #accordeon .category span {
         position: absolute;
         top: 23px;
@@ -363,7 +366,7 @@
         z-index: 1;
         font-size: 1em;
         color: #000111;
-        background: #f9f9f9; }
+        background-image: linear-gradient(to bottom, #FCFDFD 0%, #EEEFF0 100%); }
       #myDropperSideBar #accordeon .category .dragList {
         max-height: 0;
         overflow: hidden;
@@ -384,12 +387,14 @@
           line-height: 60px;
           padding: 0 30px;
           background: #e0e1e3;
-          border-top: 1px solid rgba(0, 0, 0, 0.2);
+          border-top: 1px solid rgba(139, 141, 142, 0.2);
           border-bottom: 1px solid #f4f4f4;
           cursor: pointer;
           transition: all 0.5s ease;
           font-size: 0.9em;
           text-transform: capitalize; }
+          #myDropperSideBar #accordeon .category .dragList li:first-child {
+            border-top: rgba(139, 141, 142, 0.1); }
           #myDropperSideBar #accordeon .category .dragList li:hover {
             background: #cbced0; }
             #myDropperSideBar #accordeon .category .dragList li:hover i {
@@ -441,6 +446,7 @@
     #myDropperSideBar form #submit {
       display: none !important; }
     #myDropperSideBar form .form-group {
+      all: initial;
       width: 80%;
       display: block;
       margin: 0 auto 25px auto; }
@@ -454,6 +460,7 @@
         outline-color: white;
         font-size: 1em; }
       #myDropperSideBar form .form-group input {
+        all: initial;
         width: 92%;
         padding: 4px 3%;
         display: inline-block;
@@ -511,11 +518,12 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 90%;
+    width: 100%;
     padding: 10px 5% 8px 5%;
     background: #e0e1e3;
     z-index: 1000;
-    list-style: none; }
+    list-style: none;
+    box-sizing: border-box !important; }
     #myDropperSideBar #sessionInfo li {
       display: inline-block; }
       #myDropperSideBar #sessionInfo li:after {
@@ -525,21 +533,33 @@
   #myDropperSideBar #moreInfo {
     position: absolute;
     width: auto;
-    max-width: 250px;
-    background: white;
+    max-width: 400px;
+    min-width: 200px;
     color: #000111;
     display: block;
     padding: 10px 13px;
     line-height: normal;
     z-index: 10000;
-    right: 340px; }
+    right: 340px;
+    border: 1px solid rgba(175, 175, 175, 0.3);
+    background-image: linear-gradient(to bottom, #F4F4F4 0%, #E5E6E7 100%); }
+    #myDropperSideBar #moreInfo:after {
+      content: '';
+      right: -10px;
+      bottom: 5px;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 0 10px 10px;
+      border-color: transparent transparent transparent #e5e6e7; }
   #myDropperSideBar .button {
     all: initial;
     display: block;
     overflow: hidden;
     width: 155px;
     height: 50px;
-    padding: 0;
+    padding: 0 !important;
     border-radius: 0;
     position: relative;
     color: rgba(0, 0, 0, 0.5);

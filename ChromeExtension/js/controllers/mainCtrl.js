@@ -55,7 +55,8 @@ function initSideBarHandler() {
 	/* ---- Hover a snippet --- */
 	$('.md-dragElmt').hover(
 		function() {
-			UI.snippetInfos.show($(this).data('text'));
+			UI.snippetInfos.show($(this));
+
 		}, function() {
 			UI.snippetInfos.hide();
 		}

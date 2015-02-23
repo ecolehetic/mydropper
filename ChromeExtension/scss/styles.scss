@@ -21,6 +21,7 @@ $dropperBlue : #C3E3FB;
 $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
 
 #myDropperSideBar {
+    all : initial;
     position: fixed;
     top: 0px;
     right: 0px;
@@ -31,7 +32,7 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
     animation: slideInRight 1s ease;
     display: none;
     font-family: $mainFont !important;
-    border-left: 1px solid #727272;
+    border-left: 1px solid rgba(115,155,155,0.5);
     color : black;
     font-size : 14px;
     overflow : visible;
@@ -83,13 +84,15 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
             padding: 20px 0;
         }
         #close {
-            font-size: 35px;
+            font-size: 50px;
+            line-height: 20px;
             position: absolute;
-            top: 10px;
-            right: 15px;
+            top: 15px;
+            right: 7px;
             transition: all 0.5s ease;
-            cursor : pointer;
+            cursor : pointer !important;
             color : $snippetGrey;
+            z-index : 999999;
             &:hover {
                 color : $dropperBlue;
             }
@@ -104,11 +107,11 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
 
         .category {
             position: relative;
-            border-bottom: 1px solid $border;
+            border-bottom: 1px solid rgba(139, 141, 142,0.3);
             display: block;
             transition: all 1s ease;
             &:first-child {
-                border-top: 1px solid $border;
+                border-top: 1px solid rgba(139, 141, 142,0.1);
             }
             span {
                 position: absolute;
@@ -130,7 +133,16 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
                 z-index: 1;
                 font-size : 1em;
                 color : #000111;
-                background: #f9f9f9;
+                background-image: -webkit-gradient(
+                        linear,
+                        left top,
+                        left bottom,
+                        color-stop(0, #FCFDFD),
+                        color-stop(1, #EEEFF0)
+                );
+                background-image: -webkit-linear-gradient(bottom, #FCFDFD 0%, #EEEFF0 100%);
+                background-image: linear-gradient(to bottom, #FCFDFD 0%, #EEEFF0 100%);
+
             }
             .dragList {
                 max-height: 0;
@@ -152,13 +164,15 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
                     line-height: 60px;
                     padding: 0 30px;
                     background: $snippetGrey;
-                    border-top: 1px solid rgba(0, 0, 0, 0.2);
+                    border-top: 1px solid rgba(139, 141, 142, 0.2);
                     border-bottom: 1px solid #f4f4f4;
                     cursor: pointer;
                     transition: all 0.5s ease;
                     font-size : 0.9em;
                     text-transform: capitalize;
-
+                    &:first-child {
+                        border-top : rgba(139, 141, 142,0.1);
+                    }
                     &:hover {
                         background : $snippetGreyHover;
                         i {
@@ -222,6 +236,7 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
             display :none !important;
         }
         .form-group {
+            all : initial;
             width: 80%;
             display: block;
             margin: 0 auto 25px auto;
@@ -236,6 +251,7 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
                 font-size : 1em;
             }
             input {
+                all : initial;
                 width: 92%;
                 padding: 4px 3%;
                 display: inline-block;
@@ -306,11 +322,12 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
         position: absolute;
         bottom: 0;
         right: 0;
-        width: 90%;
+        width: 100%;
         padding: 10px 5% 8px 5%;
         background: $snippetGrey;
         z-index: 1000;
         list-style : none;
+        box-sizing: border-box !important;
         li {
             display : inline-block;
             &:after {
@@ -324,14 +341,35 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
     #moreInfo {
         position : absolute;
         width : auto;
-        max-width : 250px;
-        background : white;
+        max-width : 400px;
+        min-width : 200px;
         color : #000111;
         display : block;
         padding: 10px 13px;
         line-height: normal;
         z-index: 10000;
         right: 340px;
+        border : 1px solid rgba(175,175,175,0.3);
+        background-image: -webkit-gradient(
+                linear,
+                left top,
+                left bottom,
+                color-stop(0, #F4F4F4),
+                color-stop(1, #E5E6E7)
+        );
+        background-image: -webkit-linear-gradient(bottom, #F4F4F4 0%, #E5E6E7 100%);
+        background-image: linear-gradient(to bottom, #F4F4F4 0%, #E5E6E7 100%);
+        &:after {
+            content : '';
+            right : -10px;
+            bottom : 5px;
+            position : absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #e5e6e7;
+        }
     }
     .button {
         all : initial;
@@ -339,7 +377,7 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
         overflow: hidden;
         width: 155px;
         height: 50px;
-        padding : 0;
+        padding : 0 !important;
         border-radius : 0;
         position: relative;
         color: rgba(0,0,0,0.5);

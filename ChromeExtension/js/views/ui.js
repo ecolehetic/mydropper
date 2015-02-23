@@ -28,7 +28,6 @@ var UI={
             el.remove();
             sideBar.isOpen = false;
         }, 1000);
-
     },
 
 
@@ -64,11 +63,14 @@ var UI={
     },
 
 	snippetInfos : {
-		show : function(txt) {
-			$('#moreInfo').html(txt).fadeIn();
+		show : function(self) {
+			console.log(self);
+			$('#moreInfo').stop().html(self.data('text')).fadeIn(600);
+			console.log(self.offsetTop());
+
 		},
 		hide : function() {
-			$('#moreInfo').fadeOut().html('');
+			$('#moreInfo').stop().fadeOut(3000);
 		}
 	},
 
