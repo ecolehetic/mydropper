@@ -11,8 +11,10 @@ use MyDropper\Models\Role;
 use MyDropper\Models\Store;
 use MyDropper\Models\User;
 
+
 /**
- * Class IndexController
+ * Class UsersController
+ * @package MyDropper\Controllers
  */
 class UsersController extends BaseController
 {
@@ -30,25 +32,25 @@ class UsersController extends BaseController
 
     /**
      * POST users/create
-     * @throws \Mydropper\HELPERS\Exception
      */
     public function create()
     {
         $validForm = User::checkFormSubscribe($this->f3->get('POST'));
 
         if ($validForm === true) {
-            $username   = User::where('username', $this->f3->get('POST.username'))->first();
-            $mail       = User::where('mail', $this->f3->get('POST.mail'))->first();
+            $username = User::where('username', $this->f3->get('POST.username'))->first();
+            $mail = User::where('mail', $this->f3->get('POST.mail'))->first();
 
             if ($username === null && $mail === null) {
 
                 if ($this->f3->get('FILES.avatar')) {
                     $upload = new Upload();
-                    $path   = $upload->save($this->f3->get('FILES.avatar'));
+                    $path = $upload->save($this->f3->get('FILES.avatar'));
                 } else {
                     $path = null;
                 }
 
+                // Create the User
                 $user = User::create(array(
                     'username'        => $this->f3->get('POST.username'),
                     'firstname'       => $this->f3->get('POST.firstname'),
@@ -59,9 +61,24 @@ class UsersController extends BaseController
                     'avatar_url'      => $path
                 ));
 
+                // Create default Category with Store
+                $category = Category::create([
+                    'user_id' => $user->id,
+                    'label'   => 'Personnal Info'
+                ]);
+
+                Store::create([
+                    'user_id'     => $user->id,
+                    'category_id' => $category->id,
+                    'label'       => 'Email',
+                    'descript'    => $user->mail
+                ]);
+
+                // Save the user in Session
                 $this->f3->set('POST.id', $user->id);
                 $this->f3->set('SESSION.user', $user);
 
+                // Redirect the user
                 $this->f3->reroute('/profile', true);
             } else {
                 $validForm = [];
@@ -82,7 +99,7 @@ class UsersController extends BaseController
     }
 
     /**
-     *
+     * TODO
      */
     public function delete()
     {
@@ -121,8 +138,9 @@ class UsersController extends BaseController
         ));
 
         if ($validForm === true) {
-            $user       = User::where('username', $this->f3->get('POST.username'))->where('password', $this->crypt($this->f3->get('POST.password')))->first();
-            $validForm  = [];
+            $user = User::where('username', $this->f3->get('POST.username'))->where('password',
+                $this->crypt($this->f3->get('POST.password')))->first();
+            $validForm = [];
 
             if ($user !== null) {
                 $this->f3->set('SESSION.user', $user);
@@ -160,9 +178,9 @@ class UsersController extends BaseController
 
         if ($validForm === true) {
 
-            $userInformations   = User::where('mail', $this->f3->get('POST.mail'))->first();
-            $token              = uniqid();
-            $validForm          = [];
+            $userInformations = User::where('mail', $this->f3->get('POST.mail'))->first();
+            $token = uniqid();
+            $validForm = [];
 
             if ($userInformations !== null) {
                 // Generate Token and save it
@@ -207,8 +225,9 @@ class UsersController extends BaseController
      */
     public function confirmLostPassword()
     {
-        $userInformations   = User::where('username', $this->f3->get('PARAMS.username'))->where('token_password', $this->f3->get('PARAMS.token'))->first();
-        $messages           = [];
+        $userInformations = User::where('username', $this->f3->get('PARAMS.username'))->where('token_password',
+            $this->f3->get('PARAMS.token'))->first();
+        $messages = [];
 
         if ($userInformations !== null) {
             $newPassword = uniqid();
@@ -260,7 +279,7 @@ class UsersController extends BaseController
     {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
 
-        $users      = User::all();
+        $users = User::all();
         $usersCount = count($users);
 
         $this->render(true, [
@@ -276,25 +295,25 @@ class UsersController extends BaseController
     {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
 
-        $id         = (int)($this->f3->get('PARAMS.id'));
-        $validForm  = null;
+        $id = (int)($this->f3->get('PARAMS.id'));
+        $validForm = null;
 
         if ($this->f3->get('POST') && $id > 0) {
             $validForm = User::checkAdminEdit($this->f3->get('POST'), $id);
             if ($validForm === true) {
                 User::where('id', '=', $id)->update([
-                    'username'      => $this->f3->get('POST.username'),
-                    'firstname'     => $this->f3->get('POST.firstname'),
-                    'name'          => $this->f3->get('POST.name'),
-                    'mail'          => $this->f3->get('POST.mail'),
-                    'role_id'       => $this->f3->get('POST.role_id')
+                    'username'  => $this->f3->get('POST.username'),
+                    'firstname' => $this->f3->get('POST.firstname'),
+                    'name'      => $this->f3->get('POST.name'),
+                    'mail'      => $this->f3->get('POST.mail'),
+                    'role_id'   => $this->f3->get('POST.role_id')
                 ]);
             }
         }
-        $user               = User::find($id);
-        $storesCount        = Store::where('user_id', '=', $id)->count();
-        $categoriesCount    = Category::where('user_id', '=', $id)->count();
-        $roles              = Role::all();
+        $user = User::find($id);
+        $storesCount = Store::where('user_id', '=', $id)->count();
+        $categoriesCount = Category::where('user_id', '=', $id)->count();
+        $roles = Role::all();
 
         $this->render(true, [
             'messages'   => $validForm,
