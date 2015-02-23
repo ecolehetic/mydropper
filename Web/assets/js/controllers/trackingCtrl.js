@@ -1,15 +1,27 @@
 "use strict";
 $(document).ready(function() {
 
+	// Generate date in good yyyymmdd
+	Date.prototype.yyyymmdd = function() {
+		var yyyy = this.getFullYear().toString();
+		var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+		var dd  = this.getDate().toString();
+		return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
+	};
+
 	// Date variables
-	var from = "01-01-2015",
-		to = new Date(),
+	var d = new Date(),
+		from = "2015-01-01",
+		to = d.yyyymmdd(),
 		currentCat = '';
+
+	console.log('TOOOOO' + to);
 
 	/* ---- DROPDOWN LIST ---- */
 	Model.tracking.getCategoryList(function(catList, catId){
 		UI.tracking.initCategoryList(catList,catId);
-		updateCharts(catList[0].id, from, to);
+		currentCat = catList[0].id;
+		updateCharts(currentCat, from, to);
 	});
 
 	/* ---- ON CATEGORY CHANGE ---- */
@@ -22,21 +34,26 @@ $(document).ready(function() {
 
 	/* ---- SET DATEPICKERS ---- */
 	$('.datepicker').datepicker({
-		dateFormat: 'mm-dd-yy',
+		format    : 'yy-mm-dd',
 		onSelect: function(selectedDate){
 			onDateChange();
 		}
-	});
-	$('#from').datepicker("setDate", from);
-	$("#to").datepicker("setDate", to);
+	})
+
+	$('#from').datepicker("setDate", '01/01/2015');
+	$('#to').datepicker("setDate", new Date);
 
 	/* ---- ON DATE CHANGE ---- */
 	function onDateChange() {
-		from = $('#from').val();
-		to = $('#to').val();
+
+		var fromTemp = $('#from').val().split('/');
+		var toTemp = $('#to').val().split('/');
+
+		from = fromTemp[2] + '-' + fromTemp[0] + '-' + fromTemp[1];
+		to = toTemp[2] + '-' + toTemp[0] + '-' + toTemp[1];
+
 		updateCharts(currentCat, from, to);
-		console.log('from ' + from);
-		console.log('to ' + to);
+
 	}
 
 	/* ---- RENDER CHARTS ---- */
@@ -77,4 +94,6 @@ $(document).ready(function() {
 		});
 
 	}
+
+
 });

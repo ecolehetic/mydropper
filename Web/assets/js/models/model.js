@@ -31,12 +31,10 @@ var Model = {
 			});
 		},
 
-		'getTrackedLinkGraphData' : function(cat, from, to, callback) {
-			$.getJSON( "/api/trackedlink/" + Model.userId + "/" + cat, function( response ) {
-
+		'getTrackedLinkGraphData' : function(cat, fromDate, toDate, callback) {
+			$.post('/api/trackedlink/', { user_id : Model.userId, cat_id : cat, from : fromDate, to : toDate }, function(response) {
 				callback.call(this, response.data);
-			});
+			}, 'json');
 		}
 	}
-
 }
