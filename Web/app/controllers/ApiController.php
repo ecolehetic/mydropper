@@ -272,16 +272,17 @@ class ApiController extends BaseController
                 $urlsTracker = TrackerUrl::where('url_id', '=', $url->id)->get();
 
                 for($j= 0; $j < count($urlsTracker); $j++){
-                    $date = Carbon::parse($urlsTracker[$j]->created_at)->format('m-d');
+                    if(Carbon::parse($urlsTracker[$j]->created_at)->between($from, $to)){
+                        $date = Carbon::parse($urlsTracker[$j]->created_at)->format('m-d');
 
-                    if(!isset($json['data']['graphData'][$date])){
-                        $json['data']['graphData'][$date] = 0;
-                    }
-                    if(isset($json['data']['graphData'][$date])){
-                        $json['data']['graphData'][$date] += 1;
+                        if(!isset($json['data']['graphData'][$date])){
+                            $json['data']['graphData'][$date] = 0;
+                        }
+                        if(isset($json['data']['graphData'][$date])){
+                            $json['data']['graphData'][$date] += 1;
+                        }
                     }
                 }
-
             }
 
             $this->render(false, $json);
