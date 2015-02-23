@@ -285,7 +285,7 @@
   border-left: 1px solid #727272;
   color: black;
   font-size: 14px;
-  overflow-x: hidden; }
+  overflow: visible; }
   #myDropperSideBar * {
     font-family: 'AvenirNext', helvetica, arial, sans-serif !important;
     font-size: 1em;
@@ -298,9 +298,9 @@
     #myDropperSideBar a:hover {
       color: #969696 !important; }
   #myDropperSideBar #sideBarContainer {
-    display: block;
-    overflow-x: hidden;
+    overflow-x: visible !important;
     overflow-y: auto;
+    display: block;
     height: 100%;
     scrollbar-base-color: #e1e1e1;
     scrollbar-3dlight-color: #e1e1e1;
@@ -366,6 +366,7 @@
         background: #f9f9f9; }
       #myDropperSideBar #accordeon .category .dragList {
         max-height: 0;
+        overflow: hidden;
         display: block;
         overflow: hidden;
         list-style: none;
@@ -521,6 +522,17 @@
         content: '  -  '; }
       #myDropperSideBar #sessionInfo li:last-child:after {
         display: none; }
+  #myDropperSideBar #moreInfo {
+    position: absolute;
+    width: auto;
+    max-width: 250px;
+    background: white;
+    color: #000111;
+    display: block;
+    padding: 10px 13px;
+    line-height: normal;
+    z-index: 10000;
+    right: 340px; }
   #myDropperSideBar .button {
     all: initial;
     display: block;

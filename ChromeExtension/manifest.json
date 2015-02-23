@@ -1,11 +1,10 @@
 {
-  "name": "My Dropper - GIT",
+  "name": "My Dropper",
   "version": "1.0",
   "manifest_version": 2,
   "description": "My Dropper allows you to drag and drop your personal informations, your notes and track shortered url",
   "icons": {
-    // "16": "icon16.png",
-    // "48": "icon48.png",
+
     "128": "img/icon128.png"
   },
   "background": {
@@ -25,7 +24,6 @@
         "js/models/localstorageModel.js",
         "js/views/ui.js"
       ]
-      // "css": ["css/styles.css"]
     }
   ],
   "permissions": [

@@ -34,15 +34,12 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
     border-left: 1px solid #727272;
     color : black;
     font-size : 14px;
-    overflow-x : hidden;
-
-
+    overflow : visible;
     * {
         font-family: $mainFont !important;
         font-size : 1em;
         outline : none;
     }
-
     .hidden {
         display: none;
     }
@@ -54,9 +51,9 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
         }
     }
     #sideBarContainer {
+        overflow-x : visible !important;
+        overflow-y : auto;
         display: block;
-        overflow-x: hidden;
-        overflow-y: auto;
         height: 100%;
         &::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -137,6 +134,7 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
             }
             .dragList {
                 max-height: 0;
+                overflow : hidden;
                 display : block;
                 overflow: hidden;
                 list-style: none;
@@ -323,6 +321,18 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
             }
         }
     }
+    #moreInfo {
+        position : absolute;
+        width : auto;
+        max-width : 250px;
+        background : white;
+        color : #000111;
+        display : block;
+        padding: 10px 13px;
+        line-height: normal;
+        z-index: 10000;
+        right: 340px;
+    }
     .button {
         all : initial;
         display: block;
@@ -389,6 +399,7 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
     .button:hover svg line.right {
         transform: translateY(-100px);
     }
+
 }
 #myDropperSideBar.hideBar {
     animation: slideOutRight 1s ease;

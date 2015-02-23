@@ -58,12 +58,19 @@ var UI={
             } else {
                 // Si navSous ouvert
                 $allNavSous.removeClass('open');
-
                 $allPlusMoins.html('+');
             }
         });
     },
 
+	snippetInfos : {
+		show : function(txt) {
+			$('#moreInfo').html(txt).fadeIn();
+		},
+		hide : function() {
+			$('#moreInfo').fadeOut().html('');
+		}
+	},
 
     addMarkDropZones: function() {
         $('input').each(function() {

@@ -13,8 +13,8 @@ function handleRequest(request, sender, sendResponse) {
     }
 
     initSideBarHandler();
-
 }
+
 
 function toggleSideBar(htmlContent) {
 	if(sideBar.isOpen) {
@@ -51,4 +51,13 @@ function initSideBarHandler() {
 	    e.preventDefault();
 	    toggleSideBar();
 	});
+
+	/* ---- Hover a snippet --- */
+	$('.md-dragElmt').hover(
+		function() {
+			UI.snippetInfos.show($(this).data('text'));
+		}, function() {
+			UI.snippetInfos.hide();
+		}
+	);
 }
