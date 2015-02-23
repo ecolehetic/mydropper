@@ -237,11 +237,9 @@ class ApiController extends BaseController
                     'graphData'   => $graphData
                 ];
 
-                $this->render(false, $json);
             }
-
+            $this->render(false, $json);
         }
-
     }
 
     /**
