@@ -50,14 +50,14 @@ class UsersController extends BaseController
                 }
 
                 $user = User::create(array(
-                    'username'      => $this->f3->get('POST.username'),
-                    'firstname'     => $this->f3->get('POST.firstname'),
-                    'name'          => $this->f3->get('POST.lastname'),
-                    'mail'          => $this->f3->get('POST.mail'),
-                    'date_of_birth' => $this->f3->get('POST.birthday'),
-                    'password'      => $this->crypt($this->f3->get('POST.password_1')),
-                    'pushbullet'    => $this->f3->get('POST.mail_pushbullet'),
-                    'avatar_url'    => $path
+                    'username'        => $this->f3->get('POST.username'),
+                    'firstname'       => $this->f3->get('POST.firstname'),
+                    'name'            => $this->f3->get('POST.lastname'),
+                    'mail'            => $this->f3->get('POST.mail'),
+                    'date_of_birth'   => $this->f3->get('POST.birthday'),
+                    'password'        => $this->crypt($this->f3->get('POST.password_1')),
+                    'mail_pushbullet' => $this->f3->get('POST.mail_pushbullet'),
+                    'avatar_url'      => $path
                 ));
 
                 $this->f3->set('POST.id', $user->id);
