@@ -47,7 +47,7 @@ class UsersController extends BaseController
                     $upload = new Upload();
                     $path = $upload->save($this->f3->get('FILES.avatar'));
                 } else {
-                    $path = null;
+                    $path = 'assets/images/avatar-demo.jpg';
                 }
 
                 // Create the User
