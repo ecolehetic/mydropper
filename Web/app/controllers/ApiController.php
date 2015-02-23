@@ -194,17 +194,18 @@ class ApiController extends BaseController
 
     /**
      * Tracking PAGE
-     * GET /api/trackedlink/@user_id/@cat_id
+     * POST /api/trackedlink
      */
     public function getTrackedLink()
     {
-        $userId = $this->f3->get('PARAMS.user_id');
-        $catId  = $this->f3->get('PARAMS.cat_id');
+        $userId = $this->f3->get('POST.user_id');
+        $catId  = $this->f3->get('POST.cat_id');
+        $from   = Carbon::parse($this->f3->get('POST.from'));
+        $to     = Carbon::parse($this->f3->get('POST.to'));
         $json['data'] = [];
 
         if (!empty($userId) && !empty($catId)) {
             $stores = Store::where('user_id', '=', $userId)->where('category_id', '=', $catId)->where('is_shorter', '=', 1)->get();
-
             for ($i = 0; $i < count($stores); $i++) {
                 $store_id           = $stores[$i]->id;
                 $store_name         = $stores[$i]->label;
@@ -219,14 +220,17 @@ class ApiController extends BaseController
                 $graphData = [];
 
                 for ($j = 0; $j < count($trackerUrl); $j++) {
-                    $day    = Carbon::parse($trackerUrl[$j]->created_at)->day;
-                    $month  = Carbon::parse($trackerUrl[$j]->created_at)->month;
+                    if(Carbon::parse($trackerUrl[$j]->created_at)->between($from, $to)){
 
-                    if (!isset($graphData[$day . '-0' . $month])) {
-                        $graphData[$day . '-0' . $month] = 0;
-                    }
-                    if (isset($graphData[$day . '-0' . $month])) {
-                        $graphData[$day . '-0' . $month] += 1;
+                        $day    = Carbon::parse($trackerUrl[$j]->created_at)->day;
+                        $month  = Carbon::parse($trackerUrl[$j]->created_at)->month;
+                        if (!isset($graphData[$day . '-0' . $month])) {
+                            $graphData[$day . '-0' . $month] = 0;
+                        }
+                        if (isset($graphData[$day . '-0' . $month])) {
+                            $graphData[$day . '-0' . $month] += 1;
+                        }
+
                     }
                 }
 
@@ -240,6 +244,15 @@ class ApiController extends BaseController
             }
             $this->render(false, $json);
         }
+    }
+
+    /**
+     * Tracking PAGE
+     * GET /api/categoryglobal/@user_id/@cat_id
+     */
+    public function getCategoryGlobal()
+    {
+
     }
 
     /**
