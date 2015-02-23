@@ -32,7 +32,7 @@ class ProfileController extends BaseController
             'firstname'  => 'required|max_len,45',
             'lastname'   => 'required|max_len,45',
             'mail'       => 'required|valid_email',
-            'birthday'   => 'required|date'
+            'birthday'   => 'required'
         ));
 
         if ($validForm === true) {
