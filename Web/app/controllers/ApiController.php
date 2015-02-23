@@ -204,7 +204,7 @@ class ApiController extends BaseController
         $to     = Carbon::parse($this->f3->get('POST.to'));
         $json['data'] = [];
 
-        if (!empty($userId) && !empty($catId)) {
+        if (!empty($userId) && !empty($catId) &&!empty($from) && !empty($to)) {
             $stores = Store::where('user_id', '=', $userId)->where('category_id', '=', $catId)->where('is_shorter', '=', 1)->get();
             for ($i = 0; $i < count($stores); $i++) {
                 $store_id           = $stores[$i]->id;
@@ -248,10 +248,44 @@ class ApiController extends BaseController
 
     /**
      * Tracking PAGE
-     * GET /api/categoryglobal/@user_id/@cat_id
+     * POST /api/categoryglobal
      */
     public function getCategoryGlobal()
     {
+        $userId = $this->f3->get('POST.user_id');
+        $catId  = $this->f3->get('POST.cat_id');
+        $from   = Carbon::parse($this->f3->get('POST.from'));
+        $to     = Carbon::parse($this->f3->get('POST.to'));
+        $json['data'] = [];
+
+        if (!empty($userId) && !empty($catId) &&!empty($from) && !empty($to)) {
+
+            // Define and add CategoryName in Json
+            $category = Category::find($catId);
+            $json['data']['categoryName'] = $category->label;
+
+            $stores = Store::where('user_id', '=', $userId)->where('category_id', '=', $catId)->where('is_shorter', '=', 1)->get();
+
+            for($i = 0; $i < count($stores); $i++){
+                $url = Url::where('store_id', '=', $stores[$i]->id)->first();
+
+                $urlsTracker = TrackerUrl::where('url_id', '=', $url->id)->get();
+
+                for($j= 0; $j < count($urlsTracker); $j++){
+                    $date = Carbon::parse($urlsTracker[$j]->created_at)->format('m-d');
+
+                    if(!isset($json['data']['graphData'][$date])){
+                        $json['data']['graphData'][$date] = 0;
+                    }
+                    if(isset($json['data']['graphData'][$date])){
+                        $json['data']['graphData'][$date] += 1;
+                    }
+                }
+
+            }
+
+            $this->render(false, $json);
+        }
 
     }
 
