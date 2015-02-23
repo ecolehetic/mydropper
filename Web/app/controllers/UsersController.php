@@ -57,7 +57,7 @@ class UsersController extends BaseController
                     'name'            => $this->f3->get('POST.lastname'),
                     'mail'            => $this->f3->get('POST.mail'),
                     'password'        => $this->crypt($this->f3->get('POST.password_1')),
-                    'mail_pushbullet' => $this->f3->get('POST.mail_pushbullet'),
+                    'mail_pushbullet' => $this->f3->get('POST.pushbullet'),
                     'avatar_url'      => $path
                 ));
 
