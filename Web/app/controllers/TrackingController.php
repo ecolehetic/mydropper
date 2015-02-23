@@ -9,6 +9,8 @@ class TrackingController extends BaseController
      */
     public function index()
     {
+        $this->need->logged('/users/login')->execute();
+
         $this->render(true);
     }
 }
