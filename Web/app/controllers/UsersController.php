@@ -54,7 +54,6 @@ class UsersController extends BaseController
                     'firstname'       => $this->f3->get('POST.firstname'),
                     'name'            => $this->f3->get('POST.lastname'),
                     'mail'            => $this->f3->get('POST.mail'),
-                    'date_of_birth'   => $this->f3->get('POST.birthday'),
                     'password'        => $this->crypt($this->f3->get('POST.password_1')),
                     'mail_pushbullet' => $this->f3->get('POST.mail_pushbullet'),
                     'avatar_url'      => $path
@@ -288,7 +287,6 @@ class UsersController extends BaseController
                     'firstname'     => $this->f3->get('POST.firstname'),
                     'name'          => $this->f3->get('POST.name'),
                     'mail'          => $this->f3->get('POST.mail'),
-                    'date_of_birth' => $this->f3->get('POST.birthday'),
                     'role_id'       => $this->f3->get('POST.role_id')
                 ]);
             }

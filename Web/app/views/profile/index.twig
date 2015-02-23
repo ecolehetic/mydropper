@@ -16,7 +16,7 @@
             <div id="topContainer">
                 <div class="text">
                     <h1>{{ values.name | upper }} {{ values.firstname | capitalize }}</h1>
-                    <h2>{{ values.username }} - {{ age }} ans</h2>
+                    <h2>{{ values.username }}</h2>
                 </div>
 
                 <div id="avatarContainer">
@@ -48,9 +48,9 @@
                                    disabled="disabled" required/>
                         </div>
                         <div class="form-group">
-                            <label for="birthday">Date of Birth :</label>
-                            <input class="date datepicker" type="text" name="birthday" id="birthdayProfile"
-                                   data-date="{{ values.date_of_birth }}" disabled="disabled" required/>
+                            <label for="mail">Mail Pushbullet:</label>
+                            <input type="email" name="mail_pushbullet" placeholder="Mail PushBullet" value="{{ values.mail_pushbullet }}"
+                                   disabled="disabled" required/>
                         </div>
                     </div>
 
