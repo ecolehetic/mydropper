@@ -11,9 +11,9 @@ var Model = {
 			});
 		},
 
-		'getCategoryGraphData' : function(cat, from, to, callback) {
-			$.getJSON( "../integration/json/categoryGlobal.json", function( response ) {
-				var dataResponse = response.data[0],
+		'getCategoryGraphData' : function(cat, fromDate, toDate, callback) {
+			$.post('/api/categoryglobal/', { user_id : Model.userId, cat_id : cat, from : fromDate, to : toDate }, function(response) {
+				var dataResponse = response.data,
 					graphData = dataResponse.graphData,
 					catLabels = Object.keys(graphData),
 					catSeries = [
@@ -28,14 +28,15 @@ var Model = {
 					catSeries[0].data.push(graphData[catLabels[i]]);
 				}
 				callback.call(this, catLabels,catSeries);
-			});
+
+			}, 'json');
 		},
 
 		'getTrackedLinkGraphData' : function(cat, fromDate, toDate, callback) {
 			$.post('/api/trackedlink/', { user_id : Model.userId, cat_id : cat, from : fromDate, to : toDate }, function(response) {
 				console.log(response);
 				callback.call(this, response.data);
-				
+
 			}, 'json');
 		}
 	}
