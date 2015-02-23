@@ -118,8 +118,9 @@ $(document).ready(function() {
 			return true;
 		}
 	}
+
 	// Init Datepickers
-	if(window.location.pathname === "/users/subscribe"){
+	/*if(window.location.pathname === "/users/subscribe"){
 		$('.datepicker')
 			.datepicker({ dateFormat: 'yy-mm-dd', format: 'yy-mm-dd' })
 			.datepicker("setDate", '1995-01-01');
@@ -127,6 +128,6 @@ $(document).ready(function() {
 		$('.datepicker')
 			.datepicker({ dateFormat: 'yy-mm-dd', format: 'yy-mm-dd' })
 			.datepicker("setDate", $('.datepicker').data("date"));
-	};
+	};*/
 
 });
