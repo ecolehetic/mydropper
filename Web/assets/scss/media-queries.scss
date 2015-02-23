@@ -120,6 +120,9 @@
                         h2:after {
                             content : ' - ';
                         }
+                        p:last-child:before {
+                            content : ' - ';
+                        }
                     }
                 }
             }

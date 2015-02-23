@@ -24,6 +24,7 @@ var GraphUI = {
 					<div class='text'>\
 						<h2>"+stg.snippetName+"</h2>\
 						<p>Create at " + stg.createdAt + "</p>\
+						<p>Since " + stg.since + "</p>\
 					</div>\
 				</div>\
 				<div class='graphContainer'>\

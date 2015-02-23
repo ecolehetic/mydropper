@@ -78,6 +78,7 @@ $(document).ready(function() {
 				var	graphSettings = {
 					"nbClick" : currentData.nbClick,
 					"createdAt" : currentData.createdAt,
+					"since" : currentData.since,
 					"snippetName" : currentData.snippetName,
 					"snippetSelector" : "snippetGraph-" + (i+1),
 					"graphTooltipId" : "snippetTooltip-" + (i+1),

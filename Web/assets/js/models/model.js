@@ -33,7 +33,9 @@ var Model = {
 
 		'getTrackedLinkGraphData' : function(cat, fromDate, toDate, callback) {
 			$.post('/api/trackedlink/', { user_id : Model.userId, cat_id : cat, from : fromDate, to : toDate }, function(response) {
+				console.log(response);
 				callback.call(this, response.data);
+				
 			}, 'json');
 		}
 	}
