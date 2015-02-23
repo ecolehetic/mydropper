@@ -109,8 +109,8 @@ var UI = {
 		'el' : $( "#popin" ),
 		'categoryContainer' : $( "#addCategoryFormContainer"),
 		'snippetContainer' : $( "#addSnippetFormContainer"),
-		'urlCheckboxContainer' : $( '#urlCheckbox' ),
-		'urlCheckbox' : $( '#urlCheckbox').find('input'),
+		'checkboxContainer' : $( '.checkboxContainer' ),
+		'checkbox' : $('.checkbox'),
 
 		'showAddCategory' : function(){
 			UI.popin.el.fadeIn();
@@ -126,12 +126,12 @@ var UI = {
 			UI.popin.el.fadeOut();
 		},
 		'enableCheckbox' : function(){
-			UI.popin.urlCheckboxContainer.removeClass('disabled');
-			UI.popin.urlCheckbox.prop( "disabled", false );
+			UI.popin.checkboxContainer.removeClass('disabled');
+			UI.popin.checkbox.prop( "disabled", false );
 		},
 		'disableCheckbox' : function(){
-			UI.popin.urlCheckboxContainer.addClass('disabled');
-			UI.popin.urlCheckbox
+			UI.popin.checkboxContainer.addClass('disabled');
+			UI.popin.checkbox
 				.prop( "disabled", true)
 				.prop( "checked", false);
 		}
