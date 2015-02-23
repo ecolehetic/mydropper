@@ -2,10 +2,9 @@
 
 namespace APP\CONTROLLERS;
 
-use APP\HELPERS\GoogleUrlApi;
 use APP\MODELS\Store as Store;
 use APP\MODELS\Category as Category;
-use APP\MODELS\TrackerUrl;
+use APP\MODELS\Url;
 
 /**
  * Class StoresController
@@ -29,7 +28,9 @@ class StoresController extends BaseController
 
         if ($this->f3->get('POST')) {
             $is_valid = Store::checkOnCreate($this->f3->get('POST'));
+
             $trackUrl = $this->f3->get('POST.trackedLink');
+            $beNotice = $this->f3->get('POST.pushbullet');
 
             if ($is_valid) {
 
@@ -38,23 +39,19 @@ class StoresController extends BaseController
                     'user_id'     => $user->id,
                     'label'       => $post['label'],
                     'descript'    => $post['descript'],
-                    'category_id' => $post['category_id']
+                    'category_id' => $post['category_id'],
+                    'is_shorter' => !empty($trackUrl) ? 1 : 0
                 ]);
 
                 // If user want trackUrl
                 if (!empty($trackUrl)) {
-                    $googleUrl = new GoogleUrlApi();
 
-                    TrackerUrl::create([
+                    Url::create([
                         'user_id'   => $user->id,
                         'store_id'  => $store->id,
-                        'short_url' => $googleUrl->shorten($post['descript']),
+                        'token'     => Url::generateToken(),
+                        'be_notice' => !empty($beNotice) ? 1 : 0
                     ]);
-
-                    // Define in the store (is_shorter) to 1
-                    $store = Store::find($store->id);
-                    $store->is_shorter = 1;
-                    $store->save();
 
                     $this->fMessage->set('Store added with a shorterLink.'); // TODO Change text
                 }

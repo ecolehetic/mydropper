@@ -21,4 +21,19 @@ class Url extends Eloquent
     {
         return $this->belongsTo('APP\MODELS\User', 'user_id');
     }
+
+    /**
+     * Generate Token for UrlShorter
+     */
+    public static function generateToken()
+    {
+        do {
+            $token = substr(uniqid('', true), -5);
+
+            $url = Url::where('token', '=', $token)->count();
+
+        } while ($url > 0);
+
+        return $token;
+    }
 }

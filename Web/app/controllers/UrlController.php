@@ -33,12 +33,12 @@ class UrlController extends BaseController
 
                 if ($this->addTracker($shortLink->user_id, $shortLink->id)) {
 
-                    if ($this->seedNotification($shortLink->users->mail, $store->descript) === true) {
-
-                        $this->f3->reroute($store->descript, true);
-                        return;
-
+                    if($shortLink->be_notice === 1){
+                        $this->seedNotification($shortLink->users->mail, $store->descript);
                     }
+
+                    $this->f3->reroute($store->descript, true);
+                    return;
 
                 }
 

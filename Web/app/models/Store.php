@@ -65,7 +65,7 @@ class Store extends Eloquent
     public static function checkOnCreate($formData)
     {
         $is_valid = GUMP::is_valid($formData, array(
-            'label' => 'required|max_len,45',
+            'label'    => 'required|max_len,45',
             'descript' => 'required'
         ));
 
