@@ -17,7 +17,7 @@ Permettre le stockage de données personnelles susceptibles d’être utilisées
 | Mathieu LE TYRANT  | Développeur Back |
 | Héloise HAUTEVILLE  | Designer  |
 | Clara DARCO  | Designer  |
-| Wasim FOUAD  | Designer  |
+| Wasim FOUAD  | Community Manager  |
 
 #### TECHNOLOGIES
 * Fat Free Framework
