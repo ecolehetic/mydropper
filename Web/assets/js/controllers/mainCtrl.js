@@ -119,9 +119,13 @@ $(document).ready(function() {
 	}
 	// Init Datepickers
 	if(window.location.pathname === "/users/subscribe"){
-		$('#birthdayDP')
+		$('.datepicker')
 			.datepicker({ dateFormat: 'mm-dd-yy' })
 			.datepicker("setDate", '01-01-1995');
+	}else if (window.location.pathname === "/profile") {
+		$('.datepicker')
+			.datepicker({ dateFormat: 'mm-dd-yy' })
+			.datepicker("setDate", $('.datepicker').data("date"));
 	};
 
 });
