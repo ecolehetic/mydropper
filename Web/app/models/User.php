@@ -45,7 +45,7 @@ class User extends Eloquent
             'firstname'  => 'required|max_len,45',
             'lastname'   => 'required|max_len,45',
             'mail'       => 'required|valid_email',
-            'birthday'   => 'required|date',
+            'birthday'   => 'required',
             'password_1' => 'required|min_len,5',
             'password_2' => 'required|min_len,5',
         ));
