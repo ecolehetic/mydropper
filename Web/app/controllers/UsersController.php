@@ -37,27 +37,27 @@ class UsersController extends BaseController
         $validForm = User::checkFormSubscribe($this->f3->get('POST'));
 
         if ($validForm === true) {
-            $username = User::where('username', $this->f3->get('POST.username'))->first();
-            $mail = User::where('mail', $this->f3->get('POST.mail'))->first();
+            $username   = User::where('username', $this->f3->get('POST.username'))->first();
+            $mail       = User::where('mail', $this->f3->get('POST.mail'))->first();
 
             if ($username === null && $mail === null) {
 
                 if ($this->f3->get('FILES.avatar')) {
                     $upload = new Upload();
-                    $path = $upload->save($this->f3->get('FILES.avatar'));
+                    $path   = $upload->save($this->f3->get('FILES.avatar'));
                 } else {
                     $path = null;
                 }
 
                 $user = User::create(array(
-                    'username' => $this->f3->get('POST.username'),
-                    'firstname' => $this->f3->get('POST.firstname'),
-                    'name' => $this->f3->get('POST.lastname'),
-                    'mail' => $this->f3->get('POST.mail'),
+                    'username'      => $this->f3->get('POST.username'),
+                    'firstname'     => $this->f3->get('POST.firstname'),
+                    'name'          => $this->f3->get('POST.lastname'),
+                    'mail'          => $this->f3->get('POST.mail'),
                     'date_of_birth' => $this->f3->get('POST.birthday'),
-                    'password' => $this->crypt($this->f3->get('POST.password_1')),
-                    'pushbullet' => $this->f3->get('POST.mail_pushbullet'),
-                    'avatar_url' => $path
+                    'password'      => $this->crypt($this->f3->get('POST.password_1')),
+                    'pushbullet'    => $this->f3->get('POST.mail_pushbullet'),
+                    'avatar_url'    => $path
                 ));
 
                 $this->f3->set('POST.id', $user->id);
@@ -77,7 +77,7 @@ class UsersController extends BaseController
 
         $this->render('users/subscribe.twig', [
             'messages' => $validForm,
-            'values' => $this->f3->get('POST')
+            'values'   => $this->f3->get('POST')
         ]);
 
     }
@@ -122,8 +122,8 @@ class UsersController extends BaseController
         ));
 
         if ($validForm === true) {
-            $user = User::where('username', $this->f3->get('POST.username'))->where('password', $this->crypt($this->f3->get('POST.password')))->first();
-            $validForm = [];
+            $user       = User::where('username', $this->f3->get('POST.username'))->where('password', $this->crypt($this->f3->get('POST.password')))->first();
+            $validForm  = [];
 
             if ($user !== null) {
                 $this->f3->set('SESSION.user', $user);
@@ -136,7 +136,7 @@ class UsersController extends BaseController
 
         $this->render('users/login.twig', [
             'messages' => $validForm,
-            'values' => $this->f3->get('POST')
+            'values'   => $this->f3->get('POST')
         ]);
     }
 
@@ -161,9 +161,9 @@ class UsersController extends BaseController
 
         if ($validForm === true) {
 
-            $userInformations = User::where('mail', $this->f3->get('POST.mail'))->first();
-            $token = uniqid();
-            $validForm = [];
+            $userInformations   = User::where('mail', $this->f3->get('POST.mail'))->first();
+            $token              = uniqid();
+            $validForm          = [];
 
             if ($userInformations !== null) {
                 // Generate Token and save it
@@ -183,7 +183,7 @@ class UsersController extends BaseController
                 $mail = new Mail();
                 $mail->seed('lostpassword_first_step', $this->f3->get('POST.mail'), array(
                     'subject' => 'Mot de passe oublié',
-                    'link' => $url
+                    'link'    => $url
                 ));
 
                 // Display Messages
@@ -208,8 +208,8 @@ class UsersController extends BaseController
      */
     public function confirmLostPassword()
     {
-        $userInformations = User::where('username', $this->f3->get('PARAMS.username'))->where('token_password', $this->f3->get('PARAMS.token'))->first();
-        $messages = [];
+        $userInformations   = User::where('username', $this->f3->get('PARAMS.username'))->where('token_password', $this->f3->get('PARAMS.token'))->first();
+        $messages           = [];
 
         if ($userInformations !== null) {
             $newPassword = uniqid();
@@ -224,7 +224,7 @@ class UsersController extends BaseController
             // Seed a mail with new Password
             $mail = new Mail();
             $mail->seed('lostpassword_final_step', $userInformations->mail, array(
-                'subject' => 'Mot de passe oublié',
+                'subject'  => 'Mot de passe oublié',
                 'password' => $newPassword
             ));
 
@@ -261,12 +261,12 @@ class UsersController extends BaseController
     {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
 
-        $users = User::all();
+        $users      = User::all();
         $usersCount = count($users);
 
         $this->render(true, [
-            'users' => $users,
-            'usersCount'=>$usersCount
+            'users'      => $users,
+            'usersCount' => $usersCount
         ]);
     }
 
@@ -277,32 +277,32 @@ class UsersController extends BaseController
     {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
 
-        $id = (int)($this->f3->get('PARAMS.id'));
-        $validForm = null;
+        $id         = (int)($this->f3->get('PARAMS.id'));
+        $validForm  = null;
 
         if ($this->f3->get('POST') && $id > 0) {
             $validForm = User::checkAdminEdit($this->f3->get('POST'), $id);
             if ($validForm === true) {
                 User::where('id', '=', $id)->update([
-                    'username' => $this->f3->get('POST.username'),
-                    'firstname' => $this->f3->get('POST.firstname'),
-                    'name' => $this->f3->get('POST.name'),
-                    'mail' => $this->f3->get('POST.mail'),
+                    'username'      => $this->f3->get('POST.username'),
+                    'firstname'     => $this->f3->get('POST.firstname'),
+                    'name'          => $this->f3->get('POST.name'),
+                    'mail'          => $this->f3->get('POST.mail'),
                     'date_of_birth' => $this->f3->get('POST.birthday'),
-                    'role_id'=>$this->f3->get('POST.role_id')
+                    'role_id'       => $this->f3->get('POST.role_id')
                 ]);
             }
         }
-        $user = User::find($id);
-        $storesCount = Store::where('user_id', '=', $id)->count();
-        $categoriesCount = Category::where('user_id', '=', $id)->count();
-        $roles = Role::all();
+        $user               = User::find($id);
+        $storesCount        = Store::where('user_id', '=', $id)->count();
+        $categoriesCount    = Category::where('user_id', '=', $id)->count();
+        $roles              = Role::all();
 
         $this->render(true, [
-            'messages' => $validForm,
-            'values' => $user,
-            'roles'=>$roles,
-            'stores' => $storesCount,
+            'messages'   => $validForm,
+            'values'     => $user,
+            'roles'      => $roles,
+            'stores'     => $storesCount,
             'categories' => $categoriesCount
         ]);
     }
