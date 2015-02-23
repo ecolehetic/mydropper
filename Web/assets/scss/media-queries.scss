@@ -155,7 +155,30 @@
             left: 7%;
         }
     }
-
+    #formHome {
+        .pushbulletFG {
+            .infoBulle {
+                span {
+                    display : none;
+                }
+                .info {
+                    opacity : 1;
+                    position : relative;
+                    width : 70%;
+                    margin-left :32%;
+                    margin-top : 20px;
+                    background : transparent;
+                    top : auto;
+                    right : auto;
+                    color : white;
+                    font-size : 0.9rem;
+                    &:after {
+                        display : none;
+                    }
+                }
+            }
+        }
+    }
 }
 @media screen and (max-width: 600px) {
     header {
@@ -311,6 +334,16 @@
             }
             .button {
                 margin-top: 40px;
+            }
+        }
+    }
+    #formHome {
+        .pushbulletFG {
+            .infoBulle {
+                .info {
+                    width : 100%;
+                    margin-left : auto;
+                }
             }
         }
     }

@@ -188,6 +188,55 @@ $greyTitle: #787878;
 			}
 		}
 	}
+    .pushbulletFG {
+        position : relative;
+        .infoBulle {
+            span {
+                display : block;
+                text-align : center;
+                width : 20px;
+                height : 20px;
+                line-height : 20px;
+                color : black;
+                background : white;
+                border-radius: 50%;
+                font-weight: bold;
+                cursor: pointer;
+                position : absolute;
+                right : -27px;
+                top : 8px;
+                &:hover +.info{
+                    opacity: 1;
+                    transition: all 1s ease;
+                }
+            }
+            .info {
+                opacity : 0;
+                background : rgba(255,255,255,0.6);
+                color : black;
+                padding : 5px;
+                width : 150px;
+                font-size : 1rem;
+                position: absolute;
+                top: -130px;
+                right: -170px;
+                cursor : pointer;
+                transition: all 1s ease;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 10px 10px 0 10px;
+                    border-color: rgba(255,255,255,0.6) transparent transparent transparent;
+                    bottom: -10px;
+                    left: 0px;
+                }
+            }
+
+        }
+    }
 }
 #formHome.loginPage {
 	#logo {
