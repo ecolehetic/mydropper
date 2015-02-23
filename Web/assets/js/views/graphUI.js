@@ -4,6 +4,7 @@ var GraphUI = {
 
 	'category' : {
 		'render' : function(selector, importLabels, importSeries){
+			console.log('importSeries : ' +importSeries);
 			new Chartist.Line(selector, {
 				labels: importLabels,
 				series: importSeries

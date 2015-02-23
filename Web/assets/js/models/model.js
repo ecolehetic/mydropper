@@ -7,34 +7,44 @@ var Model = {
 		'getCategoryList' : function(callback) {
 			console.log('UserId : ' + Model.userId);
 			$.getJSON( "/api/categories/"+ Model.userId, function( response ) {
+
 				callback.call(this, response.categoryList);
 			});
 		},
 
 		'getCategoryGraphData' : function(cat, fromDate, toDate, callback) {
 			$.post('/api/categoryglobal/', { user_id : Model.userId, cat_id : cat, from : fromDate, to : toDate }, function(response) {
-				var dataResponse = response.data,
-					graphData = dataResponse.graphData,
-					catLabels = Object.keys(graphData),
-					catSeries = [
+				console.log('getCategoryGraphData response : ', response.data);
+				if(response.data.graphData) {
+					var dataResponse = response.data,
+						graphData = dataResponse.graphData,
+						catLabels = Object.keys(graphData),
+						catSeries = [
+							{
+								name: dataResponse.categoryName,
+								data: []
+							}
+						];
+
+					// Insert values in catSeries for ChartistJs
+					for(var i = 0; i < catLabels.length; i++) {
+						catSeries[0].data.push(graphData[catLabels[i]]);
+					}
+					callback.call(this, catLabels,catSeries);
+				} else {
+					var catSeries = [
 						{
-							name: dataResponse.categoryName,
-							data: []
+							name: response.data.categoryName,
+							data: [['0']]
 						}
 					];
-
-				// Insert values in catSeries for ChartistJs
-				for(var i = 0; i < catLabels.length; i++) {
-					catSeries[0].data.push(graphData[catLabels[i]]);
+					callback.call(this, ['N/A'],catSeries);
 				}
-				callback.call(this, catLabels,catSeries);
-
 			}, 'json');
 		},
 
 		'getTrackedLinkGraphData' : function(cat, fromDate, toDate, callback) {
 			$.post('/api/trackedlink/', { user_id : Model.userId, cat_id : cat, from : fromDate, to : toDate }, function(response) {
-				console.log(response);
 				callback.call(this, response.data);
 
 			}, 'json');

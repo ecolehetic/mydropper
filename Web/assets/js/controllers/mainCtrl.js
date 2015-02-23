@@ -119,15 +119,4 @@ $(document).ready(function() {
 		}
 	}
 
-	// Init Datepickers
-	/*if(window.location.pathname === "/users/subscribe"){
-		$('.datepicker')
-			.datepicker({ dateFormat: 'yy-mm-dd', format: 'yy-mm-dd' })
-			.datepicker("setDate", '1995-01-01');
-	}else if (window.location.pathname === "/profile") {
-		$('.datepicker')
-			.datepicker({ dateFormat: 'yy-mm-dd', format: 'yy-mm-dd' })
-			.datepicker("setDate", $('.datepicker').data("date"));
-	};*/
-
 });
