@@ -63,14 +63,27 @@ var UI = {
 			}, 700);
 		},
 
-		'accordeonToggle' : function(self){
+		'checkActiveCategory' : function() {
+			$('.categoryElement').each(function(){
+				if($(this).hasClass('active')) {
+					UI.nav.accordeonToggle($('.categoryName', this),false);
+				}
+			});
+		},
+		'accordeonToggle' : function(self, animation){
 			var $snippetsList = self.siblings('ul');
 			var $plusMinus = self.siblings('span');
 
 			if (!$snippetsList.is(":visible")) {
 				// If Panel Closed
-				UI.nav.$allSnippetsList.slideUp("slow");
-				$snippetsList.slideDown("slow");
+				if(animation) {
+					UI.nav.$allSnippetsList.slideUp("slow");
+					$snippetsList.slideDown("slow");
+				} else {
+					UI.nav.$allSnippetsList.hide();
+					$snippetsList.show();
+				}
+
 
 				UI.nav.$allPlusMinus.html('+');
 				$plusMinus.html('-');

@@ -117,7 +117,7 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
                 opacity: 1;
                 transform: translateX(7px);
             }
-            a {
+            & > a {
                 color: $hoverSideBarLink;
                 font-weight: bold;
             }
@@ -128,6 +128,9 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
         #categoryList {
             padding: 0;
             background: $blue;
+            .categoryName {
+                text-transform: capitalize;
+            }
             .categoryElement {
                 span {  
                     // + / - 
@@ -141,6 +144,7 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
                     display: none;
                     width: 100%;
                     position: relative;
+                    text-transform: capitalize;
                     a {
                         padding: 17px 20px 20px 20px;
                         background: $midGrey;

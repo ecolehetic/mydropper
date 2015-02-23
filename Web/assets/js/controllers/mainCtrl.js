@@ -37,8 +37,9 @@ $(document).ready(function() {
 		});
 
 	/* ACCORDEON MENU */
+	UI.nav.checkActiveCategory();
 	$('.categoryElement > a').click(function(e) {
-		UI.nav.accordeonToggle($(this));
+		UI.nav.accordeonToggle($(this), 'animated');
 	});
 
 	/* EDIT PROFILE */
@@ -112,5 +113,8 @@ $(document).ready(function() {
 		}
 	}
 	// Init Datepickers
-	$('#birthdayDP').datepicker({ dateFormat: 'mm-dd-yy' });
+	if(window.location.pathname === "/users/subscribe"){
+		$('#birthdayDP').datepicker({ dateFormat: 'mm-dd-yy' });
+	};
+
 });
