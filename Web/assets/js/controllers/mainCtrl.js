@@ -2,14 +2,14 @@
 
 $(document).ready(function() {
 
-	/* INIT SIZE */
+	/* ---- INIT SIZE ---- */
 	UI.initSize();
 
 	$(window).resize(function() {
 		UI.initSize();
 	});
 
-	/* TOGGLE BURGER MENU */
+	/* ---- TOGGLE BURGER MENU ---- */
 	$('#burger').click(function(e) {
 		e.preventDefault();
 		if(!UI.nav.burgerTrigger) {
@@ -20,7 +20,7 @@ $(document).ready(function() {
 		}
 	});
 
-	/* FLASH MESSAGES */
+	/* ---- FLASH MESSAGES ---- */
 	UI.flashMsg.removeMsgTimeout(3000);
 
 	$('#flashMsg').find('li').click(function(e){
@@ -29,53 +29,57 @@ $(document).ready(function() {
 	});
 
 
-	/* PROFILE AVATAR HOVER */
+	/* ---- PROFILE AVATAR HOVER ---- */
 	$('#profile').hover(function() {
 			UI.profile.$menu.fadeIn();
 		}, function() {
 			UI.profile.$menu.fadeOut();
 		});
 
-	/* ACCORDEON MENU */
+	/* ---- ACCORDEON MENU --- -*/
 	UI.nav.checkActiveCategory();
 	$('.categoryElement > a').click(function(e) {
 		UI.nav.accordeonToggle($(this), 'animated');
 	});
 
-	/* EDIT PROFILE */
+	/* ---- EDIT PROFILE ---- */
 	$("#editButton").click(function(e) {
 		e.preventDefault();
 		UI.profile.toggleEdition();
 	});
 
-	/* SUBMIT FORM */
+	/* ---- SUBMIT FORM ---- */
 	$('.submitBtn').click(function(e) {
 		e.preventDefault();
 		$(this).siblings("input[type='submit']").trigger('click');
 	});
 
-	/* TRACKING TABS */
-	$('#tabs li').click(function(e) {
-		e.preventDefault();
-		var $this = $(this);
-		UI.tracking.toggleTabs($this);
-	});
 
-	/* POPIN ADD DATA */
+	/* ---- POPIN ADD DATA ----*/
 
 	// ----- Add Category
 	$('#addCategory').click(function(e) {
 		e.preventDefault();
-		UI.popin.showAddCategory();
+		UI.popin.showCategoryPopin();
 	});
+
 	// ----- Add Snippet
 	$('.addSnippetLink').click(function(e) {
 		e.preventDefault();
 		var $dataId = $(this).data('id');
 
-		UI.popin.showAddSnippet();
+		UI.popin.showSnippetPopin('add');
 		$('#categoryID').attr('value',$dataId);
 	});
+
+	$('.snippet').click(function(e){
+	    e.preventDefault();
+		var $dataId = $(this).data('sid');
+		var name = $('.name',this).text();
+		UI.popin.showSnippetPopin('edit', name);
+		$('#snippetID').attr('value', $dataId);
+	});
+
 	// ----- Close PopIn
 	$('#closePopin, #popinBg').click(function(e) {
 		e.preventDefault();
@@ -90,7 +94,8 @@ $(document).ready(function() {
 			}
 		}
 	});
-	// ----- Check URL for traking
+
+	/* ---- CHECK URL FOR TRACKING ---- */
 	$('#addSnippetForm textarea').keyup(function(e) {
 		e.preventDefault();
 		var $str = $(this).val();
@@ -114,7 +119,9 @@ $(document).ready(function() {
 	}
 	// Init Datepickers
 	if(window.location.pathname === "/users/subscribe"){
-		$('#birthdayDP').datepicker({ dateFormat: 'mm-dd-yy' });
+		$('#birthdayDP')
+			.datepicker({ dateFormat: 'mm-dd-yy' })
+			.datepicker("setDate", '01-01-1995');
 	};
 
 });

@@ -36,7 +36,7 @@
                     {% for category in aside.stores %}
                         <li class="categoryElement">
                             <a href="#" class="categoryName"><i class="icon-folder"></i> {{ category.category_label }}</a>
-                            <span>+</span>
+                            <span class="plusMinus">+</span>
                             <ul class="snippetsList">
                                 <li>
                                     <a href="{{ url('/store/add') }}" class="addSnippetLink" data-id="{{ category.category_id }}">
@@ -51,8 +51,11 @@
                                     </a>
                                 </li>
                                 {% for store in category.stores %}
-                                    <li>
-                                        <a href="#"><i class="icon-tag"></i>{{ store.store_label }}</a>
+                                    <li class="snippet" data-sid="NeedToAddId">
+                                        <a href="#">
+                                            <i class="icon-tag"></i>
+                                            <span class="name">{{ store.store_label }}</qp span>
+                                        </a>
                                     </li>
                                 {% endfor %}
                             </ul>

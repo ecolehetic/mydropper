@@ -32,7 +32,7 @@ var UI = {
 		'$searchBar' : $('#searchBar'),
 		'$burger' : $('#burger'),
 		'$catLink' : $('.categoryElement').find('a'),
-		'$allPlusMinus' : $('.categoryElement').find('span'),
+		'$allPlusMinus' : $('.categoryElement').find('.plusMinus'),
 		'$allSnippetsList' : $('.snippetsList'),
 
 		'openBurgerMenu' : function() {
@@ -72,7 +72,7 @@ var UI = {
 		},
 		'accordeonToggle' : function(self, animation){
 			var $snippetsList = self.siblings('ul');
-			var $plusMinus = self.siblings('span');
+			var $plusMinus = self.siblings('.plusMinus');
 
 			if (!$snippetsList.is(":visible")) {
 				// If Panel Closed
@@ -125,12 +125,18 @@ var UI = {
 		'checkboxContainer' : $( '.checkboxContainer' ),
 		'checkbox' : $('.checkbox'),
 
-		'showAddCategory' : function(){
+		'showCategoryPopin' : function(){
 			UI.popin.el.fadeIn();
 			UI.popin.categoryContainer.show();
 			UI.popin.snippetContainer.hide();
 		},
-		'showAddSnippet' : function(){
+		'showSnippetPopin' : function(version, name){
+			if(version === "add") {
+				UI.popin.snippetContainer.find('h2').html('Add a snippet');
+			} else {
+				UI.popin.snippetContainer.find('h2').html('Edit ' + name +  ' snippet');
+
+			}
 			UI.popin.el.fadeIn();
 			UI.popin.categoryContainer.hide();
 			UI.popin.snippetContainer.show();
