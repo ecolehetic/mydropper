@@ -62,7 +62,7 @@ class UsersController extends BaseController
                 $this->f3->set('POST.id', $user->id);
                 $this->f3->set('SESSION.user', $user);
 
-                $this->f3->reroute('/history', true);
+                $this->f3->reroute('/profile', true);
             } else {
                 $validForm = [];
                 if ($username !== null) {
@@ -127,7 +127,7 @@ class UsersController extends BaseController
             if ($user !== null) {
                 $this->f3->set('SESSION.user', $user);
                 $this->fMessage->set('You are successfully logged');
-                $this->f3->reroute('/history', true);
+                $this->f3->reroute('/profile', true);
             } else {
                 $validForm[] = "User don't exist";
             }
