@@ -162,6 +162,7 @@ var UI = {
 		'$editmsg' : $('#editButton span'),
 		'$inputs' : $('#editForm input'),
 		'$htmlForm' : $('#editForm').html(),
+		'$date' : $('#birthdayProfile').data('date'),
 
 		'toggleEdition' : function() {
 			if (UI.profile.$form.hasClass('disabled')) {
@@ -172,8 +173,12 @@ var UI = {
 			else {
 				UI.profile.$editmsg.html('Edit profile');
 				UI.profile.$form.addClass('disabled').removeClass ('enabled');
-				UI.profile.$form.html(UI.profile.$htmlForm).promise ().done (function () {
+				UI.profile.$form.html(UI.profile.$htmlForm).promise().done (function () {
 					UI.profile.$inputs.prop('disabled',true);
+					console.log(UI.profile.$date);
+					$('#birthdayProfile')
+						.datepicker({ dateFormat: 'mm-dd-yy' })
+						.datepicker("setDate", UI.profile.$date);
 				});
 			}
 		}

@@ -82,6 +82,10 @@ $greyTitle: #787878;
                      margin : 3px 0 10px;
                      border-bottom : 1px dashed transparent;
                  }
+                 #birthdayProfile {
+                    background : url(../images/triangle.png) 110px 6px no-repeat;
+                    cursor : auto;
+                 }
              }
              #submitEdit {
                  display : none;
@@ -100,6 +104,9 @@ $greyTitle: #787878;
              #submitEdit {
                  display : block;
                  opacity : 1;
+             }
+             #birthdayProfile {
+                 cursor : pointer;
              }
          }
      }

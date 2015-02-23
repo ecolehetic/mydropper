@@ -30,6 +30,6 @@
         "https://*/*"
     ],
     "web_accessible_resources": [
-        "css/styles.css"
+        "css/styles.css","img/logo.png"
     ]
 }

@@ -10,7 +10,12 @@
 <body>
     <div id="contentToLoad">
         <div id="sideBarContainer">
-            <h1>My Dropper GIT folder</h1>
+            <div id="topSideBar">
+				<div id="close">&times;</div>
+				<a href="http://mydropper.io" target="_blank">
+					<img src="http://hengpatrick.fr/mydropper/img/logo.png" alt=""/>
+				</a>
+			</div>
 
             <!-- Not Logged in -->
             <div id="notLoggedInContainer">
@@ -38,12 +43,11 @@
                         </a>
                     </div>
                 </form>
-                <p>Don't have an account? Please <a href="/users/subscribe">sign in</a>.</p>
+                <p>Don't have an account? <br/> Please <a href="http://mydropper.io/users/subscribe">sign in</a>.</p>
             </div>
 
             <!-- Logged in -->
             <div id="loggedInContainer" class="hidden">
-                <input type="text" class="md-dropElmt" data-accept-type="Text">
                 <ul id="sessionInfo">
                     <li><a href="#">Edit profile</a>
                     </li>

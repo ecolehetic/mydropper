@@ -8,23 +8,6 @@ var UI={
         sideBarElmt.innerHTML = htmlContent;
         document.body.appendChild(sideBarElmt);
 
-        // $('#myDropperSideBar').css({
-        //     'position': 'fixed',
-        //     'top': '0px',
-        //     'right': '0px',
-        //     'max-width': '300px',
-        //     'width': '300px',
-        //     'overflow-x': 'visible',
-        //     'overflow-y': 'auto',
-        //     'height': '100%',
-        //     'background': '#FFFFFF',
-        //     'z-index': '99999999999999',
-        //     'display': 'none',
-        //     'font-family': 'helvetica, arial',
-        //     'color': '#212121',
-        //     'border-left': '1px solid #727272'
-        // });
-
         sideBarElmt.style.display = 'block';
 
         sideBarElmt.classList.add('showBar');

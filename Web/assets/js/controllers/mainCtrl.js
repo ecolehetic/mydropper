@@ -34,7 +34,8 @@ $(document).ready(function() {
 			UI.profile.$menu.fadeIn();
 		}, function() {
 			UI.profile.$menu.fadeOut();
-		});
+		}
+	);
 
 	/* ---- ACCORDEON MENU --- -*/
 	UI.nav.checkActiveCategory();

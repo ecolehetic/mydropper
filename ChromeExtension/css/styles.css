@@ -299,59 +299,66 @@
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%); } }
 
+/* ---- OLD COLOR ---- */
+/* ---- NEW COLOR ---- */
 #myDropperSideBar {
   position: fixed;
   top: 0px;
   right: 0px;
   width: 300px;
   height: 100%;
-  background: #1f282d;
+  background: #f6f6f6;
   z-index: 999999;
   -webkit-animation: slideInRight 1s ease;
           animation: slideInRight 1s ease;
   display: none;
   font-family: helvetica, arial, sans-serif !important;
   border-left: 1px solid #727272;
-  color: white; }
+  color: black;
+  font-size: 14px; }
   #myDropperSideBar * {
-    all: unset;
-    -webkit-all: unset; }
+    font-family: helvetica, arial, sans-serif !important;
+    font-size: 1em;
+    outline: none; }
   #myDropperSideBar .hidden {
     display: none; }
   #myDropperSideBar a {
-    color: white;
+    color: black;
     transition: all 0.5s ease; }
     #myDropperSideBar a:hover {
-      color: #e3e2e3 !important; }
+      color: #f6f6f6 !important; }
   #myDropperSideBar #sideBarContainer {
     display: block;
     overflow-x: hidden;
     overflow-y: auto;
     height: 100%; }
-  #myDropperSideBar h1 {
-    text-align: center;
+  #myDropperSideBar #topSideBar img {
+    width: 30%;
+    margin: auto;
     display: block;
-    font-size: 20px;
-    font-family: helvetica, arial;
-    width: 100%;
-    background: #1f282d;
-    padding: 20px 0;
-    margin: 0;
-    border-top: 5px solid #455A64;
-    color: white;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    color: rgba(255, 255, 255, 0.9); }
+    padding: 20px 0; }
+  #myDropperSideBar #topSideBar #close {
+    font-size: 35px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    color: #e0e1e3; }
+    #myDropperSideBar #topSideBar #close:hover {
+      color: #C3E3FB; }
   #myDropperSideBar #accordeon {
+    all: initial;
     width: 100%;
-    list-style: none; }
+    list-style: none;
+    font-family: helvetica, arial, sans-serif !important; }
     #myDropperSideBar #accordeon .category {
       position: relative;
-      border-bottom: 2px solid #131c22;
-      border-top: 1px solid #424950;
+      border-bottom: 1px solid #8b8d8e;
       display: block;
       transition: all 1s ease; }
-      #myDropperSideBar #accordeon .category:hover {
-        background: #2f363c; }
+      #myDropperSideBar #accordeon .category:first-child {
+        border-top: 1px solid #8b8d8e; }
       #myDropperSideBar #accordeon .category span {
         position: absolute;
         top: 23px;
@@ -359,14 +366,19 @@
       #myDropperSideBar #accordeon .category h2 {
         height: 60px;
         line-height: 63px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        font-weight: normal;
         margin: 0;
         cursor: pointer;
-        background: #1f282d;
         width: 100% !important;
         padding: 0px 20px !important;
         display: block;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: 1;
+        font-size: 1em;
+        color: #000111;
+        background: #f9f9f9; }
       #myDropperSideBar #accordeon .category .dragList {
         max-height: 0;
         display: block;
@@ -376,19 +388,24 @@
         cursor: pointer;
         padding: 0;
         margin: auto;
-        transition: all 0.5s ease; }
+        transition: all 0.5s linear;
+        color: #000111; }
         #myDropperSideBar #accordeon .category .dragList li {
           display: block;
-          width: 250px;
+          width: 100%;
           margin: auto;
-          height: 50px;
-          line-height: 50px;
-          padding: 0 10px;
-          background: #CFD8DC;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-          cursor: pointer; }
-          #myDropperSideBar #accordeon .category .dragList li:last-child {
-            margin-bottom: 20px; }
+          height: 55px;
+          line-height: 60px;
+          padding: 0 30px;
+          background: #e0e1e3;
+          border-top: 1px solid rgba(0, 0, 0, 0.2);
+          border-bottom: 1px solid #f4f4f4;
+          cursor: pointer;
+          transition: all 0.5s ease;
+          font-size: 0.9em;
+          text-transform: capitalize; }
+          #myDropperSideBar #accordeon .category .dragList li:hover {
+            background: #cbced0; }
         #myDropperSideBar #accordeon .category .dragList li.md-draging {
           opacity: 0.9;
           -webkit-transform: rotate(-4deg);
@@ -399,8 +416,7 @@
       #myDropperSideBar #accordeon .category .dragList.open {
         display: block !important;
         height: auto !important;
-        max-height: 1500px !important;
-        transition: all 0.5s ease !important; }
+        max-height: 1500px !important; }
   #myDropperSideBar [draggable] {
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -419,7 +435,7 @@
     padding: 20px 0;
     margin: 0;
     border-top: 5px solid #455A64;
-    color: white;
+    color: black;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
   #myDropperSideBar ul {
     padding: 0;
@@ -428,36 +444,36 @@
   #myDropperSideBar form {
     margin-top: 55px;
     display: block;
-    font-weight: normal; }
+    font-weight: normal;
+    font-size: 16px; }
     #myDropperSideBar form #submit {
       display: none !important; }
     #myDropperSideBar form .form-group {
       width: 80%;
       display: block;
-      margin: 0 auto 25px auto;
-      color: white !important; }
+      margin: 0 auto 25px auto; }
       #myDropperSideBar form .form-group label {
         width: 100%;
         display: inline-block;
         margin-right: 3%;
         margin-bottom: 5px;
         text-align: left;
-        color: white !important;
-        letter-spacing: 0.1rem;
         vertical-align: middle;
-        outline-color: white; }
+        outline-color: white;
+        font-size: 1em; }
       #myDropperSideBar form .form-group input {
         width: 92%;
         padding: 4px 3%;
         display: inline-block;
-        margin: 0;
+        margin: 6px 0 0 0;
         border: 0;
         height: 26px;
-        line-height: 36px;
-        border-bottom: 1px solid white;
+        border-bottom: 2px solid #cbced0;
+        border-right: 1px solid #cbced0;
         vertical-align: middle;
-        background: rgba(255, 255, 255, 0.5);
-        color: white; }
+        background: rgba(0, 0, 0, 0.1);
+        color: black;
+        font-size: 0.9em; }
         #myDropperSideBar form .form-group input::-webkit-input-placeholder {
           color: black;
           opacity: 0.6; }
@@ -474,7 +490,8 @@
         display: block;
         margin: auto; }
       #myDropperSideBar form .form-group:last-child {
-        margin-left: auto; }
+        margin-left: auto;
+        margin-top: 50px; }
     #myDropperSideBar form .button {
       margin-top: 50px;
       margin-top: 20px; }
@@ -482,21 +499,23 @@
     display: inline-block;
     width: 100%;
     text-align: center;
-    font-size: 0.9rem;
-    color: white;
+    font-size: 0.9em;
+    line-height: 1.2em;
+    color: black;
     padding-top: 10px;
     padding-bottom: 20px;
-    color: rgba(255, 255, 255, 0.95); }
+    color: #646464; }
     #myDropperSideBar p a {
       border-bottom: 1px solid white;
-      transition: all 1s ease; }
+      transition: all 1s ease;
+      color: #b4b4b4 !important; }
       #myDropperSideBar p a:hover {
-        color: #787878;
+        color: black !important;
         border-bottom: 1px solid #787878; }
   #myDropperSideBar #sessionInfo {
     display: block;
     text-align: right;
-    font-size: 0.9rem;
+    font-size: 0.9em;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -514,18 +533,17 @@
     width: 155px;
     height: 50px;
     position: relative;
-    color: white;
+    color: rgba(0, 0, 0, 0.5);
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
     cursor: pointer;
-    transition: background 0.4s 0.5s;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.1);
     text-align: center;
-    line-height: 54px; }
+    line-height: 54px;
+    font-size: 0.9em; }
     #myDropperSideBar .button:hover {
-      color: white !important;
-      transition-delay: 0s;
-      background: rgba(0, 0, 0, 0.4); }
+      color: rgba(0, 0, 0, 0.5) !important;
+      background: rgba(0, 0, 0, 0.13); }
       #myDropperSideBar .button:hover svg line {
         transition-delay: 0.1s; }
     #myDropperSideBar .button svg {
@@ -538,7 +556,7 @@
       display: block; }
       #myDropperSideBar .button svg line {
         stroke-width: 3;
-        stroke: rgba(200, 200, 200, 0.2);
+        stroke: rgba(0, 0, 0, 0.2);
         fill: none;
         transition: all 1s ease; }
   #myDropperSideBar .button.float {
