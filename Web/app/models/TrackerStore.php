@@ -28,5 +28,4 @@ class TrackerStore extends Eloquent
     {
         return $this->belongsTo('MyDropper\Models\User', 'user_id');
     }
-
 }

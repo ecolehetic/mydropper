@@ -41,7 +41,6 @@ class UsersController extends BaseController
             $mail       = User::where('mail', $this->f3->get('POST.mail'))->first();
 
             if ($username === null && $mail === null) {
-
                 if ($this->f3->get('FILES.avatar')) {
                     $upload = new Upload();
                     $path   = $upload->save($this->f3->get('FILES.avatar'));
@@ -94,7 +93,6 @@ class UsersController extends BaseController
             'messages' => $validForm,
             'values'   => $this->f3->get('POST')
         ]);
-
     }
 
     /**
@@ -130,7 +128,6 @@ class UsersController extends BaseController
      */
     public function connect()
     {
-
         $validForm = User::checkForm($this->f3->get('POST'), array(
             'username' => 'required',
             'password' => 'required'
@@ -176,7 +173,6 @@ class UsersController extends BaseController
         ));
 
         if ($validForm === true) {
-
             $userInformations = User::where('mail', $this->f3->get('POST.mail'))->first();
             $token = uniqid();
             $validForm = [];
@@ -211,7 +207,6 @@ class UsersController extends BaseController
             } else {
                 $validForm[] = "The email does not exist in our database.";
             }
-
         }
 
         $this->render('users/lostpassword.twig', [
@@ -250,7 +245,6 @@ class UsersController extends BaseController
             // After 3s, redirect to the login page
             sleep(3);
             $this->f3->reroute('/users/login', true);
-
         } else {
             $messages[] = "The token does not match with the username";
         }
@@ -351,5 +345,4 @@ class UsersController extends BaseController
             $this->f3->reroute('/admin/users');
         }
     }
-
 }

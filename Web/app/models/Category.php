@@ -42,14 +42,14 @@ class Category extends Eloquent
      */
     public static function isOwnedBy($cat_id=null, $user_id=null)
     {
-        if($cat_id !== null && $user_id !== null){
+        if ($cat_id !== null && $user_id !== null) {
             $cat = Category::find($cat_id);
-            if($cat->user_id == $user_id){
+            if ($cat->user_id == $user_id) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }else{
+        } else {
             return false;
         }
     }
@@ -68,5 +68,4 @@ class Category extends Eloquent
 
         return $is_valid;
     }
-
 }

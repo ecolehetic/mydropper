@@ -24,28 +24,22 @@ class UrlController extends BaseController
         $token = $this->f3->get('PARAMS.token');
 
         if (!empty($token)) {
-
             $shortLink = Url::where('token', '=', $token)->with('users')->first();
 
             if (!empty($shortLink)) {
-
                 $store = Store::find($shortLink->store_id);
 
                 if ($this->addTracker($shortLink->user_id, $shortLink->id)) {
-
-                    if((int)$shortLink->be_notice === 1){
-                        if(!empty($shortLink->users->mail_pushbullet)){
+                    if ((int)$shortLink->be_notice === 1) {
+                        if (!empty($shortLink->users->mail_pushbullet)) {
                             $this->seedNotification($shortLink->users->mail_pushbullet, $store->descript);
                         }
                     }
 
                     $this->f3->reroute($store->descript, true);
                     return;
-
                 }
-
             }
-
         }
 
         $this->f3->reroute('/', true);
@@ -70,7 +64,6 @@ class UrlController extends BaseController
         } catch (PushbulletException $e) {
             return false;
         }
-
     }
 
     /**
@@ -89,7 +82,5 @@ class UrlController extends BaseController
         ]);
 
         return ($tracker) ? true : false;
-
     }
-
 }

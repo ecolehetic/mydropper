@@ -75,9 +75,9 @@ class Need extends BaseHelper
      */
     public function user()
     {
-       $this->user = true;
+        $this->user = true;
 
-       return $this;
+        return $this;
     }
 
     /**
@@ -104,7 +104,7 @@ class Need extends BaseHelper
     private function error($value)
     {
         $fMessage = new FlashMessage();
-        switch($value){
+        switch ($value) {
             case self::LOGGED:
                 $fMessage->set(self::LOGGED_MESSAGE, 'error');
                 break;
@@ -128,17 +128,15 @@ class Need extends BaseHelper
      */
     private function checkLevel($level)
     {
-        if($this->testLogged() === false){
+        if ($this->testLogged() === false) {
             $user = $this->f3->get('SESSION.user');
             $role = User::find($user->id)->roles()->get();
 
-            if($role[0]->level >= $level){
+            if ($role[0]->level >= $level) {
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
-
         }
     }
 
@@ -147,28 +145,26 @@ class Need extends BaseHelper
      */
     public function execute()
     {
-
-        if($this->choose === self::LOGGED && $this->testLogged() === true){
+        if ($this->choose === self::LOGGED && $this->testLogged() === true) {
             $this->error(self::LOGGED);
             return false;
         }
 
-        if($this->choose === self::UNLOGGED && $this->testLogged() === false){
+        if ($this->choose === self::UNLOGGED && $this->testLogged() === false) {
             $this->error(self::UNLOGGED);
             return false;
         }
 
-        if($this->level !== null){
-            if($this->checkLevel($this->level) === false){
+        if ($this->level !== null) {
+            if ($this->checkLevel($this->level) === false) {
                 $this->error(self::LEVEL);
                 return false;
             }
         }
 
 
-        if($this->user === true && $this->testLogged() === false){
+        if ($this->user === true && $this->testLogged() === false) {
             return $this->f3->get('SESSION.user');
         }
     }
-
 }

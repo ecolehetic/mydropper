@@ -47,11 +47,10 @@ class CategoryController extends BaseController
 
         $categoryId = $this->f3->get('PARAMS.id');
 
-        if(!empty($categoryId)){
-            $stores = Store::where('category_id','=', $categoryId)->get();
+        if (!empty($categoryId)) {
+            $stores = Store::where('category_id', '=', $categoryId)->get();
             $category = Category::find($categoryId);
-        }
-        else{
+        } else {
             $this->fMessage->set('Error, it missing id of the category.', 'error');
             $this->f3->reroute('/history', true);
         }
@@ -74,15 +73,13 @@ class CategoryController extends BaseController
 
         $categoryId = $this->f3->get('PARAMS.id');
 
-        if(!empty($categoryId)){
+        if (!empty($categoryId)) {
             // TODO @nicolas -> delete in cascade ?
             Category::destroy($categoryId);
             $this->fMessage->set('Category deleted.', 'alert');
             $this->f3->reroute('/history', true);
-        }
-        else{
+        } else {
             $this->f3->reroute('/history', true);
         }
     }
-
 }

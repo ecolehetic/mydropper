@@ -48,5 +48,4 @@ class Seo
         }
         return $this->settings[$controller][$method][$value];
     }
-
 }

@@ -54,7 +54,6 @@ class Upload extends BaseHelper
             $this->resize(key($files), $type);
 
             return key($files);
-
         }
     }
 

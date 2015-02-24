@@ -33,7 +33,6 @@ class StoresController extends BaseController
             $beNotice = $this->f3->get('POST.pushbullet');
 
             if ($is_valid) {
-
                 $post = $this->f3->get('POST');
                 $store = Store::create([
                     'user_id'     => $user->id,
@@ -45,7 +44,6 @@ class StoresController extends BaseController
 
                 // If user want trackUrl
                 if (!empty($trackUrl)) {
-
                     Url::create([
                         'user_id'   => $user->id,
                         'store_id'  => $store->id,
@@ -54,15 +52,13 @@ class StoresController extends BaseController
                     ]);
 
                     $this->fMessage->set('Store added with a shorterLink.'); // TODO Change text
-                }
-                else{
+                } else {
                     $this->fMessage->set('Store added.');
                 }
 
                 $this->f3->reroute('/history', true);
             }
         }
-
     }
 
     /**
@@ -79,7 +75,6 @@ class StoresController extends BaseController
         }
 
         if ($this->f3->get('POST')) {
-
             $post = $this->f3->get('POST');
             $store = Store::find($id);
             $store->label = $post['label'];
@@ -88,7 +83,6 @@ class StoresController extends BaseController
 
             $this->fMessage->set('Record Updated');
             $this->f3->reroute('/history', true);
-
         } else {
             $store = Store::find($id);
         }
@@ -97,8 +91,6 @@ class StoresController extends BaseController
             'values' => $store,
             'id'     => $id
         ]);
-
-
     }
 
     /**
@@ -129,7 +121,5 @@ class StoresController extends BaseController
     public function admin_index()
     {
         //list using Store::withTrashed()->get();
-
     }
-
 }

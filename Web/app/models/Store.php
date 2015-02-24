@@ -75,5 +75,4 @@ class Store extends Eloquent
 
         return $is_valid;
     }
-
 }

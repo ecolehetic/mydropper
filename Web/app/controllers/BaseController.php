@@ -92,7 +92,7 @@ class BaseController
             $categories                = User::find($user->id)->categories()->get();
             $values['aside']['stores'] = [];
 
-            for($i = 0; $i < count($categories); $i++){
+            for ($i = 0; $i < count($categories); $i++) {
                 array_push($values['aside']['stores'], [
                     'category_id'    => $categories[$i]->id,
                     'category_label' => $categories[$i]->label,
@@ -110,7 +110,6 @@ class BaseController
                     ];
                 }
             }
-
         }
 
         return $values;
@@ -167,5 +166,4 @@ class BaseController
 
         return $crypt->hash($string, $this->f3->get('SALT'), $level);
     }
-
 }

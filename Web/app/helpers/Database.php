@@ -53,5 +53,4 @@ class Database extends BaseHelper
             'unix_socket' => $this->f3->get('DB_UNIX_SOCKET')
         ];
     }
-
 }

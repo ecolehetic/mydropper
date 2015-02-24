@@ -17,7 +17,6 @@ class HistoryController extends BaseController
      */
     public function index()
     {
-
         $user = $this->need->logged('/users/login')->user()->execute();
 
         //$stores = Store::where('user_id', '=', $user->id)->with('trackerstores')->get();
@@ -30,5 +29,4 @@ class HistoryController extends BaseController
             'trackers' => $trackers
         ]);
     }
-
 }

@@ -34,7 +34,6 @@ class ApiController extends BaseController
             $user = User::where('username', $this->f3->get('POST.username'))->where('password', $this->crypt($this->f3->get('POST.password')))->first();
 
             if ($user !== null || !empty($user)) {
-
                 $token = uniqid("API_");
 
                 // Generate Token and save it
@@ -91,12 +90,11 @@ class ApiController extends BaseController
             $user = User::where('id', $this->f3->get('POST.user_id'))->where('token_api', $this->f3->get('POST.token_id'))->first();
 
             if ($user !== null || !empty($user)) {
-
                 $userId     = $this->f3->get('POST.user_id');
                 $categories = User::find($userId)->categories()->get();
                 $data       = [];
 
-                for($i = 0; $i < count($categories); $i++){
+                for ($i = 0; $i < count($categories); $i++) {
                     array_push($data, [
                         'category_id'    => $categories[$i]->id,
                         'category_label' => $categories[$i]->label,
@@ -123,7 +121,6 @@ class ApiController extends BaseController
                     'message' => "Error, can't find an account with user_id(".$this->f3->get('POST.user_id').") and token_id(".$this->f3->get('POST.token_id').")."
                 ];
             }
-
         } else {
             $data = [
                 'success' => false,
@@ -158,7 +155,6 @@ class ApiController extends BaseController
             $user = User::where('id', $this->f3->get('POST.user_id'))->where('token_api', $this->f3->get('POST.token_id'))->first();
 
             if ($user !== null || !empty($user)) {
-
                 TrackerStore::create(array(
                     'user_id'  => $this->f3->get('POST.user_id'),
                     'store_id' => $this->f3->get('POST.store_id'),
@@ -173,7 +169,6 @@ class ApiController extends BaseController
                     'message' => "Error, can't find an account with user_id(".$this->f3->get('POST.user_id').") and token_id(".$this->f3->get('POST.token_id').")."
                 ];
             }
-
         } else {
             $data = [
                 'success' => false,
@@ -194,11 +189,11 @@ class ApiController extends BaseController
     {
         $userId = $this->f3->get('PARAMS.user_id');
 
-        if(!empty($userId)){
-            $categories                         = Category::where('user_id','=', $userId)->get();
+        if (!empty($userId)) {
+            $categories                         = Category::where('user_id', '=', $userId)->get();
             $categoriesJson["categoryList"]     = [];
 
-            for($i = 0; $i < count($categories); $i++){
+            for ($i = 0; $i < count($categories); $i++) {
                 $categoriesJson["categoryList"][] = [
                     "id" => $categories[$i]->id,
                     "text" => $categories[$i]->label
@@ -207,7 +202,6 @@ class ApiController extends BaseController
 
             $this->render(false, $categoriesJson);
         }
-
     }
 
     /**
@@ -242,8 +236,7 @@ class ApiController extends BaseController
                 $graphData = [];
 
                 for ($j = 0; $j < count($trackerUrl); $j++) {
-                    if(Carbon::parse($trackerUrl[$j]->created_at)->between($from, $to)){
-
+                    if (Carbon::parse($trackerUrl[$j]->created_at)->between($from, $to)) {
                         $date = Carbon::parse($trackerUrl[$j]->created_at)->format('m-d');
 
                         if (!isset($graphData[$date])) {
@@ -252,7 +245,6 @@ class ApiController extends BaseController
                         if (isset($graphData[$date])) {
                             $graphData[$date] += 1;
                         }
-
                     }
                 }
 
@@ -263,7 +255,6 @@ class ApiController extends BaseController
                     'since'       => $store_created_at->diffForHumans(),
                     'graphData'   => $graphData
                 ];
-
             }
             $this->render(false, $json);
         }
@@ -294,19 +285,19 @@ class ApiController extends BaseController
 
             $stores = Store::where('user_id', '=', $userId)->where('category_id', '=', $catId)->where('is_shorter', '=', 1)->get();
 
-            for($i = 0; $i < count($stores); $i++){
+            for ($i = 0; $i < count($stores); $i++) {
                 $url = Url::where('store_id', '=', $stores[$i]->id)->first();
 
                 $urlsTracker = TrackerUrl::where('url_id', '=', $url->id)->get();
 
-                for($j= 0; $j < count($urlsTracker); $j++){
-                    if(Carbon::parse($urlsTracker[$j]->created_at)->between($from, $to)){
+                for ($j= 0; $j < count($urlsTracker); $j++) {
+                    if (Carbon::parse($urlsTracker[$j]->created_at)->between($from, $to)) {
                         $date = Carbon::parse($urlsTracker[$j]->created_at)->format('m-d');
 
-                        if(!isset($json['data']['graphData'][$date])){
+                        if (!isset($json['data']['graphData'][$date])) {
                             $json['data']['graphData'][$date] = 0;
                         }
-                        if(isset($json['data']['graphData'][$date])){
+                        if (isset($json['data']['graphData'][$date])) {
                             $json['data']['graphData'][$date] += 1;
                         }
                     }
@@ -315,7 +306,6 @@ class ApiController extends BaseController
 
             $this->render(false, $json);
         }
-
     }
 
     /**

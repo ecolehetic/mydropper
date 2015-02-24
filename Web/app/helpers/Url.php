@@ -33,7 +33,5 @@ class Url extends BaseHelper
         }
 
         return $url;
-
     }
-
 }

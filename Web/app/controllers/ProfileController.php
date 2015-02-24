@@ -38,7 +38,6 @@ class ProfileController extends BaseController
         ));
 
         if ($validForm === true) {
-
             $userInformations       = $this->f3->get('SESSION.user');
             $password_1             = $this->f3->get('POST.password_1');
             $password_2             = $this->f3->get('POST.password_2');
@@ -51,8 +50,8 @@ class ProfileController extends BaseController
             $user->mail_pushbullet  = $this->f3->get('POST.mail_pushbullet');
 
             // TODO better check and add error in view
-            if(!empty($password_1) && !empty($password_2)){
-                if($this->f3->get('POST.password_1') === $this->f3->get('POST.password_2')){
+            if (!empty($password_1) && !empty($password_2)) {
+                if ($this->f3->get('POST.password_1') === $this->f3->get('POST.password_2')) {
                     $user->password    = $this->crypt($this->f3->get('POST.password_1'));
                 }
             }
@@ -68,7 +67,5 @@ class ProfileController extends BaseController
         $this->render('profile/index.twig', [
             'values' => $user
         ]);
-
     }
-
 }

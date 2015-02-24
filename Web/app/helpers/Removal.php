@@ -26,7 +26,7 @@ class Removal extends BaseHelper
     private $fromModel;
     private $killKey;
 
-    function __construct($id = 0, $fromModel = '')
+    public function __construct($id = 0, $fromModel = '')
     {
         parent::__construct();
         $this->id = $id;
@@ -103,12 +103,11 @@ class Removal extends BaseHelper
                 break;
             case 'User':
                 if ($this->is_soft) {
-//                    NO CASE
+                    //                    NO CASE
                 } else {
-//                    NO CASE
+                    //                    NO CASE
                 }
                 break;
         }
     }
-
 }

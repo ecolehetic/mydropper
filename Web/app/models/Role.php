@@ -22,5 +22,4 @@ class Role extends Eloquent
     {
         return $this->hasMany('MyDropper\Models\User');
     }
-
 }

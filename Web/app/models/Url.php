@@ -35,7 +35,6 @@ class Url extends Eloquent
             $token = substr(uniqid('', true), -5);
 
             $url = Url::where('token', '=', $token)->count();
-
         } while ($url > 0);
 
         return $token;

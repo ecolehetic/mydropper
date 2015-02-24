@@ -42,5 +42,4 @@ class FlashMessage extends BaseHelper
             $this->f3->clear('SESSION.fMessage');
         }
     }
-
 }

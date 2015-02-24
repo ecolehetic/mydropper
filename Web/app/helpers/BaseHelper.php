@@ -17,5 +17,4 @@ class BaseHelper
         $this->web  = \Web::instance();
         $this->f3   = \Base::instance();
     }
-
 }

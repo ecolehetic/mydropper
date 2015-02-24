@@ -20,7 +20,7 @@ class Mail extends BaseHelper
 
         $this->twig = $this->f3->get('TWIG');
 
-        $this->smtp = new \SMTP (
+        $this->smtp = new \SMTP(
             $this->f3->get('MAIL_HOST'),
             $this->f3->get('MAIL_PORT'),
             $this->f3->get('MAIL_SCHEME'),
@@ -70,7 +70,6 @@ class Mail extends BaseHelper
         }
 
         return false;
-
     }
 
     /**
@@ -90,5 +89,4 @@ class Mail extends BaseHelper
 
         return $template->render($content);
     }
-
 }

@@ -94,14 +94,14 @@ class User extends Eloquent
     {
         $is_valid = true;
 
-        if(!self::isUniqueUser($formData['username'], $id)){
-            if($is_valid === true){
+        if (!self::isUniqueUser($formData['username'], $id)) {
+            if ($is_valid === true) {
                 $is_valid = [];
             }
             array_push($is_valid, 'This username is already taken');
         }
-        if(!self::isUniqueEmail($formData['mail'], $id)){
-            if($is_valid === true){
+        if (!self::isUniqueEmail($formData['mail'], $id)) {
+            if ($is_valid === true) {
                 $is_valid = [];
             }
             array_push($is_valid, 'This email is already taken');
@@ -118,9 +118,10 @@ class User extends Eloquent
      *
      * @return bool
      */
-    private static function isUniqueUser($username, $id=0){
+    private static function isUniqueUser($username, $id=0)
+    {
         $user = self::where('username', '=', $username)->first();
-        if($user !== null && $user->id !== $id){
+        if ($user !== null && $user->id !== $id) {
             return false;
         }
         return true;
@@ -131,12 +132,12 @@ class User extends Eloquent
      * @param $email
      * @return bool
      */
-    private static function isUniqueEmail($email, $id=0){
+    private static function isUniqueEmail($email, $id=0)
+    {
         $user = self::where('mail', '=', $email)->first();
-        if($user !== null && $user->id !== $id){
+        if ($user !== null && $user->id !== $id) {
             return false;
         }
         return true;
     }
-
 }
