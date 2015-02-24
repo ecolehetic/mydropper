@@ -48,6 +48,9 @@ header {
         color: $greyTitle;
         float: left;
         line-height: 68px;
+        text-align: right;
+        padding-right: 90px;
+        box-sizing: border-box;
     }
     #profile {
         img {
@@ -272,21 +275,7 @@ a {
         position : relative;
         z-index : 10;
     }
-    &:after {
-        /*content :'';
-        width : 0;
-        height : 100%;
-        position : absolute;
-        left : 0;
-        bottom : 0;
-        transition: all 0.5s ease;*/
-    }
     &:hover{
-        /*&:after{
-                width : 100%;
-                background : #f2f2f2;
-        }*/
-
         background : #f2f2f2;
     }
 }

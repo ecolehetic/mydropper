@@ -97,6 +97,15 @@ $(document).ready(function() {
 		}
 	});
 
+	/* ---- DELETE LINK ---- */
+	$('.deleteLink').on('click', function(e){
+	    e.preventDefault();
+	    var href = $(this).attr('href');
+		var delOk=confirm('Do you really want to delete this ' + $(this).data('del') + ' ?');
+		if (delOk) {
+			window.location.href = href;
+		}
+	});
 	/* ---- CHECK URL FOR TRACKING ---- */
 	$('#addSnippetForm textarea').on('keyup', function(e) {
 		e.preventDefault();

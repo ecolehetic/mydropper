@@ -9,7 +9,7 @@
     <div class="container">
         <div id="dashboard">
             <h1>{{ categoryName }}</h1>
-            <a href="{{ url('/category/delete', [categoryId]) }}" class="editCat"><span>Delete the category</span></a>
+            <a href="{{ url('/category/delete', [categoryId]) }}" class="editCat deleteLink" data-del="category"><span>Delete the category</span></a>
             <ul class="cardList clearfix">
                 {% for store in stores %}
                     <li>
@@ -17,7 +17,7 @@
                         <span>{{ store.descript | slice(0, 50) }}</span>
                         <span>
                             <a class="icon-attachment" href=""></a>
-                            <a class="icon-close" href="{{ url('/stores/delete', [store.id, store.category_id]) }}"></a>
+                            <a class="icon-close deleteLink" data-del="snippet" href="{{ url('/stores/delete', [store.id, store.category_id]) }}"></a>
                         </span>
                     </li>
                 {% endfor %}
