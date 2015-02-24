@@ -9,11 +9,11 @@ $greyTitle: #787878;
     min-height : 100%;
     position : relative;
     .homeContainer{
+
         width : 70%;
         padding : 50px 15% 95px 15%;
         color : white;
         height : 100%;
-
         h1 {
             margin-top : 45px;
         }
@@ -21,6 +21,9 @@ $greyTitle: #787878;
             width : 80%;
             max-width : 500px;
             margin-bottom: 60px;
+        }
+        #logo {
+            width : 220px;
         }
     }
     footer {
@@ -87,7 +90,7 @@ $greyTitle: #787878;
         }
     }
     .containerHome {
-        width: 430px;
+        width: 390px;
         display: block;
         margin: auto;
     }
@@ -111,10 +114,11 @@ $greyTitle: #787878;
                 display: inline-block;
                 margin: 0;
                 border: 0;
-                height: 23px;
-                line-height: 23px;
+                height: 22px;
+                line-height: 22px;
                 border-bottom: 1px solid white;
                 vertical-align: middle;
+                font-size : 0.9rem;
                 background: rgba(255, 255, 255, 0.4);
                 &::-webkit-input-placeholder {
 		            color: black;
