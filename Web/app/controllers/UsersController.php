@@ -41,12 +41,6 @@ class UsersController extends BaseController
             $mail       = User::where('mail', $this->f3->get('POST.mail'))->first();
 
             if ($username === null && $mail === null) {
-                if ($this->f3->get('FILES.avatar')) {
-                    $upload = new Upload();
-                    $path   = $upload->save($this->f3->get('FILES.avatar'));
-                } else {
-                    $path   = 'assets/images/avatar-demo.jpg';
-                }
 
                 // Create the User
                 $user = User::create(array(
@@ -56,7 +50,7 @@ class UsersController extends BaseController
                     'mail'            => $this->f3->get('POST.mail'),
                     'password'        => $this->crypt($this->f3->get('POST.password_1')),
                     'mail_pushbullet' => $this->f3->get('POST.pushbullet'),
-                    'avatar_url'      => $path
+                    'avatar_url'      => 'assets/images/avatar-demo.jpg'
                 ));
 
                 // Create default Category with Store
