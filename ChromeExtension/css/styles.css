@@ -531,16 +531,16 @@
       #myDropperSideBar #sessionInfo li:last-child:after {
         display: none; }
   #myDropperSideBar #moreInfo {
+    display: none;
     position: absolute;
     width: auto;
     max-width: 400px;
     min-width: 200px;
     color: #000111;
-    display: block;
     padding: 10px 13px;
     line-height: normal;
     z-index: 10000;
-    right: 340px;
+    right: 320px;
     border: 1px solid rgba(175, 175, 175, 0.3);
     background-image: linear-gradient(to bottom, #F4F4F4 0%, #E5E6E7 100%); }
     #myDropperSideBar #moreInfo:after {

@@ -64,9 +64,10 @@ var UI={
 
 	snippetInfos : {
 		show : function(self) {
-			console.log(self);
-			$('#moreInfo').stop().html(self.data('text')).fadeIn(600);
-			console.log(self.offsetTop());
+			var offset = self.offset(),
+				el = $('#moreInfo');
+			el.css('top', offset.top + 5);
+			el.stop().html(self.data('text')).fadeIn(600);
 
 		},
 		hide : function() {
