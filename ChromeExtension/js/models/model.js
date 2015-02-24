@@ -1,10 +1,31 @@
 'use strict'
 
 var Model;
+
 Model = {
+
+	getDataUser : function(callback) {
+
+		var userData = chrome.storage.local.get('myDropperUser', function(chromeData){
+			callback.call(this, chromeData.myDropperUser);
+		});
+
+	},
+
+	sendUserData : function() {
+
+	},
+
 	logIn : function(usr, pwd, callback) {
-		$.post("https://mydropper.mathieuletyrant.com/api/connect", {username: usr, password: pwd}, "json")
+		$.post("http://localhost:8080/api/connect", {username: usr, password: pwd}, "json")
 			.done(function(response) {
+				if(response.success) {
+					chrome.storage.local.set({'myDropperUser': response}, function() {
+						Model.getDataUser(function(data){
+							console.log('SET := ', data);
+						})
+					});
+				}
 				callback.call(this,response);
 			})
 			.fail(function(response) {
@@ -12,11 +33,11 @@ Model = {
 			});
 	},
 
-	LS : {
-		userData : JSON.parse(localStorage.getItem( 'myDropperUser' )),
-
-		set : function(name, json) {
-			localStorage.setItem(name, JSON.stringify(json));
-		}
+	logOut : function() {
+		chrome.storage.local.clear(function(){
+			console.log('My dropper user logged out');
+		});
 	}
+
+
 };

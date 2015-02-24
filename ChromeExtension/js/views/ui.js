@@ -13,8 +13,11 @@ var UI={
 			sideBarElmt.classList.add('showBar');
 
 			sideBar.isOpen = true;
+
+			// --- Load logo
 			$('#logo').find('img').attr('src', chrome.extension.getURL('img/logo.png'));
 		},
+
 
 		close : function() {
 			var el = $('#myDropperSideBar');

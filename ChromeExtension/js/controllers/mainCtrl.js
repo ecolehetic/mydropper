@@ -30,8 +30,25 @@ function toggleSideBar(htmlContent) {
 
 function initSideBarHandler() {
 
+
+	var dataUser;
+
+	Model.getDataUser(function(data){
+		dataUser = data;
+
+		if(typeof dataUser != 'undefined') {
+			console.log('in');
+			UI.user.logIn();
+		}
+	})
+
+	console.log('dataUser : ',  dataUser);
+
 	/* ---- Inject fonts ---- */
 	UI.sideBar.injectFonts();
+
+	/* ---- Check if user already log ---- */
+
 
 	/* ---- LogIn ---- */
 	$('#submitConnexionForm').on('click', function(e){
@@ -42,6 +59,7 @@ function initSideBarHandler() {
 	    e.preventDefault();
 		if(e.which == 13) {
 			submitLoginRequest();
+			$(this).blur();
 		}
 	});
 
@@ -49,7 +67,7 @@ function initSideBarHandler() {
 	$('#logOut').on('click', function(e){
 		e.preventDefault();
 		UI.user.logOut();
-		Model.LS.logOut();
+		Model.logOut();
 	});
 
 
@@ -64,10 +82,19 @@ function initSideBarHandler() {
 	);
 
 	/* ---- Click on cross ---- */
-
-	$("#closePanelButton").click(function(){
+	$("#closePanelButton").on('click', function(){
 		toggleSideBar();
 	});
+
+	/* ---- Clear chrome storage debug ---- */
+	$("#clearStorageLink").click(function(){
+		console.log('clear clicked');
+		chrome.storage.local.clear(function(){
+			console.log('all clear');	
+		});
+	});
+
+
 }
 
 function submitLoginRequest() {
