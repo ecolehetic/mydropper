@@ -359,6 +359,12 @@
             }
         }
     }
+    #formHome form .form-group label span {
+        position: relative;
+        right : auto;
+        opacity : 1;
+        font-size : 1;
+    }
 }
 
 @media screen and (max-width: 350px) {
