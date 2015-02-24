@@ -67,11 +67,17 @@ $greyLight: #e3e2e3;
                 }
             }            
         }
-        .icon-attachment {
+        .icon-pencil {
              margin-right : 20px;
+            &:hover {
+                color : #888888;
+            }
         }
-        .icon-close {
+        .icon-bin {
             margin-left : 20px;
+            &:hover {
+                color : #888888;
+            }
         }
     }
     .editCat {
