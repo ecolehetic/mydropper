@@ -58,7 +58,7 @@ class UsersController extends BaseController
                     'mail'            => $this->f3->get('POST.mail'),
                     'password'        => $this->crypt($this->f3->get('POST.password_1')),
                     'mail_pushbullet' => $this->f3->get('POST.pushbullet'),
-                    'avatar_url'      => $path
+                    'avatar_url'      => 'assets/images/default-avatar.jpg'
                 ));
 
                 // Create default Category with Store
@@ -79,7 +79,7 @@ class UsersController extends BaseController
                 $this->f3->set('SESSION.user', $user);
 
                 // Redirect the user
-                $this->f3->reroute('/profile', true);
+                $this->f3->reroute(($user->has_extension == 1) ? '/history' : '/chrome-extension', true);
             } else {
                 $validForm = [];
                 if ($username !== null) {
@@ -143,7 +143,7 @@ class UsersController extends BaseController
             if ($user !== null) {
                 $this->f3->set('SESSION.user', $user);
                 $this->fMessage->set('You are successfully logged');
-                $this->f3->reroute('/profile', true);
+                $this->f3->reroute(($user->has_extension == 1) ? '/history' : '/chrome-extension', true);
             } else {
                 $validForm[] = "User don't exist";
             }

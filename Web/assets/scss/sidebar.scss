@@ -89,6 +89,7 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
                     color: $hoverSideBarLink;
                 }
             }
+
             &:before {
                 content: '';
                 width: 4px;
@@ -106,7 +107,7 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
                     opacity: 1;
                     transform: translateX(7px);
                 }
-                span {
+                .plusMinus {
                     color: $hoverSideBarLink;
                 }
             }
@@ -144,16 +145,17 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
                     position: relative;
                     text-transform: capitalize;
                     a {
-                        padding: 17px 20px 20px 20px;
+                        padding: 20px 20px 20px 60px;
                         background: $midGrey;
-                        width: calc(100% - 27px - 42px);
-                        padding-left: 49px;
+                        width: 100%;
+                        box-sizing: border-box;
                         margin-left: 0;
                         border-top: 1px solid #424950;
                     }
                     li {
                         position: relative;
                         margin: 0;
+                        font-size : 0.95rem;
                     }
                     li:hover {
                         color: $hoverSideBarLink;

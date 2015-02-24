@@ -34,7 +34,7 @@ $greyTitle: #787878;
         ul {
             width : 90%;
             list-style: none;
-            padding : 20px 5% 20px 5%;
+            padding : 10px 5% 10px 5%;
             li{
                 display : inline-block;
                 color:  white;
@@ -100,6 +100,7 @@ $greyTitle: #787878;
             width: 100%;
             margin-bottom: 20px;
             label {
+                position : relative;
                 width: 30%;
                 display: inline-block;
                 margin-right: 3%;
@@ -107,6 +108,12 @@ $greyTitle: #787878;
                 color: white;
                 letter-spacing : 0.1rem;
                 vertical-align: middle;
+                span {
+                    font-size: 0.7rem;
+                    position: absolute;
+                    right: -8px;
+                    opacity : 0.5;
+                }
             }
             input {
             	width: 59%;

@@ -1,6 +1,6 @@
 'use strict';
 
-var sideBar={
+var sideBar = {
 	isOpen : false
 };
 
@@ -9,59 +9,79 @@ chrome.extension.onRequest.addListener(handleRequest);
 
 function handleRequest(request, sender, sendResponse) {
     if (request.callFunction == "toggleSidebar") {
-        toggleSideBar(request.sideBarContent);
+		toggleSideBar(request.sideBarContent);
     }
-
     initSideBarHandler();
 }
 
-
 function toggleSideBar(htmlContent) {
 	if(sideBar.isOpen) {
-		UI.closeSideBar();
-        UI.removeMarkDropZones();
+		UI.sideBar.close();
+		UI.sideBar.removeMarkDropZones();
 	}
 	else {
-		UI.openSideBar(htmlContent);
-		UI.addMarkDropZones();
-        UI.initDroppable();
-        UI.initDraggable();
-        UI.initAccordeon();
+		UI.sideBar.open(htmlContent);
+		UI.sideBar.addMarkDropZones();
+		UI.sideBar.initDroppable();
+		UI.sideBar.initDraggable();
+		UI.sideBar.initAccordeon();
 	}
 }
 
 function initSideBarHandler() {
-	UI.injectFonts();
-	/* ---- LogIn ---- */
-	$('#submitConnexionForm').click(function(e){
-		e.preventDefault();
-		var username = $('#username').val();
-		var password = $('#password').val();
-		Model.logIn(username, password,function(){
 
-			console.log('callback');
-		})
+	/* ---- Inject fonts ---- */
+	UI.sideBar.injectFonts();
+
+	/* ---- LogIn ---- */
+	$('#submitConnexionForm').on('click', function(e){
+		e.preventDefault();
+		submitLoginRequest();
+	});
+	$('input').on('keyup', function(e){
+	    e.preventDefault();
+		if(e.which == 13) {
+			submitLoginRequest();
+		}
 	});
 
 	/* ---- LogOut ---- */
-	$('#logOut').click(function(e){
+	$('#logOut').on('click', function(e){
 		e.preventDefault();
-		UI.logOut();
+		UI.user.logOut();
 		Model.LS.logOut();
 	});
 
-	/* ---- Click on cross ---- */
-	$('#close').click(function(e){
-	    e.preventDefault();
-	    toggleSideBar();
-	});
+
 
 	/* ---- Hover a snippet --- */
 	$('.md-dragElmt').hover(
 		function() {
-			UI.snippetInfos.show($(this));
+			UI.sideBar.snippetInfos.show($(this));
 		}, function() {
-			UI.snippetInfos.hide();
+			UI.sideBar.snippetInfos.hide();
 		}
 	);
+
+	/* ---- Click on cross ---- */
+
+	$("#closePanelButton").click(function(){
+		toggleSideBar();
+	});
+}
+
+function submitLoginRequest() {
+	var username = $('#username').val();
+	var password = $('#password').val();
+	Model.logIn(username, password, function(response){
+		if(response.success === true) {
+			UI.user.logIn();
+		}
+		else if(response.success === false) {
+			alert(response.message);
+		}
+		else {
+			alert('Username / Password not correct.\nPlease try again');
+		}
+	})
 }

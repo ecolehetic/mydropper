@@ -11,6 +11,8 @@ use MyDropper\Models\User;
  */
 class ProfileController extends BaseController
 {
+    const DEFAULT_AVATAR = "assets/images/default-avatar.jpg";
+
     /**
      * GET /profile
      */
@@ -18,8 +20,11 @@ class ProfileController extends BaseController
     {
         $user   = $this->need->logged('/users/login')->user()->execute();
 
+        $avatar = file_exists($user->avatar_url) ? $user->avatar_url : self::DEFAULT_AVATAR;
+
         $this->render(true, [
-            'values' => $user
+            'values' => $user,
+            'avatar' => $avatar
         ]);
     }
 
@@ -62,7 +67,9 @@ class ProfileController extends BaseController
                 $path             = $upload->save($this->f3->get('FILES.avatar'));
                 if (!empty($path)) {
                     if ($user->avatar_url){
-                        unlink($user->avatar_url);
+                        if(file_exists($user->avatar_url) && ($user->avatar_url != self::DEFAULT_AVATAR)){
+                            unlink($user->avatar_url);
+                        }
                     }
                     $user->avatar_url = $path;
                 }
@@ -75,9 +82,11 @@ class ProfileController extends BaseController
 
         $this->f3->set('SESSION.user', User::find($userInformations->id));
         $user   = User::find($userInformations->id);
+        $avatar = file_exists($user->avatar_url) ? $user->avatar_url : self::DEFAULT_AVATAR;
 
         $this->render('profile/index.twig', [
-            'values' => $user
+            'values' => $user,
+            'avatar' => $avatar
         ]);
     }
 }
