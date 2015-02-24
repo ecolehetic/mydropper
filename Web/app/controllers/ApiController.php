@@ -37,8 +37,9 @@ class ApiController extends BaseController
                 $token = uniqid("API_");
 
                 // Generate Token and save it
-                $user = User::find($user->id);
-                $user->token_api = $token;
+                $user                = User::find($user->id);
+                $user->token_api     = $token;
+                $user->has_extension = 1;
                 $user->save();
 
                 $data = [
@@ -53,9 +54,6 @@ class ApiController extends BaseController
                         'token_api' => $token
                     ]
                 ];
-
-                $this->render(false, $data);
-                return;
             } else {
                 $data = [
                     'success' => false,
@@ -69,7 +67,7 @@ class ApiController extends BaseController
             ];
         }
 
-        $this->renderError($data);
+        $this->render(false, $data);
     }
 
     /**
@@ -112,9 +110,6 @@ class ApiController extends BaseController
                         ];
                     }
                 }
-
-                $this->render(false, $data);
-                return;
             } else {
                 $data = [
                     'success' => false,
@@ -128,7 +123,7 @@ class ApiController extends BaseController
             ];
         }
 
-        $this->renderError($data);
+        $this->render(false, $data);
     }
 
     /**
@@ -161,8 +156,6 @@ class ApiController extends BaseController
                     'on_url'   => $this->f3->get('POST.on_url'),
                     'full_url' => $this->f3->get('POST.full_url')
                 ));
-
-                return;
             } else {
                 $data = [
                     'success' => false,
@@ -176,7 +169,7 @@ class ApiController extends BaseController
             ];
         }
 
-        $this->renderError($data);
+        $this->render(false, $data);
     }
 
     /**
@@ -306,16 +299,5 @@ class ApiController extends BaseController
 
             $this->render(false, $json);
         }
-    }
-
-    /**
-     * Render the Json with custom Header
-     *
-     * @param array $data
-     */
-    private function renderError($data)
-    {
-        header("HTTP/1.0 404 Not Found");
-        $this->render(false, $data);
     }
 }
