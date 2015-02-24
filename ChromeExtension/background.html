@@ -20,19 +20,18 @@
 
             <!-- Not Logged in -->
             <div id="notLoggedInContainer">
-                <form action="connect" method="POST">
+                <div id="form">
                     <div class="form-group">
                         <label for="username">Username :</label>
-                        <input type="text" name="username" placeholder="Username" required/>
+                        <input id="username" type="text" name="username" placeholder="Username" required/>
                     </div>
 
                     <div class="form-group">
                         <label for="Password">Password :</label>
-                        <input type="password" name="password" placeholder="Password" required/>
+                        <input id="password" type="password" name="password" placeholder="Password" required/>
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" id="submit" value="Login" />
                         <a href="#" class="button" id="submitConnexionForm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                                 <line class="top" x1="0" y1="0" x2="465" y2="0" />
@@ -43,7 +42,7 @@
                             <span>Log In</span>
                         </a>
                     </div>
-                </form>
+                </div>
                 <p>Don't have an account? <br/> Please <a href="http://mydropper.io/users/subscribe">sign in</a>.</p>
             </div>
 
@@ -97,8 +96,6 @@
     </div>
     <!-- JAVASCRIPT -->
     <script type="text/javascript" src="background.js"></script>
-    <script type="text/javascript" src="js/background.js"></script>
-
 </body>
 
 </html>

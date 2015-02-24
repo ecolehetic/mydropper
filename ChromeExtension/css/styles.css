@@ -438,19 +438,19 @@
     padding: 0;
     display: block;
     margin: auto; }
-  #myDropperSideBar form {
+  #myDropperSideBar #form {
     margin-top: 55px;
     display: block;
     font-weight: normal;
     font-size: 16px; }
-    #myDropperSideBar form #submit {
+    #myDropperSideBar #form #submit {
       display: none !important; }
-    #myDropperSideBar form .form-group {
+    #myDropperSideBar #form .form-group {
       all: initial;
       width: 80%;
       display: block;
       margin: 0 auto 25px auto; }
-      #myDropperSideBar form .form-group label {
+      #myDropperSideBar #form .form-group label {
         width: 100%;
         display: inline-block;
         margin-right: 3%;
@@ -459,7 +459,7 @@
         vertical-align: middle;
         outline-color: white;
         font-size: 1em; }
-      #myDropperSideBar form .form-group input {
+      #myDropperSideBar #form .form-group input {
         all: initial;
         width: 92%;
         padding: 4px 3%;
@@ -473,25 +473,25 @@
         background: rgba(0, 0, 0, 0.1);
         color: black;
         font-size: 0.9em; }
-        #myDropperSideBar form .form-group input::-webkit-input-placeholder {
+        #myDropperSideBar #form .form-group input::-webkit-input-placeholder {
           color: black;
           opacity: 0.6; }
-        #myDropperSideBar form .form-group input:-moz-placeholder {
+        #myDropperSideBar #form .form-group input:-moz-placeholder {
           color: black;
           opacity: 0.6; }
-        #myDropperSideBar form .form-group input::-moz-placeholder {
+        #myDropperSideBar #form .form-group input::-moz-placeholder {
           color: black;
           opacity: 0.6; }
-        #myDropperSideBar form .form-group input:-ms-input-placeholder {
+        #myDropperSideBar #form .form-group input:-ms-input-placeholder {
           color: black;
           opacity: 0.6; }
-      #myDropperSideBar form .form-group input[type='submit'] {
+      #myDropperSideBar #form .form-group input[type='submit'] {
         display: block;
         margin: auto; }
-      #myDropperSideBar form .form-group:last-child {
+      #myDropperSideBar #form .form-group:last-child {
         margin-left: auto;
         margin-top: 50px; }
-    #myDropperSideBar form .button {
+    #myDropperSideBar #form .button {
       margin-top: 50px;
       margin-top: 20px; }
   #myDropperSideBar p {

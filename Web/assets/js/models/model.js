@@ -4,7 +4,7 @@ var Model = {
 
 	"tracking" : {
 
-		'getCategoryList' : function(callback) {
+		getCategoryList : function(callback) {
 			console.log('UserId : ' + Model.userId);
 			$.getJSON( "/api/categories/"+ Model.userId, function( response ) {
 
@@ -12,7 +12,7 @@ var Model = {
 			});
 		},
 
-		'getCategoryGraphData' : function(cat, fromDate, toDate, callback) {
+		getCategoryGraphData : function(cat, fromDate, toDate, callback) {
 			$.post('/api/categoryglobal/', { user_id : Model.userId, cat_id : cat, from : fromDate, to : toDate }, function(response) {
 				console.log('getCategoryGraphData response : ', response.data);
 				if(response.data.graphData) {
@@ -43,7 +43,7 @@ var Model = {
 			}, 'json');
 		},
 
-		'getTrackedLinkGraphData' : function(cat, fromDate, toDate, callback) {
+		getTrackedLinkGraphData : function(cat, fromDate, toDate, callback) {
 			$.post('/api/trackedlink/', { user_id : Model.userId, cat_id : cat, from : fromDate, to : toDate }, function(response) {
 
 				callback.call(this, response.data);

@@ -35,15 +35,19 @@ function initSideBarHandler() {
 	/* ---- LogIn ---- */
 	$('#submitConnexionForm').click(function(e){
 		e.preventDefault();
-		UI.logIn();
-		LS.logIn();
+		var username = $('#username').val();
+		var password = $('#password').val();
+		Model.logIn(username, password,function(){
+
+			console.log('callback');
+		})
 	});
 
 	/* ---- LogOut ---- */
 	$('#logOut').click(function(e){
 		e.preventDefault();
 		UI.logOut();
-		LS.logOut();
+		Model.LS.logOut();
 	});
 
 	/* ---- Click on cross ---- */
