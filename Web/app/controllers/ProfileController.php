@@ -2,6 +2,7 @@
 
 namespace MyDropper\Controllers;
 
+use MyDropper\Helpers\Upload;
 use MyDropper\Models\User;
 
 /**
@@ -53,6 +54,15 @@ class ProfileController extends BaseController
             if (!empty($password_1) && !empty($password_2)) {
                 if ($this->f3->get('POST.password_1') === $this->f3->get('POST.password_2')) {
                     $user->password    = $this->crypt($this->f3->get('POST.password_1'));
+                }
+            }
+
+            if ($this->f3->get('FILES.avatar')) {
+                $upload           = new Upload();
+                $path             = $upload->save($this->f3->get('FILES.avatar'));
+                if (!empty($path)) {
+                    unlink($user->avatar_url);
+                    $user->avatar_url = $path;
                 }
             }
 

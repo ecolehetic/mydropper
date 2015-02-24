@@ -30,7 +30,7 @@
 
 
             <div id="bottomContainer">
-                <form method="POST" action="{{ url('/profile') }}" class="disabled" id="editForm">
+                <form method="POST" action="{{ url('/profile') }}" enctype="multipart/form-data" class="disabled" id="editForm">
                     <div class="col">
                         <div class="form-group">
                             <label for="firstname" >Firstname :</label>
@@ -69,7 +69,10 @@
                             <label for="password_2">Password check :</label>
                             <input type="password" name="password_2" placeholder="Repeat password" disabled="disabled"/>
                         </div>
-
+                        <div class="form-group password animated fadeIn">
+                            <label for="avatar">Avatar</label>
+                            <input type="file" name="avatar">
+                        </div>
                         <div class="form-group">
                             <input type="submit" class="hidden" value="Edit"/>
                             <a href="#" id="submitEdit" class="ghostBtn submitBtn clearfix animated fadeInRight">
