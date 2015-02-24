@@ -5,12 +5,12 @@ $(document).ready(function() {
 	/* ---- INIT SIZE ---- */
 	UI.initSize();
 
-	$(window).resize(function() {
+	$(window).on('resize', function() {
 		UI.initSize();
 	});
 
 	/* ---- TOGGLE BURGER MENU ---- */
-	$('#burger').click(function(e) {
+	$('#burger').on('click', function(e) {
 		e.preventDefault();
 		if(!UI.nav.burgerTrigger) {
 			UI.nav.openBurgerMenu();
@@ -23,14 +23,15 @@ $(document).ready(function() {
 	/* ---- FLASH MESSAGES ---- */
 	UI.flashMsg.removeMsgTimeout(3000);
 
-	$('#flashMsg').find('li').click(function(e){
+	$('#flashMsg').find('li').on('click', function(e){
 	    e.preventDefault();
 		UI.flashMsg.removeMsg($(this));
 	});
 
 
 	/* ---- PROFILE AVATAR HOVER ---- */
-	$('#profile').hover(function() {
+	$('#profile').hover(
+		function() {
 			UI.profile.$menu.fadeIn();
 		}, function() {
 			UI.profile.$menu.fadeOut();
@@ -39,18 +40,18 @@ $(document).ready(function() {
 
 	/* ---- ACCORDEON MENU --- -*/
 	UI.nav.checkActiveCategory();
-	$('.categoryElement > a').click(function(e) {
+	$('.categoryElement > a').on('click', function(e) {
 		UI.nav.accordeonToggle($(this), 'animated');
 	});
 
 	/* ---- EDIT PROFILE ---- */
-	$("#editButton").click(function(e) {
+	$("#editButton").on('click', function(e) {
 		e.preventDefault();
 		UI.profile.toggleEdition();
 	});
 
 	/* ---- SUBMIT FORM ---- */
-	$('.submitBtn').click(function(e) {
+	$('.submitBtn').on('click', function(e) {
 		e.preventDefault();
 		$(this).siblings("input[type='submit']").trigger('click');
 	});
@@ -59,13 +60,13 @@ $(document).ready(function() {
 	/* ---- POPIN ADD DATA ----*/
 
 	// ----- Add Category
-	$('#addCategory').click(function(e) {
+	$('#addCategory').on('click', function(e) {
 		e.preventDefault();
 		UI.popin.showCategoryPopin();
 	});
 
 	// ----- Add Snippet
-	$('.addSnippetLink').click(function(e) {
+	$('.addSnippetLink').on('click', function(e) {
 		e.preventDefault();
 		var $dataId = $(this).data('id');
 
@@ -73,7 +74,7 @@ $(document).ready(function() {
 		$('#categoryID').attr('value',$dataId);
 	});
 
-	$('.snippet').click(function(e){
+	$('.snippet').on('click', function(e){
 	    e.preventDefault();
 		var $dataId = $(this).data('sid');
 		var name = $('.name',this).text();
@@ -82,13 +83,13 @@ $(document).ready(function() {
 	});
 
 	// ----- Close PopIn
-	$('#closePopin, #popinBg').click(function(e) {
+	$('#closePopin, #popinBg').on('click', function(e) {
 		e.preventDefault();
 		UI.popin.closePopin();
 	});
 
 
-	$(document).keyup(function(e) {
+	$(document).on('keyup', function(e) {
 		if (e.keyCode == 27) {
 			if($('#popin').is(':visible')) {
 				UI.popin.closePopin();
@@ -97,7 +98,7 @@ $(document).ready(function() {
 	});
 
 	/* ---- CHECK URL FOR TRACKING ---- */
-	$('#addSnippetForm textarea').keyup(function(e) {
+	$('#addSnippetForm textarea').on('keyup', function(e) {
 		e.preventDefault();
 		var $str = $(this).val();
 
