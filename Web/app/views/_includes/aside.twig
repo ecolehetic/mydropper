@@ -23,18 +23,18 @@
 <div id="sideBar">
     <nav>
         <ul id="menu">
-            <li class="menuLink active" id="dashboardLink">
+            <li class="menuLink {{ (aside.active['path'] == 'history') ? 'active' : '' }}" id="dashboardLink">
                 <a href="{{ url('/history') }}"><i class="icon-dashboard"></i> History</a>
             </li>
 
-            <li class="menuLink" id="trackingLink">
+            <li class="menuLink {{ (aside.active['path'] == 'tracking') ? 'active' : '' }}" id="trackingLink">
                 <a href="{{ url('/tracking') }}"><i class="icon-tracking"></i> Tracking</a>
             </li>
 
             <li>
                 <ul id="categoryList">
                     {% for category in aside.stores %}
-                        <li class="categoryElement">
+                        <li class="categoryElement {{ (aside.active['path'] == 'category' and aside.active['id'] == category.category_id) ? 'active': '' }}">
                             <a href="#" class="categoryName"><i class="icon-folder"></i> {{ category.category_label }}</a>
                             <span class="plusMinus">+</span>
                             <ul class="snippetsList">

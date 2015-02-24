@@ -61,6 +61,19 @@ class BaseController
     }
 
     /**
+     * Return the Path without / for active menu
+     */
+    private function getActiveMenu()
+    {
+        $path    = $this->f3->get('PATH');
+        $explode = explode('/', $path);
+        return [
+            'path' => $explode[1],
+            'id'   => (isset($explode[2])) ? $explode[2] : null
+        ];
+    }
+
+    /**
      *  Add default values in all twig render
      *
      * @param array $values
@@ -72,6 +85,9 @@ class BaseController
         // SEO
         $values['seo']['title']         = Seo::getInstance()->get($this->controller, $this->method, 'title');
         $values['seo']['description']   = Seo::getInstance()->get($this->controller, $this->method, 'description');
+
+        // Active menu
+        $values['aside']['active'] = $this->getActiveMenu();
 
         // FlashMessage
         if ($this->fMessage->get() !== false) {
