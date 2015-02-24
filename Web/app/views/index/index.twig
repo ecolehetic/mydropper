@@ -8,11 +8,11 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi esse et iusto sequi. Accusantiustrum nenda dolore, eos.</p>
 
             {% if aside.name %}
-                <a href="{{ url('/history') }}" class="ghostBtn btnHome">
-                    <span>History</span>
+                <a href="{{ url('/profile') }}" class="ghostBtn btnHome">
+                    <span>Profile</span>
                 </a>
-                <a href="{{ url('/tracking') }}" class="ghostBtn btnHome">
-                    <span>Tracking</span>
+                <a href="{{ url('/users/logout') }}" class="ghostBtn btnHome">
+                    <span>Log out</span>
                 </a>
             {% else %}
                 <a href="{{ url('/users/login') }}" class="ghostBtn btnHome">
