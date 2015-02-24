@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <link rel="icon" type="image/png" href="assets/images/ico.png" />
+
+    <!-- STYLESHEETS -->
+    {% block stylesheets %}
+        {{ asset('css', 'admin.css', false) }}
+    {% endblock %}
+</head>
+
+<body>
+
+<!-- Flash messages -->
+{% if fMessage %}
+    <ul id="flashMsg">
+        {% if fMessage['status'] == 'info' %}
+            <li class="animated fadeInRight">{{ fMessage['message'] | raw }}</li>
+        {% elseif fMessage['status'] == 'error' %}
+            <li class="animated fadeInRight error">{{ fMessage['message'] | raw }}</li>
+        {% elseif fMessage['status'] == 'alert' %}
+            <li class="animated fadeInRight alert">{{ fMessage['message'] | raw }}</li>
+        {% endif %}
+    </ul>
+{% endif %}
+
+
+{% block aside %}{% endblock %}
+
+{% block content %} {% endblock %}
+
+<!-- JAVASCIRPT -->
+{% block javascripts %}
+    {{ asset('js', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', true) }}
+    {{ asset('js', 'http://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js', true) }}
+    {{ asset('js', 'views/ui.js', false) }}
+    {{ asset('js', 'controllers/mainCtrl.js', false) }}
+    {{ asset('js', 'controllers/adminCtrl.js', false) }}
+{% endblock %}
+</body>
+</html>

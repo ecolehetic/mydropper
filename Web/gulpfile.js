@@ -39,6 +39,20 @@ gulp.task('scss', function () {
 		.pipe(gulp.dest(path.css));
 });
 
+gulp.task('scssadmin', function () {
+    return gulp.src(path.scss+'/**/admin.scss')
+        .pipe(plumber())
+        .pipe(sass())
+        .pipe(autoprefixer())
+        .pipe(concat('admin.css'))
+        .pipe(gulp.dest(path.css))
+        .pipe(sourceMap.init())
+        .pipe(minifyCss())
+        .pipe(concat('admin.min.css'))
+        .pipe(sourceMap.write())
+        .pipe(gulp.dest(path.css));
+});
+
 /*
  * Optim all images
  */
@@ -51,11 +65,12 @@ gulp.task('images', function () {
 /*
  * Watch Files
  */
-gulp.task('watch',['scss'], function() {
+gulp.task('watch',['scss', 'scssadmin'], function() {
 	gulp.watch(path.scss+'/**/*', ['scss']);
+    gulp.watch(path.scss+'/**/*', ['scssadmin']);
 });
 
 /*
  * Default task (just gulp)
  */
-gulp.task('default', ['scss', 'watch']);
+gulp.task('default', ['scss', 'watch', 'scssadmin']);

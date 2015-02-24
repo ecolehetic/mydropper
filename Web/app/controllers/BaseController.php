@@ -103,6 +103,7 @@ class BaseController
             $values['aside']['name']        = $user->name;
             $values['aside']['firstname']   = $user->firstname;
             $values['aside']['avatar_url']  = $user->avatar_url;
+            $values['aside']['role_id']     = $user->role_id;
 
             // Categories with Stores
             $categories                = User::find($user->id)->categories()->get();

@@ -25,6 +25,11 @@
 <div id="sideBar">
     <nav>
         <ul id="menu">
+            {% if(aside.role_id == 2) %}
+                <li class="menuLink {{ (aside.active['path'] == 'admin') ? 'active' : '' }}" id="dashboardLink">
+                    <a href="{{ url('/admin') }}"><i class="icon-dashboard"></i> Administration</a>
+                </li>
+            {% endif %}
             <li class="menuLink {{ (aside.active['path'] == 'history') ? 'active' : '' }}" id="dashboardLink">
                 <a href="{{ url('/history') }}"><i class="icon-dashboard"></i> History</a>
             </li>

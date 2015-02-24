@@ -2,6 +2,7 @@
 
 namespace MyDropper\Controllers;
 
+use MyDropper\Models\Url;
 use MyDropper\Models\User;
 use MyDropper\Models\Store;
 use MyDropper\Models\Category;
@@ -30,11 +31,14 @@ class IndexController extends BaseController
         $usersCount = User::count();
         $storesCount = Store::count();
         $categoriesCount = Category::count();
+        $urlsCount = Url::count();
+
 
         $this->render(true, [
             'usersCount'      => $usersCount,
             'storesCount'     => $storesCount,
-            'categoriesCount' => $categoriesCount
+            'categoriesCount' => $categoriesCount,
+            'urlsCount'       => $urlsCount
         ]);
     }
 

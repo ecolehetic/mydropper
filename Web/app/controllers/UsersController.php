@@ -40,11 +40,13 @@ class UsersController extends BaseController
             $username   = User::where('username', $this->f3->get('POST.username'))->first();
             $mail       = User::where('mail', $this->f3->get('POST.mail'))->first();
 
+
             if ($username === null && $mail === null) {
                 if ($this->f3->get('FILES.avatar')) {
                     $upload = new Upload();
                     $path   = $upload->save($this->f3->get('FILES.avatar'));
                 } else {
+                    // TODO default path img is not persist in db
                     $path   = 'assets/images/avatar-demo.jpg';
                 }
 
@@ -96,7 +98,7 @@ class UsersController extends BaseController
     }
 
     /**
-     * TODO
+     * TODO il sert ce todo ?
      */
     public function delete()
     {
@@ -272,7 +274,7 @@ class UsersController extends BaseController
     {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
 
-        $users = User::all();
+        $users = User::with('roles')->get();
         $usersCount = count($users);
 
         $this->render(true, [

@@ -1,18 +1,51 @@
-<div class="dashboard">
-    <h1>Admin Dashboard</h1>
-    <nav>
-        <a href="{{ url('/admin/users') }}">Users</a>
-    </nav>
+{% extends '_layout/admin.twig' %}
+
+{% block aside %}
+    {% include '_includes/aside.twig' %}
+{% endblock %}
+
+{% block content %}
+<div class="container admin">
+    <h1>Administration dasboard</h1>
     <div class="datas">
-        <h2>Datas</h2>
-        <p>
-            Users : {{ usersCount }}
-        </p>
-        <p>
-            Stores : {{ storesCount }}
-        </p>
-        <p>
-            Categories : {{ categoriesCount }}
-        </p>
+        <div class="section">
+            <div class="left">
+                <h3>Users</h3>
+                <h2>{{ usersCount }}</h2>
+                <a href="{{ url('/admin/users') }}"><i class="icon-pencil"></i> Edit</a>
+            </div>
+            <div class="right">
+                <h3>Charts here</h3>
+                {# Create charts #}
+            </div>
+        </div>
+        <div class="section">
+            <div class="left">
+                <h3>Snippets</h3>
+                <h2>{{ storesCount }}</h2>
+            </div>
+            <div class="right">
+                {# Create charts #}
+            </div>
+        </div>
+        <div class="section">
+            <div class="left">
+                <h3>Catégories</h3>
+                <h2>{{ categoriesCount }}</h2>
+            </div>
+            <div class="right">
+                {# Create charts #}
+            </div>
+        </div>
+        <div class="section">
+            <div class="left">
+                <h3>Links</h3>
+                <h2>{{ urlsCount }}</h2>
+            </div>
+            <div class="right">
+                {# Create charts #}
+            </div>
+        </div>
     </div>
 </div>
+{% endblock %}
