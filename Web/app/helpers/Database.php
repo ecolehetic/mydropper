@@ -6,7 +6,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 /**
  * Class Database
- * @package Mydropper\MODELS
+ * @package MyDropper\Helpers
  */
 class Database extends BaseHelper
 {

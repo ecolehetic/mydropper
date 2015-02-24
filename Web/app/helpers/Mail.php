@@ -6,8 +6,7 @@ use MyDropper\Models\User;
 
 /**
  * Class Mail
- * Simple class for easily seed mail
- * @package Mydropper\HELPERS
+ * @package MyDropper\Helpers
  */
 class Mail extends BaseHelper
 {
@@ -21,8 +20,13 @@ class Mail extends BaseHelper
 
         $this->twig = $this->f3->get('TWIG');
 
-        $this->smtp = new \SMTP ($this->f3->get('MAIL_HOST'), $this->f3->get('MAIL_PORT'),
-            $this->f3->get('MAIL_SCHEME'), $this->f3->get('MAIL_USER'), $this->f3->get('MAIL_PASS'));
+        $this->smtp = new \SMTP (
+            $this->f3->get('MAIL_HOST'),
+            $this->f3->get('MAIL_PORT'),
+            $this->f3->get('MAIL_SCHEME'),
+            $this->f3->get('MAIL_USER'),
+            $this->f3->get('MAIL_PASS')
+        );
     }
 
     /**

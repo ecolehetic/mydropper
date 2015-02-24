@@ -2,6 +2,10 @@
 
 namespace MyDropper\Controllers;
 
+/**
+ * Class TrackingController
+ * @package MyDropper\Controllers
+ */
 class TrackingController extends BaseController
 {
     /**

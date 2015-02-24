@@ -4,6 +4,10 @@ namespace MyDropper\Controllers;
 
 use MyDropper\Models\User;
 
+/**
+ * Class ProfileController
+ * @package MyDropper\Controllers
+ */
 class ProfileController extends BaseController
 {
     /**

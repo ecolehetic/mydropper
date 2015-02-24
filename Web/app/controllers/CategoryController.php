@@ -7,7 +7,7 @@ use MyDropper\Models\Store;
 
 /**
  * Class CategoryController
- * @package Mydropper\CONTROLLERS
+ * @package MyDropper\Controllers
  */
 class CategoryController extends BaseController
 {
@@ -49,6 +49,7 @@ class CategoryController extends BaseController
 
         if(!empty($categoryId)){
             $stores = Store::where('category_id','=', $categoryId)->get();
+            $category = Category::find($categoryId);
         }
         else{
             $this->fMessage->set('Error, it missing id of the category.', 'error');
@@ -56,7 +57,8 @@ class CategoryController extends BaseController
         }
 
         $this->render(true, [
-            'stores' => $stores
+            'stores'       => $stores,
+            'categoryName' => $category->label
         ]);
     }
 

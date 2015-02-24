@@ -8,7 +8,7 @@ use MyDropper\Models\Url;
 
 /**
  * Class StoresController
- * @package Mydropper\CONTROLLERS
+ * @package MyDropper\Controllers
  */
 class StoresController extends BaseController
 {

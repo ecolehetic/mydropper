@@ -2,6 +2,10 @@
 
 namespace MyDropper\Helpers;
 
+/**
+ * Class Url
+ * @package MyDropper\Helpers
+ */
 class Url extends BaseHelper
 {
     /**
@@ -19,16 +23,13 @@ class Url extends BaseHelper
     {
         $hive = $this->f3->hive();
         $host = $hive['HEADERS']['Host'];
-        if($is_admin){
-            $prefix = '/admin';
-        }else{
-            $prefix = '';
-        }
 
-        $url = 'http://'.$host.$prefix.$path;
+        $prefix = ($is_admin) ? '/admin' : '';
+
+        $url = 'http://' . $host . $prefix . $path;
 
         foreach ($params as $param) {
-            $url .= '/'.$param;
+            $url .= '/' . $param;
         }
 
         return $url;

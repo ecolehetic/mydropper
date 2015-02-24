@@ -5,10 +5,14 @@ namespace MyDropper\Controllers;
 use MyDropper\Models\Store;
 use MyDropper\Models\TrackerStore;
 
+/**
+ * Class HistoryController
+ * @package MyDropper\Controllers
+ */
 class HistoryController extends BaseController
 {
 
-    /*
+    /**
      * GET /history
      */
     public function index()

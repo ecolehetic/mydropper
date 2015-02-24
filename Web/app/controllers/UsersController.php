@@ -11,7 +11,6 @@ use MyDropper\Models\Role;
 use MyDropper\Models\Store;
 use MyDropper\Models\User;
 
-
 /**
  * Class UsersController
  * @package MyDropper\Controllers
@@ -19,7 +18,7 @@ use MyDropper\Models\User;
 class UsersController extends BaseController
 {
 
-    /*
+    /**
      * GET users/subscribe
      */
     public function subscribe()
@@ -38,16 +37,16 @@ class UsersController extends BaseController
         $validForm = User::checkFormSubscribe($this->f3->get('POST'));
 
         if ($validForm === true) {
-            $username = User::where('username', $this->f3->get('POST.username'))->first();
-            $mail = User::where('mail', $this->f3->get('POST.mail'))->first();
+            $username   = User::where('username', $this->f3->get('POST.username'))->first();
+            $mail       = User::where('mail', $this->f3->get('POST.mail'))->first();
 
             if ($username === null && $mail === null) {
 
                 if ($this->f3->get('FILES.avatar')) {
                     $upload = new Upload();
-                    $path = $upload->save($this->f3->get('FILES.avatar'));
+                    $path   = $upload->save($this->f3->get('FILES.avatar'));
                 } else {
-                    $path = 'assets/images/avatar-demo.jpg';
+                    $path   = 'assets/images/avatar-demo.jpg';
                 }
 
                 // Create the User
@@ -114,7 +113,7 @@ class UsersController extends BaseController
         $this->f3->reroute('/users/login');
     }
 
-    /*
+    /**
      * GET users/login
      */
     public function login()
@@ -126,7 +125,7 @@ class UsersController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * POST users/connect
      */
     public function connect()
@@ -157,7 +156,7 @@ class UsersController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * GET users/lostpassword
      */
     public function lostPassword()
@@ -167,7 +166,7 @@ class UsersController extends BaseController
         $this->render(true);
     }
 
-    /*
+    /**
      * POST users/lostpassword
      */
     public function seedMailLostPassword()
@@ -220,7 +219,7 @@ class UsersController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * GET users/lostpassword/@username/@token
      */
     public function confirmLostPassword()
@@ -326,7 +325,7 @@ class UsersController extends BaseController
 
     /**
      * Delete a user
-     *GET /admin/users/delete/@id
+     * GET /admin/users/delete/@id
      */
     public function admin_delete()
     {

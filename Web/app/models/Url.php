@@ -10,6 +10,10 @@ namespace MyDropper\Models;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
 
+/**
+ * Class Url
+ * @package MyDropper\Models
+ */
 class Url extends Eloquent
 {
     use SoftDeletes;

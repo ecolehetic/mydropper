@@ -9,7 +9,7 @@ use Twig_Loader_Filesystem;
 
 /**
  * Class Twig
- * @package Mydropper\HELPERS
+ * @package MyDropper\Helpers
  */
 class Twig extends BaseHelper
 {
@@ -38,7 +38,7 @@ class Twig extends BaseHelper
         }));
         // Asset Function
         $Twig_env->addFunction(new \Twig_SimpleFunction('asset', function ($type, $asset, $extern) {
-            $link = ($extern === true) ? $asset : '/'.$this->folder . $type . '/' . $asset;
+            $link = ($extern === true) ? $asset : '/' . $this->folder . $type . '/' . $asset;
             if ($type === 'js') {
                 echo sprintf("<script src='%s' type='text/javascript'></script>", $link);
             } else {

@@ -9,6 +9,10 @@ namespace MyDropper\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
+/**
+ * Class Role
+ * @package MyDropper\Models
+ */
 class Role extends Eloquent
 {
 

@@ -9,6 +9,10 @@ namespace MyDropper\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
+/**
+ * Class TrackerStore
+ * @package MyDropper\Models
+ */
 class TrackerStore extends Eloquent
 {
 

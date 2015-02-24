@@ -10,7 +10,7 @@ use MyDropper\Models\User;
 
 /**
  * Class BaseController
- * @package Mydropper\CONTROLLERS
+ * @package MyDropper\Controllers
  */
 class BaseController
 {
@@ -89,8 +89,8 @@ class BaseController
             $values['aside']['avatar_url']  = $user->avatar_url;
 
             // Categories with Stores
-            $categories         = User::find($user->id)->categories()->get();
-            $values['aside']['stores']   = [];
+            $categories                = User::find($user->id)->categories()->get();
+            $values['aside']['stores'] = [];
 
             for($i = 0; $i < count($categories); $i++){
                 array_push($values['aside']['stores'], [

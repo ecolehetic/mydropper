@@ -4,10 +4,8 @@ namespace MyDropper\Helpers;
 
 /**
  * Class FlashMessage
- * @package Mydropper\HELPERS
+ * @package MyDropper\Helpers
  */
-
-
 class FlashMessage extends BaseHelper
 {
 
@@ -15,6 +13,7 @@ class FlashMessage extends BaseHelper
      * Set a Flash Message
      *
      * @param string $message
+     * @param string $status
      */
     public function set($message, $status = 'info')
     {
@@ -22,16 +21,16 @@ class FlashMessage extends BaseHelper
         $this->f3->set('SESSION.fMessage.status', $status);
     }
 
-    /*
+    /**
      * Return the Flash Message
      */
     public function get()
     {
         if ($this->f3->get('SESSION.fMessage') !== null) {
             return $this->f3->get('SESSION.fMessage');
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**

@@ -4,7 +4,7 @@ namespace MyDropper\Helpers;
 
 /**
  * Class Seo
- * @package Mydropper\HELPERS
+ * @package MyDropper\Helpers
  */
 class Seo
 {

@@ -8,6 +8,7 @@ use MyDropper\Models\Category;
 
 /**
  * Class IndexController
+ * @package MyDropper\Controllers
  */
 class IndexController extends BaseController
 {

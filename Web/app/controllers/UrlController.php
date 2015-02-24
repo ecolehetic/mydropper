@@ -9,7 +9,7 @@ use Pushbullet;
 
 /**
  * Class UrlController
- * @package Mydropper\CONTROLLERS
+ * @package MyDropper\Controllers
  */
 class UrlController extends BaseController
 {

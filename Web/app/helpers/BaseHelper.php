@@ -4,7 +4,7 @@ namespace Mydropper\Helpers;
 
 /**
  * Class BaseHelper
- * @package Mydropper\HELPERS
+ * @package Mydropper\Helpers
  */
 class BaseHelper
 {
@@ -14,8 +14,8 @@ class BaseHelper
 
     public function __construct()
     {
-        $this->web = \Web::instance();
-        $this->f3 = \Base::instance();
+        $this->web  = \Web::instance();
+        $this->f3   = \Base::instance();
     }
 
 }

@@ -6,7 +6,7 @@ use MyDropper\Models\User;
 
 /**
  * Class Need
- * @package Mydropper\HELPERS
+ * @package MyDropper\Helpers
  */
 class Need extends BaseHelper
 {
@@ -53,7 +53,7 @@ class Need extends BaseHelper
         return $this;
     }
 
-    /*
+    /**
      * Minimum Level
      * Use for Admin page
      *
@@ -119,10 +119,12 @@ class Need extends BaseHelper
         $this->f3->reroute($this->redirect, true);
     }
 
-    /*
+    /**
      * Check if the user have the minimum level Required
      *
      * @param int $level
+     *
+     * @return bool
      */
     private function checkLevel($level)
     {
@@ -148,18 +150,18 @@ class Need extends BaseHelper
 
         if($this->choose === self::LOGGED && $this->testLogged() === true){
             $this->error(self::LOGGED);
-            return;
+            return false;
         }
 
         if($this->choose === self::UNLOGGED && $this->testLogged() === false){
             $this->error(self::UNLOGGED);
-            return;
+            return false;
         }
 
         if($this->level !== null){
             if($this->checkLevel($this->level) === false){
                 $this->error(self::LEVEL);
-                return;
+                return false;
             }
         }
 

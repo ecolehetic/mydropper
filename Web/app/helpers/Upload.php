@@ -4,7 +4,7 @@ namespace MyDropper\Helpers;
 
 /**
  * Class Upload
- * @package Mydropper\HELPERS
+ * @package MyDropper\Helpers
  */
 class Upload extends BaseHelper
 {
@@ -79,20 +79,23 @@ class Upload extends BaseHelper
         }
     }
 
-    /*
+    /**
      * Check the Size of the Image
      *
      * @param file $fileType
-     * @param int $size
+     * @param int  $size
+     *
+     * @return bool
      */
     private function checkSize($fileType, $size)
     {
         $type = stristr($fileType, '/', true);
+
         if ($type === 'image' && $size <= (2 * 1024 * 1024)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -101,9 +104,9 @@ class Upload extends BaseHelper
     private function url()
     {
         if ($this->f3->get('ORGANIZE_UPLOAD') === true) {
-            $years = date("Y");
-            $month = date("m");
-            $day = date("d");
+            $years  = date("Y");
+            $month  = date("m");
+            $day    = date("d");
 
             $this->f3->set('UPLOADS', 'uploads/' . $years . '/' . $month . '/' . $day . '/');
         } else {

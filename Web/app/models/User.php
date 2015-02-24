@@ -10,6 +10,10 @@ namespace MyDropper\Models;
 use GUMP;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
+/**
+ * Class User
+ * @package MyDropper\Models
+ */
 class User extends Eloquent
 {
 
@@ -65,7 +69,7 @@ class User extends Eloquent
     /**
      * Check form
      *
-     * @param $formData
+     * @param array $formData
      * @param array $rules
      *
      * @return string
@@ -81,8 +85,9 @@ class User extends Eloquent
     /**
      * Check Admin Form
      *
-     * @param $formData
-     * @param $rules
+     * @param array $formData
+     * @param int   $id
+     *
      * @return mixed
      */
     public static function checkAdminEdit($formData, $id)
@@ -108,7 +113,9 @@ class User extends Eloquent
 
     /**
      * Check username availability
+     *
      * @param $username
+     *
      * @return bool
      */
     private static function isUniqueUser($username, $id=0){

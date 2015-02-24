@@ -10,11 +10,18 @@ use MyDropper\Models\Url;
 use MyDropper\Models\User;
 use Carbon\Carbon;
 
+/**
+ * Class ApiController
+ * @package MyDropper\Controllers
+ */
 class ApiController extends BaseController
 {
     /**
-     * Connect USER and return token with informations about the account
+     * Connect USER and return token with UserInformations
      * POST /api/connect
+     *
+     * @param string username
+     * @param string password
      */
     public function connect()
     {
@@ -69,6 +76,9 @@ class ApiController extends BaseController
     /**
      * Return all categories with stores
      * POST /api/stores
+     *
+     * @param int user_id
+     * @param int token_id
      */
     public function getStores()
     {
@@ -127,6 +137,12 @@ class ApiController extends BaseController
     /**
      * Add a tracker when user drag an store on a website
      * POST /api/trackstore
+     *
+     * @param int token_id
+     * @param int user_id
+     * @param int store_id
+     * @param string on_url
+     * @param string full_url
      */
     public function trackStore()
     {
@@ -171,6 +187,8 @@ class ApiController extends BaseController
     /**
      * Tracking PAGE
      * GET /api/categories/@user_id
+     *
+     * @param int user_id
      */
     public function getCategoryList()
     {
@@ -195,6 +213,11 @@ class ApiController extends BaseController
     /**
      * Tracking PAGE
      * POST /api/trackedlink
+     *
+     * @param int user_id
+     * @param int cat_id
+     * @param date from
+     * @param date to
      */
     public function getTrackedLink()
     {
@@ -249,6 +272,11 @@ class ApiController extends BaseController
     /**
      * Tracking PAGE
      * POST /api/categoryglobal
+     *
+     * @param int user_id
+     * @param int cat_id
+     * @param date from
+     * @param date to
      */
     public function getCategoryGlobal()
     {

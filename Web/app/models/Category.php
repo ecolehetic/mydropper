@@ -11,6 +11,10 @@ use GUMP;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
 
+/**
+ * Class Category
+ * @package MyDropper\Models
+ */
 class Category extends Eloquent
 {
     use SoftDeletes;
