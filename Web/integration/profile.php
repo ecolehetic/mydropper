@@ -50,12 +50,12 @@
                         <input type="text" name="username" placeholder="Username"
                                value="{{ values.username ? values.username : '' }}" disabled="disabled" required/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group password">
                         <label for="password_1">Password :</label>
                         <input type="password" name="password_1" placeholder="Password" disabled="disabled" required/>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group password">
                         <label for="password_2">Password check :</label>
                         <input type="password" name="password_2" placeholder="Repeat password" disabled="disabled" required/>
                     </div>

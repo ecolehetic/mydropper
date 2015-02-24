@@ -88,6 +88,11 @@ $greyTitle: #787878;
                     cursor : auto;
                  }
              }
+             .form-group.password {
+                 display : none;
+                 opacity : 0;
+                 transition: all 0.5s ease;
+             }
              #submitEdit {
                  display : none;
                  opacity : 0;
@@ -102,7 +107,7 @@ $greyTitle: #787878;
                      border-bottom : 1px dashed rgba(0,0,0,0.5);
                  }
              }
-             #submitEdit {
+             .form-group.password, #submitEdit {
                  display : block;
                  opacity : 1;
              }
