@@ -264,7 +264,7 @@ $greyTitle: #787878;
     h1{
         text-transform: uppercase;
         text-align : center;
-        margin-top : 50px;
+        margin-top : 35px;
         margin-bottom : 30px;
     }
     p {
@@ -276,7 +276,7 @@ $greyTitle: #787878;
     }
     #whoAreWeTop{
         width: 100%;
-        height: 215px;
+        height: 150px;
         padding-bottom: 50px;
     }
     #teamContainer {
@@ -285,10 +285,10 @@ $greyTitle: #787878;
         position : absolute;
         bottom : 0;
         margin: 0;
-        height : calc(100% - 400px);
+        height : calc(100% - 345px);
+
         h2 {
             display : none;
-            margin-top : 43%;
             margin-bottom : 60px;
         }
         h3 {
@@ -304,20 +304,28 @@ $greyTitle: #787878;
             position : relative;
             width : 16.66666%;
             float : left;
-            display : block;
             text-align : center;
             height : 100%;
             color : black;
+            vertical-align: middle;
+            list-style : none;
             span {
                 font-weight : bold;
             }
             a {
                 position : absolute;
+                display : table;
+                height : 100%;
+                width : 100%;
                 top : 0;
                 bottom: 0;
                 right: 0;
                 left: 0;
                 color : black;
+                .desc {
+                    display : table-cell;
+                    vertical-align: middle;
+                }
                 h2, h3 {
                     display : block;
                     opacity : 0;
@@ -337,27 +345,27 @@ $greyTitle: #787878;
             }
         }
         #nicolas {
-            background : url('../images/team-nicolas.jpg') no-repeat bottom right;
+            background : url('../images/team-nicolas.jpg') no-repeat top right;
             background-size : cover;
         }
         #heloise {
-            background : url('../images/team-heloise.jpg') no-repeat bottom right;
+            background : url('../images/team-heloise.jpg') no-repeat top right;
             background-size : cover;
         }
         #patrick {
-            background : url('../images/team-patrick.jpg') no-repeat bottom right;
+            background : url('../images/team-patrick.jpg') no-repeat top right;
             background-size : cover;
         }
         #mathieu {
-            background : url('../images/team-mathieu.jpg') no-repeat bottom right;
+            background : url('../images/team-mathieu.jpg') no-repeat top right;
             background-size : cover;
         }
         #wassim {
-            background : url('../images/team-wassim.jpg') no-repeat bottom right;
+            background : url('../images/team-wassim.jpg') no-repeat top right;
             background-size : cover;
         }
         #clara {
-            background : url('../images/team-clara.jpg') no-repeat bottom right;
+            background : url('../images/team-clara.jpg') no-repeat top right;
             background-size : cover;
         }
     }

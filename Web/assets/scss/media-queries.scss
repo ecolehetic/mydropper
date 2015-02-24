@@ -12,21 +12,8 @@
             left: calc(50% + 180px);
         }
     }
-    #whoAreWe {
-        #teamContainer {
-            position : relative;
-            li {
-                width : 33.333%;
-                &:before {
-                    content :'';
-                    display : block;
-                    padding-top : 150%;
-                }
-            }
-        }
-    }
 }
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1200px) {
     #profilePage {
         #topContainer {
             .text {
@@ -41,6 +28,28 @@
                 width : calc(100% - 295px);
                 margin-left : 290px;
                 margin-top : 50px;
+            }
+        }
+    }
+    #whoAreWe {
+        #teamContainer {
+            position : relative;
+            li {
+                width : 33.333%;
+                &:before {
+                    content :'';
+                    display : block;
+                    padding-top : 150%;
+                }
+                a {
+                    display : block;
+                    h2 {
+                        margin-top : 40%;
+                    }
+                    .desc {
+                        display : block;
+                    }
+                }
             }
         }
     }
