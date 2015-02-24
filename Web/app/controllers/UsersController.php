@@ -50,7 +50,7 @@ class UsersController extends BaseController
                     'mail'            => $this->f3->get('POST.mail'),
                     'password'        => $this->crypt($this->f3->get('POST.password_1')),
                     'mail_pushbullet' => $this->f3->get('POST.pushbullet'),
-                    'avatar_url'      => 'assets/images/avatar-demo.jpg'
+                    'avatar_url'      => 'assets/images/default-avatar.jpg'
                 ));
 
                 // Create default Category with Store
