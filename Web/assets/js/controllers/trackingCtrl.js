@@ -70,26 +70,37 @@ $(document).ready(function() {
 
 		/* ---- TRACKED LINK CHARTS ---- */
 		Model.tracking.getTrackedLinkGraphData(cat, from, to, function(dataResponse){
-			for(var i = 0; i < dataResponse.length; i++) {
+			if(dataResponse.length>0) {
+				for(var i = 0; i < dataResponse.length; i++) {
 
-				var currentData = dataResponse[i];
+					var currentData = dataResponse[i];
 
-				var	graphSettings = {
-					"nbClick" : currentData.nbClick,
-					"createdAt" : currentData.createdAt,
-					"since" : currentData.since,
-					"snippetName" : currentData.snippetName,
-					"snippetSelector" : "snippetGraph-" + (i+1),
-					"graphTooltipId" : "snippetTooltip-" + (i+1),
-					"snippetLabels" : Object.keys(currentData.graphData ),
-					"snippetSeries" : [[]]
-				};
+					var graphSettings = {
+						"nbClick"        : currentData.nbClick,
+						"createdAt"      : currentData.createdAt,
+						"since"          : currentData.since,
+						"snippetName"    : currentData.snippetName,
+						"snippetSelector": "snippetGraph-" + (i + 1),
+						"graphTooltipId" : "snippetTooltip-" + (i + 1),
+						"snippetLabels"  : Object.keys(currentData.graphData),
+						"snippetSeries"  : [[]]
+					};
 
-				// Insert snippetSeries in chartist format
-				for(var j = 0; j < graphSettings.snippetLabels.length; j++) {
-					graphSettings.snippetSeries[0].push(currentData.graphData[graphSettings.snippetLabels[j]]);
+					if(graphSettings.snippetLabels.length>0) {
+						// Insert snippetSeries in chartist format
+						for(var j = 0; j < graphSettings.snippetLabels.length; j++) {
+							graphSettings.snippetSeries[0].push(currentData.graphData[graphSettings.snippetLabels[j]]);
+						}
+					} else {
+						graphSettings.snippetLabels = ['N/A'];
+						graphSettings.snippetSeries[0].push(0);
+					}
+
+					GraphUI.snippet.render(graphSettings);
 				}
-				GraphUI.snippet.render(graphSettings);
+			}
+			else {
+				$('#snippetGraphList').html('<li class="noTrackedLink">No tracked link yet</li>')
 			}
 		});
 

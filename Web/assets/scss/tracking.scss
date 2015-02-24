@@ -169,5 +169,13 @@ $blueOpacityTopGraph: #1AAAF2;
                 }
             }
         }
+        li.noTrackedLink {
+            padding : 100px 0;
+            text-align : center;
+            color : $blueDonut;
+            font-size : 1.5rem;
+            text-align : center;
+            text-transform: uppercase;
+        }
     }
 }
