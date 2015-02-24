@@ -58,8 +58,31 @@ class CategoryController extends BaseController
 
         $this->render(true, [
             'stores'       => $stores,
-            'categoryName' => $category->label
+            'categoryName' => $category->label,
+            'categoryId'   => $category->id
         ]);
+    }
+
+    /**
+     * GET /category/delete/@id
+     *
+     * @param int id
+     */
+    public function delete()
+    {
+        $this->need->logged('/users/login')->execute();
+
+        $categoryId = $this->f3->get('PARAMS.id');
+
+        if(!empty($categoryId)){
+            // TODO @nicolas -> delete in cascade ?
+            Category::destroy($categoryId);
+            $this->fMessage->set('Category deleted.', 'alert');
+            $this->f3->reroute('/history', true);
+        }
+        else{
+            $this->f3->reroute('/history', true);
+        }
     }
 
 }

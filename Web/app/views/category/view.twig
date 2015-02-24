@@ -9,7 +9,7 @@
     <div class="container">
         <div id="dashboard">
             <h1>{{ categoryName }}</h1>
-            <a href="" class="editCat"><span>Edit category</span></a>
+            <a href="{{ url('/category/delete', [categoryId]) }}" class="editCat"><span>Delete the category</span></a>
             <ul class="cardList clearfix">
                 {% for store in stores %}
                     <li>
