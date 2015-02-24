@@ -5,16 +5,11 @@ var Model;
 Model = {
 
 	getDataUser : function(callback) {
-
-		var userData = chrome.storage.local.get('myDropperUser', function(chromeData){
+		chrome.storage.local.get('myDropperUser', function(chromeData){
 			callback.call(this, chromeData.myDropperUser);
 		});
-
 	},
 
-	sendUserData : function() {
-
-	},
 
 	logIn : function(usr, pwd, callback) {
 		$.post("http://localhost:8080/api/connect", {username: usr, password: pwd}, "json")

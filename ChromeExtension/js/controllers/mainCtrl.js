@@ -30,24 +30,16 @@ function toggleSideBar(htmlContent) {
 
 function initSideBarHandler() {
 
-
-	var dataUser;
-
+	/* ---- Check if user already log ---- */
 	Model.getDataUser(function(data){
-		dataUser = data;
-
-		if(typeof dataUser != 'undefined') {
-			console.log('in');
+		console.log(data);
+		if(typeof data != 'undefined') {
 			UI.user.logIn();
 		}
 	})
 
-	console.log('dataUser : ',  dataUser);
-
 	/* ---- Inject fonts ---- */
 	UI.sideBar.injectFonts();
-
-	/* ---- Check if user already log ---- */
 
 
 	/* ---- LogIn ---- */
@@ -70,8 +62,6 @@ function initSideBarHandler() {
 		Model.logOut();
 	});
 
-
-
 	/* ---- Hover a snippet --- */
 	$('.md-dragElmt').hover(
 		function() {
@@ -93,8 +83,6 @@ function initSideBarHandler() {
 			console.log('all clear');	
 		});
 	});
-
-
 }
 
 function submitLoginRequest() {

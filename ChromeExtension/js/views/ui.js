@@ -161,7 +161,7 @@ var UI={
 				"@font-face { font-family: 'AvenirNext'; src: url('"
 				+ chrome.extension.getURL("fonts/Avenir/Avenir-Next_7.woff")
 				+ "'); font-style: normal; font-weight:  700;} " +
-				"@font-face { font-familyuser: 'icomoon'; src: url('"
+				"@font-face { font-family: 'icomoon'; src: url('"
 				+ chrome.extension.getURL("fonts/Icomoon/icomoon.woff")
 				+ "'); font-style: normal; font-weight:  400;} "
 			document.head.appendChild (styleNode);
