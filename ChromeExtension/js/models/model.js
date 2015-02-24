@@ -10,7 +10,6 @@ Model = {
 		});
 	},
 
-
 	logIn : function(usr, pwd, callback) {
 		$.post("http://localhost:8080/api/connect", {username: usr, password: pwd}, "json")
 			.done(function(response) {

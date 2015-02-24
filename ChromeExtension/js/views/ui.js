@@ -15,8 +15,8 @@ var UI={
 			sideBar.isOpen = true;
 
 			// --- Load logo
-			$('#logo').find('img').attr('src', chrome.extension.getURL('img/logo.png'));
-		},
+			$('#myDropperLogo').attr('src', chrome.extension.getURL("img/logo.png"));
+	},
 
 
 		close : function() {
