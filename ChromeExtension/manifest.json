@@ -9,7 +9,6 @@
     "128": "img/icon128.png"
   },
   "background": {
-    // "scripts": ["background.js"]
     "page": "background.html"
   },
   "browser_action": {
