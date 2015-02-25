@@ -97,4 +97,19 @@ $greyLight: #e3e2e3;
 
         }
     }
+    #noHistory {
+        margin-top : 7%;
+        text-align : center;
+        color: #bbe4f9;
+        font-size: 1.5rem;
+        text-align: center;
+        text-transform: uppercase;
+        width : 80%;
+        padding : 0 10%;
+        img {
+            width : 200px;
+            margin : 60px auto;
+            display: block;
+        }
+    }
 }
