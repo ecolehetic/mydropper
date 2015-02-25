@@ -16,7 +16,7 @@ var UI={
 
 			// --- Load logo
 			$('#myDropperLogo').attr('src', chrome.extension.getURL("img/logo.png"));
-	},
+		},
 
 
 		close : function() {
@@ -31,49 +31,6 @@ var UI={
 				el.remove();
 				sideBar.isOpen = false;
 			}, 1000);
-		},
-
-		initAccordeon : function() {
-			var $catLink = $('#accordeon .category h2');
-			var $dragList = $('#accordeon .category .dragList');
-
-			$catLink.click(function(e) {
-				e.preventDefault();
-
-				var $navMenuParent = $(this).parent();
-				var $navSous = $(this).siblings('.dragList');
-				var $allNavSous = $('.category .dragList');
-				var $plusMoins = $(this).siblings('span');
-				var $allPlusMoins = $('.category  span');
-
-
-				if (!$navSous.hasClass("open")) {
-					// Si navSous fermé
-					$allNavSous.removeClass('open');
-					$navSous.addClass('open');
-
-					$allPlusMoins.html('+');
-					$plusMoins.html('-');
-
-				} else {
-					// Si navSous ouvert
-					$allNavSous.removeClass('open');
-					$allPlusMoins.html('+');
-				}
-			});
-		},
-
-		snippetInfos : {
-			show : function(self) {
-				var offset = self.offset(),
-					el = $('#moreInfo');
-				el.css('top', offset.top + 5);
-				el.stop().html(self.data('text')).fadeIn(600);
-
-			},
-			hide : function() {
-				$('#moreInfo').stop().fadeOut(3000);
-			}
 		},
 
 		addMarkDropZones : function() {
@@ -177,6 +134,83 @@ var UI={
 		logOut: function() {
 			UI.sideBar.close();
 		}
+	},
+
+	loggedPanel : {
+
+		renderSnippets : function(storesData){
+			console.log(storesData);
+			for(var i = 0; i < storesData.length; i++) {
+
+				var snippets = "";
+
+				for(var j = 0; j < storesData[i].stores.length; j++) {
+					snippets += "<li class='md-dragElmt' data-text='"+ storesData[i].stores[j].store_description +"' draggable='true' data-type='Text'><i class='icon-tag'></i>" + storesData[i].stores[j].store_label + "</li>"
+				}
+
+
+				var categoryHtml = "\
+					<li class='category'><h2>" + storesData[i].category_label + "</h2>\
+						<span>-</span>\
+						<ul class='dragList'>\
+							<li class='editCat'><a href='http://mydropper.mathieuletyrant.com/category/"+ storesData[i].category_id+"' target='_blank'><i class='icon-list'></i></i>Edit category</a></li>"
+								+ snippets +
+						"</ul>\
+					</li>";
+
+
+
+				$('#accordeon').append(categoryHtml);
+			}
+			// Inject templates
+
+			UI.loggedPanel.initAccordeon();
+		},
+
+		initAccordeon : function() {
+			var $catLink = $('#accordeon .category h2');
+			var $dragList = $('#accordeon .category .dragList');
+
+			$catLink.click(function(e) {
+				e.preventDefault();
+
+				var $navMenuParent = $(this).parent();
+				var $navSous = $(this).siblings('.dragList');
+				var $allNavSous = $('.category .dragList');
+				var $plusMoins = $(this).siblings('span');
+				var $allPlusMoins = $('.category  span');
+
+
+				if (!$navSous.hasClass("open")) {
+					// Si navSous fermé
+					$allNavSous.removeClass('open');
+					$navSous.addClass('open');
+
+					$allPlusMoins.html('+');
+					$plusMoins.html('-');
+
+				} else {
+					// Si navSous ouvert
+					$allNavSous.removeClass('open');
+					$allPlusMoins.html('+');
+				}
+			});
+		},
+
+		snippetInfos : {
+			show : function(self) {
+				var offset = self.offset(),
+					el = $('#moreInfo');
+				el.css('top', offset.top + 5);
+				el.stop().html(self.data('text')).fadeIn(600);
+
+			},
+			hide : function() {
+				$('#moreInfo').stop().fadeOut(3000);
+			}
+		}
+
 	}
+
 
 }

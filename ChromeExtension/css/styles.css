@@ -295,7 +295,8 @@
     display: none; }
   #myDropperSideBar a {
     color: black;
-    transition: all 0.5s ease; }
+    transition: all 0.5s ease;
+    text-decoration: none; }
     #myDropperSideBar a:hover {
       color: #969696 !important; }
   #myDropperSideBar #sideBarContainer {

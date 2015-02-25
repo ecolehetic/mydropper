@@ -21,25 +21,26 @@ function toggleSideBar(htmlContent) {
 	}
 	else {
 		UI.sideBar.open(htmlContent);
-		UI.sideBar.addMarkDropZones();
-		UI.sideBar.initDroppable();
-		UI.sideBar.initDraggable();
-		UI.sideBar.initAccordeon();
 	}
 }
 
 function initSideBarHandler() {
 
 	/* ---- Check if user already log ---- */
-	Model.getDataUser(function(data){
-		console.log(data);
-		if(typeof data != 'undefined') {
+	Model.getDataUser(function(userData){
+		console.log(userData);
+		if(typeof userData != 'undefined') {
 			UI.user.logIn();
+
+
+			Model.getUserSnippets(function(storesData){
+				UI.loggedPanel.renderSnippets(storesData);
+				UI.sideBar.addMarkDropZones();
+				UI.sideBar.initDroppable();
+				UI.sideBar.initDraggable();
+			});
 		}
 	})
-
-
-	Model.getUserSnippets();
 
 	/* ---- Inject fonts ---- */
 	UI.sideBar.injectFonts();
@@ -68,9 +69,9 @@ function initSideBarHandler() {
 	/* ---- Hover a snippet --- */
 	$('.md-dragElmt').hover(
 		function() {
-			UI.sideBar.snippetInfos.show($(this));
+			UI.loggedPanel.snippetInfos.show($(this));
 		}, function() {
-			UI.sideBar.snippetInfos.hide();
+			UI.loggedPanel.snippetInfos.hide();
 		}
 	);
 

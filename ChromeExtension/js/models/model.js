@@ -12,7 +12,6 @@ Model = {
 
 	getUserSnippets : function(callback) {
 		Model.getDataUser(function(data) {
-			console.log(data);
 			$.post("http://localhost:8080/api/stores", {user_id: data.user.id, token_id: data.user.token_api}, "json")
 				.done(function(response) {
 					callback.call(this,response);
