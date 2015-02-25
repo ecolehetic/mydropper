@@ -26,22 +26,6 @@ function toggleSideBar(htmlContent) {
 
 function initSideBarHandler() {
 
-	/* ---- Check if user already log ---- */
-	Model.getDataUser(function(userData){
-		console.log(userData);
-		if(typeof userData != 'undefined') {
-			UI.user.logIn();
-
-
-			Model.getUserSnippets(function(storesData){
-				UI.loggedPanel.renderSnippets(storesData);
-				UI.sideBar.addMarkDropZones();
-				UI.sideBar.initDroppable();
-				UI.sideBar.initDraggable();
-			});
-		}
-	})
-
 	/* ---- Inject fonts ---- */
 	UI.sideBar.injectFonts();
 
@@ -51,6 +35,7 @@ function initSideBarHandler() {
 		e.preventDefault();
 		submitLoginRequest();
 	});
+
 	$('input').on('keyup', function(e){
 	    e.preventDefault();
 		if(e.which == 13) {
@@ -66,6 +51,17 @@ function initSideBarHandler() {
 		Model.logOut();
 	});
 
+	/* ---- Check if user already logged in ---- */
+	Model.getDataUser(function(userData){
+		console.log(userData);
+		if(typeof userData != 'undefined') {
+			Model.getUserSnippets(function(storesData){
+				UI.loggedPanel.renderSnippets(storesData);
+				UI.user.logIn();
+			});
+		}
+	})
+
 	/* ---- Hover a snippet --- */
 	$('.md-dragElmt').hover(
 		function() {
@@ -79,6 +75,7 @@ function initSideBarHandler() {
 	$("#closePanelButton").on('click', function(){
 		toggleSideBar();
 	});
+
 
 	/* ---- Clear chrome storage debug ---- */
 	$("#clearStorageLink").click(function(){
@@ -94,7 +91,10 @@ function submitLoginRequest() {
 	var password = $('#password').val();
 	Model.logIn(username, password, function(response){
 		if(response.success === true) {
-			UI.user.logIn();
+			Model.getUserSnippets(function(storesData){
+				UI.loggedPanel.renderSnippets(storesData);
+				UI.user.logIn();
+			});
 		}
 		else if(response.success === false) {
 			alert(response.message);

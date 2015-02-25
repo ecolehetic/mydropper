@@ -139,15 +139,14 @@ var UI={
 	loggedPanel : {
 
 		renderSnippets : function(storesData){
-			console.log(storesData);
-			for(var i = 0; i < storesData.length; i++) {
+			/* ---- TEMPLATING ---- */
 
+			for(var i = 0; i < storesData.length; i++) {
 				var snippets = "";
 
 				for(var j = 0; j < storesData[i].stores.length; j++) {
 					snippets += "<li class='md-dragElmt' data-text='"+ storesData[i].stores[j].store_description +"' draggable='true' data-type='Text'><i class='icon-tag'></i>" + storesData[i].stores[j].store_label + "</li>"
 				}
-
 
 				var categoryHtml = "\
 					<li class='category'><h2>" + storesData[i].category_label + "</h2>\
@@ -157,14 +156,14 @@ var UI={
 								+ snippets +
 						"</ul>\
 					</li>";
-
-
-
+				// Inject templates
 				$('#accordeon').append(categoryHtml);
 			}
-			// Inject templates
 
 			UI.loggedPanel.initAccordeon();
+			UI.sideBar.addMarkDropZones();
+			UI.sideBar.initDroppable();
+			UI.sideBar.initDraggable();
 		},
 
 		initAccordeon : function() {
