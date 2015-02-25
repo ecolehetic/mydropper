@@ -161,6 +161,7 @@ var UI={
 			}
 
 			UI.loggedPanel.initAccordeon();
+			UI.loggedPanel.snippetInfos();
 			UI.sideBar.addMarkDropZones();
 			UI.sideBar.initDroppable();
 			UI.sideBar.initDraggable();
@@ -196,17 +197,17 @@ var UI={
 			});
 		},
 
-		snippetInfos : {
-			show : function(self) {
-				var offset = self.offset(),
-					el = $('#moreInfo');
-				el.css('top', offset.top + 5);
-				el.stop().html(self.data('text')).fadeIn(600);
-
-			},
-			hide : function() {
-				$('#moreInfo').stop().fadeOut(3000);
-			}
+		snippetInfos : function() {
+			$('.md-dragElmt').hover(
+				function() {
+					var offset = $(this).offset(),
+						el = $('#moreInfo');
+					el.css('top', offset.top + 5);
+					el.stop().html($(this).data('text')).fadeIn(600);
+				}, function() {
+					$('#moreInfo').stop().fadeOut(3000);
+				}
+			);
 		}
 
 	}

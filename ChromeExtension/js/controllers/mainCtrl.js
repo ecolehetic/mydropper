@@ -29,7 +29,6 @@ function initSideBarHandler() {
 	/* ---- Inject fonts ---- */
 	UI.sideBar.injectFonts();
 
-
 	/* ---- LogIn ---- */
 	$('#submitConnexionForm').on('click', function(e){
 		e.preventDefault();
@@ -62,20 +61,10 @@ function initSideBarHandler() {
 		}
 	})
 
-	/* ---- Hover a snippet --- */
-	$('.md-dragElmt').hover(
-		function() {
-			UI.loggedPanel.snippetInfos.show($(this));
-		}, function() {
-			UI.loggedPanel.snippetInfos.hide();
-		}
-	);
-
 	/* ---- Click on cross ---- */
 	$("#closePanelButton").on('click', function(){
 		toggleSideBar();
 	});
-
 
 	/* ---- Clear chrome storage debug ---- */
 	$("#clearStorageLink").click(function(){
@@ -84,6 +73,7 @@ function initSideBarHandler() {
 			console.log('all clear');	
 		});
 	});
+
 }
 
 function submitLoginRequest() {
