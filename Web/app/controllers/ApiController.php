@@ -102,12 +102,26 @@ class ApiController extends BaseController
                     $stores = Store::where('category_id', $categories[$i]->id)->get();
 
                     for ($j = 0; $j < count($stores); $j++) {
-                        $data[$i]['stores'][] = [
-                            'store_id'          => $stores[$j]->id,
-                            'store_label'       => $stores[$j]->label,
-                            'store_description' => $stores[$j]->descript,
-                            'store_active'      => $stores[$j]->is_active
-                        ];
+
+                        if ($stores[$j]->is_shorter) {
+                            $url = Url::where('store_id', '=', $stores[$j]->id)->first();
+                            $data[$i]['stores'][] = [
+                                'store_id'          => $stores[$j]->id,
+                                'store_label'       => $stores[$j]->label,
+                                'store_description' => $stores[$j]->descript,
+                                'store_active'      => $stores[$j]->is_active,
+                                'store_shorter'     => $stores[$j]->is_shorter,
+                                'store_url_shorter' => 'http://mydropper.mathieuletyrant.com/url/'.$url->token
+                            ];
+                        } else {
+                            $data[$i]['stores'][] = [
+                                'store_id'          => $stores[$j]->id,
+                                'store_label'       => $stores[$j]->label,
+                                'store_description' => $stores[$j]->descript,
+                                'store_active'      => $stores[$j]->is_active,
+                                'store_shorter'     => $stores[$j]->is_shorter
+                            ];
+                        }
                     }
                 }
             } else {
