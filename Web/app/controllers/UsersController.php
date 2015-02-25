@@ -4,12 +4,14 @@ namespace MyDropper\Controllers;
 
 use MyDropper\Helpers\Mail;
 use MyDropper\Helpers\Upload;
-use MyDropper\Helpers\Url;
-use MyDropper\Helpers\Removal;
+use MyDropper\Helpers\Url ;
 use MyDropper\Models\Category;
 use MyDropper\Models\Role;
 use MyDropper\Models\Store;
 use MyDropper\Models\User;
+use MyDropper\Models\Url as UrlModel;
+use MyDropper\Models\TrackerStore;
+use MyDropper\Models\TrackerUrl;
 
 /**
  * Class UsersController
@@ -305,17 +307,40 @@ class UsersController extends BaseController
                 ]);
             }
         }
-        $user = User::find($id);
+        $user = User::with('roles')->find($id);
+
         $storesCount = Store::where('user_id', '=', $id)->count();
+        $storesCountAll = Store::where('user_id', '=', $id)->withTrashed()->count();
+
         $categoriesCount = Category::where('user_id', '=', $id)->count();
+        $categoriesCountAll = Category::where('user_id', '=', $id)->withTrashed()->count();
+
+        $urlsCount = UrlModel::where('user_id', '=', $id)->count();
+        $urlsCountAll = UrlModel::where('user_id', '=', $id)->withTrashed()->count();
+
+        $trackersStoresCount = TrackerStore::where('user_id', '=', $id)->count();
+        $trackersStoresCountAll = TrackerStore::where('user_id', '=', $id)->withTrashed()->count();
+
+        $trackersUrlsCount = TrackerUrl::where('user_id', '=', $id)->count();
+        $trackersUrlsCountAll = TrackerUrl::where('user_id', '=', $id)->withTrashed()->count();
+
+
         $roles = Role::all();
 
         $this->render(true, [
             'messages'   => $validForm,
             'values'     => $user,
             'roles'      => $roles,
-            'stores'     => $storesCount,
-            'categories' => $categoriesCount
+            'storesCount' => $storesCount,
+            'storesCountAll' => $storesCountAll,
+            'categoriesCount' => $categoriesCount,
+            'categoriesCountAll' => $categoriesCountAll,
+            'urlsCount' => $urlsCount,
+            'urlsCountAll' => $urlsCountAll,
+            'trackersStoresCount' => $trackersStoresCount,
+            'trackersStoresCountAll' => $trackersStoresCountAll,
+            'trackersUrlsCount' => $trackersUrlsCount,
+            'trackersUrlsCountAll' => $trackersUrlsCountAll,
         ]);
     }
 
@@ -329,17 +354,16 @@ class UsersController extends BaseController
         $userId = (int)($this->f3->get('PARAMS.id'));
 
         if ($userId) {
-            $userInformations = User::find($userId);
-            $remove = new Removal($userId, 'User');
-            $remove->cascade(['Category', 'Store', 'TrackerStore'], false);
-            User::destroy($userId);
+            $user = User::find($userId);
 
             // Seed Mail
-            $mail = new Mail();
-            $mail->seed('default', $userInformations->mail, array(
-                'subject'     => 'Deleted account',
-                'contentHtml' => "Your account has been delete by an administrator of the Mydropper.io"
-            ));
+            // TODO Mathieu : Unable to find template "mail/default.twig" (looked into: app/Views).
+            //$mail = new Mail();
+            //$mail->seed('default', $user->mail, array(
+            //    'subject'     => 'Deleted account',
+            //    'contentHtml' => "Your account has been delete by an administrator of the Mydropper.io"
+            //));
+            $user->delete();
 
             $this->fMessage->set('The account is deleted', 'alert');
             $this->f3->reroute('/admin/users');

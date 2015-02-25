@@ -15,35 +15,52 @@
                 <a href="{{ url('/admin/users') }}"><i class="icon-pencil"></i> Edit</a>
             </div>
             <div class="right">
-                <h3>Charts here</h3>
-                {# Create charts #}
+                 &nbsp;
+            </div>
+        </div>
+        <div class="section">
+            <div class="left">
+                <h3>Categories</h3>
+                <h2>{{ categoriesCount }}/{{ categoriesCountAll }}</h2>
+            </div>
+            <div class="right">
+                 &nbsp;
             </div>
         </div>
         <div class="section">
             <div class="left">
                 <h3>Snippets</h3>
-                <h2>{{ storesCount }}</h2>
+                <h2>{{ storesCount }}/{{ storesCountAll }}</h2>
             </div>
             <div class="right">
-                {# Create charts #}
+                 &nbsp;
             </div>
         </div>
         <div class="section">
             <div class="left">
-                <h3>Catégories</h3>
-                <h2>{{ categoriesCount }}</h2>
+                <h3>Snippets trackers</h3>
+                <h2>{{ trackersStoresCount }}/{{ trackersStoresCountAll }}</h2>
             </div>
             <div class="right">
-                {# Create charts #}
+                 &nbsp;
             </div>
         </div>
         <div class="section">
             <div class="left">
                 <h3>Links</h3>
-                <h2>{{ urlsCount }}</h2>
+                <h2>{{ urlsCount }}/{{ urlsCountAll }}</h2>
             </div>
             <div class="right">
-                {# Create charts #}
+                 &nbsp;
+            </div>
+        </div>
+        <div class="section">
+            <div class="left">
+                <h3>Urls trackers</h3>
+                <h2>{{ trackersUrlsCount }}/{{ trackersUrlsCountAll }}</h2>
+            </div>
+            <div class="right">
+                 &nbsp;
             </div>
         </div>
     </div>

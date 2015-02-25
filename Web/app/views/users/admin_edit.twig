@@ -1,65 +1,133 @@
-<div class="edit">
-    <h1>Edit user</h1>
-    {% if messages %}
-        <div id="formFeedback">
-            <h3>There are some issues : </h3>
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message | raw }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
-    <div class="form">
-        <form method="POST" action="{{ url('/admin/users/edit', [values.id]) }}"  id="editForm">
-            <div class="form-group">
-                <label for="username">Username :</label>
-                <input type="text" name="username" placeholder="Username"
-                       value="{{ values.username }}" required/>
-            </div>
-            <div class="form-group">
-                <label for="firstname" >Firstname :</label>
-                <input type="text" name="firstname" placeholder="FirstName"
-                       value="{{ values.firstname }}"  required/>
-            </div>
-            <div class="form-group">
-                <label for="name">Lastname  :</label>
-                <input type="text" name="name" placeholder="Lastname"
-                       value="{{ values.name }}"  required/>
-            </div>
-            <div class="form-group">
-                <label for="mail">Mail :</label>
-                <input type="email" name="mail" placeholder="Mail" value="{{ values.mail }}" required/>
-            </div>
-            <div class="form-group">
-                <label for="birthday">Date of Birth :</label>
-                <input class="date" type="date" name="birthday" placeholder="birthday"
-                       value="{{ values.date_of_birth }}" required/>
-            </div>
-            <div class="form-group">
-                <label for="role_id">Role :</label>
-                <select name="role_id" id="">
-                    {% for role in roles %}
-                        {% if(role.id == values.role_id) %}
-                            <option selected value="{{ role.id }}">{{ role.label }}</option>
-                        {% else %}
-                            <option value="{{ role.id }}">{{ role.label }}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="save"/>
-            </div>
+{% extends '_layout/admin.twig' %}
 
-        </form>
+{% block aside %}
+    {% include '_includes/aside.twig' %}
+{% endblock %}
+
+{% block content %}
+<div class="container admin">
+    <div class="header">
+        <img src="/{{ values.avatar_url }}" alt=""/>
+        <h1>{{ values.firstname }} {{ values.name }} as {{ values.username }}</h1>
     </div>
+    <div class="perso_datas">
+        <h3>Statistics</h3>
+        <ul class="panels">
+            <li>
+                <p class="value">
+                    {{ categoriesCount }}/{{ categoriesCountAll }}
+                </p>
+                <p class="label">
+                    Categories
+                </p>
+            </li>
+            <li>
+                <p class="value">
+                    {{ storesCount }}/{{ storesCountAll }}
+                </p>
+                <p class="label">
+                    Stores
+                </p>
+            </li>
+
+            <li>
+                <p class="value">
+                    {{ trackersStoresCount }}/{{ trackersStoresCountAll }}
+                </p>
+                <p class="label">
+                    Trackers S
+                </p>
+            </li>
+            <li>
+                <p class="value">
+                    {{ urlsCount }}/{{ urlsCountAll }}
+                </p>
+                <p class="label">
+                    Links
+                </p>
+            </li>
+            <li>
+                <p class="value">
+                    {{ trackersUrlsCount }}/{{ trackersUrlsCountAll }}
+                </p>
+                <p class="label">
+                    Trackers L
+                </p>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="edit">
+        <h3>Personal datas</h3>
+        {% if messages %}
+            <div id="formFeedback">
+                <h4>There are some issues : </h4>
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message | raw }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <div class="form">
+            <div class="form-group">
+                <label>Id </label>
+                <span>{{ values.id }}</span>
+            </div>
+            <div class="form-group">
+                <label>Token api </label>
+                <span>{{ values.token_api }}</span>
+            </div>
+            <div class="form-group">
+                <label>Has extension </label>
+                <span>{{ (values.has_extension == true)? 'yes' : 'No'}}</span>
+            </div>
+            <form method="POST" action="{{ url('/admin/users/edit', [values.id]) }}"  id="editForm">
+                <div class="form-group">
+                    <label for="username">Username :</label>
+                    <input type="text" name="username" placeholder="Username"
+                           value="{{ values.username }}" required/>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" >Firstname :</label>
+                    <input type="text" name="firstname" placeholder="FirstName"
+                           value="{{ values.firstname }}"  required/>
+                </div>
+                <div class="form-group">
+                    <label for="name">Lastname  :</label>
+                    <input type="text" name="name" placeholder="Lastname"
+                           value="{{ values.name }}"  required/>
+                </div>
+                <div class="form-group">
+                    <label for="mail">Mail :</label>
+                    <input type="email" name="mail" placeholder="Mail" value="{{ values.mail }}" required/>
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Date of Birth :</label>
+                    <input class="date" type="date" name="birthday" placeholder="birthday"
+                           value="{{ values.date_of_birth }}" required/>
+                </div>
+                <div class="form-group">
+                    <label for="role_id">Role :</label>
+                    <select name="role_id" id="">
+                        {% for role in roles %}
+                            {% if(role.id == values.role_id) %}
+                                <option selected value="{{ role.id }}">{{ role.label }}</option>
+                            {% else %}
+                                <option value="{{ role.id }}">{{ role.label }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group submit">
+                    <input type="submit" class="ghostBtn" value="save"/>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 </div>
-<div class="datas">
-    <p>
-        Stores : {{ stores }}
-    </p>
-    <p>
-        Categories : {{ categories }}
-    </p>
-</div>
+
+{% endblock %}

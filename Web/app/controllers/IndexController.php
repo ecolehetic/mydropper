@@ -2,6 +2,8 @@
 
 namespace MyDropper\Controllers;
 
+use MyDropper\Models\TrackerStore;
+use MyDropper\Models\TrackerUrl;
 use MyDropper\Models\Url;
 use MyDropper\Models\User;
 use MyDropper\Models\Store;
@@ -54,18 +56,37 @@ class IndexController extends BaseController
     public function admin_index()
     {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
-        
+
         $usersCount = User::count();
+
         $storesCount = Store::count();
+        $storesCountAll = Store::withTrashed()->count();
+
         $categoriesCount = Category::count();
+        $categoriesCountAll = Category::withTrashed()->count();
+
         $urlsCount = Url::count();
+        $urlsCountAll = Url::withTrashed()->count();
+
+        $trackersStoresCount = TrackerStore::count();
+        $trackersStoresCountAll = TrackerStore::withTrashed()->count();
+
+        $trackersUrlsCount = TrackerUrl::count();
+        $trackersUrlsCountAll = TrackerUrl::withTrashed()->count();
 
 
         $this->render(true, [
-            'usersCount'      => $usersCount,
-            'storesCount'     => $storesCount,
+            'usersCount' => $usersCount,
+            'storesCount' => $storesCount,
+            'storesCountAll' => $storesCountAll,
             'categoriesCount' => $categoriesCount,
-            'urlsCount'       => $urlsCount
+            'categoriesCountAll' => $categoriesCountAll,
+            'urlsCount' => $urlsCount,
+            'urlsCountAll' => $urlsCountAll,
+            'trackersStoresCount' => $trackersStoresCount,
+            'trackersStoresCountAll' => $trackersStoresCountAll,
+            'trackersUrlsCount' => $trackersUrlsCount,
+            'trackersUrlsCountAll' => $trackersUrlsCountAll,
         ]);
     }
 

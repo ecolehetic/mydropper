@@ -23,19 +23,50 @@ class Store extends Eloquent
     protected $table = 'stores';
     protected $guarded = ['id'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function users()
     {
         return $this->belongsTo('MyDropper\Models\User', 'user_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function categories()
     {
         return $this->belongsTo('MyDropper\Models\Category', 'category_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function trackerstores()
     {
         return $this->hasMany('MyDropper\Models\TrackerStore');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function urls(){
+        return $this->hasMany('MyDropper\Models\Url');
+    }
+
+    /**
+     * Do cascading deletion
+     * @return parent
+     * @throws \Exception
+     */
+    public function delete(){
+        foreach($this->trackerstores as $value){
+            $value->delete();
+        }
+        foreach($this->urls as $value){
+            $value->delete();
+        }
+        return parent::delete();
     }
 
     /**

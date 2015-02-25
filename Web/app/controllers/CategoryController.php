@@ -74,8 +74,9 @@ class CategoryController extends BaseController
         $categoryId = $this->f3->get('PARAMS.id');
 
         if (!empty($categoryId)) {
-            // TODO @nicolas -> delete in cascade ?
-            Category::destroy($categoryId);
+            $cat = Category::find($categoryId);
+            $cat->delete();
+
             $this->fMessage->set('Category deleted.', 'alert');
             $this->f3->reroute('/history', true);
         } else {

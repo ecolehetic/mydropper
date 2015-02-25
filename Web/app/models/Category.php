@@ -23,14 +23,32 @@ class Category extends Eloquent
     protected $table = 'categories';
     protected $guarded = array('id');
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function users()
     {
         return $this->belongsTo('MyDropper\Models\User', 'user_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function stores()
     {
         return $this->hasMany('MyDropper\Models\Store');
+    }
+
+    /**
+     * Do cascading deletion
+     * @return parent
+     * @throws \Exception
+     */
+    public function delete(){
+        foreach($this->stores as $value){
+            $value->delete();
+        }
+        return parent::delete();
     }
 
     /**

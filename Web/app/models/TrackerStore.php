@@ -8,6 +8,7 @@
 namespace MyDropper\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
 
 /**
  * Class TrackerStore
@@ -16,14 +17,23 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 class TrackerStore extends Eloquent
 {
 
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
     protected $table = 'trackstores';
     protected $guarded = array('id');
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function stores()
     {
         return $this->belongsTo('MyDropper\Models\Store', 'store_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function users()
     {
         return $this->belongsTo('MyDropper\Models\User', 'user_id');

@@ -20,19 +20,76 @@ class User extends Eloquent
     protected $table = 'users';
     protected $guarded = array('id');
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function stores()
     {
         return $this->hasMany('MyDropper\Models\Store');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function categories()
     {
         return $this->hasMany('MyDropper\Models\Category');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function urls()
+    {
+        return $this->hasMany('MyDropper\Models\Url');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function trackersStores()
+    {
+        return $this->hasMany('MyDropper\Models\TrackerStore');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function trackersUrls()
+    {
+        return $this->hasMany('MyDropper\Models\TrackerUrl');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function roles()
     {
         return $this->belongsTo('MyDropper\Models\Role', 'role_id');
+    }
+
+    /**
+     * Do cascading deletion
+     * @return parent
+     * @throws \Exception
+     */
+    public function delete(){
+        foreach ($this->stores as $value) {
+            $value->delete();
+        }
+        foreach ($this->categories as $value) {
+            $value->delete();
+        }
+        foreach ($this->urls as $value) {
+            $value->delete();
+        }
+        foreach ($this->trackersStores as $value) {
+            $value->delete();
+        }
+        foreach ($this->trackersUrls as $value) {
+            $value->delete();
+        }
+        return parent::delete();
     }
 
     /**

@@ -106,7 +106,8 @@ class StoresController extends BaseController
         if (!Store::isOwnedBy($id, $user->id)) {
             $this->f3->reroute('/history', true);
         }
-        if (Store::destroy($id) > 0) {
+        $store = Store::find($id);
+        if ($store->delete()) {
             $this->fMessage->set('Delete complete', 'error');
             $this->f3->reroute('/category/' . $cat_id, true);
         } else {

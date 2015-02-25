@@ -21,9 +21,41 @@ class Url extends Eloquent
     protected $guarded = array('id');
     protected $table = 'urls';
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function trackersUrls()
+    {
+        return $this->hasMany('MyDropper\Models\TrackerUrl');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function users()
     {
         return $this->belongsTo('MyDropper\Models\User', 'user_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function stores()
+    {
+        return $this->belongsTo('MyDropper\Models\Store', 'store_id');
+    }
+
+    /**
+     * Do cascading deletion
+     * @return parent
+     * @throws \Exception
+     */
+    public function delete()
+    {
+        foreach ($this->trackersUrls as $value) {
+            $value->delete();
+        }
+        return parent::delete();
     }
 
     /**
