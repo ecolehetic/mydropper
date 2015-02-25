@@ -99,7 +99,7 @@ var UI={
 						return;
 					}
 					self.attr('value', textData);
-					
+
 					if(self.prop("tagName")==="TEXTAREA"){
 						self.html(textData);
 					};
@@ -147,12 +147,16 @@ var UI={
 
 		renderSnippets : function(storesData){
 			/* ---- TEMPLATING ---- */
-
+			console.log(storesData);
 			for(var i = 0; i < storesData.length; i++) {
 				var snippets = "";
 
 				for(var j = 0; j < storesData[i].stores.length; j++) {
-					snippets += "<li class='md-dragElmt' data-text='"+ storesData[i].stores[j].store_description +"' draggable='true' data-type='Text'><i class='icon-tag'></i>" + storesData[i].stores[j].store_label + "</li>"
+					snippets +=
+					"<li class='md-dragElmt' data-link='" + storesData[i].stores[j].store_description
+					+ "' data-text='"+ storesData[i].stores[j].store_description
+					+ "' draggable='true' data-type='Text'><i class='icon-tag'></i>"
+					+ storesData[i].stores[j].store_label + "</li>"
 				}
 
 				var categoryHtml = "\

@@ -4,7 +4,8 @@
   "manifest_version": 2,
   "description": "My Dropper allows you to drag and drop your personal informations, your notes and track shortered url",
   "icons": {
-
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
     "128": "img/icon128.png"
   },
   "background": {
