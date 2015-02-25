@@ -12,7 +12,7 @@ Model = {
 
 	getUserSnippets : function(callback) {
 		Model.getDataUser(function(data) {
-			$.post("http://localhost:8080/api/stores", {user_id: data.user.id, token_id: data.user.token_api}, "json")
+			$.post("http://mydropper.mathieuletyrant.com/api/stores", {user_id: data.user.id, token_id: data.user.token_api}, "json")
 				.done(function(response) {
 					callback.call(this,response);
 				}).fail(function(response) {
@@ -27,7 +27,7 @@ Model = {
 		chrome.storage.local.get('myDropperUser', function(chromeData){
 			var data = chromeData.myDropperUser;
 
-			$.post("http://localhost:8080/api/trackstore", {
+			$.post("http://mydropper.mathieuletyrant.com/api/trackstore", {
 				user_id: data.user.id,
 				token_id: data.user.token_api,
 				store_id: storeId,
@@ -44,7 +44,7 @@ Model = {
 
 
 	logIn : function(usr, pwd, callback) {
-		$.post("http://localhost:8080/api/connect", {username: usr, password: pwd}, "json")
+		$.post("http://mydropper.mathieuletyrant.com/api/connect", {username: usr, password: pwd}, "json")
 			.done(function(response) {
 				if(response.success) {
 					chrome.storage.local.set({'myDropperUser': response}, function() {
