@@ -26,12 +26,20 @@ class CategoryController extends BaseController
             ));
 
             if ($is_valid === true) {
-                Category::create(array(
-                    'user_id' => $user->id,
-                    'label' => $this->f3->get('POST.category')
-                ));
-                $this->fMessage->set('Category added.');
+                $category = Category::where('label', '=', $this->f3->get('POST.category'))->first();
+
+                if(empty($category)){
+                    Category::create(array(
+                        'user_id' => $user->id,
+                        'label'   => $this->f3->get('POST.category')
+                    ));
+                    $this->fMessage->set('Category added.');
+                } else {
+                    $this->fMessage->set('You have already category with this name', 'error');
+                }
+
                 $this->f3->reroute('/history', true);
+
             }
         }
 

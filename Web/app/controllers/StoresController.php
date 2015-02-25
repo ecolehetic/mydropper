@@ -34,28 +34,36 @@ class StoresController extends BaseController
             $beNotice = $this->f3->get('POST.pushbullet');
 
             if ($is_valid) {
-                $post = $this->f3->get('POST');
-                $store = Store::create([
-                    'user_id'     => $user->id,
-                    'label'       => $post['label'],
-                    'descript'    => $post['descript'],
-                    'category_id' => $post['category_id'],
-                    'is_shorter' => !empty($trackUrl) ? 1 : 0
-                ]);
+                
+                $post         = $this->f3->get('POST');
+                $preventStore = Store::where('label', '=', $post['label'])->where('category_id', '=', $post['category_id'])->first();
 
-                // If user want trackUrl
-                if (!empty($trackUrl)) {
-                    Url::create([
-                        'user_id'   => $user->id,
-                        'store_id'  => $store->id,
-                        'token'     => Url::generateToken(),
-                        'be_notice' => !empty($beNotice) ? 1 : 0
+                if (empty($preventStore)) {
+                    $store = Store::create([
+                        'user_id'     => $user->id,
+                        'label'       => $post['label'],
+                        'descript'    => $post['descript'],
+                        'category_id' => $post['category_id'],
+                        'is_shorter' => !empty($trackUrl) ? 1 : 0
                     ]);
 
-                    $this->fMessage->set('Store added with a shorterLink.'); // TODO Change text
+                    // If user want trackUrl
+                    if (!empty($trackUrl)) {
+                        Url::create([
+                            'user_id'   => $user->id,
+                            'store_id'  => $store->id,
+                            'token'     => Url::generateToken(),
+                            'be_notice' => !empty($beNotice) ? 1 : 0
+                        ]);
+
+                        $this->fMessage->set('Store added with a shorterLink.'); // TODO Change text
+                    } else {
+                        $this->fMessage->set('Store added.');
+                    }
                 } else {
-                    $this->fMessage->set('Store added.');
+                    $this->fMessage->set('You already have a snippet with this name in this category.', 'error');
                 }
+
 
                 $this->f3->reroute('/history', true);
             }
