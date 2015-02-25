@@ -2,11 +2,12 @@ $blue: #1f282d;
 $darkBlue: #131c22;
 $blueHover: #2f363c;
 $lightBlue: #424950;
-$midGrey: #9f9fa0;
+$midGrey: #4a5058;
 $hoverSideBarLink: #bbe4f9;
 $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
 
 #sideBar {
+    background : $darkBlue;
     float: left;
     color: white;
     letter-spacing: 0.07rem;
@@ -45,6 +46,7 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
         padding-top: 110px;
         .button{
             margin-top : 30px;
+            margin-bottom : 30px;
         }
     }
     &.sideBarLeft {
@@ -58,12 +60,6 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
     #menu {
         .menuLink {
             transition: all 0.2s ease;
-            &:first-child {
-                border-top: none;
-            }
-            &:last-child {
-                border-bottom: 0;
-            }
         }
         .menuLink, .categoryElement {
             position: relative;
@@ -166,7 +162,7 @@ $mainFont: 'AvenirNext', 'HelveticaNeue', helvetica, arial, sans-serif;
                     }
                 }
                 &:last-child {
-                    border-bottom: 0;
+                    border-bottom: 1px solid $lightBlue;
                 }
                 &.active {
                     .snippetsList a {color : white;}
