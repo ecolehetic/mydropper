@@ -12,7 +12,11 @@
             <a href="{{ url('/category/delete', [categoryId]) }}" class="editCat deleteLink" data-del="category"><span>Delete the category</span></a>
 
             {% if stores is empty %}
-                No Snippet yet
+                <div id="noData">
+                    <img src="../assets/images/snippetIcon.png" alt="Add Snippet icon"/>
+                    You have to add a snippet. <br/>
+                    <a href="#" id="addSnippetAlias">Click here</a> to add a snippet.
+                </div>
             {% else %}
                 <ul class="cardList clearfix">
                     {% for store in stores %}

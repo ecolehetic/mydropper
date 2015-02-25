@@ -6,7 +6,6 @@ var UI = {
 	'initSize' : function() {
 		var widthPage = $(window).innerWidth();
 		// Header Left Part
-		UI.dashboard.$headerRight.innerWidth(widthPage - UI.nav.$searchBar.innerWidth() - 20);
 
 		// Container
 
@@ -29,7 +28,6 @@ var UI = {
 
 	'nav' : {
 		'burgerTrigger' : false,
-		'$searchBar' : $('#searchBar'),
 		'$burger' : $('#burger'),
 		'$catLink' : $('.categoryElement').find('a'),
 		'$allPlusMinus' : $('.categoryElement').find('.plusMinus'),
