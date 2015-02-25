@@ -54,17 +54,12 @@ class ApiController extends BaseController
                         'token_api' => $token
                     ]
                 ];
+
             } else {
-                $data = [
-                    'success' => false,
-                    'message' => "Error, the account is not in the database."
-                ];
+                $data = $this->returnError('Error, the account is not in the database.');
             }
         } else {
-            $data = [
-                'success' => false,
-                'message' => "Error, you need insert an username(POST.username) and password(POST.password)."
-            ];
+            $data = $this->returnError('Error, you need insert a username and a password.');
         }
 
         $this->render(false, $data);
@@ -125,16 +120,10 @@ class ApiController extends BaseController
                     }
                 }
             } else {
-                $data = [
-                    'success' => false,
-                    'message' => "Error, can't find an account with user_id(".$this->f3->get('POST.user_id').") and token_id(".$this->f3->get('POST.token_id').")."
-                ];
+                $data = $this->returnError("Error, can't find an account with user_id(".$this->f3->get('POST.user_id').") and token_id(".$this->f3->get('POST.token_id').".");
             }
         } else {
-            $data = [
-                'success' => false,
-                'message' => "Error, you need insert an userId(POST.user_id) and tokenId(POST.token_id)."
-            ];
+            $data = $this->returnError('Error, you need insert a userId and tokenId.');
         }
 
         $this->render(false, $data);
@@ -170,21 +159,12 @@ class ApiController extends BaseController
                     'on_url'   => $this->f3->get('POST.on_url'),
                     'full_url' => $this->f3->get('POST.full_url')
                 ));
-                $data = [
-                    'success' => true,
-                    'message' => 'Tracker added'
-                ];
+                $data = $this->returnSuccess('Tracker added');
             } else {
-                $data = [
-                    'success' => false,
-                    'message' => "Error, can't find an account with user_id(".$this->f3->get('POST.user_id').") and token_id(".$this->f3->get('POST.token_id').")."
-                ];
+                $data = $this->returnError("Error, can't find an account with user_id(".$this->f3->get('POST.user_id').") and token_id(".$this->f3->get('POST.token_id').").");
             }
         } else {
-            $data = [
-                'success' => false,
-                'message' => "Error, you need insert an tokenId(POST.token_id) and userId(POST.user_id) and storeId(POST.store_id) and onUrl(POST.on_url) and fullUrl(POST.full_url)."
-            ];
+            $data = $this->returnError("Error, you need insert an tokenId(POST.token_id) and userId(POST.user_id) and storeId(POST.store_id) and onUrl(POST.on_url) and fullUrl(POST.full_url).");
         }
 
         $this->render(false, $data);
@@ -317,5 +297,36 @@ class ApiController extends BaseController
 
             $this->render(false, $json);
         }
+    }
+
+
+    /**
+     * Return data for Error
+     *
+     * @param string $message
+     *
+     * @return array
+     */
+    private function returnError($message)
+    {
+        return [
+            'success' => false,
+            'message' => $message
+        ];
+    }
+
+    /**
+     * Return data for Success
+     *
+     * @param string $message
+     *
+     * @return array
+     */
+    private function returnSuccess($message)
+    {
+        return [
+            'success' => true,
+            'message' => $message
+        ];
     }
 }
