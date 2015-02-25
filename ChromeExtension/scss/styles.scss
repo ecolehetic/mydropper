@@ -125,6 +125,7 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
             h2 {
                 height: 60px;
                 line-height: 63px;
+                box-sizing: content-box !important;
                 font-weight : normal;
                 margin: 0;
                 cursor: pointer;
@@ -136,7 +137,10 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
                 position: relative;
                 z-index: 1;
                 font-size : 1em;
+                text-decoration : none;
+                font-style: normal;
                 color : #000111;
+                text-align: left;
                 background-image: -webkit-gradient(
                         linear,
                         left top,
@@ -160,7 +164,10 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
                 margin : auto;
                 transition : all 0.5s linear;
                 color : #000111;
+                text-align: left;
                 li {
+                    text-decoration : none;
+                    font-style: normal;
                     display: block;
                     width: 100%;
                     margin: auto;
@@ -174,6 +181,7 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
                     transition: all 0.5s ease;
                     font-size : 0.9em;
                     text-transform: capitalize;
+                    text-align: left;
                     &:first-child {
                         border-top : rgba(139, 141, 142,0.1);
                     }
