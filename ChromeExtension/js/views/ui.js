@@ -84,26 +84,33 @@ var UI={
 		initDroppable: function() {
 			$(".md-dropElmt").on('drop', function(event) {
 				//restore the md-dropElmt after dropevent
+
+				self = $(this);
 				$('.md-dropElmt').css('opacity', 1);
 				event.stopPropagation();$('#notLoggedInContainer').hide();
 				event.preventDefault();
 
-				$(this).attr('value',textData);
+				self.attr('value',textData);
 
 				//Check the Data Type accepted by the drop zone which got the drop event.
-				if ($(this).closest('.md-dropElmt').attr('data-accept-type') == "Text") {
+				if (self.closest('.md-dropElmt').attr('data-accept-type') == "Text") {
 					var textData = event.originalEvent.dataTransfer.getData('Text');
 					if (typeof textData == "undefined" || textData == "") {
 						return;
 					}
-					$(this).attr('value', textData);
+					self.attr('value', textData);
+					
+					if(self.prop("tagName")==="TEXTAREA"){
+						self.html(textData);
+					};
 				}
-				if ($(this).closest('.md-dropElmt').attr('data-accept-type') == "HTML") {
+
+				if (self.closest('.md-dropElmt').attr('data-accept-type') == "HTML") {
 					var htmlData = event.originalEvent.dataTransfer.getData('HTML');
 					if (typeof htmlData == "undefined" || htmlData == "") {
 						return;
 					}
-					$(this).html(htmlData);
+					self.html(htmlData);
 				}
 			});
 		},
