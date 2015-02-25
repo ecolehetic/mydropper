@@ -38,6 +38,9 @@ function initSideBarHandler() {
 		}
 	})
 
+
+	Model.getUserSnippets();
+
 	/* ---- Inject fonts ---- */
 	UI.sideBar.injectFonts();
 
