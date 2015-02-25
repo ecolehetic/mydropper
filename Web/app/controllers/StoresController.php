@@ -56,7 +56,12 @@ class StoresController extends BaseController
                             'be_notice' => !empty($beNotice) ? 1 : 0
                         ]);
 
-                        $this->fMessage->set('Store added with a shorterLink.'); // TODO Change text
+                        if (!empty($trackUrl)) {
+                            $this->fMessage->set('Store added with a tracker and you will be notice with Pushbullet.');
+                        } else {
+                            $this->fMessage->set('Store added with a tracker.');
+                        }
+
                     } else {
                         $this->fMessage->set('Store added.');
                     }
