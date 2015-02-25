@@ -9,15 +9,21 @@
     <div class="container">
         <div id="dashboard">
             <h1>History</h1>
-            <ul class="cardList clearfix">
-                {% for tracker in trackers %}
-                <li>
-                    <h3>{{ tracker.stores.label }}</h3>
-                    <span> <a target="_blank" href="{{ tracker.full_url }}">{{ tracker.on_url }}</a></span>
-                    <span>{{ tracker.created_at | date("d/m/Y H:i:s") }}</span>
-                </li>
-                {% endfor %}
-            </ul>
+            
+            {% if trackers is empty %}
+                We are sorry, you haven't history for now.
+            {% else %}
+                <ul class="cardList clearfix">
+                    {% for tracker in trackers %}
+                        <li>
+                            <h3>{{ tracker.stores.label }}</h3>
+                            <span> <a target="_blank" href="{{ tracker.full_url }}">{{ tracker.on_url }}</a></span>
+                            <span>{{ tracker.created_at | date("d/m/Y H:i:s") }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
         </div>
     </div>
 
