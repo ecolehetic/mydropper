@@ -2,7 +2,6 @@
 
 namespace MyDropper\Controllers;
 
-use MyDropper\Models\Store;
 use MyDropper\Models\TrackerStore;
 
 /**

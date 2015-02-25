@@ -8,7 +8,7 @@
 
     <div class="container">
         <div id="dashboard">
-            <h1>{{ categoryName }}</h1>
+            <h1>{{ categoryName | capitalize }}</h1>
             <a href="{{ url('/category/delete', [categoryId]) }}" class="editCat deleteLink" data-del="category"><span>Delete the category</span></a>
             <ul class="cardList clearfix">
                 {% for store in stores %}
