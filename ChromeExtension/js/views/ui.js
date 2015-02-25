@@ -202,15 +202,12 @@ var UI={
 				function() {
 					var offset = $(this).offset(),
 						el = $('#moreInfo');
-					el.css('top', offset.top + 5);
+					el.css('top', offset.top- $(document).scrollTop() + 5);
 					el.stop().html($(this).data('text')).fadeIn(600);
 				}, function() {
-					$('#moreInfo').stop().fadeOut(3000);
+					$('#moreInfo').stop().fadeOut(1000);
 				}
 			);
 		}
-
 	}
-
-
 }
