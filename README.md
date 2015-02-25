@@ -6,7 +6,8 @@ Permettre le stockage de données personnelles susceptibles d’être utilisées
 
 ### Liens
 --------------------
-* [Site WEB](http://google.com)
+* [Site WEB](http://mydropper.mathieuletyrant.com)
+* [Extension Chrome](https://chrome.google.com/webstore/detail/my-dropper/abchmallljbphbkjchahcogmjglkloao/related)
 * [Wiki](https://github.com/ecolehetic/PHP14/wiki/Configuration)
 
 #### L'EQUIPE
@@ -20,8 +21,15 @@ Permettre le stockage de données personnelles susceptibles d’être utilisées
 | Wasim FOUAD  | Community Manager  |
 
 #### TECHNOLOGIES
+Back :
+* Composer (Autoloading)
 * Fat Free Framework
-* Compass (Scss)
+* Twig (Templating)
+* Eloquent (ORM)
+* GUMP (Validation Forms)
+
+Front :
+* Gulp
+* Compass
 * jQuery
-* Composer
-* GUMP Validator
+* Chartist JS
