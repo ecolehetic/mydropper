@@ -21,6 +21,24 @@ Model = {
 		});
 	},
 
+	sendDropData : function(storeId, onUrl, fullUrl){
+		Model.getDataUser(function(data) {
+			$.post("http://localhost:8080/api/trackstore", {
+				user_id: data.user.id,
+				token_id: data.user.token_api,
+				store_id: storeId,
+				on_url: onUrl,
+				full_url : fullUrl
+			}, "json")
+				.done(function(response) {
+					console.log('Drop data send : success');
+				}).fail(function(response) {
+					console.log('Drop data send to server : fail');
+				});
+		});
+	},
+
+
 	logIn : function(usr, pwd, callback) {
 		$.post("http://localhost:8080/api/connect", {username: usr, password: pwd}, "json")
 			.done(function(response) {

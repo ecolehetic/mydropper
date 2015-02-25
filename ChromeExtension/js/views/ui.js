@@ -11,8 +11,6 @@ var UI={
 			sideBarElmt.style.display = 'block';
 			sideBarElmt.classList.add('showBar');
 
-			Ext.sidebarIsOpen = true;
-
 			// --- Load logo
 			$('#myDropperLogo').attr('src', chrome.extension.getURL("img/logo.png"));
 		},
@@ -28,7 +26,6 @@ var UI={
 			setTimeout(function() {
 				// Remove the sideBar
 				el.remove();
-				sideBar.isOpen = false;
 			}, 1000);
 		},
 
@@ -79,7 +76,7 @@ var UI={
 				"@font-face { font-family: 'AvenirNext'; src: url('"
 				+ chrome.extension.getURL("fonts/Avenir/Avenir-Next_7.woff")
 				+ "'); font-style: normal; font-weight:  700;} " +
-				"@font-face { font-family: 'icomoon'; src: url('"
+				"@font-face { font-family: 'icomoonMD'; src: url('"
 				+ chrome.extension.getURL("fonts/Icomoon/icomoon.woff")
 				+ "'); font-style: normal; font-weight:  400;} "
 			document.head.appendChild (styleNode);
@@ -90,17 +87,13 @@ var UI={
 		logIn: function() {
 			$('#loggedInContainer').show().removeClass('hidden');
 			$('#notLoggedInContainer').hide();
-		},
-
-		logOut: function() {
-			UI.sideBar.close();
 		}
 	},
 
 	loggedPanel : {
 		renderSnippets : function(storesData){
 			/* ---- TEMPLATING ---- */
-			console.log(storesData);
+			//console.log(storesData);
 			for(var i = 0; i < storesData.length; i++) {
 				var snippets = "";
 
@@ -109,10 +102,12 @@ var UI={
 					if(storesData[i].stores[j].store_shorter) {
 						shorteredLink ="data-link='" + storesData[i].stores[j].store_url_shorter + "'";
 					}
+
 					snippets +=
 					"<li class='md-dragElmt' " + shorteredLink
 					+ "data-text='"+ storesData[i].stores[j].store_description
-					+ "' draggable='true' data-type='Text'><i class='icon-tag'></i>"
+					+ "' data-sid='"+ storesData[i].stores[j].store_id
+					+ "' draggable='true' data-type='Text'><i class='MDIcon-tag'></i>"
 					+ storesData[i].stores[j].store_label + "</li>"
 				}
 
@@ -120,7 +115,7 @@ var UI={
 					<li class='category'><h2>" + storesData[i].category_label + "</h2>\
 						<span>-</span>\
 						<ul class='dragList'>\
-							<li class='editCat'><a href='http://mydropper.mathieuletyrant.com/category/"+ storesData[i].category_id+"' target='_blank'><i class='icon-list'></i></i>Edit category</a></li>"
+							<li class='editCat'><a href='http://mydropper.mathieuletyrant.com/category/"+ storesData[i].category_id+"' target='_blank'><i class='MDIcon-list'></i></i>Edit category</a></li>"
 								+ snippets +
 						"</ul>\
 					</li>";

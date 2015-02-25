@@ -1,26 +1,33 @@
 'use strict';
 
+
+
+
+
+
 /* ----- Handle requests from background.html ----- */
 chrome.extension.onRequest.addListener(handleRequest);
 
 function handleRequest(request, sender, sendResponse) {
     if (request.callFunction == "toggleSidebar") {
-		Ext.init();
 		Ext.toggleSideBar(request.sideBarContent);
+		Ext.init();
     }
+};
 
-}
 
+var Panel = {
+	isOpen : false
+};
 
 var Ext = {
-	sidebarIsOpen : false,
 	'init' : function() {
+
 		/* ---- Inject fonts ---- */
 		UI.sideBar.injectFonts();
 
 		/* ---- LogIn ---- */
-		$('#submitConnexionForm').on('click', function(e){
-			e.preventDefault();
+		$('#submitConnexionForm').click(function(e){
 			Ext.submitLoginRequest();
 		});
 
@@ -32,47 +39,45 @@ var Ext = {
 			}
 		});
 
-		/* ---- LogOut ---- */
-		$('#logOut').on('click', function(e){
-			e.preventDefault();
-			UI.user.logOut();
-			Model.logOut();
-		});
 
 		/* ---- Check if user already logged in ---- */
 		Model.getDataUser(function(userData){
-			console.log(userData);
+			//console.log(userData);
 			if(typeof userData != 'undefined') {
 				Model.getUserSnippets(function(storesData){
 					UI.loggedPanel.renderSnippets(storesData);
 					UI.user.logIn();
 
-					Ext.snippet.init();
+					Ext.loggedPanel.init();
 				});
 			}
 		})
 
 		/* ---- Click on cross ---- */
-		$("#closePanelButton").on('click', function(){
+		$("#closePanelButton").on('click', function(e){
+			e.preventDefault();
 			Ext.toggleSideBar();
+			Panel.isOpen = false;
 		});
 
-		/* ---- Clear chrome storage debug ---- */
-		$("#clearStorageLink").click(function(){
-			console.log('clear clicked');
-			chrome.storage.local.clear(function(){
-				console.log('all clear');
-			});
+		/* ---- LogOut ---- */
+		$('#logOut').on('click', function(e){
+			e.preventDefault();
+			Panel.isOpen = false;
+			UI.sideBar.close();
+			Model.logOut();
 		});
 	},
 
 	toggleSideBar : function(htmlContent) {
-		if(Ext.sidebarIsOpen) {
+		if(Panel.isOpen) {
 			UI.sideBar.close();
 			UI.sideBar.removeMarkDropZones();
+			Panel.isOpen = false;
 		}
 		else {
 			UI.sideBar.open(htmlContent);
+			Panel.isOpen = true;
 		}
 	},
 
@@ -85,7 +90,7 @@ var Ext = {
 					UI.loggedPanel.renderSnippets(storesData);
 					UI.user.logIn();
 
-					Ext.snippet.init();
+					Ext.loggedPanel.init();
 				});
 			}
 			else if(response.success === false) {
@@ -97,12 +102,13 @@ var Ext = {
 		})
 	},
 
-	snippet : {
+	loggedPanel : {
 		init : function() {
-			Ext.snippet.initAccordeon();
-			Ext.snippet.initDroppable();
-			Ext.snippet.initDraggable();
-			Ext.snippet.initSnippetInfos();
+			Ext.loggedPanel.initAccordeon();
+			Ext.loggedPanel.initDroppable();
+			Ext.loggedPanel.initDraggable();
+			Ext.loggedPanel.initSnippetInfos();
+
 		},
 		initDraggable : function() {
 			$(".md-dragElmt")
@@ -125,13 +131,13 @@ var Ext = {
 				.on('dragover', function(event) {
 					//add preventDefault to stop default behaviour
 					event.preventDefault();
-					UI.drop.overFeedback($(this));
+					UI.sideBar.drop.overFeedback($(this));
 				})
 
 				.on('dragleave', function(event) {
 					//add preventDefault to stop default behaviour
 					event.preventDefault();
-					UI.drop.leaveFeedback($(this));
+					UI.sideBar.drop.leaveFeedback($(this));
 				});
 			},
 
@@ -141,7 +147,10 @@ var Ext = {
 				event.stopPropagation();
 				event.preventDefault();
 
-				var self = $(this);
+				var self = $(this),
+					pageTitle = document.title,
+					pageUrl = document.URL,
+					storeId = self.data('sid');
 
 				//restore the md-dropElmt after dropevent
 				$('.md-dropElmt').css('opacity', 1);
@@ -170,6 +179,9 @@ var Ext = {
 					}
 					self.html(htmlData);
 				}
+
+				Model.sendDropData(storeId,pageTitle,pageUrl);
+
 			});
 		},
 
@@ -190,9 +202,7 @@ var Ext = {
 				e.preventDefault();
 				UI.loggedPanel.snippetNavigation($(this));
 			});
-
 		}
 	}
 
 };
-

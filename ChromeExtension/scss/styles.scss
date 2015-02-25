@@ -193,10 +193,14 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
                     }
 
                     i {
-                        font-family : 'icomoon' !important;
+                        font-family : 'icomoonMD' !important;
                         margin-right : 20px;
                         transition: all 0.5s ease;
+                        &:before {
+                            font-family : 'icomoonMD' !important;
+                        }
                     }
+
                 }
                 li.md-draging {
                     opacity: 0.9;
