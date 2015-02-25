@@ -5,20 +5,44 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Edit Store</h1>
-    <form method="post" action="{{ url('/stores/edit', [id]) }}">
-        <div class="form-group">
-            <label for="label">Label</label>
-            <input type="text" placeholder="Label" name="label"
-                   value="{{ values.label ? values.label : '' }}" required/>
+
+    <div class="container">
+        <div id="dashboard">
+            <h1>Edit store</h1>
+
+            <form method="POST" action="{{ url('/stores/edit', [id]) }}" class="formData">
+                <div class="form-group">
+                    <label for="dataName">Name :</label>
+                    <input type="text" name="label" placeholder="Name" value="{{ values.label ? values.label : '' }}" required/>
+                </div>
+                <div class="form-group">
+                    <label for="content">Content :</label>
+                    <textarea name="descript">{{ values.descript ? values.descript : '' }}</textarea>
+                </div>
+
+                <div class="form-group disabled checkboxContainer">
+                    {% if be_notice is not null  %}
+                        {% if be_notice == 1 %}
+                            <input type="checkbox" class="checkbox" name="pushbullet" value="true" checked>
+                        {% else %}
+                            <input type="checkbox" class="checkbox" name="pushbullet" value="false">
+                        {% endif %}
+                        Use Pushbullet for sending notification me at every click.<br>
+                    {% endif %}
+                </div>
+
+                <input type="hidden" name="storeId" value="{{ id }}"/>
+
+                <div class="form-group">
+                    <input type="submit" class="hidden" value="addData"/>
+                    <a href="#" id="submitEdit" class="ghostBtn submitBtn clearfix animated fadeInRight">
+                        <span>Validate</span>
+                    </a>
+                </div>
+
+            </form>
+
         </div>
-        <div class="form-group">
-            <label for="descript">Description</label>
-            <textarea name="descript">
-                {{ values.descript ? values.descript : '' }}
-            </textarea>
-        </div>
-        <input type="submit" value="Ajouter">
-    </form>
+    </div>
 
 {% endblock %}

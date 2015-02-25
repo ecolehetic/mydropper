@@ -5,6 +5,7 @@ namespace MyDropper\Controllers;
 use MyDropper\Models\Store;
 use MyDropper\Models\Category;
 use MyDropper\Models\Url;
+use MyDropper\Models\User;
 
 /**
  * Class StoresController
@@ -75,22 +76,57 @@ class StoresController extends BaseController
         }
 
         if ($this->f3->get('POST')) {
-            $post = $this->f3->get('POST');
-            $store = Store::find($id);
-            $store->label = $post['label'];
-            $store->descript = $post['descript'];
-            $store->save();
 
-            $this->fMessage->set('Record Updated');
-            $this->f3->reroute('/history', true);
+            $store    = Store::find($this->f3->get('POST.storeId'));
+            $is_valid = User::checkForm($this->f3->get('POST'), [
+                'label'    => 'required',
+                'descript' => 'required'
+            ]);
+
+            if ($is_valid === true) {
+
+                // Save Store
+                $store->label       = $this->f3->get('POST.label');
+                $store->descript    = $this->f3->get('POST.descript');
+                $store->save();
+
+                $url                = Url::where('store_id', '=', $store->id)->first();
+                $pushbulletValue    = $this->f3->get('POST.pushbullet');
+
+                // Save URL if user want to be notice
+                if ($url->be_notice == 1 && !isset($pushbulletValue)) {
+                    $url->be_notice = 0;
+                    $url->save();
+                } else if (isset($pushbulletValue)) {
+                    $url->be_notice = 1;
+                    $url->save();
+                }
+
+                $this->fMessage->set('You have update your snippet with success.');
+                $this->f3->reroute('/category/'.$store->category_id);
+
+            } else {
+                $this->fMessage->set('You must insert the name and the content.', 'error');
+                $this->f3->reroute('/stores/edit/'.$store->id);
+            }
+
         } else {
             $store = Store::find($id);
+
+            if ($store->is_shorter == 1) {
+                $url        = Url::where('store_id', '=', $store->id)->first();
+                $beNotice   = $url->be_notice;
+            } else {
+                $beNotice = null;
+            }
+
+            $this->render(true, [
+                'values'    => $store,
+                'id'        => $id,
+                'be_notice' => $beNotice
+            ]);
         }
 
-        $this->render(true, [
-            'values' => $store,
-            'id'     => $id
-        ]);
     }
 
     /**

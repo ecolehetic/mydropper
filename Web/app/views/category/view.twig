@@ -16,7 +16,7 @@
                         <h3>{{ store.label }}</h3>
                         <span>{{ store.descript | slice(0, 50) }}</span>
                         <span>
-                            <a class="icon-pencil" href=""></a>
+                            <a class="icon-pencil" href="{{ url('/stores/edit', [store.id]) }}"></a>
                             <a class="icon-bin deleteLink" data-del="snippet" href="{{ url('/stores/delete', [store.id, store.category_id]) }}"></a>
                         </span>
                     </li>
