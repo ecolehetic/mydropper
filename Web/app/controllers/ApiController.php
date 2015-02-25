@@ -75,7 +75,7 @@ class ApiController extends BaseController
      * POST /api/stores
      *
      * @param int user_id
-     * @param int token_id
+     * @param string token_id
      */
     public function getStores()
     {
@@ -144,7 +144,7 @@ class ApiController extends BaseController
      * Add a tracker when user drag an store on a website
      * POST /api/trackstore
      *
-     * @param int token_id
+     * @param string token_id
      * @param int user_id
      * @param int store_id
      * @param string on_url
@@ -170,6 +170,10 @@ class ApiController extends BaseController
                     'on_url'   => $this->f3->get('POST.on_url'),
                     'full_url' => $this->f3->get('POST.full_url')
                 ));
+                $data = [
+                    'success' => true,
+                    'message' => 'Tracker added'
+                ];
             } else {
                 $data = [
                     'success' => false,
