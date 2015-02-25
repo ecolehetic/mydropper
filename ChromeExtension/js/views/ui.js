@@ -1,6 +1,5 @@
 'use strict';
 
-
 var UI={
 
     sideBar : {
@@ -12,7 +11,7 @@ var UI={
 			sideBarElmt.style.display = 'block';
 			sideBarElmt.classList.add('showBar');
 
-			sideBar.isOpen = true;
+			Ext.sidebarIsOpen = true;
 
 			// --- Load logo
 			$('#myDropperLogo').attr('src', chrome.extension.getURL("img/logo.png"));
@@ -32,6 +31,20 @@ var UI={
 				sideBar.isOpen = false;
 			}, 1000);
 		},
+
+		drop : {
+			overFeedback : function(el) {
+				el.addClass('md-dragOver');
+			},
+			leaveFeedback : function(el) {
+				el.removeClass('md-dragOver');
+			}
+		},
+
+		dragEndFeedback : function (){
+			$('.md-dropElmt').removeClass('md-dragOver')
+		},
+
 
 		addMarkDropZones : function() {
 			$('input').each(function() {
@@ -55,65 +68,6 @@ var UI={
 			$('.md-dropElmt').removeClass('md-dropElmt');
 		},
 
-
-		initDraggable: function() {
-			$(".md-dragElmt")
-				.on('dragstart', function(event) {
-					event.originalEvent.dataTransfer.setData($(this).data('type'), $(this).data('text'));
-				})
-
-				.on('dragend', function(event) {
-					event.preventDefault();
-					$('.md-dropElmt').removeClass('md-dragOver')
-				});
-
-			$(".md-dropElmt")
-				.on('dragover', function(event) {
-					//add preventDefault to stop default behaviour
-					event.preventDefault();
-					$(this).addClass('md-dragOver');
-				})
-
-				.on('dragleave', function(event) {
-					//add preventDefault to stop default behaviour
-					event.preventDefault();
-					$(this).removeClass('md-dragOver');
-				});
-		},
-
-		initDroppable: function() {
-			$(".md-dropElmt").on('drop', function(event) {
-				//restore the md-dropElmt after dropevent
-
-				self = $(this);
-				$('.md-dropElmt').css('opacity', 1);
-				event.stopPropagation();$('#notLoggedInContainer').hide();
-				event.preventDefault();
-
-				self.attr('value',textData);
-
-				//Check the Data Type accepted by the drop zone which got the drop event.
-				if (self.closest('.md-dropElmt').attr('data-accept-type') == "Text") {
-					var textData = event.originalEvent.dataTransfer.getData('Text');
-					if (typeof textData == "undefined" || textData == "") {
-						return;
-					}
-					self.attr('value', textData);
-
-					if(self.prop("tagName")==="TEXTAREA"){
-						self.html(textData);
-					};
-				}
-
-				if (self.closest('.md-dropElmt').attr('data-accept-type') == "HTML") {
-					var htmlData = event.originalEvent.dataTransfer.getData('HTML');
-					if (typeof htmlData == "undefined" || htmlData == "") {
-						return;
-					}
-					self.html(htmlData);
-				}
-			});
-		},
 
 		injectFonts : function() {
 			var styleNode           = document.createElement ("style");
@@ -144,7 +98,6 @@ var UI={
 	},
 
 	loggedPanel : {
-
 		renderSnippets : function(storesData){
 			/* ---- TEMPLATING ---- */
 			console.log(storesData);
@@ -152,9 +105,13 @@ var UI={
 				var snippets = "";
 
 				for(var j = 0; j < storesData[i].stores.length; j++) {
+					var shorteredLink ="";
+					if(storesData[i].stores[j].store_shorter) {
+						shorteredLink ="data-link='" + storesData[i].stores[j].store_url_shorter + "'";
+					}
 					snippets +=
-					"<li class='md-dragElmt' data-link='" + storesData[i].stores[j].store_description
-					+ "' data-text='"+ storesData[i].stores[j].store_description
+					"<li class='md-dragElmt' " + shorteredLink
+					+ "data-text='"+ storesData[i].stores[j].store_description
 					+ "' draggable='true' data-type='Text'><i class='icon-tag'></i>"
 					+ storesData[i].stores[j].store_label + "</li>"
 				}
@@ -171,54 +128,39 @@ var UI={
 				$('#accordeon').append(categoryHtml);
 			}
 
-			UI.loggedPanel.initAccordeon();
-			UI.loggedPanel.snippetInfos();
 			UI.sideBar.addMarkDropZones();
-			UI.sideBar.initDroppable();
-			UI.sideBar.initDraggable();
 		},
 
-		initAccordeon : function() {
-			var $catLink = $('#accordeon .category h2');
-			var $dragList = $('#accordeon .category .dragList');
+		snippetNavigation : function(self) {
+			var $navMenuParent = self.parent(),
+				$navSous = self.siblings('.dragList'),
+				$allNavSous = $('.category .dragList'),
+				$allPlusMoins = $('.category  span');
 
-			$catLink.click(function(e) {
-				e.preventDefault();
+			if (!$navSous.hasClass("open")) {
+				// Si navSous fermé
+				$allNavSous.removeClass('open');
+				$navSous.addClass('open');
+			} else {
+				// Si navSous ouvert
+				$allNavSous.removeClass('open');
+			}
+		},
 
-				var $navMenuParent = $(this).parent();
-				var $navSous = $(this).siblings('.dragList');
-				var $allNavSous = $('.category .dragList');
-				var $plusMoins = $(this).siblings('span');
-				var $allPlusMoins = $('.category  span');
-
-
-				if (!$navSous.hasClass("open")) {
-					// Si navSous fermé
-					$allNavSous.removeClass('open');
-					$navSous.addClass('open');
-
-					$allPlusMoins.html('+');
-					$plusMoins.html('-');
-
+		snippetInfos : {
+			'displayInfo' : function(self) {
+				var offset = self.offset(),
+					el = $('#moreInfo')	;
+				el.css('top', offset.top- $(document).scrollTop() + 5);
+				if(self.data('link')) {
+					el.stop().html(self.data('text') + ' (shortered)').fadeIn(600);
 				} else {
-					// Si navSous ouvert
-					$allNavSous.removeClass('open');
-					$allPlusMoins.html('+');
+					el.stop().html(self.data('text')).fadeIn(600);
 				}
-			});
-		},
-
-		snippetInfos : function() {
-			$('.md-dragElmt').hover(
-				function() {
-					var offset = $(this).offset(),
-						el = $('#moreInfo');
-					el.css('top', offset.top- $(document).scrollTop() + 5);
-					el.stop().html($(this).data('text')).fadeIn(600);
-				}, function() {
-					$('#moreInfo').stop().fadeOut(1000);
-				}
-			);
+			},
+			'removeInfo' : function() {
+				$('#moreInfo').stop().fadeOut(1000);
+			}
 		}
 	}
 }
