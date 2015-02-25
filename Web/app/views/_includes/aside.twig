@@ -1,5 +1,4 @@
 <header>
-    <input id="searchBar" type="text" placeholder="Search" />
     <div class="headerContent">{{ aside.name | upper }} {{ aside.firstname | capitalize }}</div>
     <div id="profile">
         <a href="{{ url('/profile') }}">
@@ -46,15 +45,15 @@
                             <span class="plusMinus">+</span>
                             <ul class="snippetsList">
                                 <li>
-                                    <a href="{{ url('/store/add') }}" class="addSnippetLink" data-id="{{ category.category_id }}">
-                                        <i class="icon-plus"></i>
-                                        Add a snippet
+                                    <a href="{{ url('/category', [category.category_id]) }}">
+                                        <i class="icon-list"></i>
+                                        Edit category
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('/category', [category.category_id]) }}">
-                                        <i class="icon-list"></i>
-                                        View all snippets
+                                    <a href="{{ url('/store/add') }}" class="addSnippetLink" data-id="{{ category.category_id }}">
+                                        <i class="icon-plus"></i>
+                                        Add a snippet
                                     </a>
                                 </li>
                                 {% for store in category.stores %}

@@ -19,11 +19,11 @@
     </div>
 
     <!-- Flash messages -->
-    <!--<ul id="flashMsg">
+    <ul id="flashMsg">
         <li class="animated fadeInRight error">Snippet Added</li>
         <li class="animated fadeInRight alert">Doesnt Work, Nononono nononono it doeesnt</li>
         <li class="animated fadeInRight">Doesnt Work, Nononono nononono it doeesnt</li>
-    </ul>
+    </ul
     <!-- Popin for add category and snippets -->
     <div id="popin">
         <div id="popinBg" class="animated fadeIn">

@@ -74,13 +74,20 @@ $(document).ready(function() {
 		$('#categoryID').attr('value',$dataId);
 	});
 
-	$('.snippet').on('click', function(e){
+	$('#addSnippetAlias').on('click', function(e){
+	    e.preventDefault();
+		$('.categoryElement.active .addSnippetLink').trigger('click');
+	});
+
+	/*$('.snippet').on('click', function(e){
 	    e.preventDefault();
 		var $dataId = $(this).data('sid');
 		var name = $('.name',this).text();
 		UI.popin.showSnippetPopin('edit', name);
 		$('#snippetID').attr('value', $dataId);
-	});
+	});*/
+
+
 
 	// ----- Close PopIn
 	$('#closePopin, #popinBg').on('click', function(e) {

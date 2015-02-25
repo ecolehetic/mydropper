@@ -168,7 +168,7 @@
 }
 
 .icon-tag:before {
-  content: "\e605";
+  content: "\e605" !important;
 }
 
 .icon-tags:before {
@@ -688,11 +688,6 @@
 .icon-settings:before {
     font-family : 'icomoon2';
     content: "\e602";
-}
-
-.icon-tag:before {
-    font-family : 'icomoon2';
-    content: "\e603";
 }
 
 .icon-eye:before {

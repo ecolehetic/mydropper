@@ -97,7 +97,7 @@ $greyLight: #e3e2e3;
 
         }
     }
-    #noHistory {
+    #noData {
         margin-top : 7%;
         text-align : center;
         color: #bbe4f9;
@@ -110,6 +110,13 @@ $greyLight: #e3e2e3;
             width : 200px;
             margin : 60px auto;
             display: block;
+        }
+        a {
+            text-decoration: underline;
+            color : #e3e2e3;
+            &:hover {
+                color : #D3D3D3;
+            }
         }
     }
 }
