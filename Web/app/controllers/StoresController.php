@@ -34,7 +34,7 @@ class StoresController extends BaseController
             $beNotice = $this->f3->get('POST.pushbullet');
 
             if ($is_valid) {
-                
+
                 $post         = $this->f3->get('POST');
                 $preventStore = Store::where('label', '=', $post['label'])->where('category_id', '=', $post['category_id'])->first();
 

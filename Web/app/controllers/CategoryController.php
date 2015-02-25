@@ -35,7 +35,7 @@ class CategoryController extends BaseController
                     ));
                     $this->fMessage->set('Category added.');
                 } else {
-                    $this->fMessage->set('You have already category with this name', 'error');
+                    $this->fMessage->set('You already have a category with this name.', 'error');
                 }
 
                 $this->f3->reroute('/history', true);
