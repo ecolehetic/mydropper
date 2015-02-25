@@ -114,12 +114,17 @@ var Ext = {
 			$(".md-dragElmt")
 				.on('dragstart', function(event) {
 					var self = $(this);
+					// Add shortered link instead of description if it's a tracked link
+
 					if(self.data('link')) {
 						event.originalEvent.dataTransfer.setData(self.data('type'), self.data('link'));
 					}
 					else {
 						event.originalEvent.dataTransfer.setData(self.data('type'), self.data('text'));
 					}
+
+					// Send the storeID for history
+					event.originalEvent.dataTransfer.setData('storeid', self.data('storeid'))
 				})
 
 				.on('dragend', function(event) {
@@ -148,9 +153,9 @@ var Ext = {
 				event.preventDefault();
 
 				var self = $(this),
-					pageTitle = document.title,
+					pageTitle = window.location.hostname,
 					pageUrl = document.URL,
-					storeId = self.data('sid');
+					storeId = event.originalEvent.dataTransfer.getData('storeid');
 
 				//restore the md-dropElmt after dropevent
 				$('.md-dropElmt').css('opacity', 1);
@@ -180,7 +185,7 @@ var Ext = {
 					self.html(htmlData);
 				}
 
-				Model.sendDropData(storeId,pageTitle,pageUrl);
+				Model.sendDropData(storeId ,pageTitle,pageUrl);
 
 			});
 		},

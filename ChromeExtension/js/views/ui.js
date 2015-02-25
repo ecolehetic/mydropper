@@ -105,8 +105,8 @@ var UI={
 
 					snippets +=
 					"<li class='md-dragElmt' " + shorteredLink
-					+ "data-text='"+ storesData[i].stores[j].store_description
-					+ "' data-sid='"+ storesData[i].stores[j].store_id
+					+ "data-storeid='"+ storesData[i].stores[j].store_id
+					+ "' data-text='"+ storesData[i].stores[j].store_description
 					+ "' draggable='true' data-type='Text'><i class='MDIcon-tag'></i>"
 					+ storesData[i].stores[j].store_label + "</li>"
 				}

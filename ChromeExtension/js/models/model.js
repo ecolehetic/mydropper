@@ -22,7 +22,11 @@ Model = {
 	},
 
 	sendDropData : function(storeId, onUrl, fullUrl){
-		Model.getDataUser(function(data) {
+		console.log(storeId + '  ' +  onUrl + '   ' + fullUrl);
+
+		chrome.storage.local.get('myDropperUser', function(chromeData){
+			var data = chromeData.myDropperUser;
+
 			$.post("http://localhost:8080/api/trackstore", {
 				user_id: data.user.id,
 				token_id: data.user.token_api,
