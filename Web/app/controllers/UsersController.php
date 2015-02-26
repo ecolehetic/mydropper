@@ -44,13 +44,6 @@ class UsersController extends BaseController
 
 
             if ($username === null && $mail === null) {
-                if ($this->f3->get('FILES.avatar')) {
-                    $upload = new Upload();
-                    $path   = $upload->save($this->f3->get('FILES.avatar'));
-                } else {
-                    // TODO default path img is not persist in db
-                    $path   = 'assets/images/avatar-demo.jpg';
-                }
 
                 // Create the User
                 $user = User::create(array(
@@ -100,7 +93,7 @@ class UsersController extends BaseController
     }
 
     /**
-     * TODO il sert ce todo ?
+     *
      */
     public function delete()
     {
