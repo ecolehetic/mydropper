@@ -57,7 +57,6 @@ class UrlController extends BaseController
     {
         try {
             $pushbullet = new Pushbullet($this->f3->get('PUSHBULLET_API_KEY'));
-            //$pushbullet->pushLink($mail, 'MyDropper', 'http://mydropper:8888', sprintf(self::MESSAGE, strtolower($url)));
             $pushbullet->pushNote($mail, 'MyDropper', sprintf(self::MESSAGE, strtolower($url)));
 
             return true;

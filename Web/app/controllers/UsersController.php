@@ -3,7 +3,6 @@
 namespace MyDropper\controllers;
 
 use MyDropper\helpers\Mail;
-use MyDropper\helpers\Upload;
 use MyDropper\helpers\Url ;
 use MyDropper\models\Category;
 use MyDropper\models\Role;

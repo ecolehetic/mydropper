@@ -57,39 +57,39 @@ class IndexController extends BaseController
     {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
 
-        $users = User::with('roles')->get();
+        $users                      = User::with('roles')->get();
 
-        $usersCount = User::count();
+        $usersCount                 = User::count();
 
-        $storesCount = Store::count();
-        $storesCountAll = Store::withTrashed()->count();
+        $storesCount                = Store::count();
+        $storesCountAll             = Store::withTrashed()->count();
 
-        $categoriesCount = Category::count();
-        $categoriesCountAll = Category::withTrashed()->count();
+        $categoriesCount            = Category::count();
+        $categoriesCountAll         = Category::withTrashed()->count();
 
-        $urlsCount = Url::count();
-        $urlsCountAll = Url::withTrashed()->count();
+        $urlsCount                  = Url::count();
+        $urlsCountAll               = Url::withTrashed()->count();
 
-        $trackersStoresCount = TrackerStore::count();
-        $trackersStoresCountAll = TrackerStore::withTrashed()->count();
+        $trackersStoresCount        = TrackerStore::count();
+        $trackersStoresCountAll     = TrackerStore::withTrashed()->count();
 
-        $trackersUrlsCount = TrackerUrl::count();
-        $trackersUrlsCountAll = TrackerUrl::withTrashed()->count();
+        $trackersUrlsCount          = TrackerUrl::count();
+        $trackersUrlsCountAll       = TrackerUrl::withTrashed()->count();
 
 
         $this->render(true, [
-            'usersCount' => $usersCount,
-            'storesCount' => $storesCount,
-            'storesCountAll' => $storesCountAll,
-            'categoriesCount' => $categoriesCount,
-            'categoriesCountAll' => $categoriesCountAll,
-            'urlsCount' => $urlsCount,
-            'urlsCountAll' => $urlsCountAll,
-            'trackersStoresCount' => $trackersStoresCount,
+            'usersCount'             => $usersCount,
+            'storesCount'            => $storesCount,
+            'storesCountAll'         => $storesCountAll,
+            'categoriesCount'        => $categoriesCount,
+            'categoriesCountAll'     => $categoriesCountAll,
+            'urlsCount'              => $urlsCount,
+            'urlsCountAll'           => $urlsCountAll,
+            'trackersStoresCount'    => $trackersStoresCount,
             'trackersStoresCountAll' => $trackersStoresCountAll,
-            'trackersUrlsCount' => $trackersUrlsCount,
-            'trackersUrlsCountAll' => $trackersUrlsCountAll,
-            'users'=>$users
+            'trackersUrlsCount'      => $trackersUrlsCount,
+            'trackersUrlsCountAll'   => $trackersUrlsCountAll,
+            'users'                  => $users
         ]);
     }
 
