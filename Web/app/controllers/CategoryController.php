@@ -77,17 +77,18 @@ class CategoryController extends BaseController
      */
     public function delete()
     {
-        $this->need->logged('/users/login')->execute();
+        $user = $this->need->logged('/users/login')->user()->execute();
 
         $categoryId = $this->f3->get('PARAMS.id');
 
-        if (!empty($categoryId)) {
+        if (!empty($categoryId) && Category::isOwnedBy($categoryId, $user->id)) {
             $cat = Category::find($categoryId);
             $cat->delete();
 
             $this->fMessage->set('Category deleted.', 'alert');
             $this->f3->reroute('/history', true);
         } else {
+            $this->fMessage->set('You are not allowed to delete this.', 'alert');
             $this->f3->reroute('/history', true);
         }
     }

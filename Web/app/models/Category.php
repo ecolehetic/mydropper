@@ -62,7 +62,7 @@ class Category extends Eloquent
     {
         if ($cat_id !== null && $user_id !== null) {
             $cat = Category::find($cat_id);
-            if ($cat->user_id == $user_id) {
+            if ($store !== null && $cat->user_id == $user_id) {
                 return true;
             } else {
                 return false;

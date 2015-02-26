@@ -353,16 +353,16 @@
         },
         {
             "name": "ivkos/pushbullet",
-            "version": "2.9.1",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivkos/PushBullet-for-PHP.git",
-                "reference": "41ea12951b6057d1de79340f7ae2346fb8802348"
+                "reference": "a8f3073beab43fead85ffcd165ee24efd8d63e06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivkos/PushBullet-for-PHP/zipball/41ea12951b6057d1de79340f7ae2346fb8802348",
-                "reference": "41ea12951b6057d1de79340f7ae2346fb8802348",
+                "url": "https://api.github.com/repos/ivkos/PushBullet-for-PHP/zipball/a8f3073beab43fead85ffcd165ee24efd8d63e06",
+                "reference": "a8f3073beab43fead85ffcd165ee24efd8d63e06",
                 "shasum": ""
             },
             "require": {
@@ -398,7 +398,7 @@
                 "pushbullet",
                 "windows"
             ],
-            "time": "2015-02-04 20:14:12"
+            "time": "2015-02-25 09:18:30"
         },
         {
             "name": "nesbot/carbon",
