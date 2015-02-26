@@ -213,12 +213,18 @@ var UI = {
 			switch(self.attr('id')){
 				case 'tooltip-history':
 					$content.find('.nextTooltip').data('next','tooltip-tracking').show();
+					if(!$('#tooltip-tracking').is(':visible')) {
+						$content.find('.nextTooltip').hide();
+					}
 					$content.find('p').html('When you drag and drop a snippet from your My Dropper extension to a website, it will be added to your history.' +
 					'This page will be filled as you start using the My Dropper extension designed for Google Chrome.');
 					break;
 
 				case 'tooltip-tracking' :
 					$content.find('.nextTooltip').data('next','tooltip-category').show();
+					if(!$('#tooltip-category').is(':visible')) {
+						$content.find('.nextTooltip').hide();
+					}
 					$content.find('p').html('You want to know who uses your data ? ' +
 					'Thanks to the Tracking feature, you will know exactly how many times your links have been clicked and evalute the visibility of your links.');
 					break;
