@@ -9,6 +9,17 @@ $(document).ready(function() {
 		UI.initSize();
 	});
 
+	/* ---- INSTALL CHROME EXTENSION LINK --- */
+	$('.installExtensionLink').on('click', function(e){
+		chrome.webstore.install('',
+			function(){
+				console.log('Installation launched');
+			},
+			function(){
+				console.log('Auto Installation failed');
+			}
+		);
+	});
 	/* ---- TOGGLE BURGER MENU ---- */
 	$('#burger').on('click', function(e) {
 		e.preventDefault();

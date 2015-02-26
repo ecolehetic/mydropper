@@ -365,6 +365,9 @@
         opacity : 1;
         font-size : 1;
     }
+    .installExtensionLink {
+        display :none;
+    }
 }
 
 @media screen and (max-width: 350px) {

@@ -101,6 +101,7 @@ $greyLight: #e3e2e3;
         margin-top : 7%;
         text-align : center;
         color: #bbe4f9;
+        font-weight: bold;
         font-size: 1.5rem;
         text-align: center;
         text-transform: uppercase;
@@ -118,5 +119,19 @@ $greyLight: #e3e2e3;
                 color : #D3D3D3;
             }
         }
+
+    }
+}
+
+.installExtensionLink {
+    color : black !important;
+    border : 1px solid black;
+    padding : 10px 20px 9px 20px;
+    font-weight : normal;
+    text-decoration: none !important;
+    font-size : 1.15rem;
+    transition: all 0.5s ease;
+    &:hover {
+        color : #777777;
     }
 }
