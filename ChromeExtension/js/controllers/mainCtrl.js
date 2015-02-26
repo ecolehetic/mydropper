@@ -1,10 +1,6 @@
 'use strict';
 
 
-
-
-
-
 /* ----- Handle requests from background.html ----- */
 chrome.extension.onRequest.addListener(handleRequest);
 

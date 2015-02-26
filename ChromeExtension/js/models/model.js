@@ -22,7 +22,6 @@ Model = {
 	},
 
 	sendDropData : function(storeId, onUrl, fullUrl){
-		console.log(storeId + '  ' +  onUrl + '   ' + fullUrl);
 
 		chrome.storage.local.get('myDropperUser', function(chromeData){
 			var data = chromeData.myDropperUser;

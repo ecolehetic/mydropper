@@ -1,5 +1,51 @@
 {% extends '_layout/layout.twig' %}
 
 {% block content %}
-    <!-- TODO -->
+
+    <div id="howItWorks" class="homeSidePage">
+        <a href="{{ url('/') }}" class="ghostBtn btnHome">
+            Back
+        </a>
+        <div id="topContainer">
+            <h1>How it works ?</h1>
+            <p>
+                Do not worry, My Dropper is not complicated! <br/>Rather, it is made to make your life easier by bringing together the information
+                <br/>you're likely to use frequently on the web. Few clicks are enough to enjoy My Dropper.
+            </p>
+        </div>
+
+        <div id="howItWorksContainer">
+            <section>
+                <img src="../assets/images/howItWorks-Extension.png" alt=""/>
+                <div class="text">
+                    <h2>Join my Dropper</h2>
+                    <p>Download the My Dropper extension for Chrome from the Web Store</p>
+                </div>
+            </section>
+            <section class="grey">
+                <img class="responsiveImg" src="../assets/images/howItWorks-Extension.png" alt=""/>
+                <div class="text">
+                    <h2>Create your contents</h2>
+                    <p>Create categories and add your contents</p>
+                </div>
+                <img src="../assets/images/howItWorks-Extension.png" alt=""/>
+            </section>
+            <section>
+                <img src="../assets/images/howItWorks-Extension.png" alt=""/>
+                <div class="text">
+                    <h2>Drag and Drop</h2>
+                    <p>Drag and drop your contents from the My Dropper extension to any website</p>
+                </div>
+            </section>
+            <section class="grey">
+                <img class="responsiveImg" src="../assets/images/howItWorks-Extension.png" alt=""/>
+                <div class="text">
+                    <h2>Edit your informations</h2>
+                    <p>You can edit, add, or delete your contents anytime from the My Dropper website !</p>
+                </div>
+                <img src="../assets/images/howItWorks-Extension.png" alt=""/>
+            </section>
+        </div>
+    </div>
+
 {% endblock %}
