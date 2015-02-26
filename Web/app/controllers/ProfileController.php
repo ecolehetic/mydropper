@@ -67,8 +67,8 @@ class ProfileController extends BaseController
                 $upload           = new Upload();
                 $path             = $upload->save($this->f3->get('FILES.avatar'));
                 if (!empty($path)) {
-                    if ($user->avatar_url){
-                        if(file_exists($user->avatar_url) && ($user->avatar_url != self::DEFAULT_AVATAR)){
+                    if ($user->avatar_url) {
+                        if (file_exists($user->avatar_url) && ($user->avatar_url != self::DEFAULT_AVATAR)) {
                             unlink($user->avatar_url);
                         }
                     }

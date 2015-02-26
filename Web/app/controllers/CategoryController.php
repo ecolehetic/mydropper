@@ -28,7 +28,7 @@ class CategoryController extends BaseController
             if ($is_valid === true) {
                 $category = Category::where('label', '=', $this->f3->get('POST.category'))->first();
 
-                if(empty($category)){
+                if (empty($category)) {
                     Category::create(array(
                         'user_id' => $user->id,
                         'label'   => $this->f3->get('POST.category')
@@ -39,7 +39,6 @@ class CategoryController extends BaseController
                 }
 
                 $this->f3->reroute('/history', true);
-
             }
         }
 

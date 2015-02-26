@@ -34,7 +34,6 @@ class StoresController extends BaseController
             $beNotice = $this->f3->get('POST.pushbullet');
 
             if ($is_valid) {
-
                 $post         = $this->f3->get('POST');
                 $preventStore = Store::where('label', '=', $post['label'])->where('category_id', '=', $post['category_id'])->first();
 
@@ -61,7 +60,6 @@ class StoresController extends BaseController
                         } else {
                             $this->fMessage->set('Store added with a tracker.');
                         }
-
                     } else {
                         $this->fMessage->set('Store added.');
                     }
@@ -89,7 +87,6 @@ class StoresController extends BaseController
         }
 
         if ($this->f3->get('POST')) {
-
             $store    = Store::find($this->f3->get('POST.storeId'));
             $is_valid = User::checkForm($this->f3->get('POST'), [
                 'label'    => 'required',
@@ -111,7 +108,7 @@ class StoresController extends BaseController
                     if ($url->be_notice == 1 && !isset($pushbulletValue)) {
                         $url->be_notice = 0;
                         $url->save();
-                    } else if (isset($pushbulletValue)) {
+                    } elseif (isset($pushbulletValue)) {
                         $url->be_notice = 1;
                         $url->save();
                     }
@@ -119,12 +116,10 @@ class StoresController extends BaseController
 
                 $this->fMessage->set('You have update your snippet with success.');
                 $this->f3->reroute('/category/'.$store->category_id);
-
             } else {
                 $this->fMessage->set('You must insert the name and the content.', 'error');
                 $this->f3->reroute('/stores/edit/'.$store->id);
             }
-
         } else {
             $store = Store::find($id);
 
@@ -141,7 +136,6 @@ class StoresController extends BaseController
                 'be_notice' => $beNotice
             ]);
         }
-
     }
 
     /**

@@ -44,8 +44,9 @@ class Category extends Eloquent
      * @return parent
      * @throws \Exception
      */
-    public function delete(){
-        foreach($this->stores as $value){
+    public function delete()
+    {
+        foreach ($this->stores as $value) {
             $value->delete();
         }
         return parent::delete();

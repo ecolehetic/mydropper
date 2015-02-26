@@ -54,7 +54,6 @@ class ApiController extends BaseController
                         'token_api' => $token
                     ]
                 ];
-
             } else {
                 $data = $this->returnError('Error, the account is not in the database.');
             }
@@ -97,7 +96,6 @@ class ApiController extends BaseController
                     $stores = Store::where('category_id', $categories[$i]->id)->get();
 
                     for ($j = 0; $j < count($stores); $j++) {
-
                         if ($stores[$j]->is_shorter) {
                             $url = Url::where('store_id', '=', $stores[$j]->id)->first();
                             $data[$i]['stores'][] = [

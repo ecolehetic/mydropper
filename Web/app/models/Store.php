@@ -50,7 +50,8 @@ class Store extends Eloquent
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function urls(){
+    public function urls()
+    {
         return $this->hasMany('MyDropper\models\Url');
     }
 
@@ -59,11 +60,12 @@ class Store extends Eloquent
      * @return parent
      * @throws \Exception
      */
-    public function delete(){
-        foreach($this->trackerstores as $value){
+    public function delete()
+    {
+        foreach ($this->trackerstores as $value) {
             $value->delete();
         }
-        foreach($this->urls as $value){
+        foreach ($this->urls as $value) {
             $value->delete();
         }
         return parent::delete();
