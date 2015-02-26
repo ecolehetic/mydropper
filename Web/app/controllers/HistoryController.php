@@ -1,8 +1,8 @@
 <?php
 
-namespace MyDropper\Controllers;
+namespace MyDropper\controllers;
 
-use MyDropper\Models\TrackerStore;
+use MyDropper\models\TrackerStore;
 
 /**
  * Class HistoryController

@@ -1,6 +1,6 @@
 <?php
 
-namespace MyDropper\Controllers;
+namespace MyDropper\controllers;
 
 /**
  * Class TrackingController

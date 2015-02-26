@@ -1,6 +1,6 @@
 <?php
 
-namespace MyDropper\Helpers;
+namespace MyDropper\helpers;
 
 use Twig_Autoloader;
 use Twig_Environment;

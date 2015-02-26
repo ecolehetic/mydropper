@@ -13,8 +13,8 @@ use MyDropper\Helpers\Database;
  */
 $f3 = Base::instance();
 
-$f3->config('app/Config/config.ini');
-$f3->config('app/Config/routes.ini');
+$f3->config('app/config/config.ini');
+$f3->config('app/config/routes.ini');
 
 /*
  * Twig

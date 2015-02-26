@@ -1,11 +1,11 @@
 <?php
 
-namespace MyDropper\Controllers;
+namespace MyDropper\controllers;
 
-use MyDropper\Models\Store;
-use MyDropper\Models\Category;
-use MyDropper\Models\Url;
-use MyDropper\Models\User;
+use MyDropper\models\Store;
+use MyDropper\models\Category;
+use MyDropper\models\Url;
+use MyDropper\models\User;
 
 /**
  * Class StoresController

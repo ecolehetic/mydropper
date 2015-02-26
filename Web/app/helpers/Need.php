@@ -1,8 +1,8 @@
 <?php
 
-namespace MyDropper\Helpers;
+namespace MyDropper\helpers;
 
-use MyDropper\Models\User;
+use MyDropper\models\User;
 
 /**
  * Class Need

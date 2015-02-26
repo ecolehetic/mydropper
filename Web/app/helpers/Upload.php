@@ -1,6 +1,6 @@
 <?php
 
-namespace MyDropper\Helpers;
+namespace MyDropper\helpers;
 
 /**
  * Class Upload

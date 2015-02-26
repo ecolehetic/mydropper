@@ -1,9 +1,9 @@
 <?php
 
-namespace MyDropper\Controllers;
+namespace MyDropper\controllers;
 
-use MyDropper\Helpers\Upload;
-use MyDropper\Models\User;
+use MyDropper\helpers\Upload;
+use MyDropper\models\User;
 
 /**
  * Class ProfileController

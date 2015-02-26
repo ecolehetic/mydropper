@@ -5,7 +5,7 @@
  * The model name must be the same name of the table but in the singular
  * Else : protected $table = 'name_table'
  */
-namespace MyDropper\Models;
+namespace MyDropper\models;
 
 use GUMP;
 use Illuminate\Database\Eloquent\Model as Eloquent;

@@ -1,6 +1,6 @@
 <?php
 
-namespace MyDropper\Helpers;
+namespace MyDropper\helpers;
 
 /**
  * Class Seo
@@ -16,7 +16,7 @@ class Seo
      */
     private function __construct()
     {
-        $this->settings = require(dirname(__DIR__) . '/Config/seo.php');
+        $this->settings = require(dirname(__DIR__) . '/config/seo.php');
     }
 
     /**

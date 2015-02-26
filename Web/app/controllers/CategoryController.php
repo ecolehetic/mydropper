@@ -1,9 +1,9 @@
 <?php
 
-namespace MyDropper\Controllers;
+namespace MyDropper\controllers;
 
-use MyDropper\Models\Category;
-use MyDropper\Models\Store;
+use MyDropper\models\Category;
+use MyDropper\models\Store;
 
 /**
  * Class CategoryController

@@ -1,17 +1,17 @@
 <?php
 
-namespace MyDropper\Controllers;
+namespace MyDropper\controllers;
 
-use MyDropper\Helpers\Mail;
-use MyDropper\Helpers\Upload;
-use MyDropper\Helpers\Url ;
-use MyDropper\Models\Category;
-use MyDropper\Models\Role;
-use MyDropper\Models\Store;
-use MyDropper\Models\User;
-use MyDropper\Models\Url as UrlModel;
-use MyDropper\Models\TrackerStore;
-use MyDropper\Models\TrackerUrl;
+use MyDropper\helpers\Mail;
+use MyDropper\helpers\Upload;
+use MyDropper\helpers\Url ;
+use MyDropper\models\Category;
+use MyDropper\models\Role;
+use MyDropper\models\Store;
+use MyDropper\models\User;
+use MyDropper\models\Url as UrlModel;
+use MyDropper\models\TrackerStore;
+use MyDropper\models\TrackerUrl;
 
 /**
  * Class UsersController

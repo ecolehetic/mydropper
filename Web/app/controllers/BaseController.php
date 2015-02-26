@@ -1,12 +1,12 @@
 <?php
 
-namespace MyDropper\Controllers;
+namespace MyDropper\controllers;
 
-use MyDropper\Helpers\FlashMessage;
-use MyDropper\Helpers\Need;
-use MyDropper\Helpers\Seo;
-use MyDropper\Models\Store;
-use MyDropper\Models\User;
+use MyDropper\helpers\FlashMessage;
+use MyDropper\helpers\Need;
+use MyDropper\helpers\Seo;
+use MyDropper\models\Store;
+use MyDropper\models\User;
 
 /**
  * Class BaseController

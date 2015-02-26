@@ -1,6 +1,6 @@
 <?php
 
-namespace Mydropper\Helpers;
+namespace Mydropper\helpers;
 
 /**
  * Class BaseHelper

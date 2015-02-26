@@ -1,10 +1,10 @@
 <?php
 
-namespace MyDropper\Controllers;
+namespace MyDropper\controllers;
 
-use MyDropper\Models\Store;
-use MyDropper\Models\TrackerUrl;
-use MyDropper\Models\Url;
+use MyDropper\models\Store;
+use MyDropper\models\TrackerUrl;
+use MyDropper\models\Url;
 use Pushbullet;
 
 /**
