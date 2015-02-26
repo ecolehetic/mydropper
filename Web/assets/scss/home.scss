@@ -35,11 +35,17 @@ $greySectionTxt : #282828;
         ul {
             width : 90%;
             list-style: none;
-            padding : 10px 5% 10px 5%;
+            padding : 10px 5% 7px 5%;
             li{
                 display : inline-block;
                 color:  white;
                 margin-right : 5%;
+            }
+            li:last-child {
+                float : right;
+                margin-right : 0;
+                font-size : 0.8rem;
+                margin-top : 5px;
             }
         }
     }
@@ -425,7 +431,7 @@ $greySectionTxt : #282828;
             p {
                 text-align : left;
                 width : 100%;
-                margin : 0;
+                margin : 0;max-width : 450px;
             }
         }
         &:after {

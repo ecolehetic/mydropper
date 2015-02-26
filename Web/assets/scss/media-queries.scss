@@ -419,6 +419,9 @@
     .homeSidePage #topContainer {
         height: 250px;
     }
+    #homePage footer ul li:last-child {
+        display : none;
+    }
 }
 
 @media screen and (max-width: 350px) {

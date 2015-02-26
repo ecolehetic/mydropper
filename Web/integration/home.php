@@ -3,7 +3,9 @@
 	<body>
 		<div id="homePage" class="landing">
             <div class="homeContainer">
-                <img src='../assets/images/myDropper-logo.png' id="logo" alt="logo MyDropper">
+                <a href="/">
+                    <img src='../assets/images/logo.png' id="logo" alt="logo MyDropper">
+                </a>
                 <h1>MyDropper.io</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi esse et iusto sequi. Accusantiustrum nenda dolore, eos.</p>
 
@@ -19,6 +21,7 @@
                 <ul>
                     <li><a href="who-we-are.php">Who are we ?</a></li>
                     <li><a href="how-it-works.php">How it works ?</a></li>
+                    <li>Copyright Hetic Equipe 14</li>
                 </ul>
             </footer>
         </div>
