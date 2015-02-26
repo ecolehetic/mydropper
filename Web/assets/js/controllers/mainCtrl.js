@@ -1,7 +1,6 @@
 "use strict";
 
 $(document).ready(function() {
-
 	/* ---- INIT SIZE ---- */
 	UI.renderSize();
 
@@ -60,18 +59,27 @@ $(document).ready(function() {
 		$(this).siblings("input[type='submit']").trigger('click');
 	});
 
-	/* ---- TOOLTIPS ---- */
+	/* ---- TOOLTIPS CHECK ---- */
+	
+
+	/* ---- TOOLTIPS EVENT ---- */
+
 	$('.tooltipsCircle').on('click', function(e){
 	    UI.tooltips.show($(this));
 	});
 
 	$('#crossTp').on('click', function(e){
 	    e.preventDefault();
-		UI.tooltips.close($(this));
+		var $this = $(this);
+		Model.LS.set($this.parent().data('current'), true);
+		UI.tooltips.close($this);
 	});
+
 	$('.nextTooltip').on('click', function(e){
 	    e.preventDefault();
-		UI.tooltips.next($(this));
+		var $this = $(this);
+		Model.LS.set($this.parent().data('current'), true);
+		UI.tooltips.next($this);
 	});
 
 

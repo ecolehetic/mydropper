@@ -56,8 +56,10 @@ var Model = {
 		set : function(item,value) {
 			localStorage.setItem(item, value);
 		},
-		get : function(item) {
-			localStorage.getItem(item);
+		TpTest : function() {
+			if(!localStorage.getItem('tpTest')) {
+				localStorage.setItem('tpTest', {});
+			}
 		}
 
 	}

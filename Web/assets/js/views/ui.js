@@ -241,11 +241,13 @@ var UI = {
 		'next' : function(self) {
 			$('#'+ self.parent().data('current')).fadeOut();
 			UI.tooltips.show($('#' + self.data('next')));
+
 		},
 
 		'close' : function(self) {
 			$('#tooltipsContent').fadeOut();
 			$('#'+ self.parent().data('current')).fadeOut();
+
 		},
  		'getPosition' : function() {
 			var tpPos = [];
