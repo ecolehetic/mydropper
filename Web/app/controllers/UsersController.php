@@ -188,9 +188,9 @@ class UsersController extends BaseController
                     $token
                 ));
 
-                // Seed Mail
+                // Send Mail
                 $mail = new Mail();
-                $mail->seed('lostpassword_first_step', $this->f3->get('POST.mail'), array(
+                $mail->send('lostpassword_first_step', $this->f3->get('POST.mail'), array(
                     'subject' => 'Mot de passe oublié',
                     'link'    => $url
                 ));
@@ -230,9 +230,9 @@ class UsersController extends BaseController
             $user->password = $this->crypt($newPassword);
             $user->save();
 
-            // Seed a mail with new Password
+            // Send a mail with new Password
             $mail = new Mail();
-            $mail->seed('lostpassword_final_step', $userInformations->mail, array(
+            $mail->send('lostpassword_final_step', $userInformations->mail, array(
                 'subject'  => 'Mot de passe oublié',
                 'password' => $newPassword
             ));
@@ -349,13 +349,12 @@ class UsersController extends BaseController
         if ($userId) {
             $user = User::find($userId);
 
-            // Seed Mail
-            // TODO Mathieu : Unable to find template "mail/default.twig" (looked into: app/Views).
-            //$mail = new Mail();
-            //$mail->seed('default', $user->mail, array(
-            //    'subject'     => 'Deleted account',
-            //    'contentHtml' => "Your account has been delete by an administrator of the Mydropper.io"
-            //));
+            // Send Mail
+            $mail = new Mail();
+            $mail->send('default', $user->mail, array(
+                'subject'     => 'Deleted account',
+                'content' => "Your account has been delete by an administrator of the Mydropper"
+            ));
             $user->delete();
 
             $this->fMessage->set('The account is deleted', 'alert');

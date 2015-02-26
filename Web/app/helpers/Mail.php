@@ -39,7 +39,7 @@ class Mail extends BaseHelper
      *
      * @return bool
      */
-    public function seed($template = 'default', $to, $data = array())
+    public function send($template = 'default', $to, $data = array())
     {
         $this->smtp->set('Content-type', 'text/html; charset=UTF-8');
         $this->smtp->set('From', '"MyDropper" <' . $this->f3->get('MAIL_USER') . '>');
@@ -83,7 +83,7 @@ class Mail extends BaseHelper
      */
     private function layoutMail($template, $firstname, $content = array())
     {
-        $template = $this->twig->loadTemplate('mail/' . $template . '.twig');
+        $template = $this->twig->loadTemplate('_mail/' . $template . '.twig');
 
         $content['firstname'] = $firstname;
 
