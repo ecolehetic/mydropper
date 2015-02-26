@@ -3,23 +3,15 @@
 $(document).ready(function() {
 
 	/* ---- INIT SIZE ---- */
-	UI.initSize();
+	UI.renderSize();
+	UI.tooltips.render();
 
 	$(window).on('resize', function() {
-		UI.initSize();
+		UI.renderSize();
+		UI.tooltips.render();
 	});
 
-	/* ---- INSTALL CHROME EXTENSION LINK --- */
-	$('.installExtensionLink').on('click', function(e){
-		chrome.webstore.install('',
-			function(){
-				console.log('Installation launched');
-			},
-			function(){
-				console.log('Auto Installation failed');
-			}
-		);
-	});
+
 	/* ---- TOGGLE BURGER MENU ---- */
 	$('#burger').on('click', function(e) {
 		e.preventDefault();
@@ -67,6 +59,19 @@ $(document).ready(function() {
 		$(this).siblings("input[type='submit']").trigger('click');
 	});
 
+	/* ---- TOOLTIPS ---- */
+	$('.tooltipsCircle').on('click', function(e){
+	    UI.tooltips.show($(this));
+	});
+
+	$('#crossTp').on('click', function(e){
+	    e.preventDefault();
+	    $('#tooltipsContent').fadeOut();
+	});
+	$('.nextTooltip').on('click', function(e){
+	    e.preventDefault();
+		UI.tooltips.next($(this));
+	});
 
 	/* ---- POPIN ADD DATA ----*/
 
@@ -89,14 +94,6 @@ $(document).ready(function() {
 	    e.preventDefault();
 		$('.categoryElement.active .addSnippetLink').trigger('click');
 	});
-
-	/*$('.snippet').on('click', function(e){
-	    e.preventDefault();
-		var $dataId = $(this).data('sid');
-		var name = $('.name',this).text();
-		UI.popin.showSnippetPopin('edit', name);
-		$('#snippetID').attr('value', $dataId);
-	});*/
 
 
 

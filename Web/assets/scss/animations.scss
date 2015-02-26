@@ -113,6 +113,26 @@
     }
 }
 
+@keyframes pulse {
+    0%,  100% {
+        transform : scale(1);
+    }
+
+    50% {
+        transform : scale(1.15);
+    }
+}
+
+@keyframes littlePulse {
+    0%,  100% {
+        transform : scale(1);
+    }
+
+    50% {
+        transform : scale(1.03);
+    }
+}
+
 .zoomIn {
     animation-name: zoomIn;
 }

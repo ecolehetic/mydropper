@@ -21,7 +21,16 @@
 <!-- POPIN -->
 {% include '_includes/popin.twig' %}
 
+
 <div id="sideBar">
+    <i class="tooltipsCircle" id="tooltip-history" data-ref="historyLink"></i>
+    <i class="tooltipsCircle" id="tooltip-tracking" data-ref="trackingLink"></i>
+    <i class="tooltipsCircle" id="tooltip-category" data-ref="categoryElement"></i>
+    <div id="tooltipsContent">
+        <div id="crossTp" class="tipViewed">&times</div>
+        <p>When you drag and drop a snippet from your My Dropper extension to a website, it will be added to your history. This page will be filled as you start using the My Dropper extension designed for Google Chrome. </p>
+        <a href="#" class="nextTooltip tipViewed" data-next="">Next</a>
+    </div>
     <nav>
         <ul id="menu">
             {% if(aside.role_id == 2) %}
@@ -29,7 +38,7 @@
                     <a href="{{ url('/admin') }}"><i class="icon-dashboard"></i> Administration</a>
                 </li>
             {% endif %}
-            <li class="menuLink {{ (aside.active['path'] == 'history') ? 'active' : '' }}" id="dashboardLink">
+            <li class="menuLink {{ (aside.active['path'] == 'history') ? 'active' : '' }}" id="historyLink">
                 <a href="{{ url('/history') }}"><i class="icon-dashboard"></i> History</a>
             </li>
 
