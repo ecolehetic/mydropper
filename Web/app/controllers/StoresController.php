@@ -107,12 +107,14 @@ class StoresController extends BaseController
                 $pushbulletValue    = $this->f3->get('POST.pushbullet');
 
                 // Save URL if user want to be notice
-                if ($url->be_notice == 1 && !isset($pushbulletValue)) {
-                    $url->be_notice = 0;
-                    $url->save();
-                } else if (isset($pushbulletValue)) {
-                    $url->be_notice = 1;
-                    $url->save();
+                if (isset($url->be_notice)) {
+                    if ($url->be_notice == 1 && !isset($pushbulletValue)) {
+                        $url->be_notice = 0;
+                        $url->save();
+                    } else if (isset($pushbulletValue)) {
+                        $url->be_notice = 1;
+                        $url->save();
+                    }
                 }
 
                 $this->fMessage->set('You have update your snippet with success.');
