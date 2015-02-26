@@ -70,7 +70,7 @@ class StoresController extends BaseController
                 }
 
 
-                $this->f3->reroute('/history', true);
+                $this->f3->reroute('/category/'.$post['category_id'], true);
             }
         }
     }
