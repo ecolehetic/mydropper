@@ -63,9 +63,11 @@ $blueOpacityTopGraph: #1AAAF2;
             height: 200px;
             float: left;
             position : relative;
-            cursor : pointer;
             .ct-series-a path:first-child {
                 fill: $blueOpacityTopGraph !important;
+            }
+            svg {
+                cursor : pointer;
             }
         }
     }
@@ -177,5 +179,14 @@ $blueOpacityTopGraph: #1AAAF2;
             text-align : center;
             text-transform: uppercase;
         }
+
+    }
+    #noGraphData {
+        width : 80%;
+        max-width : 600px;
+        margin : auto;
+        padding : 100px 0;
+        text-align : center;
+        font-size : 1.2rem;
     }
 }

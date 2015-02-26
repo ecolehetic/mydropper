@@ -4,7 +4,8 @@ var GraphUI = {
 
 	'category' : {
 		'render' : function(selector, importLabels, importSeries){
-			console.log('importSeries : ' +importSeries);
+			$('.categoryGraphContainer').show();
+			$('#noGraphData').remove();
 			new Chartist.Line(selector, {
 				labels: importLabels,
 				series: importSeries
@@ -14,6 +15,12 @@ var GraphUI = {
 			});
 
 			GraphUI.renderHoverInfos(selector, 'categoryGraphTooltip');
+		},
+		'noData' : function() {
+			$('.categoryGraphContainer').hide();
+			$('#noGraphData').remove();
+			$('#snippetGraphList').after('<div id="noGraphData">When you drag and drop a snippet including a link from the My Dropper extension to another website, the tracking informations for your link are store in this page.\
+			Start using the extension for Chrome and drag and drop your contents to any website.</div>')
 		}
 	},
 

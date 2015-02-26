@@ -65,7 +65,11 @@ $(document).ready(function() {
 		/* ---- CATEGORY CHART ---- */
 		Model.tracking.getCategoryGraphData(cat, from, to, function(catLabels, catSeries){
 			var catSelector = '.categoryGraph';
-			GraphUI.category.render(catSelector, catLabels, catSeries);
+			if(catLabels[0]=="N/A") {
+				GraphUI.category.noData();
+			} else {
+				GraphUI.category.render(catSelector, catLabels, catSeries);
+			}
 		});
 
 		/* ---- TRACKED LINK CHARTS ---- */
@@ -99,9 +103,7 @@ $(document).ready(function() {
 					GraphUI.snippet.render(graphSettings);
 				}
 			}
-			else {
-				$('#snippetGraphList').html('<li class="noTrackedLink">No tracked link yet</li>')
-			}
+
 		});
 
 	}

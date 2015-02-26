@@ -10,10 +10,13 @@
         <div id="dashboard" class="chromeInstall">
             <h1>History</h1>
 
+
             {% if trackers is empty %}
                 <div id="noData">
                     <img src="../assets/images/dragAndDrop.png" alt="Drag and drop icon"/>
-                    You have not drag and drop a snippet yet. <br/><br/>
+                    <h2>You have not drag and drop a snippet yet.</h2>
+                    <p>When you drag and drop a snippet from your My Dropper extension to a website, it will be added to your history. This way, you will always remember how you have used your snippets online. This page will be filled as you start using the My Dropper extension designed for Google Chrome.
+                    </p>
                     <a href="https://chrome.google.com/webstore/detail/my-dropper/abchmallljbphbkjchahcogmjglkloao" target="_blank" class="installExtensionLink">Install the chrome extension</a>
                 </div>
             {% else %}
@@ -27,6 +30,7 @@
                     {% endfor %}
                 </ul>
             {% endif %}
+
 
         </div>
     </div>

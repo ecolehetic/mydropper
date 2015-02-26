@@ -100,13 +100,23 @@ $greyLight: #e3e2e3;
     #noData {
         margin-top : 7%;
         text-align : center;
-        color: #bbe4f9;
-        font-weight: bold;
-        font-size: 1.5rem;
         text-align: center;
-        text-transform: uppercase;
+
         width : 80%;
         padding : 0 10%;
+        h2 {
+            color: #bbe4f9;
+            font-weight: bold;
+            font-size: 1.5rem;
+            width : 80%;
+            margin : auto;
+            text-transform: uppercase;
+        }
+        p {
+            width : 80%;
+            margin : 15px auto 45px auto;
+            max-width: 700px;
+        }
         img {
             width : 200px;
             margin : 60px auto;
@@ -133,6 +143,7 @@ $greyLight: #e3e2e3;
         margin-top : 10%;
         font-size : 2.9rem;
     }
+
     p {
         width : 80%;
         margin : 55px auto 0 auto;
@@ -160,6 +171,7 @@ $greyLight: #e3e2e3;
     text-decoration: none !important;
     font-size : 1.15rem;
     transition: all 0.5s ease;
+    width : auto;
     &:hover {
         color : #777777;
         transform: translateY(-5px);
