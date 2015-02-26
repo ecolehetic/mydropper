@@ -27,7 +27,7 @@ class TrackerUrl extends Eloquent
      */
     public function users()
     {
-        return $this->belongsTo('MyDropper\Models\User', 'user_id');
+        return $this->belongsTo('MyDropper\models\User', 'user_id');
     }
 
     /**
@@ -35,6 +35,6 @@ class TrackerUrl extends Eloquent
      */
     public function urls()
     {
-        return $this->belongsTo('MyDropper\Models\Url', 'url_id');
+        return $this->belongsTo('MyDropper\models\Url', 'url_id');
     }
 }

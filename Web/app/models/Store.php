@@ -28,7 +28,7 @@ class Store extends Eloquent
      */
     public function users()
     {
-        return $this->belongsTo('MyDropper\Models\User', 'user_id');
+        return $this->belongsTo('MyDropper\models\User', 'user_id');
     }
 
     /**
@@ -36,7 +36,7 @@ class Store extends Eloquent
      */
     public function categories()
     {
-        return $this->belongsTo('MyDropper\Models\Category', 'category_id');
+        return $this->belongsTo('MyDropper\models\Category', 'category_id');
     }
 
     /**
@@ -44,14 +44,14 @@ class Store extends Eloquent
      */
     public function trackerstores()
     {
-        return $this->hasMany('MyDropper\Models\TrackerStore');
+        return $this->hasMany('MyDropper\models\TrackerStore');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function urls(){
-        return $this->hasMany('MyDropper\Models\Url');
+        return $this->hasMany('MyDropper\models\Url');
     }
 
     /**

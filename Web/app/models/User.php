@@ -25,7 +25,7 @@ class User extends Eloquent
      */
     public function stores()
     {
-        return $this->hasMany('MyDropper\Models\Store');
+        return $this->hasMany('MyDropper\models\Store');
     }
 
     /**
@@ -33,7 +33,7 @@ class User extends Eloquent
      */
     public function categories()
     {
-        return $this->hasMany('MyDropper\Models\Category');
+        return $this->hasMany('MyDropper\models\Category');
     }
 
     /**
@@ -41,7 +41,7 @@ class User extends Eloquent
      */
     public function urls()
     {
-        return $this->hasMany('MyDropper\Models\Url');
+        return $this->hasMany('MyDropper\models\Url');
     }
 
     /**
@@ -49,7 +49,7 @@ class User extends Eloquent
      */
     public function trackersStores()
     {
-        return $this->hasMany('MyDropper\Models\TrackerStore');
+        return $this->hasMany('MyDropper\models\TrackerStore');
     }
 
     /**
@@ -57,7 +57,7 @@ class User extends Eloquent
      */
     public function trackersUrls()
     {
-        return $this->hasMany('MyDropper\Models\TrackerUrl');
+        return $this->hasMany('MyDropper\models\TrackerUrl');
     }
 
     /**
@@ -65,7 +65,7 @@ class User extends Eloquent
      */
     public function roles()
     {
-        return $this->belongsTo('MyDropper\Models\Role', 'role_id');
+        return $this->belongsTo('MyDropper\models\Role', 'role_id');
     }
 
     /**

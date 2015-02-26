@@ -28,7 +28,7 @@ class Category extends Eloquent
      */
     public function users()
     {
-        return $this->belongsTo('MyDropper\Models\User', 'user_id');
+        return $this->belongsTo('MyDropper\models\User', 'user_id');
     }
 
     /**
@@ -36,7 +36,7 @@ class Category extends Eloquent
      */
     public function stores()
     {
-        return $this->hasMany('MyDropper\Models\Store');
+        return $this->hasMany('MyDropper\models\Store');
     }
 
     /**

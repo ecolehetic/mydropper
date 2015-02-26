@@ -20,6 +20,6 @@ class Role extends Eloquent
 
     public function users()
     {
-        return $this->hasMany('MyDropper\Models\User');
+        return $this->hasMany('MyDropper\models\User');
     }
 }

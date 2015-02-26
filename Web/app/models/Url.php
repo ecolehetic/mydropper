@@ -26,7 +26,7 @@ class Url extends Eloquent
      */
     public function trackersUrls()
     {
-        return $this->hasMany('MyDropper\Models\TrackerUrl');
+        return $this->hasMany('MyDropper\models\TrackerUrl');
     }
 
     /**
@@ -34,7 +34,7 @@ class Url extends Eloquent
      */
     public function users()
     {
-        return $this->belongsTo('MyDropper\Models\User', 'user_id');
+        return $this->belongsTo('MyDropper\models\User', 'user_id');
     }
 
     /**
@@ -42,7 +42,7 @@ class Url extends Eloquent
      */
     public function stores()
     {
-        return $this->belongsTo('MyDropper\Models\Store', 'store_id');
+        return $this->belongsTo('MyDropper\models\Store', 'store_id');
     }
 
     /**
