@@ -4,6 +4,7 @@ $(document).ready(function() {
 
 	/* ---- INIT SIZE ---- */
 	UI.renderSize();
+
 	UI.tooltips.render();
 
 	$(window).on('resize', function() {
@@ -66,12 +67,13 @@ $(document).ready(function() {
 
 	$('#crossTp').on('click', function(e){
 	    e.preventDefault();
-	    $('#tooltipsContent').fadeOut();
+		UI.tooltips.close($(this));
 	});
 	$('.nextTooltip').on('click', function(e){
 	    e.preventDefault();
 		UI.tooltips.next($(this));
 	});
+
 
 	/* ---- POPIN ADD DATA ----*/
 

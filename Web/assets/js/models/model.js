@@ -50,5 +50,15 @@ var Model = {
 
 			}, 'json');
 		}
+	},
+
+	'LS' : {
+		set : function(item,value) {
+			localStorage.setItem(item, value);
+		},
+		get : function(item) {
+			localStorage.getItem(item);
+		}
+
 	}
 }

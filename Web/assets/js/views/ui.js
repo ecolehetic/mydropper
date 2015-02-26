@@ -206,12 +206,13 @@ var UI = {
 				left : offset.left+40
 			},300)
 
-			$content.fadeIn();
+			$content
+				.fadeIn()
+				.data('current',self.attr('id'));
 
 			switch(self.attr('id')){
 				case 'tooltip-history':
 					$content.find('.nextTooltip').data('next','tooltip-tracking').show();
-
 					$content.find('p').html('When you drag and drop a snippet from your My Dropper extension to a website, it will be added to your history.' +
 					'This page will be filled as you start using the My Dropper extension designed for Google Chrome.');
 					break;
@@ -232,12 +233,15 @@ var UI = {
 		},
 
 		'next' : function(self) {
-			console.log(self.data('next'));
+			$('#'+ self.parent().data('current')).fadeOut();
 			UI.tooltips.show($('#' + self.data('next')));
 		},
 
-
-		'getPosition' : function() {
+		'close' : function(self) {
+			$('#tooltipsContent').fadeOut();
+			$('#'+ self.parent().data('current')).fadeOut();
+		},
+ 		'getPosition' : function() {
 			var tpPos = [];
 
 			$('.tooltipsCircle').each(function(){
