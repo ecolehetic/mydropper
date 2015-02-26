@@ -265,6 +265,7 @@ class UsersController extends BaseController
      * List all users
      * GET /admin/users
      */
+//    TODO Check if usefull at the end
     public function admin_index()
     {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();

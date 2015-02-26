@@ -57,6 +57,8 @@ class IndexController extends BaseController
     {
         $this->need->logged('/users/login')->minimumLevel(9)->user()->execute();
 
+        $users = User::with('roles')->get();
+
         $usersCount = User::count();
 
         $storesCount = Store::count();
@@ -87,6 +89,7 @@ class IndexController extends BaseController
             'trackersStoresCountAll' => $trackersStoresCountAll,
             'trackersUrlsCount' => $trackersUrlsCount,
             'trackersUrlsCountAll' => $trackersUrlsCountAll,
+            'users'=>$users
         ]);
     }
 

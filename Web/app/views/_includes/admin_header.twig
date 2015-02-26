@@ -1,0 +1,14 @@
+<header class="admin_header">
+    <h1>Administration dashboard</h1>
+    <div class="connected">
+        <span class="username">{{ aside.name | upper }} {{ aside.firstname | capitalize }}</span>
+        <a href="{{ url('/profile') }}">
+            <img src="/{{ aside.avatar_url }}" alt="Profile picture">
+        </a>
+        <ul class="profileMenu">
+            <li><a href="{{ url('/history') }}">History</a></li>
+            <li><a href="{{ url('/profile') }}">Settings</a></li>
+            <li><a href="{{ url('/users/logout') }}">Log out</a></li>
+        </ul>
+    </div>
+</header>

@@ -14,187 +14,255 @@ $dashboardGreyMedium : #f6f6f6;
 $dashboardBorder : #d9d9d9;
 $greyLight: #e3e2e3;
 
-/* —————————————————————————————— ADMIN INDEX —————————————————————————————— */
-.admin{
+$darkBlue : #1f282d;
+$lightBlue : #bbe4f9;
+$borderBottom :#131c22;
+$borderTop :#424950;
+$lightGrey : #CCC;
+
+body{
+  background: $borderBottom;
+}
+
+/* —————————————————————————————— ADMIN HEADER —————————————————————————————— */
+header.admin_header{
+  background: $darkBlue;
+  border-bottom: 2px solid $borderBottom;
+
   h1{
-    margin-bottom: 1rem;
+    margin: 0;
+    color: #FFF;
+    margin-top: 5px;
+    margin-left: 10px;
   }
-  .datas{
-    position: relative;
-    width: 100%;
-
-    .section{
+  .connected{
+    position: absolute;
+    top: 0;
+    right: 30px;
+    padding: 5px;
+    width: 200px;
+    .username{
+      display: block;
+      float: left;
+      color: $lightBlue;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    img{
       position: relative;
-      width: 100%;
-      height: 150px;
+      margin-left: 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 100px;
+    }
+    .profileMenu{
+      transition: all 300ms;
+      display: none;
+      background: $darkBlue;
+      position: absolute;
+      right: 0;
+      width: 100px;
+      top: 50px;
 
-      .left{
-        box-sizing: border-box;
-        width: 20%;
-        min-width: 140px;
-        float: left;
+      li a{
+        display: block;
+        width: 100%;
+        padding: 4px 0;
+        color : #FFF;
         text-align: center;
-        background: $blue;
-        height: 100%;
-        border-left: 2px solid #131c22;
-        border-bottom: 2px solid #131c22;
-        border-top: 1px solid #424950;
-
-        h3{
-          color: $flashMsgBg;
-          font-weight: bold;
-        }
-        h2{
-          color: #FFF;
-          font-weight: bold;
-        }
-        a {
-          color: $lightBlue;
-        }
-        a:hover{
-          color: #FFF;
-        }
+        border-bottom: 1px solid $lightBlue;
       }
-      .right{
-        width: 80%;
-        float: left;
+      li a:hover{
+        color:$lightBlue;
       }
     }
-
+  }
+  .connected:hover{
+    .profileMenu{
+      display: block;
+    }
   }
 }
 
-/* —————————————————————————————— ADMIN USERS INDEX —————————————————————————————— */
-
+/* —————————————————————————————— ADMIN INDEX —————————————————————————————— */
 .admin{
-  .cardListContainer{
-    .cardList {
+  div,span,ul,li,span{
+    box-sizing: border-box;
+  }
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .datas{
+    width: 100%;
+    margin-top: 52px;
+    border-bottom: 3px solid $borderBottom;
+    .tiles{
+      background: $darkBlue;
+      transition: all 300ms;
+      width: 16.6666%;
+      opacity: .6;
+      min-width: 245px;
+      height: 140px;
+      float: left;
+      padding: .8% 0;
+      border: 3px solid $borderBottom;
+      h3,h2{
+        text-align: left;
+      }
+      h2{
+        margin-top: 20px;
+        text-align: center;
+        color: #FFF;
+      }
+      h3{
+        padding-left: 20px;
+        color: $lightBlue;
+      }
+      h4{
+        margin: 0;
+        margin-top: 10px;
+        text-align: left;
+        padding-left: 30px;
+        color: #FFF;
+        font-size: 1.2rem;
+        position: relative;
+        .value{
+          display: inline-block;
+          width: 30%;
+        }
+        span.label{
+          font-size: .9rem;
+          display: inline-block;
+          padding-left: 10px;
+          color: $lightGrey;
+        }
+      }
+    }
+    .tiles:hover{
+      opacity: 1;
+    }
+  }
+  .users{
+    h1{
+      padding: 10px 0;
+      margin: 0;
+      padding-left: 10px;
+      color: $lightGrey;
+    }
+    .userslist{
       display: block;
-      padding: 0 30px;
-      list-style: none;
-
-      li {
+      width: 100%;
+      position: relative;
+      li:hover{
+        opacity: 1;
+      }
+      li{
         display: block;
-        width: calc(22% - 4px);
-        min-width: 200px;
-        margin: 20px 1.5%;
-        background: #DEDEDE;
-        float : left;
-        border-radius : 10px;
-        text-align : center;
-        background : $dashboardGreyLight;
-        border : 2px solid $dashboardBorder;
-        box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.03);
-        overflow :hidden;
-
-        a {
-          color : black;
-          transition: all 0.5s ease;
-          &:hover {
-            color : rgba(0,0,0,0.7);
-          }
-        }
-        p{
-          margin: 3px 0 3px 10px;
-          text-align: left;
-        }
-        span,.moreInfo, .card_section {
-          padding : 2%;
-          display : block;
-          width : 96%;
-          margin : 0;
-          border-bottom : 1px solid $dashboardBorder;
-          background : $dashboardGreyMedium;
+        float: left;
+        width: 20%;
+        min-width: 300px;
+        background: $darkBlue;
+        border: 8px solid $borderBottom;
+        padding: 15px;
+        opacity: .6;
+        transition: all 300ms;
+        .card_section{
+          position: relative;
+          display: block;
+          width: 100%;
+          color: $lightGrey;
         }
         .top{
-          position: relative;
-          height: 50px;
-          h3 {
-            position: relative;
-            display: inline-block;
-            margin: 0;
-            padding: 0;
-            width: calc(100% - 60px);
-            text-align: left;
-            margin-left: 50px;
-          }
+          width: 100%;
+          padding-bottom: 15px;
+          border-bottom: 1px solid $borderBottom;
           img{
-            position: absolute;
             width: 40px;
             height: 40px;
             border-radius: 100px;
-            top: 10px;
-            left: 10px;
+            position: absolute;
+            border: 1px solid #FFF;
           }
-          p{
-            margin: 0;
-            margin-left: 55px;
+          h3{
+            color: #FFF;
+            padding-left: 50px;
+          }
+          .role{
+            display: none;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 100px;
+            background: $lightGrey;
+            color: $darkBlue;
+            text-align: center;
+            line-height: 30px;
+            font-size: 16px;
+            right: 0;
+            top: 5px;
+          }
+          .role.admin{
+            display: block;
           }
         }
-
-        .moreInfo {
-          border-bottom : 0;
-          span {
-            width : 50px;
-            height : 50px;
-            display : block;
-            margin : auto;
-            border-radius: 50%;
-            border : 1px solid $dashboardBorder;
-            line-height: 51px;
-            padding : 0;
-            font-size : 1.2rem;
-            color : #AAA;
-            background-color : #eee;
-            transition: all 0.5s ease;
-            cursor : pointer;
-            &:hover {
-              opacity : 0.6;
-              transform: rotate(90deg);
+        .infos{
+          p{
+            padding-left: 10px;
+          }
+        }
+        .controls{
+          a{
+            width: 44%;
+            display: block;
+            margin: 5px 3%;
+            background: $borderBottom;
+            padding: 4px 0;
+            text-align: center;
+            float: left;
+            position: relative;
+          }
+          a:hover{
+            span{
+              color: $lightBlue;
             }
           }
         }
       }
-      .icon-pencil {
-        margin-right : 20px;
-        &:hover {
-          color : #888888;
-        }
-      }
-      .icon-bin {
-        margin-left : 20px;
-        &:hover {
-          color : #888888;
-        }
-      }
-    }
-    .editCat {
-      display : inline;
-      color : black;
-      transition: all 0.5s ease;
-
-      &:before {
-        content: ' - ';
-        margin-left : 10px;
-        margin-right : 10px;
-      }
-      &:hover {
-        span {
-          border-bottom : 1px solid $greyLight;
-        }
-
-      }
     }
   }
 }
 
+
 /* —————————————————————————————— ADMIN USERS EDIT —————————————————————————————— */
 
 .admin{
+  .go_back{
+    top: 60px;
+    left: 0;
+    position: absolute;
+    padding: .4rem .8rem;
+    display: block;
+    background: $darkBlue;
+    color: $lightBlue;
+    font-size: 1rem;
+  }
+  .go_back:hover{
+    background: $lightGrey;
+  }
   h3{
     margin-top: 0;
     margin-bottom: .3rem;
     font-size: 1.6rem;
+  }
+  .content{
+    margin: 80px auto;
+    min-width: 660px;
+    width: 40%;
+    background: #FFF;
+    padding: 15px;
   }
   .header{
     height: 90px;

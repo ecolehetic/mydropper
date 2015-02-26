@@ -1,68 +1,71 @@
 {% extends '_layout/admin.twig' %}
 
-{% block aside %}
-    {% include '_includes/aside.twig' %}
+{% block admin_header %}
+    {% include '_includes/admin_header.twig' %}
 {% endblock %}
 
 {% block content %}
-<div class="container admin">
-    <h1>Administration dasboard</h1>
-    <div class="datas">
-        <div class="section">
-            <div class="left">
+    <div class="admin">
+
+        <div class="datas">
+            <div class="tiles">
                 <h3>Users</h3>
                 <h2>{{ usersCount }}</h2>
-                <a href="{{ url('/admin/users') }}"><i class="icon-pencil"></i> Edit</a>
             </div>
-            <div class="right">
-                 &nbsp;
-            </div>
-        </div>
-        <div class="section">
-            <div class="left">
+            <div class="tiles">
                 <h3>Categories</h3>
-                <h2>{{ categoriesCount }}/{{ categoriesCountAll }}</h2>
+                <h4><span class="value">{{ categoriesCount }}</span> <span class="label">Actives</span></h4>
+                <h4><span class="value">{{ categoriesCountAll }}</span> <span class="label">All</span></h4>
             </div>
-            <div class="right">
-                 &nbsp;
-            </div>
-        </div>
-        <div class="section">
-            <div class="left">
+            <div class="tiles">
                 <h3>Snippets</h3>
-                <h2>{{ storesCount }}/{{ storesCountAll }}</h2>
+                <h4><span class="value">{{ storesCount }}</span> <span class="label">Actives</span></h4>
+                <h4><span class="value">{{ storesCountAll }}</span> <span class="label">All</span></h4>
             </div>
-            <div class="right">
-                 &nbsp;
+            <div class="tiles">
+                <h3>Snippets Trackers</h3>
+                <h4><span class="value">{{ trackersStoresCount }}</span> <span class="label">Actives</span></h4>
+                <h4><span class="value">{{ trackersStoresCountAll }}</span> <span class="label">All</span></h4>
             </div>
-        </div>
-        <div class="section">
-            <div class="left">
-                <h3>Snippets trackers</h3>
-                <h2>{{ trackersStoresCount }}/{{ trackersStoresCountAll }}</h2>
-            </div>
-            <div class="right">
-                 &nbsp;
-            </div>
-        </div>
-        <div class="section">
-            <div class="left">
+            <div class="tiles">
                 <h3>Links</h3>
-                <h2>{{ urlsCount }}/{{ urlsCountAll }}</h2>
+                <h4><span class="value">{{ urlsCount }}</span> <span class="label">Actives</span></h4>
+                <h4><span class="value">{{ urlsCountAll }}</span> <span class="label">All</span></h4>
             </div>
-            <div class="right">
-                 &nbsp;
+            <div class="tiles">
+                <h3>Links Trackers</h3>
+                <h4><span class="value">{{ trackersUrlsCount }}</span> <span class="label">Actives</span></h4>
+                <h4><span class="value">{{ trackersUrlsCountAll }}</span> <span class="label">All</span></h4>
             </div>
+            <div class="clearfix"></div>
         </div>
-        <div class="section">
-            <div class="left">
-                <h3>Urls trackers</h3>
-                <h2>{{ trackersUrlsCount }}/{{ trackersUrlsCountAll }}</h2>
-            </div>
-            <div class="right">
-                 &nbsp;
-            </div>
+        <div class="users">
+            <h1>Users</h1>
+            <ul class="userslist">
+                {% for user in users %}
+                <li>
+                    <div class="card_section top">
+                        <img src="/{{ user.avatar_url }}" alt=""/>
+                        <h3>{{ user.username }}</h3>
+                        <span class="role {{ (user.roles.id == 2)? 'admin' : '' }}">A</span>
+                    </div>
+                    <div class="card_section infos">
+                        <p class="name">{{ user.firstname }} {{ user.name }}</p>
+
+                        <p class="mail">{{ user.mail }}</p>
+                    </div>
+                    <div class="card_section controls">
+                        <a href="{{ url('/admin/users/edit', [user.id]) }}">
+                            <span class="icon-pencil" ></span>
+                        </a>
+                        <a data-del="snippet" href="{{ url('/admin/users/delete', [user.id]) }}">
+                            <span class="icon-bin deleteLink" ></span>
+                        </a>
+                        <div class="clearfix"></div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
-</div>
 {% endblock %}
