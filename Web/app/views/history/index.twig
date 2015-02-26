@@ -7,14 +7,14 @@
 {% block content %}
 
     <div class="container">
-        <div id="dashboard">
+        <div id="dashboard" class="chromeInstall">
             <h1>History</h1>
 
             {% if trackers is empty %}
                 <div id="noData">
                     <img src="../assets/images/dragAndDrop.png" alt="Drag and drop icon"/>
                     You have not drag and drop a snippet yet. <br/><br/>
-                    <a href="https://chrome.google.com/webstore/my-dropper/abchmallljbphbkjchahcogmjglkloao" target="_blank" class="installExtensionLink">Install the chrome extension</a>
+                    <a href="https://chrome.google.com/webstore/detail/my-dropper/abchmallljbphbkjchahcogmjglkloao" target="_blank" class="installExtensionLink">Install the chrome extension</a>
                 </div>
             {% else %}
                 <ul class="cardList clearfix">
@@ -27,6 +27,7 @@
                     {% endfor %}
                 </ul>
             {% endif %}
+
         </div>
     </div>
 
