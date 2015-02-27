@@ -140,14 +140,15 @@ var UI={
 		},
 
 		snippetInfos : {
-			'displayInfo' : function(self) {
+			'displayInfo' : function(self, text) {
 				var offset = self.offset(),
 					el = $('#moreInfo')	;
 				el.css('top', offset.top- $(document).scrollTop() + 5);
+
 				if(self.data('link')) {
 					el.stop().html(self.data('text') + ' (shortered)').fadeIn(600);
 				} else {
-					el.stop().html(self.data('text')).fadeIn(600);
+					el.stop().html(text).fadeIn(600);
 				}
 			},
 			'removeInfo' : function() {

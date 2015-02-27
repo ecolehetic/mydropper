@@ -116,7 +116,11 @@ var Ext = {
 						event.originalEvent.dataTransfer.setData(self.data('type'), self.data('link'));
 					}
 					else {
-						event.originalEvent.dataTransfer.setData(self.data('type'), self.data('text'));
+						// Replacing / by quote
+						var text = self.data('text');
+						text = text.split('/').join("'");
+
+						event.originalEvent.dataTransfer.setData(self.data('type'), text);
 					}
 
 					// Send the storeID for history
@@ -189,7 +193,11 @@ var Ext = {
 		initSnippetInfos : function(){
 			$('.md-dragElmt').hover(
 				function() {
-					UI.loggedPanel.snippetInfos.displayInfo($(this));
+					// Replacing / by quote
+					var text = $(this).data('text');
+					text = text.split('/').join("'");
+
+					UI.loggedPanel.snippetInfos.displayInfo($(this),text);
 				}, function() {
 					UI.loggedPanel.snippetInfos.removeInfo();
 				}

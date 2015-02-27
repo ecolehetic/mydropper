@@ -177,11 +177,11 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
                     background: $snippetGrey;
                     border-top: 1px solid rgba(139, 141, 142, 0.2);
                     border-bottom: 1px solid #f4f4f4;
-                    cursor: pointer;
                     transition: all 0.5s ease;
                     font-size : 0.9em;
                     text-transform: capitalize;
                     text-align: left;
+                    cursor : grab;
                     &:first-child {
                         border-top : rgba(139, 141, 142,0.1);
                     }
@@ -377,7 +377,7 @@ $mainFont: 'AvenirNext', helvetica, arial, sans-serif;
         &:after {
             content : '';
             right : -10px;
-            bottom : 5px;
+            top : 10px;
             position : absolute;
             width: 0;
             height: 0;
