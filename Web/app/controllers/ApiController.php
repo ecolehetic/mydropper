@@ -107,7 +107,7 @@ class ApiController extends BaseController
                             $data[$i]['stores'][] = [
                                 'store_id'          => $stores[$j]->id,
                                 'store_label'       => $stores[$j]->label,
-                                'store_description' => html_entity_decode($stores[$j]->descript),
+                                'store_description' => $stores[$j]->descript,
                                 'store_active'      => $stores[$j]->is_active,
                                 'store_shorter'     => $stores[$j]->is_shorter,
                                 'store_url_shorter' => 'http://mydropper.mathieuletyrant.com/url/'.$url->token
@@ -116,7 +116,7 @@ class ApiController extends BaseController
                             $data[$i]['stores'][] = [
                                 'store_id'          => $stores[$j]->id,
                                 'store_label'       => $stores[$j]->label,
-                                'store_description' => html_entity_decode($stores[$j]->descript),
+                                'store_description' => $stores[$j]->descript,
                                 'store_active'      => $stores[$j]->is_active,
                                 'store_shorter'     => $stores[$j]->is_shorter
                             ];
