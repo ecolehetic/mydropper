@@ -1,6 +1,7 @@
 "use strict";
 var Model = {
 	"userId" : $('#user_id').val(),
+	"tokenApi" : $('#token_api').text(),
 
 	"tracking" : {
 
@@ -46,6 +47,18 @@ var Model = {
 			$.post('/api/trackedlink/', { user_id : Model.userId, cat_id : cat, from : fromDate, to : toDate }, function(response) {
 				callback.call(this, response.data);
 			}, 'json');
+		}
+	},
+
+	// TODO Nico 
+	'History' : {
+		'get' : function() {
+			$.post(admin.origin+"/api/historyasync/", {user_id: Model.userId, token_api: Model.tokenApi, pagination: 10, pages : currentPage}, "json")
+				.done(function(response) {
+					callback.call(this, response);
+				}).fail(function(response) {
+					console.log('error : ', response);
+				});
 		}
 	},
 
