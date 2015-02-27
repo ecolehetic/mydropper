@@ -60,9 +60,12 @@ header.admin_header{
       display: none;
       background: $darkBlue;
       position: absolute;
-      right: 0;
+      right: 12px;
       width: 100px;
       top: 50px;
+      margin: 0;
+      list-style: none;
+      padding: 0;
 
       li a{
         display: block;

@@ -308,6 +308,7 @@ class ApiController extends BaseController
      * POST /api/admin/users
      *
      * @param string $tokenApi
+     * @param int $userId
      * @param int $pagination
      * @param int $pages
      *
@@ -315,16 +316,16 @@ class ApiController extends BaseController
     public function getAdminUsers(){
 
         $tokenApi = $this->f3->get('POST.token_api');
+        $userId = (int)($this->f3->get('POST.user_id'));
         $pagination = (int)($this->f3->get('POST.pagination'));
         $pages = (int)($this->f3->get('POST.pages'));
 
         $json = [];
         if($tokenApi){
-            $user = User::where('token_api', '=', $tokenApi)->with('roles')->first();
+            $user = User::where('token_api', '=', $tokenApi)->where('id', '=', $userId)->with('roles')->first();
 
             if($user->roles->level && $user->roles->level > 9){
-                $users = User::with('roles')->take($pagination)->offset($pages*$pagination)->get();
-                $json['users'] = $users;
+                $json['users'] = User::with('roles')->take($pagination)->offset($pages*$pagination)->get();
             }else{
                 $json['error'] = 'error occurred (no user)';
             }

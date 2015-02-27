@@ -2,16 +2,18 @@
 
 var admin = {
     tokenApi : null,
+    userId : null,
     origin : 'http://localhost:8989',
     path : window.location.pathname,
     pagination : 10,
 
     start : function(){
         admin.tokenApi = $('#token_api').text();
+        admin.userId = $('#user_id').text();
     },
     getUsers : function(currentPage, callback){
 
-        $.post(admin.origin+"/api/admin/users", {token_api: admin.tokenApi, pagination: admin.pagination, pages :currentPage}, "json")
+        $.post(admin.origin+"/api/admin/users", {user_id: admin.userId, token_api: admin.tokenApi, pagination: admin.pagination, pages : currentPage}, "json")
             .done(function(response) {
                 callback.call(this, response);
             }).fail(function(response) {
