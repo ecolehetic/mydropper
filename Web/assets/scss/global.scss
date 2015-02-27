@@ -355,6 +355,7 @@ a {
             margin-bottom : 15px;
             padding : 5px;
             box-sizing: border-box;
+            min-height: 60px;
         }
     }
     .checkboxContainer {
@@ -375,6 +376,11 @@ a {
     }
 }
 
+#dashboard {
+    textarea {
+        min-height : 230px;
+    }
+}
 #flashMsg {
     position : fixed;
     width : 250px;

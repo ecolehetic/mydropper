@@ -9,7 +9,7 @@
     <div class="container">
         <div id="dashboard">
             <h1>{{ categoryName | capitalize }}</h1>
-            <a href="{{ url('/category/delete', [categoryId]) }}" class="editCat deleteLink" data-del="category"><span>Delete the category</span></a>
+            <a href="{{ url('/category/delete', [categoryId]) }}" class="editCat deleteLink" data-del="category"><i class="icon-bin"></i> <span>Delete the category</span></a>
 
             {% if stores is empty %}
                 <div id="noData">

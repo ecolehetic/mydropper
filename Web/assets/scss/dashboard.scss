@@ -35,9 +35,10 @@ $greyLight: #e3e2e3;
                 }
             }
             h3,span,.moreInfo {
-                padding : 20px 2% 15px 2%;
+                padding : 20px 4% 15px 4%;
                 display : block;
-                width : 96%;
+                width : 92%;
+                overflow-x : hidden;
                 margin : 0;
                 border-bottom : 1px solid $dashboardBorder; 
             }
