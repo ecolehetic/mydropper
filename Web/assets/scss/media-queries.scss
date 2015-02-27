@@ -299,19 +299,18 @@
             .text {
                 float: none;
                 width: 100%;
-                margin-left: 0%;
-
-            }
-        }
-        section.grey {
-            img {
-                display : none;
+                margin-right: 0%;
             }
             .responsiveImg {
                 display : block;
             }
+            img {
+                display : none;
+            }
+        }
+        section.grey {
             .text {
-                margin-right : 0;
+                margin-left : 0;
             }
         }
     }

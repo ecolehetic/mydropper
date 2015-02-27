@@ -421,7 +421,7 @@ $greySectionTxt : #282828;
         .text {
             float : left;
             width:  45%;
-            margin-left : 5%;
+            margin-right : 5%;
 
             h2 {
                 font-size : 1.6rem;
@@ -433,6 +433,13 @@ $greySectionTxt : #282828;
                 width : 100%;
                 margin : 0;max-width : 450px;
             }
+            a {
+                color : black;
+                font-style: italic;
+            }
+        }
+        .responsiveImg {
+            display : none;
         }
         &:after {
             clear: both;
@@ -445,11 +452,11 @@ $greySectionTxt : #282828;
     section.grey {
         background : $greySection;
         .text {
-            margin-right : 5%;
-            margin-left : 0;
+            margin-right : 0;
+            margin-left : 5%;
         }
-        .responsiveImg {
-            display : none;
+        img {
+            display : block;
         }
     }
 }
