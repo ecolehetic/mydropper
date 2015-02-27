@@ -3,7 +3,7 @@
 var admin = {
     tokenApi : null,
     userId : null,
-    origin : 'http://localhost:8989',
+    origin : '',
     path : window.location.pathname,
     pagination : 10,
 
