@@ -31,7 +31,7 @@ class CategoryController extends BaseController
                 if (empty($category)) {
                     Category::create(array(
                         'user_id' => $user->id,
-                        'label'   => serialize($this->f3->get('POST.category'))
+                        'label'   => $this->f3->get('POST.category')
                     ));
                     $this->fMessage->set('Category added.');
                 } else {

@@ -40,8 +40,8 @@ class StoresController extends BaseController
                 if (empty($preventStore)) {
                     $store = Store::create([
                         'user_id'     => $user->id,
-                        'label'       => serialize($post['label']),
-                        'descript'    => serialize($post['descript']),
+                        'label'       => $post['label'],
+                        'descript'    => $post['descript'],
                         'category_id' => $post['category_id'],
                         'is_shorter' => !empty($trackUrl) ? 1 : 0
                     ]);
