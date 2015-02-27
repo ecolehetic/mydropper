@@ -10,7 +10,6 @@ $greySectionTxt : #282828;
     min-height : 100%;
     position : relative;
     .homeContainer{
-
         width : 70%;
         padding : 50px 15% 72px 15%;
         color : white;
@@ -60,7 +59,7 @@ $greySectionTxt : #282828;
     height: 40px;
     line-height: 40px;
     &:hover {
-        color : $greyTitle;
+        color : $greyLight;
     }
     &:last-child {
         margin-bottom : 40px;
