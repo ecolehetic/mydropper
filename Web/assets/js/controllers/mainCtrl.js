@@ -1,14 +1,20 @@
 "use strict";
 
 $(document).ready(function() {
+
 	/* ---- INIT SIZE ---- */
 	UI.renderSize();
 
-	UI.tooltips.render();
+	Model.LS.tpTest(function(tpTest){
+		UI.tooltips.render(tpTest);
+	});
+	
 
 	$(window).on('resize', function() {
 		UI.renderSize();
-		UI.tooltips.render();
+		Model.LS.tpTest(function(tpTest){
+			UI.tooltips.render(tpTest);
+		});
 	});
 
 
@@ -64,22 +70,23 @@ $(document).ready(function() {
 
 	/* ---- TOOLTIPS EVENT ---- */
 
+	// --- Click on a circle
 	$('.tooltipsCircle').on('click', function(e){
 	    UI.tooltips.show($(this));
 	});
-
-	$('#crossTp').on('click', function(e){
+	// --- Click on a next or cross button
+	$('.tipViewed').on('click', function(e){
 	    e.preventDefault();
 		var $this = $(this);
-		Model.LS.set($this.parent().data('current'), true);
-		UI.tooltips.close($this);
-	});
-
-	$('.nextTooltip').on('click', function(e){
-	    e.preventDefault();
-		var $this = $(this);
-		Model.LS.set($this.parent().data('current'), true);
-		UI.tooltips.next($this);
+		Model.LS.tpTest(function(tpTest){
+			tpTest[$this.parent().data('current')] = true;
+			Model.LS.set('tpTest', tpTest);
+		});
+		if($this.hasClass('nextTooltip')) {
+			UI.tooltips.next($this);
+		} else {
+			UI.tooltips.close($this);
+		}
 	});
 
 

@@ -187,13 +187,14 @@ var UI = {
 	},
 
 	'tooltips' : {
-		'render' : function(){
+		'render' : function(tpTest){
 			var tpPos = UI.tooltips.getPosition();
 			
 			for(var tp in tpPos) {
-				$('#' + tp).css('top', tpPos[tp].top - $(document).scrollTop()+ 20);
+				if(!tpTest[tp]){
+					$('#' + tp).show().css('top', tpPos[tp].top - $(document).scrollTop()+ 20);
+				}
 			}
-
 		},
 
 		'show' : function(self) {
@@ -211,25 +212,25 @@ var UI = {
 				.data('current',self.attr('id'));
 
 			switch(self.attr('id')){
-				case 'tooltip-history':
-					$content.find('.nextTooltip').data('next','tooltip-tracking').show();
-					if(!$('#tooltip-tracking').is(':visible')) {
+				case 'tooltipHistory':
+					$content.find('.nextTooltip').data('next','tooltipTracking').show();
+					if(!$('#tooltipTracking').is(':visible')) {
 						$content.find('.nextTooltip').hide();
 					}
 					$content.find('p').html('When you drag and drop a snippet from your My Dropper extension to a website, it will be added to your history.' +
 					'This page will be filled as you start using the My Dropper extension designed for Google Chrome.');
 					break;
 
-				case 'tooltip-tracking' :
-					$content.find('.nextTooltip').data('next','tooltip-category').show();
-					if(!$('#tooltip-category').is(':visible')) {
+				case 'tooltipTracking' :
+					$content.find('.nextTooltip').data('next','tooltipCategory').show();
+					if(!$('#tooltipCategory').is(':visible')) {
 						$content.find('.nextTooltip').hide();
 					}
 					$content.find('p').html('You want to know who uses your data ? ' +
 					'Thanks to the Tracking feature, you will know exactly how many times your links have been clicked and evalute the visibility of your links.');
 					break;
 
-				case 'tooltip-category' :
+				case 'tooltipCategory' :
 					$content.find('.nextTooltip').hide();
 					$content.find('p').html('Your can gather all your snippets together in a cateogry, ' +
 					'to get an easy and quick access to your informations once you have activated the My Dropper extension for Chrome.');
@@ -255,7 +256,6 @@ var UI = {
 			$('.tooltipsCircle').each(function(){
 				var el = $(this);
 				var elId = el.attr('id');
-
 				if (el.data('ref')==='categoryElement') {
 					tpPos[elId] = $('.categoryElement:first-child').offset();
 				} else {

@@ -15,7 +15,6 @@ var UI={
 			$('#myDropperLogo').attr('src', chrome.extension.getURL("img/logo.png"));
 		},
 
-
 		close : function() {
 			var el = $('#myDropperSideBar');
 
@@ -42,7 +41,6 @@ var UI={
 			$('.md-dropElmt').removeClass('md-dragOver')
 		},
 
-
 		addMarkDropZones : function() {
 			$('input').each(function() {
 				if ($(this).attr('type') == "text" ||
@@ -59,7 +57,6 @@ var UI={
 				$(this).attr('data-accept-type', 'Text');
 			});
 		},
-
 
 		removeMarkDropZones: function() {
 			$('.md-dropElmt').removeClass('md-dropElmt');

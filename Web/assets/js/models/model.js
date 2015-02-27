@@ -7,7 +7,6 @@ var Model = {
 		getCategoryList : function(callback) {
 			console.log('UserId : ' + Model.userId);
 			$.getJSON( "/api/categories/"+ Model.userId, function( response ) {
-
 				callback.call(this, response.categoryList);
 			});
 		},
@@ -45,21 +44,32 @@ var Model = {
 
 		getTrackedLinkGraphData : function(cat, fromDate, toDate, callback) {
 			$.post('/api/trackedlink/', { user_id : Model.userId, cat_id : cat, from : fromDate, to : toDate }, function(response) {
-
 				callback.call(this, response.data);
-
 			}, 'json');
 		}
 	},
 
 	'LS' : {
 		set : function(item,value) {
-			localStorage.setItem(item, value);
+			localStorage.setItem(item, JSON.stringify(value));
 		},
-		TpTest : function() {
+		'get' : function(item) {
+			return JSON.parse(localStorage.getItem(('tpTest')));
+		},
+
+		tpTest : function(callback) {
+			// Check if tooltip object is in LS
 			if(!localStorage.getItem('tpTest')) {
-				localStorage.setItem('tpTest', {});
+				var tpTest= {
+					tooltipHistory : false,
+					tooltipTracking : false,
+					tooltipCategory : false
+				}
+				Model.LS.set('tpTest', tpTest);
 			}
+			
+			// Return the object store in LS
+			callback.call(this, Model.LS.get('tpTest'));
 		}
 
 	}
