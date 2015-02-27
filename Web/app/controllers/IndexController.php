@@ -100,6 +100,10 @@ class IndexController extends BaseController
     {
         $this->need->logged('/users/login')->minimumLevel(9)->execute();
 
+
+        $user =  User::paginate(4);
+
+        var_dump($user);
         $this->render('debug.twig', [
 
         ]);

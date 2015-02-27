@@ -233,6 +233,27 @@ header.admin_header{
       }
     }
   }
+  .infinite{
+    display: block;
+    clear: both;
+    width: 100%;
+    margin-top: 20px;
+    #load_more{
+      box-sizing: border-box;
+      display: block;
+      width: 100px;
+      background: $darkBlue;
+      margin: 10px auto;
+      color: $lightBlue;
+      padding: 6px 10px;
+      text-align: center;
+      transition: all 300ms;
+    }
+    #load_more:hover{
+      background: $borderBottom;
+      border: 1px solid $darkBlue;
+    }
+  }
 }
 
 

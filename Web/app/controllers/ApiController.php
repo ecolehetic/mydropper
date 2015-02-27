@@ -34,7 +34,13 @@ class ApiController extends BaseController
             $user = User::where('username', $this->f3->get('POST.username'))->where('password', $this->crypt($this->f3->get('POST.password')))->first();
 
             if ($user !== null || !empty($user)) {
-                $token = uniqid("API_");
+
+                if($user->token_api !== null){
+                    $token = $user->token_api;
+                }else{
+                    $token = uniqid("API_");
+                }
+
 
                 // Generate Token and save it
                 $user                = User::find($user->id);
@@ -297,6 +303,36 @@ class ApiController extends BaseController
         }
     }
 
+    /**
+     * Admin users list
+     * POST /api/admin/users
+     *
+     * @param string $tokenApi
+     * @param int $pagination
+     * @param int $pages
+     *
+     */
+    public function getAdminUsers(){
+
+        $tokenApi = $this->f3->get('POST.token_api');
+        $pagination = (int)($this->f3->get('POST.pagination'));
+        $pages = (int)($this->f3->get('POST.pages'));
+
+        $json = [];
+        if($tokenApi){
+            $user = User::where('token_api', '=', $tokenApi)->with('roles')->first();
+
+            if($user->roles->level && $user->roles->level > 9){
+                $users = User::with('roles')->take($pagination)->offset($pages*$pagination)->get();
+                $json['users'] = $users;
+            }else{
+                $json['error'] = 'error occurred (no user)';
+            }
+        }else{
+            $json['error'] = 'error occurred (no token)';
+        }
+        $this->render(false, $json);
+    }
 
     /**
      * Return data for Error

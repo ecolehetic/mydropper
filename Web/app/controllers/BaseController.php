@@ -102,6 +102,7 @@ class BaseController
             $values['aside']['user_id']     = $user->id;
             $values['aside']['name']        = $user->name;
             $values['aside']['firstname']   = $user->firstname;
+            $values['aside']['token_api']   = $user->token_api;
 
             $values['aside']['role_id']     = $user->role_id;
             $values['aside']['avatar_url']  = file_exists($user->avatar_url) ? $user->avatar_url : 'assets/images/default-avatar.jpg';

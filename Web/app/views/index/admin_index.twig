@@ -41,31 +41,33 @@
         </div>
         <div class="users">
             <h1>Users</h1>
-            <ul class="userslist">
-                {% for user in users %}
-                <li>
-                    <div class="card_section top">
-                        <img src="/{{ user.avatar_url }}" alt=""/>
-                        <h3>{{ user.username }}</h3>
-                        <span class="role {{ (user.roles.id == 2)? 'admin' : '' }}">A</span>
-                    </div>
-                    <div class="card_section infos">
-                        <p class="name">{{ user.firstname }} {{ user.name }}</p>
+            <ul id="userslist" class="userslist">
+                {#<li>#}
+                    {#<div class="card_section top">#}
+                        {#<img src="/{{ user.avatar_url }}" alt=""/>#}
+                        {#<h3>{{ user.username }}</h3>#}
+                        {#<span class="role {{ (user.roles.id == 2)? 'admin' : '' }}">A</span>#}
+                    {#</div>#}
+                    {#<div class="card_section infos">#}
+                        {#<p class="name">{{ user.firstname }} {{ user.name }}</p>#}
 
-                        <p class="mail">{{ user.mail }}</p>
-                    </div>
-                    <div class="card_section controls">
-                        <a href="{{ url('/admin/users/edit', [user.id]) }}">
-                            <span class="icon-pencil" ></span>
-                        </a>
-                        <a data-del="snippet" href="{{ url('/admin/users/delete', [user.id]) }}">
-                            <span class="icon-bin deleteLink" ></span>
-                        </a>
-                        <div class="clearfix"></div>
-                    </div>
-                </li>
-                {% endfor %}
+                        {#<p class="mail">{{ user.mail }}</p>#}
+                    {#</div>#}
+                    {#<div class="card_section controls">#}
+                        {#<a href="{{ url('/admin/users/edit', [user.id]) }}">#}
+                            {#<span class="icon-pencil" ></span>#}
+                        {#</a>#}
+                        {#<a data-del="snippet" href="{{ url('/admin/users/delete', [user.id]) }}">#}
+                            {#<span class="icon-bin deleteLink" ></span>#}
+                        {#</a>#}
+                        {#<div class="clearfix"></div>#}
+                    {#</div>#}
+                {#</li>#}
+                <div class="clearfix"></div>
             </ul>
+            <div class="infinite">
+                <a id="load_more" href="#" data-pagination="0">Load More</a>
+            </div>
         </div>
     </div>
 {% endblock %}
