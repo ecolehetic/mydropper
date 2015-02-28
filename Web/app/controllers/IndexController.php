@@ -100,12 +100,19 @@ class IndexController extends BaseController
     {
         $this->need->logged('/users/login')->minimumLevel(9)->execute();
 
-
-//        $user = User::where('token_api', '=', 'API_54eef7ea3aa07')->where('id', '=', 36)->with('roles')->first();
-
-        var_dump($user);
         $this->render('debug.twig', [
 
+        ]);
+    }
+
+    /**
+     * GET /onerror
+     */
+    public function error()
+    {
+        $this->render('404.twig', [
+            'status' => $this->f3->get('DEBUG'),
+            'error'  => $this->f3->get('ERROR')
         ]);
     }
 }

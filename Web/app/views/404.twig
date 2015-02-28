@@ -1,1 +1,11 @@
-Page 404
+<h1>Error {{ error.code  }}</h1>
+
+{% if status == 0 %}
+    Error, please go back to the home page.
+{% else %}
+    <code>
+        <pre>
+            {{ error.text }}
+        </pre>
+    </code>
+{% endif %}
