@@ -1,11 +1,17 @@
-<h1>Error {{ error.code  }}</h1>
+{% extends '_layout/layout.twig' %}
 
-{% if status == 0 %}
-    Error, please go back to the home page.
-{% else %}
-    <code>
+{% block content %}
+
+    <h1>Error {{ error.code  }}</h1>
+
+    {% if status == 0 %}
+        Error, please go back to the home page.
+    {% else %}
+        <code>
         <pre>
             {{ error.text }}
         </pre>
-    </code>
-{% endif %}
+        </code>
+    {% endif %}
+
+{% endblock %}
