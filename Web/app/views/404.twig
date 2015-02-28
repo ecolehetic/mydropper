@@ -1,5 +1,7 @@
 {% extends '_layout/layout.twig' %}
 
+{% block javascripts %}{% endblock %}
+
 {% block content %}
 
     <h1>Error {{ error.code  }}</h1>
@@ -8,9 +10,9 @@
         Error, please go back to the home page.
     {% else %}
         <code>
-        <pre>
-            {{ error.text }}
-        </pre>
+            <pre>
+                {{ error.text }}
+            </pre>
         </code>
     {% endif %}
 
