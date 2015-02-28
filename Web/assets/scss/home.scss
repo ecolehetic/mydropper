@@ -68,7 +68,7 @@ $greySectionTxt : #282828;
 }
 
 
-#formHome {
+#formHome,#page404 {
 	background: url(../images/homeBgBlur.jpg) center no-repeat;
 	background-size: cover;
 	min-height : 100%;
@@ -178,6 +178,26 @@ $greySectionTxt : #282828;
         padding-bottom : 30px;
         width : 80%;
         margin:auto;
+    }
+    p.center {
+        text-align: center;
+        margin-top : 50px;
+    }
+    .goBackHome {
+        border:  1px solid white;
+        color : white;
+        margin-top : 50px;
+    }
+    code {
+        display : block;
+        margin  :auto;
+        width: 80%;
+        margin-top : 50px;
+        pre {
+            display : block;
+            margin  :auto;
+            width: 100%;
+        }
     }
     .sessionMsg {
     	text-align : center;
@@ -460,3 +480,4 @@ $greySectionTxt : #282828;
         }
     }
 }
+

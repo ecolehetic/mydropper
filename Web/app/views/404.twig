@@ -3,11 +3,15 @@
 {% block javascripts %}{% endblock %}
 
 {% block content %}
+<div id="page404" class="homeSidePage">
+    <a href="/">
+        <img src='../assets/images/logo.svg' id="logo" alt="logo MyDropper">
+    </a>
 
     <h1>Error {{ error.code  }}</h1>
 
     {% if status == 0 %}
-        Error, please go back to the home page.
+        <p class="center">Error, please go back to the home page.</p>
     {% else %}
         <code>
             <pre>
@@ -15,5 +19,8 @@
             </pre>
         </code>
     {% endif %}
-
+    <a href="/" class="ghostBtn goBackHome animated fadeInDown">
+        GO HOME PAGE
+    </a>
+</div>
 {% endblock %}
