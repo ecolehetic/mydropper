@@ -50,7 +50,7 @@ var Model = {
 		}
 	},
 
-	// TODO Nico 
+	// TODO Nico
 	'History' : {
 		'get' : function() {
 			$.post(admin.origin+"/api/historyasync/", {user_id: Model.userId, token_api: Model.tokenApi, pagination: 10, pages : currentPage}, "json")
