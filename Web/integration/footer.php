@@ -4,9 +4,9 @@
 
 <script src="../assets/js/libs/chartist.min.js"></script>
 <script src="../assets/js/libs/select3.min.js"></script>
-<script src="../assets/js/views/ui.js"></script>
-<script src="../assets/js/views/graphUI.js"></script>
-<script src="../assets/js/models/model.js"></script>
-<script src="../assets/js/controllers/mainCtrl.js"></script>
-<script src="../assets/js/controllers/trackingCtrl.js"></script>
+<script src="../assets/js/src/views/ui.js"></script>
+<script src="../assets/js/src/views/graphUI.js"></script>
+<script src="../assets/js/src/models/model.js"></script>
+<script src="../assets/js/src/controllers/mainCtrl.js"></script>
+<script src="../assets/js/src/controllers/trackingCtrl.js"></script>
 </body>

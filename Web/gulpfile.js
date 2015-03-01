@@ -6,12 +6,14 @@ var gulp 			= require('gulp'),
 	minifyCss		= require('gulp-minify-css'),
 	sourceMap		= require('gulp-sourcemaps'),
 	imageMin		= require('gulp-imagemin'),
-	clean			= require('gulp-clean');
+	clean			= require('gulp-clean'),
+	uglify			= require('gulp-uglify');
 
 var path = {
 	scss	: 'assets/scss/',
 	css		: 'assets/css/',
-	images	: 'assets/images/'
+	images	: 'assets/images/',
+	js		: 'assets/js/src/'
 };
 
 /*
@@ -54,6 +56,15 @@ gulp.task('scssadmin', function () {
 });
 
 /*
+ * Minify JS
+ */
+gulp.task('javascripts', function() {
+	return gulp.src(path.js+'**/*')
+		.pipe(uglify())
+		.pipe(gulp.dest('assets/js/app'));
+});
+
+/*
  * Optim all images
  */
 gulp.task('images', function () {
@@ -67,7 +78,8 @@ gulp.task('images', function () {
  */
 gulp.task('watch',['scss', 'scssadmin'], function() {
 	gulp.watch(path.scss+'/**/*', ['scss']);
-    gulp.watch(path.scss+'/**/*', ['scssadmin']);
+	gulp.watch(path.scss+'/**/*', ['scssadmin']);
+	gulp.watch(path.js+'/**/*', ['javascripts']);
 });
 
 /*
