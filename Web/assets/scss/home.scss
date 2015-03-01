@@ -24,7 +24,7 @@ $greySectionTxt : #282828;
         }
         #logo {
             margin-top : 10px;
-            width : 120px;
+            width : 90px;
         }
     }
     footer {
@@ -76,7 +76,7 @@ $greySectionTxt : #282828;
         display: block;
         margin: auto;
         min-width: 80px;
-        max-width: 110px;
+        max-width: 90px;
         width: 15%;
         padding-top: 50px;
     }
@@ -262,10 +262,10 @@ $greySectionTxt : #282828;
                 color : black;
                 padding : 5px;
                 width : 150px;
-                font-size : 1rem;
+                font-size: 0.9rem;
                 position: absolute;
-                top: -130px;
-                right: -170px;
+                top: -152px;
+                right: -168px;
                 cursor : pointer;
                 transition: all 1s ease;
                 &:after {
@@ -280,7 +280,11 @@ $greySectionTxt : #282828;
                     left: 0px;
                 }
             }
-
+            &:hover {
+                .info {
+                    opacity: 1;
+                }
+            }
         }
     }
 }

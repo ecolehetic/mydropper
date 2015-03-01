@@ -6,7 +6,6 @@ var Model = {
 	"tracking" : {
 
 		getCategoryList : function(callback) {
-			console.log('UserId : ' + Model.userId);
 			$.getJSON( "/api/categories/"+ Model.userId, function( response ) {
 				callback.call(this, response.categoryList);
 			});
@@ -14,7 +13,6 @@ var Model = {
 
 		getCategoryGraphData : function(cat, fromDate, toDate, callback) {
 			$.post('/api/categoryglobal/', { user_id : Model.userId, cat_id : cat, from : fromDate, to : toDate }, function(response) {
-				console.log('getCategoryGraphData response : ', response.data);
 				if(response.data.graphData) {
 					var dataResponse = response.data,
 						graphData = dataResponse.graphData,
@@ -56,8 +54,6 @@ var Model = {
 			$.post(admin.origin+"/api/historyasync/", {user_id: Model.userId, token_api: Model.tokenApi, pagination: 10, pages : currentPage}, "json")
 				.done(function(response) {
 					callback.call(this, response);
-				}).fail(function(response) {
-					console.log('error : ', response);
 				});
 		}
 	},
