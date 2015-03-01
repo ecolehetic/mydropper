@@ -33,7 +33,7 @@ gulp.task('scss', function () {
 		.pipe(concat('style.css'))
 		.pipe(gulp.dest(path.css))
 		.pipe(sourceMap.init())
-		.pipe(minifyCss())
+		.pipe(minifyCss({keepSpecialComments: 0}))
 		.pipe(concat('style.min.css'))
 		.pipe(sourceMap.write())
 		.pipe(gulp.dest(path.css));
@@ -47,7 +47,7 @@ gulp.task('scssadmin', function () {
         .pipe(concat('admin.css'))
         .pipe(gulp.dest(path.css))
         .pipe(sourceMap.init())
-        .pipe(minifyCss())
+        .pipe(minifyCss({keepSpecialComments: 0}))
         .pipe(concat('admin.min.css'))
         .pipe(sourceMap.write())
         .pipe(gulp.dest(path.css));
