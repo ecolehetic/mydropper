@@ -18,7 +18,7 @@ Permettre le stockage de données personnelles susceptibles d’être utilisées
 | Mathieu LE TYRANT  | Développeur Back |
 | Héloise HAUTEVILLE  | Designer  |
 | Clara DARCO  | Designer  |
-| Wasim FOUAD  | Community Manager  |
+| Wasim FOUAD  | SEO Manager  |
 
 #### TECHNOLOGIES
 Back :
