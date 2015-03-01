@@ -140,7 +140,7 @@ class UsersController extends BaseController
                 $this->fMessage->set('You are successfully logged');
                 $this->f3->reroute(($user->has_extension == 1) ? '/history' : '/chrome-extension', true);
             } else {
-                $validForm[] = "User don't exist";
+                $validForm[] = "User doesn't exist";
             }
         }
 

@@ -83,8 +83,8 @@ class BaseController
     private function defaultValueRender($values)
     {
         // SEO
-        $values['seo']['title']         = Seo::getInstance()->get($this->controller, $this->method, 'title');
-        $values['seo']['description']   = Seo::getInstance()->get($this->controller, $this->method, 'description');
+        $values['seo']['title']         = Seo::getInstance()->get($this->controller, $this->action, 'title');
+        $values['seo']['description']   = Seo::getInstance()->get($this->controller, $this->action, 'description');
 
         // Active menu
         $values['aside']['active'] = $this->getActiveMenu();
