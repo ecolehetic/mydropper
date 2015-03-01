@@ -4,39 +4,54 @@
     <meta charset="utf-8">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 
+    <!-- SEO -->
+    <title>MyDropper - Admin</title>
+    <meta name="keywords" content="Fill, filler, form, Automatic, chrome, extension, add-on, plug-in, contact, information, drag, drop, drag and drop, data">
+    <meta name="author" content="Patrick HENG, Mathieu LE TYRANT, Nicolas ANDRÉ, Héloîse HAUTEVILLE, Clara D'ARCO, Wassim FOAD"/>
+    <meta name="copyright" content="MyDropper © Copyright 2015"/>
+    <meta name="robots" content="index,follow"/>
+    <meta name="location" content="Paris, FRANCE"/>
 
-    <link rel="icon" type="image/png" href="assets/images/ico.png" />
+    <!-- FB Share -->
+    <meta property="og:title" content="My Dropper - Drag and Drop all your data"/>
+    <meta property="og:description" content="My Dropper is a chrome extension wich allow you to drag and drop your data on any text field."/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content="http://www.mydropper.com/"/>
+
+    <link rel="icon" type="image/png" href="/assets/images/ico.png" />
+    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/abchmallljbphbkjchahcogmjglkloao">
 
     <!-- STYLESHEETS -->
     {% block stylesheets %}
-        {{ asset('css', 'admin.css', false) }}
+        {{ asset('css', 'admin.min.css', false) }}
     {% endblock %}
 </head>
 
 <body>
 
-<!-- Flash messages -->
-{% if fMessage %}
-    <ul id="flashMsg">
-        {% if fMessage['status'] == 'info' %}
-            <li class="animated fadeInRight">{{ fMessage['message'] | raw }}</li>
-        {% elseif fMessage['status'] == 'error' %}
-            <li class="animated fadeInRight error">{{ fMessage['message'] | raw }}</li>
-        {% elseif fMessage['status'] == 'alert' %}
-            <li class="animated fadeInRight alert">{{ fMessage['message'] | raw }}</li>
-        {% endif %}
-    </ul>
-{% endif %}
+    <!-- Flash messages -->
+    {% if fMessage %}
+        <ul id="flashMsg">
+            {% if fMessage['status'] == 'info' %}
+                <li class="animated fadeInRight">{{ fMessage['message'] | raw }}</li>
+            {% elseif fMessage['status'] == 'error' %}
+                <li class="animated fadeInRight error">{{ fMessage['message'] | raw }}</li>
+            {% elseif fMessage['status'] == 'alert' %}
+                <li class="animated fadeInRight alert">{{ fMessage['message'] | raw }}</li>
+            {% endif %}
+        </ul>
+    {% endif %}
 
-{% block admin_header %} {% endblock %}
+    {% block admin_header %} {% endblock %}
 
-{% block content %} {% endblock %}
+    {% block content %} {% endblock %}
 
-<!-- JAVASCIRPT -->
-{% block javascripts %}
-    {{ asset('js', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', true) }}
-    {{ asset('js', 'http://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js', true) }}
-    {{ asset('js', 'controllers/adminCtrl.js', false) }}
-{% endblock %}
+    <!-- JAVASCIRPT -->
+    {% block javascripts %}
+        {{ asset('js', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', true) }}
+        {{ asset('js', 'http://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js', true) }}
+        {{ asset('js', 'controllers/adminCtrl.js', false) }}
+    {% endblock %}
+
 </body>
 </html>
