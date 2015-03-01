@@ -38,7 +38,6 @@ var Ext = {
 
 		/* ---- Check if user already logged in ---- */
 		Model.getDataUser(function(userData){
-			//console.log(userData);
 			if(typeof userData != 'undefined') {
 				Model.getUserSnippets(function(storesData){
 					UI.loggedPanel.renderSnippets(storesData);

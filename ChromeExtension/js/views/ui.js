@@ -90,7 +90,6 @@ var UI={
 	loggedPanel : {
 		renderSnippets : function(storesData){
 			/* ---- TEMPLATING ---- */
-			//console.log(storesData);
 			for(var i = 0; i < storesData.length; i++) {
 				var snippets = "";
 

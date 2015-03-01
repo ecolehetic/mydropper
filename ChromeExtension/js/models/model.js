@@ -14,7 +14,6 @@ Model = {
 		Model.getDataUser(function(data) {
 			$.post("http://mydropper.mathieuletyrant.com/api/stores", {user_id: data.user.id, token_id: data.user.token_api}, "json")
 				.done(function(response) {
-					console.log(response);
 					for(var i = 0; i < response.length; i++) {
 						for(var j = 0; j < response[i].stores.length; j++) {
 							// Replace quote and double quote by /
@@ -24,7 +23,6 @@ Model = {
 							response[i].stores[j].store_description = desc;
 						}
 					}
-					console.log(response);
 					callback.call(this,response);
 				}).fail(function(response) {
 					callback.call(this,false);
@@ -44,11 +42,6 @@ Model = {
 				on_url: onUrl,
 				full_url : fullUrl
 			}, "json")
-				.done(function(response) {
-					console.log('Drop data send : success');
-				}).fail(function(response) {
-					console.log('Drop data send to server : fail');
-				});
 		});
 	},
 
@@ -69,7 +62,6 @@ Model = {
 
 	logOut : function() {
 		chrome.storage.local.clear(function(){
-			console.log('My dropper user logged out');
 		});
 	}
 
