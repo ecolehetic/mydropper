@@ -271,7 +271,7 @@ a {
     overflow : hidden;
     span {
         position : relative;
-        z-index : 10;
+        z-index : 9;
     }
     &:after {
         content: '';
