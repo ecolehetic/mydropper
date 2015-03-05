@@ -30,11 +30,9 @@ class UrlController extends BaseController
                 $store = Store::find($shortLink->store_id);
 
                 if ($this->addTracker($shortLink->user_id, $shortLink->id)) {
-                    if ((int)$shortLink->be_notice === 1) {
+                    if ((int)$shortLink->be_notice === 1 && $this->f3->get('PUSHBULLET_ENABLE') == true) {
                         if (!empty($shortLink->users->mail_pushbullet)) {
-                            if ($this->f3->get('PUSHBULLET_ENABLE') == true) {
-                                $this->seedNotification($shortLink->users->mail_pushbullet, $store->descript);
-                            }
+                            $this->seedNotification($shortLink->users->mail_pushbullet, $store->descript);
                         }
                     }
 
