@@ -1,4 +1,12 @@
 @media screen and (max-width: 1400px) {
+    #popin {
+        .popinContent {
+            position: absolute;
+            width: 60%;
+            left: 25%;
+            top: 12%;
+        }
+    }
     #dashboard {
         .cardList {
             li {
@@ -12,8 +20,6 @@
             left: calc(50% + 180px);
         }
     }
-
-
 }
 @media screen and (max-width: 1200px) {
     #profilePage {
@@ -161,6 +167,18 @@
 
 
 @media screen and (max-width: 850px) {
+    #popin {
+        .popinContent {
+            width: 90%;
+            margin: 5%;
+            box-sizing: border-box;
+            height: 90%;
+            top: 0;
+            left: 0;
+            padding: 10% 4% 3% 4%;
+        }
+    }
+
     header {
         .headerContent {
             display: none;
@@ -196,12 +214,7 @@
             }
         }
     }
-    #popin {
-        #popinContent {
-            width: 80%;
-            left: 7%;
-        }
-    }
+
     #formHome {
         .pushbulletFG {
             .infoBulle {
@@ -420,6 +433,12 @@
     }
     #homePage footer ul li:last-child {
         display : none;
+    }
+    #tracking .categoryGraphContainer .deltaGraphContainer .inputGroup {
+        width: 49%;
+        padding: 0 3%;
+        box-sizing: border-box;
+        margin-bottom: 25px;
     }
 }
 
