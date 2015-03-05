@@ -27,8 +27,6 @@ $(document).ready(function() {
 	/* ---- ON CATEGORY CHANGE ---- */
 	$('#categoryChoice').on('change', function(){
 		currentCat = $(this).select3('value');
-		console.log('value  ' + $(this).select3('value'));
-
 		updateCharts(currentCat, from, to);
 	});
 
