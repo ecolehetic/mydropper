@@ -66,7 +66,6 @@ class ApiController extends BaseController
         } else {
             $data = $this->returnError('Error, you need insert a username and a password.');
         }
-
         $this->render(false, $data);
     }
 
@@ -175,8 +174,47 @@ class ApiController extends BaseController
         $this->render(false, $data);
     }
 
-    // ----------------------------------  REQUESTS FROM APP FRONT
+    // --------------  MANAGE ERRORS FOR API
+    /**
+     * Return data for Error
+     *
+     * @param string $message
+     *
+     * @return array
+     */
+    private function returnError($message)
+    {
+        return [
+            'success' => false,
+            'message' => $message
+        ];
+    }
 
+    /**
+     * Return data for Success
+     *
+     * @param string $message
+     *
+     * @return array
+     */
+    private function returnSuccess($message)
+    {
+        return [
+            'success' => true,
+            'message' => $message
+        ];
+    }
+
+    // ----------------------------------  REQUESTS FROM APP FRONT
+    /**
+     * Check if user can access data
+     *
+     * @param $user_id
+     * @param $token_api
+     * @param bool $returnUser
+     * @param int $level
+     * @return bool
+     */
     private function isAuth($user_id, $token_api, $returnUser = false, $level=0){
         if($user_id !== null && $token_api !== null){
             $user_id = (int)($user_id);
@@ -193,6 +231,7 @@ class ApiController extends BaseController
         }
         return false;
     }
+
     /**
      * Tracking PAGE
      * POST /api/categories
@@ -389,35 +428,5 @@ class ApiController extends BaseController
             $json['error'] = 'error occurred (no user)';
         }
         $this->render(false, $json);
-    }
-
-    /**
-     * Return data for Error
-     *
-     * @param string $message
-     *
-     * @return array
-     */
-    private function returnError($message)
-    {
-        return [
-            'success' => false,
-            'message' => $message
-        ];
-    }
-
-    /**
-     * Return data for Success
-     *
-     * @param string $message
-     *
-     * @return array
-     */
-    private function returnSuccess($message)
-    {
-        return [
-            'success' => true,
-            'message' => $message
-        ];
     }
 }
