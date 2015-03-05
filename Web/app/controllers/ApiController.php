@@ -307,10 +307,10 @@ class ApiController extends BaseController
      * Admin users list
      * POST /api/admin/users
      *
-     * @param string $tokenApi
-     * @param int $userId
-     * @param int $pagination
-     * @param int $pages
+     * @param string tokenApi
+     * @param int userId
+     * @param int pagination
+     * @param int pages
      *
      */
     public function getAdminUsers(){

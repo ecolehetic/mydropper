@@ -32,7 +32,9 @@ class UrlController extends BaseController
                 if ($this->addTracker($shortLink->user_id, $shortLink->id)) {
                     if ((int)$shortLink->be_notice === 1) {
                         if (!empty($shortLink->users->mail_pushbullet)) {
-                            $this->seedNotification($shortLink->users->mail_pushbullet, $store->descript);
+                            if ($this->f3->get('PUSHBULLET_ENABLE') == true) {
+                                $this->seedNotification($shortLink->users->mail_pushbullet, $store->descript);
+                            }
                         }
                     }
 
