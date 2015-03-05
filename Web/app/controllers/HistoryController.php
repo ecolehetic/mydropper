@@ -46,7 +46,7 @@ class HistoryController extends BaseController
         if($tokenApi){
             $user = User::where('token_api', '=', $tokenApi)->where('id', '=', $userId)->with('roles')->first();
             if($user){
-                $json['users'] = TrackerStore::take($pagination)->offset($pages*$pagination)->with('stores')->orderBy('created_at', 'desc')->get();
+                $json['trackers'] = TrackerStore::where('user_id', '=', $userId)->take($pagination)->offset($pages*$pagination)->with('stores')->orderBy('created_at', 'desc')->get();
             }else{
                 $json['error'] = 'error occurred (no user)';
             }

@@ -11,7 +11,7 @@ var admin = {
         admin.tokenApi = $('#token_api').text();
         admin.userId = $('#user_id').text();
     },
-    getUsers : function(currentPage, callback){
+    getStores : function(currentPage, callback){
 
         $.post(admin.origin+"/api/admin/users", {user_id: admin.userId, token_api: admin.tokenApi, pagination: admin.pagination, pages : currentPage}, "json")
             .done(function(response) {
@@ -34,17 +34,16 @@ var admin = {
 
 $(document).ready(function(){
     admin.start();
-    console.log(admin.path);
     if(admin.path == '/admin'){
         var pagesValue = document.getElementById('load_more').dataset.pagination;
-        admin.getUsers(pagesValue, function(data){
-            admin.renderUsersList(data.users);
+        admin.getStores(pagesValue, function(data){
+            admin.renderTrackersList(data.users);
             document.getElementById('load_more').dataset.pagination ++;
         });
         $('#load_more').click(function(e){
             e.preventDefault();
-            admin.getUsers(e.target.dataset.pagination, function(data){
-                admin.renderUsersList(data.users);
+            admin.getStores(e.target.dataset.pagination, function(data){
+                admin.renderTrackersList(data.users);
                 e.target.dataset.pagination ++;
             });
         });

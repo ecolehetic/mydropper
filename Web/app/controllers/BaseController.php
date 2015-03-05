@@ -143,7 +143,12 @@ class BaseController
         $this->method = $this->f3['SERVER']['REQUEST_METHOD'];
 
         $params = $this->f3['PARAMS'];
-        $base = $this->f3['PARAMS'][0];
+        if(!empty($this->f3['PARAMS'][0])) {
+            $base = $this->f3['PARAMS'][0];
+        } else {
+            $base = '/onerror';
+        }
+
         if (count($this->f3['PARAMS']) > 1) {
             unset($params[0]);
             $index = null;

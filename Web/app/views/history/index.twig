@@ -4,9 +4,21 @@
     {% include '_includes/aside.twig' %}
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ asset('js', 'libs/jquery-ui.min.js', false) }}
+    {{ asset('js', 'app/models/model.js', false) }}
+    {{ asset('js', 'app/models/api.js', false) }}
+    {{ asset('js', 'app/controllers/historyCtrl.js', false) }}
+{% endblock %}
+
 {% block content %}
 
     <div class="container">
+        <span class="hidden" id="users_data">
+            <span id="token_api">{{ aside.token_api }}</span>
+            <span id="user_id">{{ aside.user_id }}</span>
+        </span>
         <div id="dashboard">
             <h1>History</h1>
 
@@ -20,19 +32,19 @@
                     <a href="https://chrome.google.com/webstore/detail/my-dropper/abchmallljbphbkjchahcogmjglkloao" target="_blank" class="installExtensionLink">Install the chrome extension</a>
                 </div>
             {% else %}
-                <ul class="cardList clearfix">
-                    {% for tracker in trackers %}
-                        <li>
-                            <h3>{{ tracker.stores.label }}</h3>
-                            <span> <a target="_blank" href="{{ tracker.full_url }}">{{ tracker.on_url }}</a></span>
-                            <span>{{ tracker.created_at | date("d/m/Y H:i:s") }}</span>
-                        </li>
-                    {% endfor %}
+                <ul id="trackerslist" class="cardList clearfix">
+                    {#{% for tracker in trackers %}#}
+                        {#<li>#}
+                            {#<h3>{{ tracker.stores.label }}</h3>#}
+                            {#<span> <a target="_blank" href="{{ tracker.full_url }}">{{ tracker.on_url }}</a></span>#}
+                            {#<span>{{ tracker.created_at | date("d/m/Y H:i:s") }}</span>#}
+                        {#</li>#}
+                    {#{% endfor %}#}
                 </ul>
+                <div class="infinite">
+                    <a class="ghostBtn" id="load_more" href="#" data-pagination="0">Load More</a>
+                </div>
             {% endif %}
-
-
         </div>
     </div>
-
 {% endblock %}
