@@ -26,7 +26,7 @@ class CategoryController extends BaseController
             ));
 
             if ($is_valid === true) {
-                $category = Category::where('label', '=', $this->f3->get('POST.category'))->first();
+                $category = Category::where('label', '=', $this->f3->get('POST.category'))->where('user_id', '=', $user->id)->first();
 
                 if (empty($category)) {
                     Category::create(array(
