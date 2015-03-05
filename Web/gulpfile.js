@@ -60,7 +60,7 @@ gulp.task('scssadmin', function () {
  */
 gulp.task('javascripts', function() {
 	return gulp.src(path.js+'**/*')
-		//.pipe(uglify())
+		.pipe(uglify())
 		.pipe(gulp.dest('assets/js/app'));
 });
 

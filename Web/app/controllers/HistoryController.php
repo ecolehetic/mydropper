@@ -18,11 +18,10 @@ class HistoryController extends BaseController
     public function index()
     {
         $user = $this->need->logged('/users/login')->user()->execute();
-
-        $trackers = TrackerStore::where('user_id', '=', $user->id)->with('stores')->orderBy('created_at', 'desc')->get();
+        $trackersCount = TrackerStore::where('user_id', '=', $user->id)->count();
 
         $this->render(true, [
-            'trackers' => $trackers
+            'trackers' => $trackersCount
         ]);
     }
 

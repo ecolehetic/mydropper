@@ -5,17 +5,18 @@ function renderTrackers(trackers){
         var tracker = trackers[i];
         var display = '<li><h3>'+tracker.stores.label+'</h3><span> <a target="_blank" href="'+tracker.full_url+'">'+tracker.on_url+'</a></span><span>'+tracker.created_at +'</span></li>';
         $('#trackerslist').append(display);
-        if(trackers.length < API.hist.pagination){
-            document.getElementById('load_more').classList.add('hidden');
-        }
+    }
+    if(trackers.length < API.hist.pagination){
+        document.getElementById('load_more').classList.add('hidden');
     }
 }
 
 $(document).ready(function(){
     API.start();
     if(API.path == '/history'){
-        var pagesValue = document.getElementById('load_more').dataset.pagination;
-
+        if(document.getElementById('load_more')){
+            var pagesValue = document.getElementById('load_more').dataset.pagination;
+        }
         API.hist.getStores(pagesValue, function(data){
             renderTrackers(data.trackers);
             document.getElementById('load_more').dataset.pagination ++;
