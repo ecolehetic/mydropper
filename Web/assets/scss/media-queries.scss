@@ -340,6 +340,12 @@
     }
 }
 @media screen and (max-width: 480px) {
+    #dashboard .editCat {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
     header {
         display: relative;
         .headerContent {
@@ -408,8 +414,6 @@
                 margin-top: 40px;
             }
         }
-    }
-    #formHome {
         .pushbulletFG {
             .infoBulle {
                 .info {
@@ -419,6 +423,7 @@
             }
         }
     }
+
     #formHome form .form-group label span {
         position: relative;
         right : auto;
@@ -439,6 +444,17 @@
         padding: 0 3%;
         box-sizing: border-box;
         margin-bottom: 25px;
+    }
+    #tracking #snippetGraphList li .snippetDetails {
+        height: 55px;
+    }
+    #popin {
+        #addSnippetFormContainer {
+            padding: 0% 4% 3% 4%;
+        }
+        p {
+            display : none;
+        }
     }
 }
 
