@@ -56,6 +56,7 @@ header {
         width : 100%
     }
     #profile {
+        transition: all 0.75s ease;
         img {
             position: absolute;
             top: 5px;
@@ -112,6 +113,9 @@ header {
                 }
             }
         }
+    }
+    #profile.profileOut {
+        transform: translateX(250px);
     }
     #leftBar {
         background-size: 20px 20px;

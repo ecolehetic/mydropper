@@ -38,7 +38,8 @@ var UI = {
 
 			setTimeout(function() {
 				UI.dashboard.$sideBar.addClass('sideBarLeft');
-			}, 1)
+				UI.profile.$container.addClass('profileOut');
+			}, 100)
 		},
 
 		'closeBurgerMenu' : function() {
@@ -47,7 +48,7 @@ var UI = {
 			$('#burger').removeClass('burgerOpen');
 			UI.dashboard.$sideBar.removeClass('sideBarLeft');
 			UI.dashboard.$container.removeClass('containerLeft');
-
+			UI.profile.$container.removeClass('profileOut');
 			setTimeout(function() {
 				UI.dashboard.$sideBar.hide()
 					.removeAttr('style')
@@ -112,44 +113,45 @@ var UI = {
 	},
 
 	'popin' : {
-		'el' : $( "#popin" ),
-		'categoryContainer' : $( "#addCategoryFormContainer"),
-		'snippetContainer' : $( "#addSnippetFormContainer"),
-		'checkboxContainer' : $( '.checkboxContainer' ),
-		'checkbox' : $('.checkbox'),
+		'$el' : $( "#popin" ),
+		'$categoryContainer' : $( "#addCategoryFormContainer"),
+		'$snippetContainer' : $( "#addSnippetFormContainer"),
+		'$checkboxContainer' : $( '.checkboxContainer' ),
+		'$checkbox' : $('.checkbox'),
 
 		'showCategoryPopin' : function(){
-			UI.popin.el.fadeIn();
-			UI.popin.categoryContainer.show();
-			UI.popin.snippetContainer.hide();
+			UI.popin.$el.fadeIn();
+			UI.popin.$categoryContainer.show();
+			UI.popin.$snippetContainer.hide();
 		},
 		'showSnippetPopin' : function(version, name){
 			if(version === "add") {
-				UI.popin.snippetContainer.find('h2').html('Add a snippet');
+				UI.popin.$snippetContainer.find('h2').html('Add a snippet');
 			} else {
-				UI.popin.snippetContainer.find('h2').html('Edit ' + name +  ' snippet');
+				UI.popin.$snippetContainer.find('h2').html('Edit ' + name +  ' snippet');
 
 			}
-			UI.popin.el.fadeIn();
-			UI.popin.categoryContainer.hide();
-			UI.popin.snippetContainer.show();
+			UI.popin.$el.fadeIn();
+			UI.popin.$categoryContainer.hide();
+			UI.popin.$snippetContainer.show();
 		},
 		'closePopin' : function(){
-			UI.popin.el.fadeOut();
+			UI.popin.$el.fadeOut();
 		},
 		'enableCheckbox' : function(){
-			UI.popin.checkboxContainer.removeClass('disabled');
-			UI.popin.checkbox.prop( "disabled", false );
+			UI.popin.$checkboxContainer.removeClass('disabled');
+			UI.popin.$checkbox.prop( "disabled", false );
 		},
 		'disableCheckbox' : function(){
-			UI.popin.checkboxContainer.addClass('disabled');
-			UI.popin.checkbox
+			UI.popin.$checkboxContainer.addClass('disabled');
+			UI.popin.$checkbox
 				.prop( "disabled", true)
 				.prop( "checked", false);
 		}
 	},
 
 	'profile' : {
+		'$container' : $('#profile'),
 		'$menu' : $('#profileMenu'),
 		'$form' : $('#editForm'),
 		'$editmsg' : $('#editButton span'),
@@ -166,11 +168,10 @@ var UI = {
 			else {
 				UI.profile.$editmsg.html('Edit profile');
 				UI.profile.$form.addClass('disabled').removeClass ('enabled');
+				// Reset info in profile
 				UI.profile.$form.html(UI.profile.$htmlForm).promise().done (function () {
+					//Disabled inpts when edition cancel
 					UI.profile.$inputs.prop('disabled',true);
-					$('#birthdayProfile')
-						.datepicker({ dateFormat: 'mm-dd-yy' })
-						.datepicker("setDate", UI.profile.$date);
 				});
 			}
 		}

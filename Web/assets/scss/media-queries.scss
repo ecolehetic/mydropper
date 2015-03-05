@@ -161,6 +161,22 @@
 
 
 @media screen and (max-width: 850px) {
+    header {
+        .headerContent {
+            display: none;
+        }
+        #profile {
+            img {
+                right: 15px;
+            }
+            #profileMenu {
+                &:before {
+                    right: 8px;
+                    left: auto;
+                }
+            }
+        }
+    }
     #burger {
         left: 15px;
     }
@@ -212,11 +228,6 @@
     }
 }
 @media screen and (max-width: 600px) {
-    header {
-        .headerContent {
-            display: none;
-        }
-    }
     .ghostBtn {
         width : 120px!important;
         margin-left :auto;
@@ -320,17 +331,6 @@
         display: relative;
         .headerContent {
             display: none;
-        }
-        #profile {
-            img {
-                right: 15px;
-            }
-            #profileMenu {
-                &:before {
-                    right: 8px;
-                    left: auto;
-                }
-            }
         }
     }
     #whoAreWe {
