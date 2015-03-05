@@ -8,7 +8,8 @@ Permettre le stockage de données personnelles susceptibles d’être utilisées
 --------------------
 * [Site WEB](http://mydropper.mathieuletyrant.com)
 * [Extension Chrome](https://chrome.google.com/webstore/detail/my-dropper/abchmallljbphbkjchahcogmjglkloao/related)
-* [Wiki](https://github.com/ecolehetic/PHP14/wiki/Configuration)
+* [API Reference](https://github.com/ecolehetic/PHP14/wiki/API)
+* [Configuration](https://github.com/ecolehetic/PHP14/wiki/Configuration)
 
 #### L'EQUIPE
 | Nom  |  Rôle|
