@@ -6,19 +6,13 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {{ asset('js', 'libs/jquery-ui.min.js', false) }}
-    {{ asset('js', 'app/models/model.js', false) }}
-    {{ asset('js', 'app/models/api.js', false) }}
+    {{ asset('js', 'app/views/historyView.js', false) }}
     {{ asset('js', 'app/controllers/historyCtrl.js', false) }}
 {% endblock %}
 
 {% block content %}
 
     <div class="container">
-        <span class="hidden" id="users_data">
-            <span id="token_api">{{ aside.token_api }}</span>
-            <span id="user_id">{{ aside.user_id }}</span>
-        </span>
         <div id="dashboard">
             <h1>History</h1>
 

@@ -37,13 +37,13 @@ $(document).ready(function(){
     if(admin.path == '/admin'){
         var pagesValue = document.getElementById('load_more').dataset.pagination;
         admin.getStores(pagesValue, function(data){
-            admin.renderTrackersList(data.users);
+            admin.renderUsersList(data.users);
             document.getElementById('load_more').dataset.pagination ++;
         });
         $('#load_more').click(function(e){
             e.preventDefault();
             admin.getStores(e.target.dataset.pagination, function(data){
-                admin.renderTrackersList(data.users);
+                admin.renderUsersList(data.users);
                 e.target.dataset.pagination ++;
             });
         });

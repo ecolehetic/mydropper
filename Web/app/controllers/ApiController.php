@@ -70,6 +70,7 @@ class ApiController extends BaseController
         $this->render(false, $data);
     }
 
+    // ----------------------------------  REQUESTS FROM EXTENSION
     /**
      * Return all categories with stores
      * POST /api/stores
@@ -174,29 +175,50 @@ class ApiController extends BaseController
         $this->render(false, $data);
     }
 
+    // ----------------------------------  REQUESTS FROM APP FRONT
+
+    private function isAuth($user_id, $token_api, $returnUser = false, $level=0){
+        if($user_id !== null && $token_api !== null){
+            $user_id = (int)($user_id);
+            $user = User::where('token_api', '=', $token_api)->where('id', '=', $user_id)->with('roles')->first();
+            if($user !=null && $returnUser === true){
+                if($level <= (int)($user->roles->level)){
+                    return $user;
+                }
+            }elseif($user !=null && $returnUser === false){
+                if($level <= (int)($user->roles->level)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     /**
      * Tracking PAGE
-     * GET /api/categories/@user_id
+     * POST /api/categories
      *
      * @param int user_id
+     * @param string token_api
      */
     public function getCategoryList()
     {
-        $userId = $this->f3->get('PARAMS.user_id');
-
-        if (!empty($userId)) {
-            $categories                         = Category::where('user_id', '=', $userId)->get();
-            $categoriesJson["categoryList"]     = [];
+        $json = [];
+        $user = $this->isAuth($this->f3->get('POST.user_id'),$this->f3->get('POST.token_api'),true);
+        if($user !== false){
+            $categories                         = Category::where('user_id', '=', $user->id)->get();
+            $json['categoryList']     = [];
 
             for ($i = 0; $i < count($categories); $i++) {
-                $categoriesJson["categoryList"][] = [
+                $json['categoryList'][] = [
                     "id" => $categories[$i]->id,
                     "text" => $categories[$i]->label
                 ];
             }
 
-            $this->render(false, $categoriesJson);
+        }else{
+            $json['error'] = 'error occurred (no user)';
         }
+        $this->render(false, $json);
     }
 
     /**
@@ -204,20 +226,22 @@ class ApiController extends BaseController
      * POST /api/trackedlink
      *
      * @param int user_id
+     * @param string token_api
      * @param int cat_id
      * @param date from
      * @param date to
      */
     public function getTrackedLink()
     {
-        $userId = $this->f3->get('POST.user_id');
-        $catId  = $this->f3->get('POST.cat_id');
-        $from   = Carbon::parse($this->f3->get('POST.from'));
-        $to     = Carbon::parse($this->f3->get('POST.to'));
-        $json['data'] = [];
+        $json = [];
+        $user = $this->isAuth($this->f3->get('POST.user_id'),$this->f3->get('POST.token_api'),true);
+        if($user !== false){
+            $catId  = $this->f3->get('POST.cat_id');
+            $from   = Carbon::parse($this->f3->get('POST.from'));
+            $to     = Carbon::parse($this->f3->get('POST.to'));
+            $json['data'] = [];
 
-        if (!empty($userId) && !empty($catId) &&!empty($from) && !empty($to)) {
-            $stores = Store::where('user_id', '=', $userId)->where('category_id', '=', $catId)->where('is_shorter', '=', 1)->get();
+            $stores = Store::where('user_id', '=', $user->id)->where('category_id', '=', $catId)->where('is_shorter', '=', 1)->get();
             for ($i = 0; $i < count($stores); $i++) {
                 $store_id           = $stores[$i]->id;
                 $store_name         = $stores[$i]->label;
@@ -251,8 +275,10 @@ class ApiController extends BaseController
                     'graphData'   => $graphData
                 ];
             }
-            $this->render(false, $json);
+        }else{
+            $json['error'] = 'error occurred (no user)';
         }
+        $this->render(false, $json);
     }
 
     /**
@@ -260,25 +286,25 @@ class ApiController extends BaseController
      * POST /api/categoryglobal
      *
      * @param int user_id
+     * @param string token_api
      * @param int cat_id
      * @param date from
      * @param date to
      */
     public function getCategoryGlobal()
     {
-        $userId = $this->f3->get('POST.user_id');
-        $catId  = $this->f3->get('POST.cat_id');
-        $from   = Carbon::parse($this->f3->get('POST.from'));
-        $to     = Carbon::parse($this->f3->get('POST.to'));
-        $json['data'] = [];
+        $json = [];
+        $user = $this->isAuth($this->f3->get('POST.user_id'),$this->f3->get('POST.token_api'),true);
+        if($user !== false){
+            $catId  = $this->f3->get('POST.cat_id');
+            $from   = Carbon::parse($this->f3->get('POST.from'));
+            $to     = Carbon::parse($this->f3->get('POST.to'));
+            $json['data'] = [];
 
-        if (!empty($userId) && !empty($catId) &&!empty($from) && !empty($to)) {
-
-            // Define and add CategoryName in Json
             $category = Category::find($catId);
             $json['data']['categoryName'] = $category->label;
 
-            $stores = Store::where('user_id', '=', $userId)->where('category_id', '=', $catId)->where('is_shorter', '=', 1)->get();
+            $stores = Store::where('user_id', '=', $user->id)->where('category_id', '=', $catId)->where('is_shorter', '=', 1)->get();
 
             for ($i = 0; $i < count($stores); $i++) {
                 $url = Url::where('store_id', '=', $stores[$i]->id)->first();
@@ -298,17 +324,47 @@ class ApiController extends BaseController
                     }
                 }
             }
-
-            $this->render(false, $json);
+        }else{
+            $json['error'] = 'error occurred (no user)';
         }
+        $this->render(false, $json);
     }
 
+
+    /**
+     * Get async history
+     * POST /api/historyasync
+     *
+     * @param int $user_id
+     * @param string $token_api
+     * @param int $pagination
+     * @param int $pages
+     *
+     */
+    public function getHistory(){
+        $json = [];
+        $user = $this->isAuth($this->f3->get('POST.user_id'),$this->f3->get('POST.token_api'),true);
+        if($user !== false){
+            $pagination = (int)($this->f3->get('POST.pagination'));
+            $pages = (int)($this->f3->get('POST.pages'));
+            if($pagination !== null && $pages !== null){
+                $json['trackers'] = TrackerStore::where('user_id', '=', $user->id)->take($pagination)->offset($pages*$pagination)->with('stores')->orderBy('created_at', 'desc')->get();
+            }else{
+                $json['error'] = 'error occurred (missing params)';
+            }
+        }else{
+            $json['error'] = 'error occurred (no user)';
+        }
+        $this->render(false, $json);
+    }
+
+    // ----------------------------------  REQUESTS FROM APP ADMIN
     /**
      * Admin users list
      * POST /api/admin/users
      *
-     * @param string tokenApi
-     * @param int userId
+     * @param string token_api
+     * @param int user_id
      * @param int pagination
      * @param int pages
      *
@@ -330,7 +386,7 @@ class ApiController extends BaseController
                 $json['error'] = 'error occurred (no user)';
             }
         }else{
-            $json['error'] = 'error occurred (no token)';
+            $json['error'] = 'error occurred (no user)';
         }
         $this->render(false, $json);
     }

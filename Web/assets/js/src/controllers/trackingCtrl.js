@@ -1,5 +1,7 @@
 "use strict";
 $(document).ready(function() {
+    // Load users data
+    API.start();
 
 	// Reformat date in yyyymmdd
 	Date.prototype.yyyymmdd = function() {
@@ -16,9 +18,8 @@ $(document).ready(function() {
 		currentCat = '';
 
 	/* ---- DROPDOWN LIST ---- */
-	Model.tracking.getCategoryList(function(catList, catId){
+	API.tracking.getCategoryList(function(catList, catId){
 		UI.tracking.initCategoryList(catList,catId);
-		
 		currentCat = catList[0].id;
 		updateCharts(currentCat, from, to);
 	});
@@ -63,7 +64,7 @@ $(document).ready(function() {
 		GraphUI.removeTooltips();
 
 		/* ---- CATEGORY CHART ---- */
-		Model.tracking.getCategoryGraphData(cat, from, to, function(catLabels, catSeries){
+		API.tracking.getCategoryGraphData(cat, from, to, function(catLabels, catSeries){
 			var catSelector = '.categoryGraph';
 			if(catLabels[0]=="N/A") {
 				GraphUI.category.noData();
@@ -73,7 +74,7 @@ $(document).ready(function() {
 		});
 
 		/* ---- TRACKED LINK CHARTS ---- */
-		Model.tracking.getTrackedLinkGraphData(cat, from, to, function(dataResponse){
+		API.tracking.getTrackedLinkGraphData(cat, from, to, function(dataResponse){
 			if(dataResponse.length>0) {
 				for(var i = 0; i < dataResponse.length; i++) {
 
