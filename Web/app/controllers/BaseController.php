@@ -188,6 +188,8 @@ class BaseController
     {
         $crypt = \Bcrypt::instance();
 
-        return $crypt->hash($string, $this->f3->get('SALT'), $level);
+        $mode  = $this->f3->get('MODE');
+
+        return $crypt->hash($string, $this->f3->get('SALT_'.$mode), $level);
     }
 }

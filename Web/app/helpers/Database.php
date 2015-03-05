@@ -40,17 +40,19 @@ class Database extends BaseHelper
      */
     private function initSettings()
     {
+        $mode = $this->f3->get('MODE');
+
         $this->settings = [
-            'driver'      => $this->f3->get('DB_DRIVER'),
-            'host'        => $this->f3->get('DB_HOST'),
-            'port'        => $this->f3->get('DB_PORT'),
-            'database'    => $this->f3->get('DB_NAME'),
-            'username'    => $this->f3->get('DB_USER'),
-            'password'    => $this->f3->get('DB_PASS'),
-            'charset'     => $this->f3->get('DB_CHARSET'),
-            'collation'   => $this->f3->get('DB_COLLATION'),
-            'prefix'      => $this->f3->get('DB_PREFIX'),
-            'unix_socket' => $this->f3->get('DB_UNIX_SOCKET')
+            'driver'      => $this->f3->get('DB_'.$mode.'_DRIVER'),
+            'host'        => $this->f3->get('DB_'.$mode.'_HOST'),
+            'port'        => $this->f3->get('DB_'.$mode.'_PORT'),
+            'database'    => $this->f3->get('DB_'.$mode.'_NAME'),
+            'username'    => $this->f3->get('DB_'.$mode.'_USER'),
+            'password'    => $this->f3->get('DB_'.$mode.'_PASS'),
+            'charset'     => $this->f3->get('DB_'.$mode.'_CHARSET'),
+            'collation'   => $this->f3->get('DB_'.$mode.'_COLLATION'),
+            'prefix'      => $this->f3->get('DB_'.$mode.'_PREFIX'),
+            'unix_socket' => $this->f3->get('DB_'.$mode.'_UNIX_SOCKET')
         ];
     }
 }
