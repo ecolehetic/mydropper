@@ -118,6 +118,8 @@ var UI = {
 		'$snippetContainer' : $( "#addSnippetFormContainer"),
 		'$checkboxContainer' : $( '.checkboxContainer' ),
 		'$checkbox' : $('.checkbox'),
+		'$urlCheckbox' : $('#urlCheckbox').find('input'),
+		'$pushbulletCheckBox' : $('#pushbulletCheckBox').find('input'),
 
 		'showCategoryPopin' : function(){
 			UI.popin.$el.fadeIn();
@@ -138,11 +140,20 @@ var UI = {
 		'closePopin' : function(){
 			UI.popin.$el.fadeOut();
 		},
-		'enableCheckbox' : function(){
+		'enableUrlCheckbox' : function(){
 			UI.popin.$checkboxContainer.removeClass('disabled');
-			UI.popin.$checkbox.prop( "disabled", false );
+			UI.popin.$urlCheckbox.prop( "disabled", false );
 		},
-		'disableCheckbox' : function(){
+		'togglePushbulletCheckBox' : function(){
+			if(UI.popin.$urlCheckbox.is(":checked")) {
+				UI.popin.$pushbulletCheckBox.prop( "disabled", false );
+			}else {
+				UI.popin.$pushbulletCheckBox
+					.prop( "disabled", true)
+					.prop( "checked", false);
+			}
+		},
+		'disableCheckboxs' : function(){
 			UI.popin.$checkboxContainer.addClass('disabled');
 			UI.popin.$checkbox
 				.prop( "disabled", true)

@@ -144,11 +144,16 @@ $(document).ready(function() {
 		var $str = $(this).val();
 
 		if(validateUrl($str)) {
-			UI.popin.enableCheckbox();
+			UI.popin.enableUrlCheckbox();
 		}
 		else {
-			UI.popin.disableCheckbox();
+			UI.popin.disableCheckboxs();
 		}
+	});
+	/* ---- IF URLCHECKBOX IS CHECKED ---- */
+	$('#addSnippetForm input').on('change', function() {
+		UI.popin.togglePushbulletCheckBox();
+
 	});
 
 	function validateUrl(str) {
