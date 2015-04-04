@@ -15,7 +15,7 @@ Permettre le stockage de données personnelles susceptibles d’être utilisées
 * [Wiki - API Reference](https://github.com/ecolehetic/PHP14/wiki/%23Back---API)
 
 #### L'EQUIPE
-| Nom  |  Rôle|
+| Nom  |  Role|
 | ------------- | ------------- |
 | Nicolas ANDRE  | Développeur Back |
 | Patrick HENG  | Développeur Front |
